@@ -69,17 +69,20 @@ export function renderCards(plan) {
     wrap.append(el('p', { class: 'note', text: 'None of the medicines you entered are on the CDC heat and medication list.' }));
     return wrap;
   }
-  for (const card of plan.cards) {
-    const art = el('article', { class: 'card med-card' });
-    art.append(el('h3', {}, [document.createTextNode(cardTitle(card)), cdcInfo(`${card.ingredient}: what the CDC says`, card.source, `The CDC lists this medicine's class, ${card.cdc_label}, in its heat and medications table.`)]));
-    art.append(el('p', { text: card.why }));
-    art.append(el('p', {}, [el('strong', { text: 'Watch for: ' }), document.createTextNode(card.watch_for)]));
-    art.append(el('p', {}, [el('strong', { text: 'Ask your pharmacist: ' }), document.createTextNode(card.ask)]));
-    if (card.this_week) art.append(el('p', { class: 'this-week' }, [document.createTextNode(`This week: ${card.this_week}`), infoButton('this_week')]));
-    for (const also of card.also_listed_under) art.append(el('p', { class: 'small muted' }, [document.createTextNode(`Also listed by the CDC under: ${also.class}`), cdcInfo(`${also.cdc_label}`, also.source, `The CDC also lists this medicine under ${also.cdc_label}.`)]));
-    wrap.append(art);
-  }
+  for (const card of plan.cards) wrap.append(renderCard(card));
   return wrap;
+}
+
+// One medicine card. Shared by the plan page and the home page's live example preview.
+export function renderCard(card) {
+  const art = el('article', { class: 'card med-card' });
+  art.append(el('h3', {}, [document.createTextNode(cardTitle(card)), cdcInfo(`${card.ingredient}: what the CDC says`, card.source, `The CDC lists this medicine's class, ${card.cdc_label}, in its heat and medications table.`)]));
+  art.append(el('p', { text: card.why }));
+  art.append(el('p', {}, [el('strong', { text: 'Watch for: ' }), document.createTextNode(card.watch_for)]));
+  art.append(el('p', {}, [el('strong', { text: 'Ask your pharmacist: ' }), document.createTextNode(card.ask)]));
+  if (card.this_week) art.append(el('p', { class: 'this-week' }, [document.createTextNode(`This week: ${card.this_week}`), infoButton('this_week')]));
+  for (const also of card.also_listed_under) art.append(el('p', { class: 'small muted' }, [document.createTextNode(`Also listed by the CDC under: ${also.class}`), cdcInfo(`${also.cdc_label}`, also.source, `The CDC also lists this medicine under ${also.cdc_label}.`)]));
+  return art;
 }
 
 export function renderCombinations(plan) {

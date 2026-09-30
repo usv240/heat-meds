@@ -64,6 +64,8 @@ Carried from `prd.md > Look and Feel` and `scope.md > Inspiration & Identity`.
 - **Copy tone:** plain, honest, never alarming. No emojis. No em dashes. Short sentences. The bold closing line and the trust line are fixed strings from the PRD.
 - **Print:** Letter page, 0.5 inch margins, black text on white, heat boxes keep both color and word, controls hidden, one page for the Phoenix example.
 
+- **Shared header and home layout (design polish, before the demo video):** every page uses one header (Heat Meds, Check my medicines, Evidence, theme toggle). The home page is wider (68rem) with a live example preview beside the headline at 900 px and wider, built by `src/home-preview.js` from the plan page's own renderers, and a three-step How it works strip. Heat weeks size by their container, not the screen. `assets/social-preview.png` (1200 x 630) is the Open Graph, Twitter, and GitHub preview, made by `scripts/make-social-image.mjs`.
+
 ## Components
 
 ### Landing page (`index.html`)

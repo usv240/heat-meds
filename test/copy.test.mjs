@@ -54,4 +54,42 @@ test('print stylesheet is linked on the plan page and hides controls', () => {
   const css = read('assets/print.css');
   assert.ok(/size:\s*Letter/.test(css));
   assert.ok(/\.info-btn[^{]*display:\s*none/s.test(css) || /\.no-print,[^{]*\.info-btn[^{]*\{[^}]*display:\s*none/s.test(css));
+  assert.ok(/\.site-header[^{]*\{[^}]*display:\s*none/s.test(css) || /\.no-print,\s*\.site-header/.test(css), 'the site header is hidden in print');
+});
+
+test('all three pages share the same header: Heat Meds, Check my medicines, Evidence, theme toggle', () => {
+  const headerOf = (f) => {
+    const m = read(f).match(/<header class="site-header">[\s\S]*?<\/header>/);
+    assert.ok(m, `${f} has the site header`);
+    return m[0].replace(/ aria-current="page"/g, '');
+  };
+  const home = headerOf('index.html');
+  assert.equal(headerOf('plan.html'), home, 'plan.html header matches the home page');
+  assert.equal(headerOf('evidence.html'), home, 'evidence.html header matches the home page');
+  assert.match(home, />Heat Meds</);
+  assert.match(home, /href="index.html#check">Check my medicines</);
+  assert.match(home, /href="evidence.html">Evidence</);
+  assert.match(home, /id="themeToggle"/);
+  assert.ok(read('evidence.html').includes('href="evidence.html" aria-current="page"'), 'Evidence is marked current on its page');
+});
+
+test('every page has Open Graph and Twitter preview tags pointing at the 1200 x 630 preview image', () => {
+  const IMAGE = 'https://usv240.github.io/heat-meds/assets/social-preview.png';
+  for (const f of ['index.html', 'plan.html', 'evidence.html']) {
+    const html = read(f);
+    const meta = (attr, name) => (html.match(new RegExp(`<meta ${attr}="${name}" content="([^"]*)"`)) ?? [])[1];
+    for (const p of ['og:title', 'og:description', 'og:url', 'og:image:alt']) assert.ok(meta('property', p), `${f}: ${p}`);
+    assert.equal(meta('property', 'og:image'), IMAGE, `${f}: og:image`);
+    assert.equal(meta('property', 'og:image:width'), '1200');
+    assert.equal(meta('property', 'og:image:height'), '630');
+    assert.match(meta('property', 'og:url'), /^https:\/\/usv240\.github\.io\/heat-meds\//);
+    assert.equal(meta('name', 'twitter:card'), 'summary_large_image', `${f}: twitter:card`);
+    assert.equal(meta('name', 'twitter:image'), IMAGE, `${f}: twitter:image`);
+    for (const p of ['twitter:title', 'twitter:description', 'twitter:image:alt']) assert.ok(meta('name', p), `${f}: ${p}`);
+  }
+  const png = readFileSync(new URL('assets/social-preview.png', root));
+  assert.equal(png.subarray(1, 4).toString('latin1'), 'PNG', 'the preview is a PNG');
+  assert.equal(png.readUInt32BE(16), 1200, 'preview width');
+  assert.equal(png.readUInt32BE(20), 630, 'preview height');
+  assert.ok(png.length < 1024 * 1024, 'under 1 MB, the GitHub social preview limit');
 });

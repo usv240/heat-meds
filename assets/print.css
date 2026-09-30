@@ -16,7 +16,7 @@
   p { margin: 1pt 0 2pt; }
   ul { margin: 1pt 0 2pt; }
 
-  .no-print, .topbar, .toggle-row, .info-btn, .info-panel, details.source, footer, #exampleBanner, .button, button { display: none !important; }
+  .no-print, .site-header, .toggle-row, .info-btn, .info-panel, details.source, footer, #exampleBanner, .button, button { display: none !important; }
 
   .card { border: 1px solid #999; border-radius: 3pt; padding: 3pt 5pt; margin: 2pt 0; break-inside: avoid; background: #fff !important; }
   .card.warn { border: 1.5pt solid #000; }

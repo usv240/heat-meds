@@ -30,6 +30,8 @@
   --warn-bg: #fff3e0;
   --warn-line: #d98a2b;
   --bad: #b3261e;
+  --ok: #2f7d4f;
+  --page: 44rem;
   --font: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -47,7 +49,11 @@
   --warn-bg: #3a2a12;
   --warn-line: #e0a24d;
   --bad: #ff8a80;
+  --ok: #7bd39a;
 }
+
+/* Page widths: the home page is wide enough for the hero and its preview; reading pages stay narrow. */
+.page-home { --page: 68rem; }
 
 * { box-sizing: border-box; }
 
@@ -63,7 +69,7 @@ body {
 }
 
 main {
-  max-width: 44rem;
+  max-width: var(--page);
   margin: 0 auto;
   padding: 1.25rem 1rem 4rem;
 }
@@ -74,16 +80,33 @@ h3 { font-size: 1.1rem; margin: 0 0 .4rem; }
 p { margin: .5rem 0 .9rem; }
 a { color: var(--focus); }
 
-.topbar {
+/* The same header on every page: Heat Meds, Check my medicines, Evidence, theme toggle.
+   On phones the links drop to their own row under the brand and toggle. */
+.site-header {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: .9rem 1rem .8rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 1.25rem;
+  gap: .4rem 1.6rem;
+  border-bottom: 1px solid var(--line);
 }
-
-.brand { font-weight: 700; text-decoration: none; color: var(--ink); font-size: 1.1rem; }
+.brand { font-weight: 800; text-decoration: none; color: var(--ink); font-size: 1.15rem; }
+.site-nav { display: flex; flex-wrap: wrap; gap: .2rem 1.3rem; }
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  padding: .35rem 0 .2rem;
+  border-bottom: 3px solid transparent;
+}
+.site-nav a:hover { border-bottom-color: var(--line); }
+.site-nav a[aria-current="page"] { border-bottom-color: var(--accent); }
+.theme-toggle { margin-left: auto; }
+@media (max-width: 600px) {
+  .site-nav { order: 3; width: 100%; }
+}
 
 .muted { color: var(--muted); }
 .small { font-size: .9rem; }
@@ -165,12 +188,22 @@ label { display: block; font-weight: 700; margin-bottom: .35rem; }
 }
 .heat-day .dow { display: block; font-weight: 700; font-size: .95rem; }
 .heat-day .date { display: block; font-size: .75rem; opacity: .85; }
-.heat-day .word { display: block; font-size: .8rem; margin-top: .3rem; font-weight: 700; overflow-wrap: anywhere; }
+.heat-day .word { display: block; font-size: .8rem; margin-top: .3rem; font-weight: 700; }
 .heat-day.unknown { background: var(--note-bg); color: var(--muted); }
 
-@media (max-width: 640px) {
+/* The heat week wraps to four columns when the box holding it is narrow, whatever the screen
+   width: the plan's heat card and the home page preview are both containers. */
+.heat-container { container-type: inline-size; }
+@container (max-width: 640px) {
   .heat-week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .heat-day .date { font-size: .7rem; }
+}
+/* On a phone the four boxes are about 70 px wide: drop the side padding and trim the word size a
+   little so the longest official word, "Moderate", fits whole instead of breaking. */
+@container (max-width: 420px) {
+  .heat-week { gap: .3rem; }
+  .heat-day { padding: .45rem 0; }
+  .heat-day .word { font-size: .75rem; }
 }
 @media (max-width: 480px) {
   html { font-size: 19px; }
@@ -206,7 +239,7 @@ details.source summary { cursor: pointer; color: var(--focus); }
 details.source q { font-style: italic; }
 .never-stop { font-size: 1.15rem; border-top: 3px solid var(--ink); padding-top: .8rem; margin-top: 1.5rem; }
 .sources ul { padding-left: 1.2rem; }
-.topbar-actions { display: inline-flex; gap: .5rem; }
+.plan-actions { margin: 0 0 .8rem; }
 
 /* Chips */
 .chips { list-style: none; padding: 0; margin: .6rem 0 .3rem; display: flex; flex-direction: column; gap: .45rem; }
@@ -248,12 +281,51 @@ h2 .info-btn, h3 .info-btn { font-size: .8rem; }
 .trust { font-weight: 700; }
 .references li { margin: .3rem 0; }
 .lede { font-size: 1.15rem; }
+.page-home main { padding-top: 1.75rem; }
+.page-home .narrow { max-width: 44rem; }
+#check { scroll-margin-top: 1rem; }
 
-/* Example call to action: caption beside the button on desktop, below it on phones */
-.example-cta .caption { margin-left: .6rem; }
-@media (max-width: 480px) {
-  .example-cta .caption { display: block; margin: .5rem 0 0; }
+/* Hero: headline beside a live example at 900 px and wider, the example below it on phones. */
+.hero { display: grid; gap: 1.5rem 2.75rem; align-items: start; }
+@media (min-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .hero h1 { font-size: 2.3rem; }
 }
+.hero h1 { margin-top: .2rem; }
+.hero-preview {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1rem 1.1rem 1.1rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .08);
+}
+.preview-label { display: flex; align-items: baseline; flex-wrap: wrap; gap: .3rem .6rem; margin: 0 0 .2rem; }
+.preview-label .tag {
+  font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--accent); color: var(--accent-ink); border-radius: .35rem; padding: .15rem .55rem;
+}
+.hero-preview .heat-week { margin: .5rem 0; }
+.hero-preview .med-card { margin: .7rem 0 0; background: var(--bg); }
+
+/* Example call to action: the caption sits below the button on every screen size. */
+.example-cta .caption { display: block; margin: .5rem 0 0; }
+
+/* How it works: three steps in a row on wide screens, stacked on phones. */
+.how-it-works { margin: 2.5rem 0 1.5rem; }
+.how-it-works h2 { margin-top: 0; }
+.how-it-works ol { list-style: none; padding: 0; margin: .8rem 0 0; display: grid; gap: .9rem; counter-reset: step; }
+@media (min-width: 700px) {
+  .how-it-works ol { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.how-it-works li { counter-increment: step; background: var(--card); border: 1px solid var(--line); border-radius: .9rem; padding: 1rem 1.1rem; }
+.how-it-works li::before {
+  content: counter(step);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent); font-weight: 800; margin-bottom: .5rem;
+}
+.how-it-works li strong { display: block; font-size: 1.1rem; margin-bottom: .2rem; }
+.how-it-works li span { display: block; }
 
 /* Evidence page */
 .tiles { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); margin: .6rem 0; }
@@ -267,7 +339,7 @@ h2 .info-btn, h3 .info-btn { font-size: .8rem; }
 .tile-label { font-size: .9rem; color: var(--muted); margin-top: .3rem; }
 .evidence-table { width: 100%; border-collapse: collapse; font-size: .85rem; margin: .5rem 0 1rem; }
 .evidence-table th, .evidence-table td { text-align: left; vertical-align: top; padding: .4rem .5rem; border-bottom: 1px solid var(--line); }
-.evidence-table th { font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.evidence-table th { font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); white-space: nowrap; }
 .all-rows { margin-top: 1rem; }
 details > summary { cursor: pointer; font-weight: 700; }
 @media (max-width: 600px) { .evidence-table { font-size: .78rem; } .evidence-table th, .evidence-table td { padding: .3rem .3rem; } }
@@ -276,4 +348,17 @@ details > summary { cursor: pointer; font-weight: 700; }
 .table-wrap { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: .5rem 0 1rem; }
 .table-wrap:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .table-wrap .evidence-table { margin: 0; min-width: 32rem; }
-.evidence-table td, .evidence-table th { overflow-wrap: anywhere; }
+/* Words never break inside a cell: a column is always at least as wide as its longest word.
+   (An earlier "break anywhere" rule let the browser squeeze columns to one letter at desktop widths.) */
+
+/* Evidence summary: the headline numbers, read from the run, then two agreement bars. */
+.evidence-summary { margin: 1rem 0 1.5rem; }
+.evidence-summary h2 { margin-top: 0; }
+.summary-stats { list-style: none; padding: 0; margin: .4rem 0 1.1rem; display: grid; gap: .7rem 1rem; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); }
+.summary-stats li { color: var(--muted); font-size: .95rem; }
+.summary-stats .stat-num { display: block; font-size: 2.1rem; font-weight: 800; line-height: 1.1; color: var(--ink); }
+.summary-stats .stat-num.ok { color: var(--ok); }
+.bars { display: grid; gap: .8rem; margin: .4rem 0 1rem; }
+.bar-text { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .2rem 1rem; font-size: .95rem; margin-bottom: .25rem; }
+.bar { height: .9rem; border-radius: 999px; background: var(--note-bg); border: 1px solid var(--line); overflow: hidden; }
+.bar-fill { height: 100%; background: var(--focus); border-radius: 999px; }

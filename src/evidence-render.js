@@ -23,8 +23,36 @@ function table(headers, rows) {
   return el('div', { class: 'table-wrap', tabindex: '0' }, [t]);
 }
 
+// A plain-language summary at the top: the headline numbers and two agreement bars, all from the run.
+function renderSummaryBlock(e) {
+  const stat = (value, label, ok = false) => el('li', {}, [
+    el('span', { class: `stat-num${ok ? ' ok' : ''}`, text: n(value) }),
+    el('span', { text: label }),
+  ]);
+  const bar = (name, a) => el('div', { class: 'bar-row' }, [
+    el('div', { class: 'bar-text' }, [el('span', { text: `Agrees with ${name}` }), el('strong', { text: `${pct(a.rate)}, ${n(a.agree)} of ${n(a.total)}` })]),
+    el('div', { class: 'bar', 'aria-hidden': 'true' }, [el('div', { class: 'bar-fill', style: `width: ${(a.rate * 100).toFixed(2)}%` })]),
+  ]);
+  const zeroQuote = e.must_be_zero.flags_without_cdc_quote;
+  const zeroStop = e.must_be_zero.stop_instructions;
+  const box = el('section', { class: 'card evidence-summary', 'aria-labelledby': 'summaryHeading' });
+  box.append(el('h2', { id: 'summaryHeading', text: 'In short' }));
+  box.append(el('ul', { class: 'summary-stats' }, [
+    stat(e.test_set.count, ' medicines tested'),
+    stat(zeroQuote, ' cards without a CDC quote', zeroQuote === 0),
+    stat(zeroStop, ' plans that say stop', zeroStop === 0),
+  ]));
+  box.append(el('div', { class: 'bars' }, [
+    bar('the UK (UKHSA)', e.agreement.ukhsa),
+    bar('Canada (Health Canada)', e.agreement.health_canada),
+  ]));
+  box.append(el('p', { class: 'small' }, [el('a', { href: '#disHeading', text: 'Every disagreement is listed below.' })]));
+  return box;
+}
+
 export function renderEvidence(e) {
   const frag = document.createDocumentFragment();
+  frag.append(renderSummaryBlock(e));
   const runDate = new Date(e.run_on).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   const version = e.commit ? `, code version ${e.commit}${e.commit_clean === false ? ' plus uncommitted changes' : ''}` : '';
   frag.append(el('p', { class: 'muted small', text: `Run on ${runDate}${version}, rules file ${e.rules_version}. ${n(e.counts.resolved)} of ${n(e.test_set.count)} medicines resolved.` }));

@@ -4,24 +4,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Your heat and medicine plan</title>
+  <meta name="description" content="A one-page heat and medicine plan: this week's heat risk and what the CDC says about each medicine, to go over with your pharmacist.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Heat Meds">
+  <meta property="og:title" content="Your heat and medicine plan | Heat Meds">
+  <meta property="og:description" content="A one-page heat and medicine plan: this week's heat risk and what the CDC says about each medicine, to go over with your pharmacist.">
+  <meta property="og:url" content="https://usv240.github.io/heat-meds/plan.html">
+  <meta property="og:image" content="https://usv240.github.io/heat-meds/assets/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A Heat Meds example: seven days of heat risk from a past Phoenix heat wave and a card for furosemide, a water pill.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your heat and medicine plan | Heat Meds">
+  <meta name="twitter:description" content="A one-page heat and medicine plan: this week's heat risk and what the CDC says about each medicine, to go over with your pharmacist.">
+  <meta name="twitter:image" content="https://usv240.github.io/heat-meds/assets/social-preview.png">
+  <meta name="twitter:image:alt" content="A Heat Meds example: seven days of heat risk from a past Phoenix heat wave and a card for furosemide, a water pill.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/site.css">
   <link rel="stylesheet" href="assets/print.css" media="print">
 </head>
-<body>
+<body class="page-plan">
+<header class="site-header">
+  <a class="brand" href="index.html">Heat Meds</a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="index.html#check">Check my medicines</a>
+    <a href="evidence.html">Evidence</a>
+  </nav>
+  <button type="button" class="secondary theme-toggle" id="themeToggle">Dark mode</button>
+</header>
 <main>
-  <div class="topbar">
-    <a class="brand" href="index.html">Heat Meds</a>
-    <span class="topbar-actions">
-      <button type="button" class="secondary" id="printBtn">Print</button>
-      <button type="button" class="secondary" id="themeToggle">Dark mode</button>
-    </span>
-  </div>
-
   <h1>Your heat and medicine plan</h1>
+  <p class="plan-actions no-print"><button type="button" class="secondary" id="printBtn">Print this plan</button></p>
   <p id="exampleBanner" class="note small" hidden></p>
 
-  <section class="card" id="heatSection" aria-labelledby="heatHeading">
+  <section class="card heat-container" id="heatSection" aria-labelledby="heatHeading">
     <div class="plan-header">
       <span class="place" id="placeLine">Loading</span>
       <span class="muted small" id="dateLine"></span>
@@ -42,7 +58,7 @@
     <p class="muted">Checking your medicines against the CDC guidance.</p>
   </div>
 
-  <p class="no-print"><a class="button secondary" href="index.html">Change medicines or ZIP</a></p>
+  <p class="no-print"><a class="button secondary" href="index.html#check">Change medicines or ZIP</a></p>
 
   <footer class="no-print">
     <p class="small muted">Heat forecast: National Weather Service HeatRisk (experimental). ZIP locations: U.S. Census Bureau ZCTA Gazetteer. Medicine names and classes: NLM RxNorm and RxClass.</p>

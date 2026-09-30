@@ -43,7 +43,8 @@ node scripts/smoke-heatrisk.mjs      # HeatRisk at downtown Phoenix
 node scripts/probe-names.mjs         # RxNorm and RxClass for the spec's tricky names
 node scripts/example-plan.mjs        # The Phoenix example as text
 node scripts/check-print.mjs         # Prints the example to PDF and counts pages
-node scripts/check-pages.mjs 375     # Page widths at 375 px, and the Honolulu out-of-area plan
+node scripts/check-pages.mjs 375,1280  # Widths, header, table cells, home preview, Evidence summary, Honolulu
+node scripts/make-social-image.mjs     # Rebuilds assets/social-preview.png (1200 x 630)
 ```
 
 ## Regenerating the data
