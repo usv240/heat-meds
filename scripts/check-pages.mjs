@@ -3,7 +3,9 @@
 //     (device emulation, which is not subject to Chrome's minimum window width) and compares
 //     document.documentElement.scrollWidth with the viewport.
 //  2. A Honolulu ZIP shows "isn't available" with no heat boxes and never says today or where you live.
-// Usage: node scripts/check-pages.mjs [width]
+//  3. The example plan renders its cards and seven heat boxes, and typing "Lasix 40 mg" resolves live.
+// Usage: node scripts/check-pages.mjs [width]                     (serves this folder locally)
+//        BASE_URL=https://usv240.github.io/heat-meds/ node scripts/check-pages.mjs   (checks a deployed site)
 
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:http';
@@ -18,9 +20,10 @@ const WIDTH = Number(process.argv[2] ?? 375);
 const LOOKUPS = JSON.parse(readFileSync(join(ROOT, 'data', 'saved-lookups.json'), 'utf8')).lookups;
 const PAGES = [
   { page: 'index.html' },
-  { page: 'plan.html?example=1' },
+  { page: 'plan.html?example=1', expectPlan: true },
   { page: 'evidence.html' },
   { page: 'plan.html', label: 'plan.html (Honolulu 96813)', zip: '96813', list: [LOOKUPS.lasix, LOOKUPS.lisinopril], expectUnavailable: true },
+  { page: 'index.html', label: 'index.html (type Lasix 40 mg)', type: 'Lasix 40 mg', expectChip: /Lasix 40 mg → furosemide/ },
 ];
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2' };
 
@@ -70,7 +73,10 @@ function cdp(wsUrl) {
 
 const browser = findBrowser();
 if (!browser) { console.error('No Chrome or Edge found. Set CHROME_PATH.'); process.exit(2); }
-const { server, port } = await serve();
+const BASE_URL = process.env.BASE_URL ? process.env.BASE_URL.replace(/\/?$/, '/') : null;
+const { server, port } = BASE_URL ? { server: null, port: null } : await serve();
+const base = BASE_URL ?? `http://127.0.0.1:${port}/`;
+if (BASE_URL) console.log(`Checking deployed site ${BASE_URL}`);
 const profile = mkdtempSync(join(tmpdir(), 'heatmeds-width-'));
 const proc = spawn(browser, ['--headless=new', '--disable-gpu', '--no-first-run', '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'], { stdio: ['ignore', 'ignore', 'pipe'] });
 let failures = 0;
@@ -86,13 +92,19 @@ try {
     await c.send('Page.enable', {}, sessionId);
     if (spec.zip) {
       // Seed this origin's localStorage the way the landing page would, then open the plan.
-      await c.send('Page.navigate', { url: `http://127.0.0.1:${port}/index.html` }, sessionId);
+      await c.send('Page.navigate', { url: `${base}index.html` }, sessionId);
       await wait(1500);
       const seed = `localStorage.setItem('heatmeds.zip', ${JSON.stringify(spec.zip)}); localStorage.setItem('heatmeds.list', ${JSON.stringify(JSON.stringify(spec.list))}); 'ok'`;
       await c.send('Runtime.evaluate', { expression: seed }, sessionId);
     }
-    await c.send('Page.navigate', { url: `http://127.0.0.1:${port}/${spec.page}` }, sessionId);
+    await c.send('Page.navigate', { url: `${base}${spec.page}` }, sessionId);
     await wait(6000);
+    if (spec.type) {
+      // Type a name and press Add, exactly as a person would; the chip resolves through live RxNorm.
+      const typeIt = `(() => { localStorage.removeItem('heatmeds.list'); const i = document.getElementById('medicine'); i.value = ${JSON.stringify(spec.type)}; document.getElementById('addMedicine').click(); return 'typed'; })()`;
+      await c.send('Runtime.evaluate', { expression: typeIt }, sessionId);
+      await wait(8000);
+    }
     const probe = `JSON.stringify({
       sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth,
       err: document.body.innerText.includes('Something went wrong'),
@@ -100,6 +112,8 @@ try {
       heat: document.getElementById('heatArea')?.innerText ?? '',
       summary: document.getElementById('summaryArea')?.innerText ?? '',
       label: document.getElementById('heatLabel')?.hidden === false ? document.getElementById('heatLabel').innerText : '',
+      cards: document.querySelectorAll('.med-card').length,
+      chips: [...document.querySelectorAll('.chip .chip-text')].map((x) => x.innerText).join(' | '),
     })`;
     const { result } = await c.send('Runtime.evaluate', { expression: probe, returnByValue: true }, sessionId);
     const m = JSON.parse(result.result.value);
@@ -112,13 +126,21 @@ try {
       if (/\b(today|tomorrow|where you live)\b/i.test(m.summary)) problems.push(`summary: "${m.summary}"`);
       if (m.label) problems.push(`saved-data label shown: "${m.label.slice(0, 60)}"`);
     }
+    if (spec.expectPlan) {
+      if (m.cards < 3) problems.push(`${m.cards} medicine cards`);
+      if (m.boxes !== 7) problems.push(`${m.boxes} heat boxes`);
+    }
+    if (spec.expectChip && !spec.expectChip.test(m.chips)) problems.push(`chips: "${m.chips}"`);
     if (problems.length) failures++;
-    console.log(`${problems.length ? 'FAIL' : 'OK  '} ${label.padEnd(28)} width ${m.sw}/${m.cw}${spec.expectUnavailable ? `; boxes ${m.boxes}; summary "${m.summary}"` : ''}${problems.length ? ` -> ${problems.join('; ')}` : ''}`);
+    const detail = spec.expectUnavailable ? `; boxes ${m.boxes}; summary "${m.summary}"`
+      : spec.expectPlan ? `; cards ${m.cards}; boxes ${m.boxes}`
+      : spec.expectChip ? `; chip "${m.chips}"` : '';
+    console.log(`${problems.length ? 'FAIL' : 'OK  '} ${label.padEnd(30)} width ${m.sw}/${m.cw}${detail}${problems.length ? ` -> ${problems.join('; ')}` : ''}`);
     await c.send('Target.closeTarget', { targetId });
   }
   c.close();
 } finally {
   proc.kill();
-  server.close();
+  server?.close();
 }
 process.exit(failures ? 1 : 0);

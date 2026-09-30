@@ -12,6 +12,10 @@ A proof of concept built for the Devpost Build With AI: Basics hackathon. Planni
 - Prints on one Letter page.
 - Publishes its own evidence: the 300 most-prescribed US medicines (derived from a government survey) run through the same code, compared with the UK's and Canada's guidance, every disagreement listed with a reason.
 
+## Try it
+
+Live site: https://usv240.github.io/heat-meds/ (press "Try an example").
+
 ## Run it locally
 
 Plain HTML, CSS, and JavaScript modules with no build step. Modules need an HTTP server, not `file://`.

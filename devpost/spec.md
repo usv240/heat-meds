@@ -49,6 +49,9 @@ Learner-selected, with accepted tradeoffs.
 - **Tests:** `node --test` runs the unit tests in `test/`. `node scripts/run-evidence.mjs` runs the 300-medicine proof against live RxNorm and RxClass and writes `data/evidence.json`. It takes a few minutes because of the 20 requests per second limit and caching.
 - **Demo recording:** open the landing page, press "Try an example," show the chips resolving, the heat wave replay label, the furosemide card, the combination warning, the "Not listed" section with badges, press Print to show the one-page preview, then open the Evidence page. Under two minutes.
 - **Deployment (chosen, optional for the hackathon):** GitHub Pages. Settings, Pages, source: main branch, root. The public URL becomes `https://<user>.github.io/<repo>/`. `6-ship` records the final URL.
+- **Public repository:** https://github.com/usv240/heat-meds (public, MIT license detected by GitHub, created 2026-09-30).
+- **Live site:** https://usv240.github.io/heat-meds/ (GitHub Pages from `main`, root). Verified without login; RxNorm, RxClass, HeatRisk, and the NWS points API all allow requests from this origin. Re-check any time with `BASE_URL=https://usv240.github.io/heat-meds/ node scripts/check-pages.mjs`.
+- **Demo video:** not recorded yet. Hackathon rules: under 3 minutes, public on YouTube or Vimeo, no third-party trademarks or copyrighted music.
 - **Submission:** a public GitHub repository and a short demo video are required. The Pages URL is in addition, so judges and real people can try it without installing anything.
 
 ## Look and Feel
