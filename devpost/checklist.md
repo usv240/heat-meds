@@ -41,7 +41,7 @@ Agreed order from `scope.md` and `spec.md`: HeatRisk smoke check first, then the
   Learner check: Type the medicines from a real bottle or two, including a brand name, a misspelling, and "Toprol XL." Confirm nothing was accepted silently and that "Did you mean" needs your tap. Reload the page and confirm the list is still there.
   Commit: `Resolve medicine names live with RxNorm and RxClass`
 
-- [ ] **4. You can replay a real past heat wave, and the plan still works with no ZIP, an out-of-area ZIP, or the weather service down**
+- [x] **4. You can replay a real past heat wave, and the plan still works with no ZIP, an out-of-area ZIP, or the weather service down**
   Becomes usable: The plan page has the "See your list on a real past heat wave" toggle showing Phoenix Aug 3 to 9, 2025 with its label and source; "Try an example" starts with it on; with no ZIP the heat area says "Add a ZIP code to see this week's heat where you live"; when HeatRisk fails the boxes show the saved week labeled "saved data"; the summary line changes only on red or magenta days.
   Why now: The replay is the demo's guarantee in any season and the outage fallback, and the three degraded states are cheap now that the plan renders from a single forecast object.
   PRD ref: `prd.md > Features and Behavior > Past heat wave replay`, `prd.md > Features and Behavior > Entering the ZIP and getting the forecast`, `prd.md > States and Boundaries` (No ZIP, ZIP outside the forecast area, Forecast service down, Calm week, Red or magenta day ahead)
@@ -117,3 +117,5 @@ Activity mode: [not started]
 - Misspellings usually resolve through the did-you-mean path rather than RxNorm spelling suggestions: approximateTerm finds "furosemide" for "furosamide" before spellingsuggestions is consulted. Both are one tap and neither accepts silently; the suggestions list remains the fallback when approximate matching finds nothing.
 - For a precise ingredient (PIN such as metoprolol succinate), RxClass reports the class member as the base ingredient, so the filter accepts the PIN or its base RxCUI. Found by the live probe; the spec assumed PINs matched directly.
 - The top approximate candidate for "Toprol XL" (RxCUI 220348) is a retired concept with no properties; the resolver skips candidates that yield no ingredients and offers the next one, "metoprolol (Toprol)".
+- Archive file naming is `HeatRisk_CONUS_YYYYMMDD.tif` (the data page only documented the live per-day files). Sampled values for Phoenix Aug 3 to 9, 2025 match the learner's reading: Moderate x3, Extreme x2, Major, Moderate. Raster origin, resolution, and NoData matched the learner's numbers exactly.
+- The replay date context: when the replay is on, the summary treats the first replay day as "today" so it reads "Today is an Extreme heat risk day" rather than naming a weekday. Out-of-area ZIPs are reported as unavailable, not replaced by saved data; only a service failure triggers the saved week.

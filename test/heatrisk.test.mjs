@@ -61,3 +61,30 @@ test('buildUrl targets the ImageServer with a WGS84 point', () => {
   assert.equal(url.searchParams.get('geometryType'), 'esriGeometryPoint');
   assert.deepEqual(JSON.parse(url.searchParams.get('geometry')), { x: -112.074, y: 33.448, spatialReference: { wkid: 4326 } });
 });
+
+// Slice 4: the saved heat wave and the fallback decision.
+import { chooseWeek, savedWeek } from '../src/heatrisk.js';
+const saved = JSON.parse(readFileSync(new URL('../data/saved-heatwave.json', import.meta.url), 'utf8'));
+
+test('the saved heat wave is the Phoenix Aug 3-9 2025 week with source URLs', () => {
+  assert.equal(saved.week.length, 7);
+  assert.deepEqual(saved.week.map((d) => d.level), [2, 2, 2, 4, 4, 3, 2]);
+  assert.ok(saved.week.every((d) => d.source_url.includes('HeatRisk_CONUS_2025080')));
+  assert.match(saved.label, /Phoenix, Aug 3 to Aug 9, 2025/);
+  assert.equal(saved.kind, 'saved data');
+});
+
+test('chooseWeek: live when ok, replay when asked, saved fallback on error, none without a ZIP', async () => {
+  const live = await forecastFor(33.45, -112.07, { fetchImpl: async () => ({ ok: true, json: async () => fixture }) });
+  assert.equal(chooseWeek({ result: live, saved }).mode, 'live');
+  assert.equal(chooseWeek({ result: live, saved, replay: true }).mode, 'replay');
+  const failed = await forecastFor(33.45, -112.07, { fetchImpl: async () => { throw new Error('offline'); } });
+  const fb = chooseWeek({ result: failed, saved });
+  assert.equal(fb.mode, 'fallback');
+  assert.match(fb.label, /^Saved data: /);
+  assert.deepEqual(fb.week.map((d) => d.level), [2, 2, 2, 4, 4, 3, 2]);
+  assert.equal(chooseWeek({ result: null, saved }).mode, 'none');
+  const nodata = await forecastFor(0, 0, { fetchImpl: async () => ({ ok: true, json: async () => ({ samples: [{ value: '5', attributes: { name: 'HeatRisk_1_Mercator', idp_validtime: 1790769600000 } }] }) }) });
+  assert.equal(chooseWeek({ result: nodata, saved }).mode, 'unavailable', 'out of area is reported, not replaced by saved data');
+  assert.equal(savedWeek(saved)[0].date, '2025-08-03');
+});

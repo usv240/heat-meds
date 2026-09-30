@@ -159,3 +159,14 @@ test('uniqueIngredients merges the same ingredient from two chips', () => {
   assert.equal(u.length, 1);
   assert.deepEqual(u[0].as_typed, ['furosemide', 'Lasix']);
 });
+
+test('replaying the saved heat wave changes only the boxes, summary, and this-week lines', () => {
+  const saved = JSON.parse(readFileSync(new URL('../data/saved-heatwave.json', import.meta.url), 'utf8'));
+  const week = saved.week.map((d) => ({ ...d, validMs: Date.parse(d.date) }));
+  const replay = evaluate({ medicines: phoenix(), forecast: week, rules, today: '2025-08-03' });
+  const calm = evaluate({ medicines: phoenix(), forecast: greenWeek, rules });
+  const strip = (c) => ({ ingredient: c.ingredient, class: c.class, why: c.why, watch_for: c.watch_for, ask: c.ask });
+  assert.deepEqual(replay.cards.map(strip), calm.cards.map(strip));
+  assert.match(replay.cards[0].this_week, /Matters most on Sun, Mon, Tue, Wed, Thu, Fri, Sat/);
+  assert.match(replay.summary.text, /Extreme heat risk day where you live/);
+});

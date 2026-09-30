@@ -11,5 +11,10 @@
     "zip-index": "node scripts/build-zip-index.mjs",
     "smoke:heatrisk": "node scripts/smoke-heatrisk.mjs"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "geotiff": "^2.1.3"
+  }
 }

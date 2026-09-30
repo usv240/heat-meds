@@ -1,0 +1,68 @@
+{
+  "label": "HeatRisk as forecast each day, Phoenix, Aug 3 to Aug 9, 2025",
+  "place": "Phoenix, AZ",
+  "zip": "85004",
+  "lat": 33.4516,
+  "lon": -112.0699,
+  "kind": "saved data",
+  "note": "Real past HeatRisk Day-1 forecasts sampled from the NWS archive (one GeoTIFF per day) at downtown Phoenix. Used for the replay toggle, the example, and as the fallback when the live service cannot be reached. This is not a forecast for today.",
+  "source_title": "NWS Weather Prediction Center, US Daily Archive of HeatRisk Day 1 Forecasts (experimental)",
+  "source_index": "https://www.wpc.ncep.noaa.gov/heatrisk/data/archive/",
+  "sampled_on": "2026-09-30",
+  "raster": {
+    "crs": "EPSG:3857",
+    "origin": [
+      -14326021.825002076,
+      6722143.668229256
+    ],
+    "resolution": [
+      2539.703,
+      -2539.7029999999995
+    ],
+    "nodata": 5
+  },
+  "week": [
+    {
+      "date": "2025-08-03",
+      "level": 2,
+      "word": "Moderate",
+      "source_url": "https://www.wpc.ncep.noaa.gov/heatrisk/data/archive/HeatRisk_CONUS_20250803.tif"
+    },
+    {
+      "date": "2025-08-04",
+      "level": 2,
+      "word": "Moderate",
+      "source_url": "https://www.wpc.ncep.noaa.gov/heatrisk/data/archive/HeatRisk_CONUS_20250804.tif"
+    },
+    {
+      "date": "2025-08-05",
+      "level": 2,
+      "word": "Moderate",
+      "source_url": "https://www.wpc.ncep.noaa.gov/heatrisk/data/archive/HeatRisk_CONUS_20250805.tif"
+    },
+    {
+      "date": "2025-08-06",
+      "level": 4,
+      "word": "Extreme",
+      "source_url": "https://www.wpc.ncep.noaa.gov/heatrisk/data/archive/HeatRisk_CONUS_20250806.tif"
+    },
+    {
+      "date": "2025-08-07",
+      "level": 4,
+      "word": "Extreme",
+      "source_url": "https://www.wpc.ncep.noaa.gov/heatrisk/data/archive/HeatRisk_CONUS_20250807.tif"
+    },
+    {
+      "date": "2025-08-08",
+      "level": 3,
+      "word": "Major",
+      "source_url": "https://www.wpc.ncep.noaa.gov/heatrisk/data/archive/HeatRisk_CONUS_20250808.tif"
+    },
+    {
+      "date": "2025-08-09",
+      "level": 2,
+      "word": "Moderate",
+      "source_url": "https://www.wpc.ncep.noaa.gov/heatrisk/data/archive/HeatRisk_CONUS_20250809.tif"
+    }
+  ]
+}

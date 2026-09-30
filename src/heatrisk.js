@@ -102,3 +102,20 @@ export function shortDateLabel(isoDate) {
   const d = new Date(`${isoDate}T12:00:00Z`);
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
 }
+
+// Shapes the saved heat wave file into a week the page can render.
+export function savedWeek(saved) {
+  return (saved?.week ?? []).map((d) => ({ date: d.date, level: d.level, word: d.word, validMs: Date.parse(`${d.date}T12:00:00Z`), source_url: d.source_url ?? null }));
+}
+
+// Chooses what to show for the heat area. `result` is from forecastFor (or null when there is
+// no ZIP / no coordinates). Returns { week, mode, label } where mode is one of
+// 'live' | 'replay' | 'fallback' | 'unavailable' | 'none'.
+export function chooseWeek({ result, saved, replay = false }) {
+  if (replay && saved) return { week: savedWeek(saved), mode: 'replay', label: saved.label };
+  if (!result) return { week: null, mode: 'none', label: null };
+  if (result.status === 'ok') return { week: result.week, mode: 'live', label: null };
+  if (result.status === 'unavailable') return { week: null, mode: 'unavailable', label: null };
+  if (saved) return { week: savedWeek(saved), mode: 'fallback', label: `Saved data: ${saved.label}` };
+  return { week: null, mode: 'error', label: null };
+}

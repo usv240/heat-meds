@@ -202,3 +202,8 @@ details.source q { font-style: italic; }
 .chip-yes { min-height: 2.4rem; padding: .3rem .9rem; font-size: .95rem; }
 .chip-remove { min-height: 2.4rem; padding: .3rem .8rem; font-size: .9rem; background: transparent; color: var(--muted); border-color: var(--line); }
 button:disabled { opacity: .5; cursor: not-allowed; }
+
+/* Replay toggle and heat labels */
+.toggle-row { display: flex; align-items: center; gap: .6rem; margin: .6rem 0 0; font-weight: 700; cursor: pointer; }
+.toggle-row input { width: 1.4rem; height: 1.4rem; accent-color: var(--accent); }
+.heat-label { margin: .3rem 0 0; padding: .4rem .7rem; border-radius: .5rem; background: var(--warn-bg); border: 1px solid var(--warn-line); font-weight: 700; }
