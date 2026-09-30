@@ -1,0 +1,80 @@
+{
+  "label": "Saved lookups",
+  "note": "Real RxNorm and RxClass results saved on 2026-09-30 for the example list, so the demo works if the NLM service is slow or down. Filtered ATC codes keep only rows whose class member is the ingredient itself. The evidence run regenerates this file for the 300-medicine list.",
+  "source": "NLM RxNorm and RxClass APIs, https://rxnav.nlm.nih.gov/",
+  "saved_on": "2026-09-30",
+  "lookups": {
+    "lasix": {
+      "input": "Lasix",
+      "query": "lasix",
+      "rxcui": "202991",
+      "name": "Lasix",
+      "tty": "BN",
+      "status": "resolved",
+      "ingredients": [{ "rxcui": "4603", "name": "furosemide", "tty": "IN", "base_name": "furosemide", "atc": ["C03CA"] }]
+    },
+    "furosemide": {
+      "input": "furosemide",
+      "query": "furosemide",
+      "rxcui": "4603",
+      "name": "furosemide",
+      "tty": "IN",
+      "status": "resolved",
+      "ingredients": [{ "rxcui": "4603", "name": "furosemide", "tty": "IN", "base_name": "furosemide", "atc": ["C03CA"] }]
+    },
+    "lisinopril": {
+      "input": "lisinopril",
+      "query": "lisinopril",
+      "rxcui": "29046",
+      "name": "lisinopril",
+      "tty": "IN",
+      "status": "resolved",
+      "ingredients": [{ "rxcui": "29046", "name": "lisinopril", "tty": "IN", "base_name": "lisinopril", "atc": ["C09AA"] }]
+    },
+    "zoloft": {
+      "input": "Zoloft",
+      "query": "zoloft",
+      "rxcui": "82728",
+      "name": "Zoloft",
+      "tty": "BN",
+      "status": "resolved",
+      "ingredients": [{ "rxcui": "36437", "name": "sertraline", "tty": "IN", "base_name": "sertraline", "atc": ["N06AB"] }]
+    },
+    "lantus": {
+      "input": "Lantus",
+      "query": "lantus",
+      "rxcui": "261551",
+      "name": "Lantus",
+      "tty": "BN",
+      "status": "resolved",
+      "ingredients": [{ "rxcui": "274783", "name": "insulin glargine", "tty": "IN", "base_name": "insulin glargine", "atc": ["A10AE"] }]
+    },
+    "atorvastatin": {
+      "input": "atorvastatin",
+      "query": "atorvastatin",
+      "rxcui": "83367",
+      "name": "atorvastatin",
+      "tty": "IN",
+      "status": "resolved",
+      "ingredients": [{ "rxcui": "83367", "name": "atorvastatin", "tty": "IN", "base_name": "atorvastatin", "atc": ["C10AA"] }]
+    },
+    "lisinopril-hydrochlorothiazide": {
+      "input": "lisinopril-hydrochlorothiazide",
+      "query": "lisinopril hydrochlorothiazide",
+      "rxcui": "214618",
+      "name": "hydrochlorothiazide / lisinopril",
+      "tty": "MIN",
+      "status": "resolved",
+      "ingredients": [
+        { "rxcui": "29046", "name": "lisinopril", "tty": "IN", "base_name": "lisinopril", "atc": ["C09AA"] },
+        { "rxcui": "5487", "name": "hydrochlorothiazide", "tty": "IN", "base_name": "hydrochlorothiazide", "atc": ["C03AA"] }
+      ]
+    }
+  },
+  "example": {
+    "label": "Try an example",
+    "description": "Mom, 74, in Phoenix: a water pill, a blood pressure pill, an antidepressant, insulin, and a cholesterol pill.",
+    "zip": "85004",
+    "medicines": ["lasix", "lisinopril", "zoloft", "lantus", "atorvastatin"]
+  }
+}

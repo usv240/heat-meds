@@ -170,3 +170,22 @@ footer p { margin: .4rem 0; }
   overflow: hidden; clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* Plan sections */
+.summary { font-size: 1.1rem; font-weight: 700; margin: .4rem 0 .2rem; }
+.med-card h3 { font-size: 1.15rem; }
+.this-week { font-weight: 700; }
+.card.warn { background: var(--warn-bg); border-color: var(--warn-line); }
+.card.emergency { border-width: 2px; border-color: var(--bad); }
+.signs { margin: .3rem 0 .6rem; padding-left: 1.3rem; }
+.plain-list { padding-left: 1.3rem; }
+.plain-list li { margin: .45rem 0; }
+.badges { display: inline-flex; gap: .35rem; flex-wrap: wrap; margin-left: .5rem; vertical-align: middle; }
+.badge { font-size: .75rem; border: 1px solid var(--line); border-radius: 999px; padding: .1rem .55rem; color: var(--muted); }
+.badge.on { border-color: var(--warn-line); color: var(--ink); background: var(--warn-bg); }
+details.source { margin: .5rem 0 0; font-size: .85rem; }
+details.source summary { cursor: pointer; color: var(--focus); }
+details.source q { font-style: italic; }
+.never-stop { font-size: 1.15rem; border-top: 3px solid var(--ink); padding-top: .8rem; margin-top: 1.5rem; }
+.sources ul { padding-left: 1.2rem; }
+.topbar-actions { display: inline-flex; gap: .5rem; }

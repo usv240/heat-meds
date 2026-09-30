@@ -10,28 +10,38 @@
 <main>
   <div class="topbar">
     <a class="brand" href="index.html">Heat Meds</a>
-    <button type="button" class="secondary" id="themeToggle">Dark mode</button>
+    <span class="topbar-actions">
+      <button type="button" class="secondary" id="printBtn">Print</button>
+      <button type="button" class="secondary" id="themeToggle">Dark mode</button>
+    </span>
   </div>
 
   <h1>Your heat and medicine plan</h1>
+  <p id="exampleBanner" class="note small" hidden></p>
 
   <section class="card" id="heatSection" aria-labelledby="heatHeading">
     <div class="plan-header">
       <span class="place" id="placeLine">Loading</span>
       <span class="muted small" id="dateLine"></span>
     </div>
+    <div id="summaryArea"></div>
     <h2 id="heatHeading" style="margin-top:.6rem">This week's heat risk</h2>
     <div id="heatArea" aria-live="polite">
       <p class="muted">Checking the National Weather Service forecast for your ZIP.</p>
     </div>
   </section>
 
-  <p><a class="button secondary" href="index.html">Change ZIP</a></p>
+  <div id="planArea" aria-live="polite">
+    <p class="muted">Checking your medicines against the CDC guidance.</p>
+  </div>
 
-  <footer>
-    <p class="small muted">Heat forecast: National Weather Service HeatRisk (experimental). ZIP locations: U.S. Census Bureau ZCTA Gazetteer.</p>
+  <p class="no-print"><a class="button secondary" href="index.html">Change medicines or ZIP</a></p>
+
+  <footer class="no-print">
+    <p class="small muted">Heat forecast: National Weather Service HeatRisk (experimental). ZIP locations: U.S. Census Bureau ZCTA Gazetteer. Medicine names and classes: NLM RxNorm and RxClass.</p>
   </footer>
 </main>
 <script type="module" src="src/plan-page.js"></script>
+<script>document.getElementById('printBtn').addEventListener('click', () => window.print());</script>
 </body>
 </html>
