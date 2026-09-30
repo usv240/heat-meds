@@ -42,7 +42,7 @@ test('Phoenix example: furosemide card, one combination warning, insulin storage
   assert.deepEqual(plan.not_listed.map((n) => n.ingredient), ['atorvastatin']);
   assert.ok(plan.never_stop.text.startsWith('Never stop or change a medicine on your own.'));
   assert.equal(plan.summary.level_max, 4);
-  assert.match(plan.summary.text, /Extreme heat risk day where you live\. Go over this plan today\./);
+  assert.equal(plan.summary.text, 'Wed is an Extreme heat risk day where you live. Go over this plan today.');
   assert.match(furo.this_week, /Matters most on/);
   assert.equal(furo.this_week_days.length, 7);
 });
@@ -163,10 +163,34 @@ test('uniqueIngredients merges the same ingredient from two chips', () => {
 test('replaying the saved heat wave changes only the boxes, summary, and this-week lines', () => {
   const saved = JSON.parse(readFileSync(new URL('../data/saved-heatwave.json', import.meta.url), 'utf8'));
   const week = saved.week.map((d) => ({ ...d, validMs: Date.parse(d.date) }));
-  const replay = evaluate({ medicines: phoenix(), forecast: week, rules, today: '2025-08-03' });
+  const replay = evaluate({ medicines: phoenix(), forecast: week, rules, mode: 'replay', place: saved.place });
   const calm = evaluate({ medicines: phoenix(), forecast: greenWeek, rules });
   const strip = (c) => ({ ingredient: c.ingredient, class: c.class, why: c.why, watch_for: c.watch_for, ask: c.ask });
   assert.deepEqual(replay.cards.map(strip), calm.cards.map(strip));
   assert.match(replay.cards[0].this_week, /Matters most on Sun, Mon, Tue, Wed, Thu, Fri, Sat/);
-  assert.match(replay.summary.text, /Extreme heat risk day where you live/);
+  assert.equal(replay.summary.text, 'During this past heat wave, Phoenix, AZ had 2 Extreme days (Aug 6 and Aug 7). This is how your plan would have looked.');
+});
+
+test('live summary uses the right article and names the day', () => {
+  const major = [1, 1, 3, 1, 1, 1, 1].map((level, i) => ({ date: `2025-08-0${i + 3}`, level, validMs: i }));
+  const a = evaluate({ medicines: phoenix(), forecast: major, rules, today: '2025-08-03' });
+  assert.equal(a.summary.text, 'Tue is a Major heat risk day where you live. Go over this plan today.');
+  const extreme = [4, 1, 1, 1, 1, 1, 1].map((level, i) => ({ date: `2025-08-0${i + 3}`, level, validMs: i }));
+  const b = evaluate({ medicines: phoenix(), forecast: extreme, rules, today: '2025-08-03' });
+  assert.equal(b.summary.text, 'Today is an Extreme heat risk day where you live. Go over this plan today.');
+  const tomorrow = [1, 3, 1, 1, 1, 1, 1].map((level, i) => ({ date: `2025-08-0${i + 3}`, level, validMs: i }));
+  const c = evaluate({ medicines: phoenix(), forecast: tomorrow, rules, today: '2025-08-03' });
+  assert.match(c.summary.text, /^Tomorrow is a Major/);
+});
+
+test('replay summary in a calm saved week says so, and a single peak day reads singular', () => {
+  const calmSaved = [0, 1, 1, 0, 1, 1, 0].map((level, i) => ({ date: `2025-10-0${i + 1}`, level, validMs: i }));
+  assert.match(evaluate({ medicines: [], forecast: calmSaved, rules, mode: 'replay', place: 'Phoenix, AZ' }).summary.text, /^During this past week, Phoenix, AZ had no orange, red, or magenta days\./);
+  const onePeak = [2, 2, 3, 2, 2, 2, 2].map((level, i) => ({ date: `2025-08-0${i + 3}`, level, validMs: i }));
+  assert.equal(evaluate({ medicines: [], forecast: onePeak, rules, mode: 'replay', place: 'Phoenix, AZ' }).summary.text, 'During this past heat wave, Phoenix, AZ had 1 Major day (Aug 5). This is how your plan would have looked.');
+});
+
+test('the never-stop quote is the single adjacent CDC sentence, verified', () => {
+  assert.equal(rules.never_stop.cdc_quote, 'Remind patients to avoid abruptly stopping any medications without having a plan in place.');
+  for (const e of [...rules.combinations, ...rules.storage, rules.storage_general, rules.never_stop]) assert.equal(e.quote_status, 'verified');
 });

@@ -1,37 +1,56 @@
-/* One Letter page for the fridge or the pharmacist. Colors and words both survive. */
+/* One Letter page for the fridge or the pharmacist. Colors and words both survive.
+   Verified with scripts/check-print.mjs (headless Chrome) against the Phoenix example. */
 
 @page {
   size: Letter;
-  margin: 0.5in;
+  margin: 0.4in 0.45in;
 }
 
 @media print {
-  html { font-size: 11pt; }
-  body { background: #fff !important; color: #000 !important; }
+  html { font-size: 9pt; }
+  body { background: #fff !important; color: #000 !important; line-height: 1.3; }
   main { max-width: none; padding: 0; }
-  h1 { font-size: 16pt; margin: 0 0 4pt; }
-  h2 { font-size: 12.5pt; margin: 8pt 0 3pt; }
-  h3 { font-size: 11pt; margin: 0 0 2pt; }
-  p { margin: 2pt 0 4pt; }
+  h1 { font-size: 13pt; margin: 0 0 2pt; }
+  h2 { font-size: 10.5pt; margin: 4pt 0 2pt; }
+  h3 { font-size: 9.5pt; margin: 0 0 1pt; }
+  p { margin: 1pt 0 2pt; }
+  ul { margin: 1pt 0 2pt; }
 
   .no-print, .topbar, .toggle-row, .info-btn, .info-panel, details.source, footer, #exampleBanner, .button, button { display: none !important; }
 
-  .card { border: 1px solid #999; border-radius: 4pt; padding: 5pt 7pt; margin: 4pt 0; break-inside: avoid; background: #fff !important; }
-  .card.warn { border: 2px solid #000; }
-  .card.emergency { border: 2px solid #000; }
+  .card { border: 1px solid #999; border-radius: 3pt; padding: 3pt 5pt; margin: 2pt 0; break-inside: avoid; background: #fff !important; }
+  .card.warn { border: 1.5pt solid #000; }
+  .card.emergency { border: 1.5pt solid #000; }
+  .med-card p { margin: 0 0 1pt; }
 
-  .heat-week { gap: 3pt; margin: 4pt 0; grid-template-columns: repeat(7, 1fr) !important; }
-  .heat-day { -webkit-print-color-adjust: exact; print-color-adjust: exact; border: 1px solid #666; padding: 3pt 1pt; }
-  .heat-day .dow { font-size: 9pt; }
-  .heat-day .date { font-size: 7.5pt; }
-  .heat-day .word { font-size: 8pt; }
-  .heat-label { background: #fff !important; border: 1px solid #000; padding: 2pt 5pt; font-size: 9.5pt; }
+  #heatSection { padding: 3pt 5pt; }
+  .plan-header .place { font-size: 10pt; }
+  .heat-week { gap: 2pt; margin: 2pt 0; grid-template-columns: repeat(7, 1fr) !important; }
+  .heat-day { -webkit-print-color-adjust: exact; print-color-adjust: exact; border: 1px solid #666; padding: 1.5pt 1pt; }
+  .heat-day .dow { font-size: 7.5pt; }
+  .heat-day .date { font-size: 6.5pt; }
+  .heat-day .word { font-size: 7pt; margin-top: 1pt; }
+  .heat-label { background: #fff !important; border: 1px solid #000; padding: 1pt 4pt; font-size: 8pt; margin-top: 2pt; }
 
-  .summary { font-size: 11.5pt; }
-  .plain-list li { margin: 2pt 0; }
-  .badge { border: 1px solid #000; color: #000 !important; background: #fff !important; }
-  .never-stop { font-size: 12pt; border-top: 2pt solid #000; padding-top: 5pt; margin-top: 8pt; }
-  .sources { font-size: 8pt; }
-  .sources a::after { content: " (" attr(href) ")"; font-size: 7pt; }
+  .summary { font-size: 9.5pt; margin: 1pt 0; }
+  .this-week { margin-top: 0; }
+  .plain-list { padding-left: 1.1rem; }
+  .plain-list li { margin: 1pt 0; }
+  .badge { border: 1px solid #000; color: #000 !important; background: #fff !important; font-size: 7pt; }
+
+  /* 911 signs in two columns */
+  .signs { columns: 2; column-gap: 12pt; margin: 1pt 0 2pt; padding-left: 1rem; }
+  .signs li { break-inside: avoid; margin: 0; }
+
+  .never-stop { font-size: 10pt; border-top: 1.5pt solid #000; padding-top: 3pt; margin-top: 3pt; }
+  .closing details { display: none; }
+  /* Sources: one compact block. Full URLs are on the site; the printed page names the sources. */
+  .sources { font-size: 6.5pt; line-height: 1.2; margin-top: 2pt; }
+  .sources h2 { font-size: 7pt; margin: 2pt 0 0; }
+  .sources ul { padding: 0; margin: 0; list-style: none; }
+  .sources li { display: inline; margin: 0; }
+  .sources li + li::before { content: " · "; }
+  .sources p { margin: 1pt 0 0; font-size: 6pt; }
+  .sources a::after { content: none; }
   a { color: #000; text-decoration: none; }
 }

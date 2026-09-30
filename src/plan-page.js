@@ -105,7 +105,7 @@ async function run() {
     } else {
       heatLabel.hidden = true;
     }
-    const plan = evaluate({ medicines, forecast: chosen.week, rules, today: chosen.mode === 'replay' ? chosen.week[0].date : todayIso() });
+    const plan = evaluate({ medicines, forecast: chosen.week, rules, today: todayIso(), mode: chosen.mode === 'replay' ? 'replay' : 'live', place: chosen.mode === 'replay' ? (saved.place ?? null) : null });
     summaryArea.replaceChildren(renderSummary(plan));
     planArea.replaceChildren(renderPlanSections(plan));
   }

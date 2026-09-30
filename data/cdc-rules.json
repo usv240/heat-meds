@@ -753,7 +753,9 @@
       "cdc_quote": "Certain combinations of medications, such as an angiotensin converting enzyme (ACE) inhibitor or an angiotensin II receptor blocker (ARB) with a diuretic, may significantly increase risk of harm from heat exposure. Angiotensin Receptor-Neprilysin Inhibitors (ARNIs) may carry the same additive risk.",
       "cdc_url": "https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html",
       "checked_on": "2026-09-30",
-      "quote_status": "draft"
+      "quote_status": "verified",
+      "verified_on": "2026-09-30",
+      "verified_by": "project author, against the live CDC page"
     }
   ],
   "storage": [
@@ -768,7 +770,9 @@
       "cdc_quote": "Insulin, which should be stored in a refrigerator, may become less effective if left in the heat for prolonged periods.",
       "cdc_url": "https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html",
       "checked_on": "2026-09-30",
-      "quote_status": "draft"
+      "quote_status": "verified",
+      "verified_on": "2026-09-30",
+      "verified_by": "project author, against the live CDC page"
     },
     {
       "id": "inhalers",
@@ -782,7 +786,9 @@
       "cdc_quote": "Inhalers, for example, can burst in hot environments, such as car trunks on hot days.",
       "cdc_url": "https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html",
       "checked_on": "2026-09-30",
-      "quote_status": "draft"
+      "quote_status": "verified",
+      "verified_on": "2026-09-30",
+      "verified_by": "project author, against the live CDC page"
     },
     {
       "id": "epinephrine_autoinjector",
@@ -795,7 +801,9 @@
       "cdc_quote": "EpiPens may malfunction or deliver less epinephrine when exposed to heat.",
       "cdc_url": "https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html",
       "checked_on": "2026-09-30",
-      "quote_status": "draft"
+      "quote_status": "verified",
+      "verified_on": "2026-09-30",
+      "verified_by": "project author, against the live CDC page"
     }
   ],
   "storage_general": {
@@ -803,14 +811,19 @@
     "cdc_quote": "Counsel patients not to leave medications in a car or other places that can get excessively hot.",
     "cdc_url": "https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html",
     "checked_on": "2026-09-30",
-    "quote_status": "draft"
+    "quote_status": "verified",
+    "verified_on": "2026-09-30",
+    "verified_by": "project author, against the live CDC page"
   },
   "never_stop": {
     "text": "Never stop or change a medicine on your own. Talk to your pharmacist or doctor.",
-    "cdc_quote": "Remind patients to avoid abruptly stopping any medications without having a plan in place. Any changes in medication dose or schedule should be individualized, will be drug-class dependent, and should consider risks and benefits for your patient.",
+    "cdc_quote": "Remind patients to avoid abruptly stopping any medications without having a plan in place.",
     "cdc_url": "https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html",
     "checked_on": "2026-09-30",
-    "quote_status": "draft"
+    "quote_status": "verified",
+    "verified_on": "2026-09-30",
+    "verified_by": "project author, against the live CDC page",
+    "note": "The page also says dose or schedule changes should be individualized, but that sentence is not adjacent to this one, so only the adjacent sentence is quoted."
   },
   "warning_signs": {
     "heading": "Call 911 if",

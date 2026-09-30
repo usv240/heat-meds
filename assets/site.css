@@ -246,3 +246,9 @@ h2 .info-btn, h3 .info-btn { font-size: .8rem; }
 .trust { font-weight: 700; }
 .references li { margin: .3rem 0; }
 .lede { font-size: 1.15rem; }
+
+/* Example call to action: caption beside the button on desktop, below it on phones */
+.example-cta .caption { margin-left: .6rem; }
+@media (max-width: 480px) {
+  .example-cta .caption { display: block; margin: .5rem 0 0; }
+}

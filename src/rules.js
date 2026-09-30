@@ -68,19 +68,46 @@ function dayPhrase(isoDate, todayIso) {
   return weekdayLabel(isoDate);
 }
 
-function summarize(week, todayIso) {
+function article(word) {
+  return /^[aeiou]/i.test(word) ? 'an' : 'a';
+}
+
+function monthDay(isoDate) {
+  return new Date(`${isoDate}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+}
+
+function listDates(dates) {
+  const parts = dates.map(monthDay);
+  if (parts.length <= 1) return parts.join('');
+  return `${parts.slice(0, -1).join(', ')} and ${parts[parts.length - 1]}`;
+}
+
+function summarize(week, todayIso, { mode = 'live', place = null } = {}) {
   if (!week) {
     return { level_max: null, planning_days: [], text: "Add a ZIP code to see this week's heat where you live." };
   }
   const max = maxLevel(week);
   const planning = planningDays(week);
+  const planningDates = planning.map((d) => d.date);
+
+  if (mode === 'replay') {
+    const where = place ?? 'this place';
+    if (max >= 2) {
+      const word = levelInfo(max).word;
+      const peakDays = week.filter((d) => d.level === max).map((d) => d.date);
+      const n = peakDays.length;
+      return { level_max: max, planning_days: planningDates, text: `During this past heat wave, ${where} had ${n} ${word} day${n === 1 ? '' : 's'} (${listDates(peakDays)}). This is how your plan would have looked.` };
+    }
+    return { level_max: max, planning_days: [], text: `During this past week, ${where} had no orange, red, or magenta days. This is how your plan would have looked.` };
+  }
+
   if (max >= 3) {
     const first = week.find((d) => d.level !== null && d.level >= 3);
     const word = levelInfo(first.level).word;
-    return { level_max: max, planning_days: planning.map((d) => d.date), text: `${dayPhrase(first.date, todayIso)} is a ${word} heat risk day where you live. Go over this plan today.` };
+    return { level_max: max, planning_days: planningDates, text: `${dayPhrase(first.date, todayIso)} is ${article(word)} ${word} heat risk day where you live. Go over this plan today.` };
   }
   if (max === 2) {
-    return { level_max: max, planning_days: planning.map((d) => d.date), text: 'Heat risk reaches Moderate this week. A good week to go over this plan.' };
+    return { level_max: max, planning_days: planningDates, text: 'Heat risk reaches Moderate this week. A good week to go over this plan.' };
   }
   return { level_max: max, planning_days: [], text: 'Little heat risk is expected this week. A calm week is a good time to go over this plan before the next hot spell.' };
 }
@@ -100,11 +127,11 @@ function source(entry) {
 //   forecast:  [{ date, level, word }] or null when there is no ZIP / no data
 //   rules:     the parsed cdc-rules.json (run through loadRules)
 //   answerKeys: optional { ukhsa: { matches(ing) }, health_canada: { matches(ing) } }
-export function evaluate({ medicines = [], forecast = null, rules, answerKeys = null, today = null }) {
+export function evaluate({ medicines = [], forecast = null, rules, answerKeys = null, today = null, mode = 'live', place = null }) {
   const r = loadRules(rules);
   const week = Array.isArray(forecast) && forecast.length ? forecast : null;
   const planning = planningDays(week);
-  const summary = summarize(week, today);
+  const summary = summarize(week, today, { mode, place });
   const thisWeek = thisWeekLine(planning, week);
 
   const ingredients = uniqueIngredients(medicines);

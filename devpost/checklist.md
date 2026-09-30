@@ -84,7 +84,7 @@ Agreed order from `scope.md` and `spec.md`: HeatRisk smoke check first, then the
 ## Hands-on Checkpoints
 
 - [x] Early usable behavior explored — after slice 2, the Phoenix example with real forecast and the rules-file curation pass
-- [ ] Full user-facing app explored — after slice 5, before the evidence work begins
+- [x] Full user-facing app explored — after slice 5, before the evidence work begins
 - [ ] Final kick-the-tires exploration and feedback completed
 
 ## Final Review
@@ -122,3 +122,4 @@ Activity mode: [not started]
 - Fonts: the Google Fonts repo holds variable TTFs, converted to WOFF2 with fontTools (no glyph changes), about 100 KB for both styles, with OFL.txt and a README alongside.
 - The Evidence page ships in slice 5 as a "no run published yet" state so the landing link works; full rendering comes with the runner in slice 7.
 - Browser-only checks (print to PDF, "i" keyboard behavior, font loading without network, phone width, light and dark) could not be performed by the agent in this session and are left to the learner at the checkpoint.
+- Checkpoint after slice 5: learner verified entry, did-you-mean, not-recognized, replay, "i" buttons with Escape, reload persistence, at 375 px and desktop, light and dark. Print was 2 pages in Chrome; fixed with a 9 pt print base, two-column 911 signs, tighter cards, and a compact sources block, verified by a new headless-Chrome check (`scripts/check-print.mjs`, also run as a test that skips without a browser). Replay summary rewritten to "During this past heat wave, Phoenix, AZ had 2 Extreme days (Aug 6 and Aug 7). This is how your plan would have looked." and the "a Extreme" article fixed. Example caption moves below the button on phones. Learner confirmed the combination, storage, and car sentences against the live CDC page; the never-stop quote was trimmed to the single adjacent sentence. LICENSE now names Ujwal Suresh Vanjare. Every enabled rule is now verified, so the evidence runner is unblocked.
