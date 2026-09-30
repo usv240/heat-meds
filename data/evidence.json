@@ -1,7 +1,8 @@
 {
   "title": "How Heat Meds performs on the 300 most-prescribed US medicines",
-  "run_on": "2026-09-30T20:19:39.685Z",
-  "commit": "8303805",
+  "run_on": "2026-09-30T21:40:23.785Z",
+  "commit": "5f1ff4b",
+  "commit_clean": true,
   "rules_version": "1.0.0",
   "test_set": {
     "title": "The 300 most-prescribed US medicines, by ingredient",
