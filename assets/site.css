@@ -1,3 +1,19 @@
+/* Atkinson Hyperlegible Next, SIL OFL 1.1, self-hosted (see assets/fonts/). */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("fonts/AtkinsonHyperlegibleNext-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("fonts/AtkinsonHyperlegibleNext-Italic-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Heat Meds: calm, large, readable. See spec.md > Look and Feel. */
 
 :root {
@@ -207,3 +223,26 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .toggle-row { display: flex; align-items: center; gap: .6rem; margin: .6rem 0 0; font-weight: 700; cursor: pointer; }
 .toggle-row input { width: 1.4rem; height: 1.4rem; accent-color: var(--accent); }
 .heat-label { margin: .3rem 0 0; padding: .4rem .7rem; border-radius: .5rem; background: var(--warn-bg); border: 1px solid var(--warn-line); font-weight: 700; }
+
+/* Info buttons and panels */
+.info-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.5rem; height: 1.5rem; min-height: 0; padding: 0; margin-left: .35rem;
+  border-radius: 50%; border: 2px solid var(--focus); background: transparent; color: var(--focus);
+  font-size: .85rem; font-weight: 800; font-style: italic; line-height: 1; vertical-align: middle; cursor: pointer;
+}
+.info-btn[aria-expanded="true"] { background: var(--focus); color: #fff; }
+.info-panel {
+  display: block; margin: .5rem 0 .8rem; padding: .8rem 1rem; border-radius: .7rem;
+  background: var(--card); border: 2px solid var(--focus); font-size: .95rem; font-weight: 400; font-style: normal;
+}
+.info-panel h4 { margin: 0 0 .4rem; font-size: 1rem; }
+.info-panel p { margin: .3rem 0; }
+.info-close { min-height: 2.4rem; padding: .3rem .9rem; font-size: .9rem; margin-top: .3rem; }
+h2 .info-btn, h3 .info-btn { font-size: .8rem; }
+.badge .info-btn { width: 1.15rem; height: 1.15rem; font-size: .7rem; margin-left: .2rem; border-width: 1px; }
+
+/* Landing */
+.trust { font-weight: 700; }
+.references li { margin: .3rem 0; }
+.lede { font-size: 1.15rem; }

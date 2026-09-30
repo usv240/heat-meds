@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evidence: how Heat Meds performs on the 300 most-prescribed US medicines</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <a class="brand" href="index.html">Heat Meds</a>
+    <button type="button" class="secondary" id="themeToggle">Dark mode</button>
+  </div>
+
+  <h1>Evidence</h1>
+  <p class="lede">Every number on this page comes from a test run, not from anyone typing it in. The run pushes the 300 most-prescribed US medicines through the same code the site uses, then compares what gets flagged with two independent national lists.</p>
+
+  <div id="evidenceArea" aria-live="polite">
+    <p class="note">No evidence run has been published yet. This page fills in when <code>data/evidence.json</code> exists.</p>
+  </div>
+
+  <footer>
+    <p class="small muted">This measures agreement with national guidance, not clinical outcomes.</p>
+  </footer>
+</main>
+<script type="module" src="src/evidence.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+{
+  "note": "Text for every small 'i' button. Each entry: what it is, why it matters, and the source. Keys are referenced from the page code.",
+  "entries": {
+    "heatrisk": {
+      "term": "HeatRisk",
+      "what": "HeatRisk is the National Weather Service's daily heat forecast, rated 0 to 4 for the next seven days: Little to none, Minor, Moderate, Major, Extreme. It considers how unusual the heat is for the place and time of year, how long it lasts, and whether nights stay hot.",
+      "why": "The CDC tells clinicians to plan for the orange, red, and magenta days (Moderate and above), so this plan uses the same threshold for its \"this week\" lines.",
+      "source_title": "NWS HeatRisk (experimental)",
+      "source_url": "https://www.wpc.ncep.noaa.gov/heatrisk/"
+    },
+    "this_week": {
+      "term": "This week line",
+      "what": "The days in the next seven that reach Moderate (orange) or higher on HeatRisk.",
+      "why": "The medicine explanation never changes with the weather. Only this line does, so you know which days to pay closest attention.",
+      "source_title": "CDC, Heat and Medications: Guidance for Clinicians",
+      "source_url": "https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html"
+    },
+    "drug_class": {
+      "term": "Drug class",
+      "what": "Medicines are grouped into classes by how they work, using the World Health Organization's ATC codes. The CDC lists heat risks by class, so the plan checks each medicine's class rather than every brand name.",
+      "why": "It means a brand you type, like Lasix, is checked as what it is, a water pill (diuretic), with the CDC's exact words for that class.",
+      "source_title": "NLM RxClass",
+      "source_url": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxClassAPIs.html"
+    },
+    "not_listed": {
+      "term": "Not listed in CDC heat guidance",
+      "what": "The medicine was recognized, but its class does not appear in the CDC's heat and medications guidance.",
+      "why": "It does not mean heat is harmless. Other national guidance (the UK's UKHSA, Health Canada) lists some classes the CDC does not, so badges show what they say. France's ANSM list is broader still and is not scored here.",
+      "source_title": "CDC, Heat and Medications: Guidance for Clinicians",
+      "source_url": "https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html"
+    },
+    "badge_ukhsa": {
+      "term": "UK badge",
+      "what": "Whether the UK Health Security Agency's heat and medicines guidance lists this medicine's class.",
+      "why": "An independent second opinion on what the CDC leaves out. Shown for context; the plan's cards come only from the CDC.",
+      "source_title": "UK Health Security Agency, heat and medicines guidance",
+      "source_url": "https://www.gov.uk/government/publications/hot-weather-and-health-supporting-vulnerable-people"
+    },
+    "badge_health_canada": {
+      "term": "Canada badge",
+      "what": "Whether Health Canada's guidance for pharmacists lists this medicine's class.",
+      "why": "An independent second opinion on what the CDC leaves out. Shown for context; the plan's cards come only from the CDC.",
+      "source_title": "Health Canada, extreme heat and medications guidance for pharmacists",
+      "source_url": "https://www.canada.ca/en/health-canada/services/climate-change-health/extreme-heat.html"
+    },
+    "ansm": {
+      "term": "France's ANSM list",
+      "what": "France's medicines agency publishes a much broader list of medicines to review in heat waves, including some, such as statins, that neither the CDC nor the UK nor Canada lists.",
+      "why": "Shown only as context. It is not used to score this app, because its breadth would swamp the comparison.",
+      "source_title": "ANSM, Bon usage des medicaments en cas de vague de chaleur",
+      "source_url": "https://ansm.sante.fr/"
+    },
+    "combination": {
+      "term": "Combination warning",
+      "what": "The CDC singles out one pairing: a water pill (diuretic) taken with an ACE inhibitor or ARB, and says ARNIs carry the same added risk.",
+      "why": "Each alone lowers blood pressure and dulls thirst in heat; together the CDC says they may significantly increase the risk of harm. Some single pills contain both.",
+      "source_title": "CDC, Heat and Medications: Guidance for Clinicians",
+      "source_url": "https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html"
+    },
+    "storage": {
+      "term": "Storing medicines in heat",
+      "what": "The CDC notes that insulin loses potency in prolonged heat, inhalers can burst in hot cars, and epinephrine auto-injectors can under-deliver after heat exposure.",
+      "why": "A medicine that is stored badly may not work when it is needed.",
+      "source_title": "CDC, Heat and Medications: Guidance for Clinicians",
+      "source_url": "https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html"
+    },
+    "saved_data": {
+      "term": "Saved data",
+      "what": "Real past HeatRisk forecasts for Phoenix, Aug 3 to 9, 2025, read from the National Weather Service archive and saved in this site.",
+      "why": "Used for the replay toggle and the example, and shown in place of the live forecast if the service cannot be reached. It is never this week's forecast.",
+      "source_title": "NWS HeatRisk Day 1 archive",
+      "source_url": "https://www.wpc.ncep.noaa.gov/heatrisk/data/archive/"
+    },
+    "rxnorm": {
+      "term": "RxNorm",
+      "what": "The National Library of Medicine's catalog of medicine names. It turns a brand name or a misspelling into the generic ingredient and tells us when one pill contains two.",
+      "why": "It is why you can type the name from the bottle and why the plan never guesses: if RxNorm is unsure, the chip asks you first.",
+      "source_title": "NLM RxNorm API",
+      "source_url": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html"
+    },
+    "evidence_quote_zero": {
+      "term": "Flags without a CDC quote",
+      "what": "How many medicine cards in the 300-medicine test run were produced without an exact CDC quote behind them. The code refuses to load a rule without a quote, so this must be zero.",
+      "why": "It is the check that every card traces to the CDC's own words.",
+      "source_title": "This site's evidence run",
+      "source_url": "evidence.html"
+    },
+    "evidence_stop_zero": {
+      "term": "Plans that say to stop a medicine",
+      "what": "How many of the 300 generated plans contained any sentence telling someone to stop, skip, or change a dose. Every line of every plan is scanned. This must be zero.",
+      "why": "This tool never tells anyone to stop a medicine; only a pharmacist or doctor can advise that.",
+      "source_title": "This site's evidence run",
+      "source_url": "evidence.html"
+    },
+    "evidence_agreement": {
+      "term": "Agreement with the UK and Canada",
+      "what": "For the 300 most-prescribed US medicines, how often the app's flag (listed or not) matches what UKHSA and Health Canada list.",
+      "why": "The app is built from the CDC list. Two independent national lists are the closest thing to an outside answer key.",
+      "source_title": "This site's evidence run",
+      "source_url": "evidence.html"
+    },
+    "answer_keys": {
+      "term": "Answer keys",
+      "what": "The UKHSA and Health Canada guidance, each mapped phrase by phrase to drug classes with a one-line reason. The mapping was committed before the first test run so it could not be tuned to flatter the app.",
+      "why": "The mapping decides the agreement numbers, so it is shown in full on the Evidence page for anyone to disagree with.",
+      "source_title": "Evidence page",
+      "source_url": "evidence.html"
+    },
+    "top300": {
+      "term": "The 300 most-prescribed US medicines",
+      "what": "Derived from the Medical Expenditure Panel Survey (MEPS) 2024 Prescribed Medicines file, a US government survey of real prescriptions, counted by ingredient.",
+      "why": "A test set nobody hand-picked, so the numbers describe real prescriptions rather than convenient examples.",
+      "source_title": "AHRQ MEPS HC-254A",
+      "source_url": "https://meps.ahrq.gov/mepsweb/data_stats/download_data_files.jsp"
+    }
+  }
+}

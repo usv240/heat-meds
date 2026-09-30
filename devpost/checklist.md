@@ -51,7 +51,7 @@ Agreed order from `scope.md` and `spec.md`: HeatRisk smoke check first, then the
   Learner check: Flip the replay toggle and confirm the label names the real dates and place, the boxes change, and the furosemide card's explanation does not. Clear the ZIP and confirm the cards still appear with the "Add a ZIP code" prompt.
   Commit: `Add past heat wave replay and forecast fallbacks`
 
-- [ ] **5. The landing page explains itself, the "i" buttons cite sources, and the plan prints on one page in the intended look**
+- [x] **5. The landing page explains itself, the "i" buttons cite sources, and the plan prints on one page in the intended look**
   Becomes usable: The landing page has the explanation, the exact trust line, sources, "Try an example," the Evidence link, and a References section with NLM's attribution; every term and number has an "i" popover with what it is, why it matters, and the source; the site uses self-hosted Atkinson Hyperlegible Next at 20 px with light and dark modes; Print produces one Letter page with colors and words, controls hidden.
   Why now: Everything the daughter sees is now in place, so this is the right moment to make it look and read like the PRD's Look and Feel before the evidence work, and to lock the copy rules with tests.
   PRD ref: `prd.md > Screens and Layout > Landing page`, `prd.md > Screens and Layout > Print view`, `prd.md > Look and Feel`, `prd.md > Features and Behavior > Info buttons`, `prd.md > Features and Behavior > Printing`
@@ -119,3 +119,6 @@ Activity mode: [not started]
 - The top approximate candidate for "Toprol XL" (RxCUI 220348) is a retired concept with no properties; the resolver skips candidates that yield no ingredients and offers the next one, "metoprolol (Toprol)".
 - Archive file naming is `HeatRisk_CONUS_YYYYMMDD.tif` (the data page only documented the live per-day files). Sampled values for Phoenix Aug 3 to 9, 2025 match the learner's reading: Moderate x3, Extreme x2, Major, Moderate. Raster origin, resolution, and NoData matched the learner's numbers exactly.
 - The replay date context: when the replay is on, the summary treats the first replay day as "today" so it reads "Today is an Extreme heat risk day" rather than naming a weekday. Out-of-area ZIPs are reported as unavailable, not replaced by saved data; only a service failure triggers the saved week.
+- Fonts: the Google Fonts repo holds variable TTFs, converted to WOFF2 with fontTools (no glyph changes), about 100 KB for both styles, with OFL.txt and a README alongside.
+- The Evidence page ships in slice 5 as a "no run published yet" state so the landing link works; full rendering comes with the runner in slice 7.
+- Browser-only checks (print to PDF, "i" keyboard behavior, font loading without network, phone width, light and dark) could not be performed by the agent in this session and are left to the learner at the checkpoint.

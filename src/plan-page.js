@@ -8,6 +8,7 @@ import { placeFor } from './place.js';
 import { evaluate } from './rules.js';
 import { classifyMedicine } from './rxclass.js';
 import { renderHeatWeek, renderHeatNote, renderSummary, renderPlanSections } from './plan-render.js';
+import { loadGlossary, infoButton } from './info.js';
 
 initTheme();
 
@@ -75,7 +76,8 @@ function heatNoteFor(mode, liveNote) {
 
 async function run() {
   dateLine.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-  const [medicines, rules, saved] = await Promise.all([loadMedicines(), loadJson('data/cdc-rules.json'), loadJson('data/saved-heatwave.json').catch(() => null)]);
+  const [medicines, rules, saved] = await Promise.all([loadMedicines(), loadJson('data/cdc-rules.json'), loadJson('data/saved-heatwave.json').catch(() => null), loadGlossary()]);
+  document.getElementById('heatHeading')?.append(infoButton('heatrisk'));
   const zip = getZip();
   placeLine.textContent = zip ? `ZIP ${zip}` : 'No ZIP code';
 
@@ -99,7 +101,7 @@ async function run() {
     heatArea.replaceChildren(chosen.week ? renderHeatWeek(chosen.week) : renderHeatNote(note));
     if (chosen.label) {
       heatLabel.hidden = false;
-      heatLabel.textContent = chosen.mode === 'replay' ? `Past heat wave: ${chosen.label}. This is not this week's forecast.` : `${chosen.label}. The live forecast could not be reached.`;
+      heatLabel.replaceChildren(document.createTextNode(chosen.mode === 'replay' ? `Past heat wave: ${chosen.label}. This is not this week's forecast.` : `${chosen.label}. The live forecast could not be reached.`), infoButton('saved_data'));
     } else {
       heatLabel.hidden = true;
     }

@@ -12,17 +12,23 @@
 <main>
   <div class="topbar">
     <a class="brand" href="index.html">Heat Meds</a>
-    <button type="button" class="secondary" id="themeToggle">Dark mode</button>
+    <span class="topbar-actions">
+      <a class="button secondary" href="evidence.html">Evidence</a>
+      <button type="button" class="secondary" id="themeToggle">Dark mode</button>
+    </span>
   </div>
 
   <h1>Some everyday medicines make hot days more dangerous.</h1>
-  <p>Type in your medicines and ZIP code. Get one printable page that says which of your medicines matter in heat, what this week's heat looks like where you live, and what to ask your pharmacist.</p>
+  <p class="lede">Water pills, some blood pressure pills, some antidepressants, and others change how your body handles heat. Most people are never told. This page checks your medicines against the CDC's heat guidance and this week's heat forecast where you live, then gives you one printable plan to go over with your pharmacist.</p>
+
   <p><a class="button" href="plan.html?example=1">Try an example</a> <span class="muted small">Mom, 74, in Phoenix: a water pill, a blood pressure pill, an antidepressant, insulin, and a cholesterol pill.</span></p>
+
+  <p class="trust">Free. No account. We don't store anything. To check your list, medicine names are looked up in the National Library of Medicine's RxNorm and your ZIP goes to the National Weather Service.</p>
 
   <form id="planForm" class="card" novalidate>
     <div class="field">
       <label for="medicine">Your medicines</label>
-      <p class="small muted" style="margin-top:0">Type each name as it appears on the bottle, brand or generic, then press Add.</p>
+      <p class="small muted" style="margin-top:0">Type each name as it appears on the bottle, brand or generic, then press Add. If we are not sure what you meant, we ask before adding it.</p>
       <div class="row">
         <div class="grow">
           <input id="medicine" name="medicine" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Lasix">
@@ -46,8 +52,37 @@
     </div>
   </form>
 
+  <h2>Who this is for</h2>
+  <p>Older adults and the people who look after them. It is meant for the kitchen table with the pill bottles out, or for the pharmacy counter. It is not a substitute for your pharmacist or doctor, and it never tells anyone to stop a medicine.</p>
+
+  <h2>Why it matters</h2>
+  <p>In 2025 the CDC asked clinicians to go over heat risks from medicines with their patients: which classes dull thirst, reduce sweating, or lower blood pressure in heat, which combinations add up, and which medicines spoil in a hot car. Patients had no tool to do this themselves. This one uses the CDC's own table, quoted line by line, joined to the National Weather Service's HeatRisk forecast for your ZIP.</p>
+
+  <h2>What you get</h2>
+  <ul>
+    <li>Seven days of heat risk for your ZIP, each day with a color and a word.</li>
+    <li>One card per medicine that matters in heat: why, what to watch for, and one question to ask your pharmacist. Every card carries the CDC's exact words.</li>
+    <li>The CDC's combination warning when it applies, and storage notes for medicines that spoil in heat.</li>
+    <li>An honest list of the medicines you entered that the CDC guidance does not list.</li>
+    <li>A printable page for the fridge or the pharmacist.</li>
+  </ul>
+  <p>How well does it work? The <a href="evidence.html">Evidence page</a> shows the results of running the 300 most-prescribed US medicines through this site, compared with the UK's and Canada's guidance.</p>
+
+  <h2 id="references">References</h2>
+  <ul class="references small">
+    <li><a href="https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html" target="_blank" rel="noopener">CDC, Heat and Medications: Guidance for Clinicians</a> (page dated Sept. 18, 2025). The source of every medicine card, combination warning, and storage note.</li>
+    <li><a href="https://www.weather.gov/safety/heat-illness" target="_blank" rel="noopener">National Weather Service, Heat Cramps, Exhaustion, Stroke</a>. The warning signs, which the NWS attributes to the CDC.</li>
+    <li><a href="https://www.wpc.ncep.noaa.gov/heatrisk/" target="_blank" rel="noopener">National Weather Service HeatRisk (experimental)</a>, including the <a href="https://www.wpc.ncep.noaa.gov/heatrisk/data/archive/" target="_blank" rel="noopener">Day 1 archive</a> used for the past heat wave replay.</li>
+    <li><a href="https://rxnav.nlm.nih.gov/" target="_blank" rel="noopener">National Library of Medicine RxNorm and RxClass</a>. Medicine names, ingredients, and drug classes.</li>
+    <li><a href="https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html" target="_blank" rel="noopener">U.S. Census Bureau ZCTA Gazetteer</a>. ZIP code locations, bundled in this site.</li>
+    <li><a href="https://meps.ahrq.gov/mepsweb/data_stats/download_data_files.jsp" target="_blank" rel="noopener">AHRQ Medical Expenditure Panel Survey, Prescribed Medicines file</a>. The source of the 300-medicine test list.</li>
+    <li>UK Health Security Agency and Health Canada heat and medicines guidance, used as answer keys on the Evidence page; France's ANSM list, shown for context only. Exact documents are linked on the Evidence page.</li>
+    <li><a href="https://github.com/google/fonts/tree/main/ofl/atkinsonhyperlegiblenext" target="_blank" rel="noopener">Atkinson Hyperlegible Next</a> typeface, SIL Open Font License 1.1.</li>
+  </ul>
+  <p class="small muted">This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product.</p>
+
   <footer>
-    <p class="small muted">Heat forecast: National Weather Service HeatRisk (experimental). ZIP locations: U.S. Census Bureau ZCTA Gazetteer. Medicine names and classes: NLM RxNorm and RxClass.</p>
+    <p class="small muted">Heat Meds is a proof of concept built for the Devpost Build With AI: Basics hackathon. Open source under the MIT license.</p>
   </footer>
 </main>
 <script type="module">
