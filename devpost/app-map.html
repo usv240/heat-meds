@@ -61,7 +61,7 @@
 <main>
 
 <h1>Heat Meds app map</h1>
-<p class="muted">A take-home guide: what the pieces are, one action traced through the code, where to start a change, and a practice worth reusing. Built from the code at commit <code>5f1ff4b</code> on 2026-09-30. It is a snapshot and can drift as the code changes.</p>
+<p class="muted">A take-home guide: what the pieces are, one action traced through the code, where to start a change, and a practice worth reusing. Built from the code at commit <code>b07a5b4</code> on 2026-09-30. It is a snapshot and can drift as the code changes.</p>
 
 <h2>What the app is</h2>
 <p>Three static pages with no server of their own: <code>index.html</code> (entry), <code>plan.html</code> (the printable plan), and <code>evidence.html</code> (the 300-medicine results). Everything runs in the browser from plain JavaScript modules in <code>src/</code>.</p>
@@ -191,7 +191,7 @@
 
 <h2>Run it again</h2>
 <pre><code>python -m http.server 8000     # then open http://localhost:8000/
-node --test                    # 69 tests; print and page checks need Chrome or Edge
+node --test                    # 70 tests; print and page checks need Chrome or Edge
 node scripts/check-print.mjs   # the Phoenix example prints on one page
 node scripts/check-pages.mjs 375
 node scripts/run-evidence.mjs  # regenerates the Evidence page numbers</code></pre>
