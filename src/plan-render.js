@@ -52,6 +52,11 @@ function typedLabel(card) {
   return typed.length ? `${typed.join(', ')} → ${card.ingredient}` : card.ingredient;
 }
 
+// "Zoloft → sertraline, an antidepressant (SSRI)"
+function cardTitle(card) {
+  return `${typedLabel(card)}, ${card.class}`;
+}
+
 export function renderSummary(plan) {
   return el('p', { class: 'summary', text: plan.summary.text });
 }
@@ -65,7 +70,7 @@ export function renderCards(plan) {
   }
   for (const card of plan.cards) {
     const art = el('article', { class: 'card med-card' });
-    art.append(el('h3', {}, [el('span', { text: typedLabel(card) }), el('span', { class: 'muted', text: ` (${card.class})` })]));
+    art.append(el('h3', { text: cardTitle(card) }));
     art.append(el('p', { text: card.why }));
     art.append(el('p', {}, [el('strong', { text: 'Watch for: ' }), document.createTextNode(card.watch_for)]));
     art.append(el('p', {}, [el('strong', { text: 'Ask your pharmacist: ' }), document.createTextNode(card.ask)]));
@@ -103,6 +108,20 @@ export function renderStorage(plan) {
   return wrap;
 }
 
+export function renderSunNotes(plan) {
+  if (!plan.sun_notes?.length) return null;
+  const wrap = el('section', { 'aria-labelledby': 'sunHeading' });
+  wrap.append(el('h2', { id: 'sunHeading', text: plan.sun_notes[0].heading || 'Sun and your skin' }));
+  for (const s of plan.sun_notes) {
+    const box = el('div', { class: 'card' });
+    box.append(el('p', {}, [el('strong', { text: `${s.ingredients.join(', ')}: ` }), document.createTextNode(s.text)]));
+    if (s.ask) box.append(el('p', {}, [el('strong', { text: 'Ask your pharmacist: ' }), document.createTextNode(s.ask)]));
+    box.append(sourceReveal(s.source));
+    wrap.append(box);
+  }
+  return wrap;
+}
+
 export function renderNotListed(plan) {
   const wrap = el('section', { 'aria-labelledby': 'notListedHeading' });
   wrap.append(el('h2', { id: 'notListedHeading', text: 'Not listed in CDC heat guidance' }));
@@ -132,6 +151,8 @@ export function renderWarningSigns(plan) {
   wrap.append(el('h2', { id: 'signsHeading', text: w.heading }));
   wrap.append(el('p', { text: w.intro }));
   wrap.append(el('ul', { class: 'signs' }, w.signs.map((s) => el('li', { text: s }))));
+  if (w.action) wrap.append(el('p', {}, [el('strong', { text: w.action })]));
+  if (w.also) wrap.append(el('p', { text: w.also }));
   wrap.append(el('p', { class: 'small muted' }, [document.createTextNode('Source: '), el('a', { href: w.source_url, target: '_blank', rel: 'noopener', text: w.source_title })]));
   return wrap;
 }
@@ -164,7 +185,7 @@ export function renderSources(extra = []) {
 // The whole plan below the heat area, in the PRD's order.
 export function renderPlanSections(plan) {
   const frag = document.createDocumentFragment();
-  for (const node of [renderCards(plan), renderCombinations(plan), renderStorage(plan), renderNotListed(plan), renderWarningSigns(plan), renderClosing(plan), renderSources()]) {
+  for (const node of [renderCards(plan), renderCombinations(plan), renderStorage(plan), renderSunNotes(plan), renderNotListed(plan), renderWarningSigns(plan), renderClosing(plan), renderSources()]) {
     if (node) frag.append(node);
   }
   return frag;

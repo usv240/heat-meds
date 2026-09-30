@@ -83,7 +83,7 @@ Agreed order from `scope.md` and `spec.md`: HeatRisk smoke check first, then the
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — after slice 2, the Phoenix example with real forecast and the rules-file curation pass
+- [x] Early usable behavior explored — after slice 2, the Phoenix example with real forecast and the rules-file curation pass
 - [ ] Full user-facing app explored — after slice 5, before the evidence work begins
 - [ ] Final kick-the-tires exploration and feedback completed
 
@@ -110,3 +110,7 @@ Activity mode: [not started]
 - HeatRisk `value` arrives as a decimal string ("1.000000000"), not "1": parsed with parseFloat and rounded. Legend colors taken from the ImageServer legend swatches: 0 #e8f9e7, 1 #f4f257, 2 #f69632, 3 #e22f33, 4 #7a0e7f.
 - CDC quotes were copied from an Internet Archive capture (2026-09-28) of the CDC page dated Sept. 18, 2025, because cdc.gov returns 403 to scripted downloads. Every entry carries `quote_status: "draft"` until the learner verifies it against the live page; the evidence runner (slice 7) will refuse to run while any enabled entry is still draft.
 - The "Call 911 if" warning signs were drafted from memory of the CDC signs-and-symptoms page and marked draft for the learner to verify; the archive copy of that page was not fetched.
+- Curation pass (checkpoint after slice 2): learner checked every row against the live CDC page. Acetaminophen, levothyroxine, indinavir kept; laxatives, opiates, benzodiazepines, apixaban, antacids enabled; sun-sensitizing medicines became a separate "Sun and your skin" note rather than a heat card; MDMA and alcohol recorded as excluded. 911 signs re-sourced to the NWS heat-illness page (which attributes the list to the CDC) because the CDC signs link returned not found. Combination, storage, and never-stop quotes remain draft pending the learner's explicit confirmation.
+- Card titles changed to "Zoloft → sertraline, an antidepressant (SSRI)" at the learner's request; plain names in the rules file were rewritten to read after a comma.
+- Favicon added (assets/favicon.svg) to stop the 404 in the console.
+- LICENSE holder still reads "Heat Meds contributors": the learner's message contained the literal placeholder "[your name]". To fill in when they give the name.

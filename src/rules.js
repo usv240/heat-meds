@@ -20,6 +20,7 @@ export function loadRules(json) {
   for (const c of json.classes) check(c, 'class');
   for (const c of json.combinations ?? []) check(c, 'combination');
   for (const s of json.storage ?? []) check(s, 'storage');
+  for (const s of json.sun_notes ?? []) check(s, 'sun_note');
   if (json.never_stop) check({ id: 'never_stop', ...json.never_stop }, 'never_stop');
   if (json.storage_general) check({ id: 'storage_general', ...json.storage_general }, 'storage_general');
   return json;
@@ -109,20 +110,28 @@ export function evaluate({ medicines = [], forecast = null, rules, answerKeys = 
   const ingredients = uniqueIngredients(medicines);
   const enabledClasses = r.classes.filter((c) => c.enabled !== false);
   const enabledStorage = (r.storage ?? []).filter((s) => s.enabled !== false);
+  const enabledSun = (r.sun_notes ?? []).filter((s) => s.enabled !== false);
 
   const cards = [];
   const storage = [];
+  const sunNotes = [];
   const notListed = [];
   const matchedClassIds = new Set();
 
   for (const ing of ingredients) {
     const matched = enabledClasses.filter((c) => matchesRule(ing, c));
     const storageHits = enabledStorage.filter((s) => matchesRule(ing, s));
+    const sunHits = enabledSun.filter((s) => matchesRule(ing, s));
     for (const c of matched) matchedClassIds.add(c.id);
     for (const s of storageHits) {
       const existing = storage.find((x) => x.id === s.id);
       if (existing) existing.ingredients.push(ing.name);
       else storage.push({ id: s.id, ingredients: [ing.name], text: s.text, source: source(s) });
+    }
+    for (const s of sunHits) {
+      const existing = sunNotes.find((x) => x.id === s.id);
+      if (existing) existing.ingredients.push(ing.name);
+      else sunNotes.push({ id: s.id, heading: s.heading, ingredients: [ing.name], text: s.text, ask: s.ask_pharmacist ?? null, source: source(s) });
     }
     if (matched.length) {
       const primary = matched[0];
@@ -142,7 +151,7 @@ export function evaluate({ medicines = [], forecast = null, rules, answerKeys = 
         this_week: thisWeek,
         source: source(primary),
       });
-    } else if (!storageHits.length) {
+    } else if (!storageHits.length && !sunHits.length) {
       notListed.push({
         ingredient: ing.name,
         rxcui: ing.rxcui,
@@ -172,6 +181,7 @@ export function evaluate({ medicines = [], forecast = null, rules, answerKeys = 
     combinations,
     storage,
     storage_general: r.storage_general ? { text: r.storage_general.text, source: source(r.storage_general) } : null,
+    sun_notes: sunNotes,
     not_listed: notListed,
     unrecognized,
     warning_signs: r.warning_signs ?? null,
@@ -186,16 +196,21 @@ export function planToText(plan) {
   const lines = [];
   if (plan.summary?.text) lines.push(plan.summary.text);
   for (const c of plan.cards) {
-    lines.push(`${c.ingredient} (${c.class})`, c.why, c.watch_for, `Ask your pharmacist: ${c.ask}`);
+    lines.push(`${c.ingredient}, ${c.class}`, c.why, c.watch_for, `Ask your pharmacist: ${c.ask}`);
     if (c.this_week) lines.push(c.this_week);
     for (const a of c.also_listed_under) lines.push(`Also listed under: ${a.class}`);
   }
   for (const combo of plan.combinations) { lines.push(combo.text); if (combo.ask) lines.push(`Ask your pharmacist: ${combo.ask}`); }
   for (const s of plan.storage) lines.push(s.text);
   if (plan.storage_general) lines.push(plan.storage_general.text);
+  for (const s of plan.sun_notes ?? []) { lines.push(s.text); if (s.ask) lines.push(`Ask your pharmacist: ${s.ask}`); }
   for (const n of plan.not_listed) lines.push(`${n.ingredient}: not listed in CDC heat guidance`);
   for (const u of plan.unrecognized) lines.push(`${u}: not recognized`);
-  if (plan.warning_signs) lines.push(plan.warning_signs.intro, ...plan.warning_signs.signs);
+  if (plan.warning_signs) {
+    lines.push(plan.warning_signs.intro, ...plan.warning_signs.signs);
+    if (plan.warning_signs.action) lines.push(plan.warning_signs.action);
+    if (plan.warning_signs.also) lines.push(plan.warning_signs.also);
+  }
   if (plan.never_stop) lines.push(plan.never_stop.text);
   return lines.filter(Boolean);
 }

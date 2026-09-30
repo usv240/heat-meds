@@ -99,11 +99,33 @@ test('aspirin gets one card (its own), not the antiplatelet or NSAID card', () =
   assert.equal(plan.cards[0].also_listed_under.length, 0);
 });
 
-test('disabled "confirm" entries produce no card until the learner enables them', () => {
+test('laxatives, enabled after the curation pass, get a card', () => {
   const senna = { input: 'senna', status: 'resolved', ingredients: [{ rxcui: '9620', name: 'senna', atc: ['A06AB'] }] };
   const plan = evaluate({ medicines: [senna], forecast: null, rules });
+  assert.equal(plan.cards.length, 1);
+  assert.equal(plan.cards[0].class_id, 'laxatives');
+});
+
+test('a sun-sensitizing antibiotic gets the sun note, not a heat card, and is not "not listed"', () => {
+  const doxy = { input: 'doxycycline', status: 'resolved', ingredients: [{ rxcui: '3640', name: 'doxycycline', atc: ['J01AA', 'A01AB'] }] };
+  const plan = evaluate({ medicines: [doxy], forecast: null, rules });
   assert.equal(plan.cards.length, 0);
-  assert.deepEqual(plan.not_listed.map((n) => n.ingredient), ['senna']);
+  assert.equal(plan.sun_notes.length, 1);
+  assert.deepEqual(plan.sun_notes[0].ingredients, ['doxycycline']);
+  assert.equal(plan.not_listed.length, 0);
+});
+
+test('every enabled class entry is verified against the CDC page, and MDMA/alcohol are recorded as excluded', () => {
+  for (const c of rules.classes) if (c.enabled !== false) assert.equal(c.quote_status, 'verified', c.id);
+  assert.ok(rules.excluded_rows.rows.some((r) => /MDMA/.test(r)));
+  assert.ok(rules.excluded_rows.rows.includes('Alcohol'));
+});
+
+test('warning signs carry the 911 action and the NWS source', () => {
+  const plan = evaluate({ medicines: [], forecast: null, rules });
+  assert.match(plan.warning_signs.action, /Call 911/);
+  assert.match(plan.warning_signs.source_url, /weather\.gov\/safety\/heat-illness/);
+  assert.ok(plan.warning_signs.signs.length >= 6);
 });
 
 test('not-recognized chips are listed, never guessed', () => {
