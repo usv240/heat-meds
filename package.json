@@ -9,7 +9,10 @@
     "test": "node --test",
     "serve": "python -m http.server 8000",
     "zip-index": "node scripts/build-zip-index.mjs",
-    "smoke:heatrisk": "node scripts/smoke-heatrisk.mjs"
+    "smoke:heatrisk": "node scripts/smoke-heatrisk.mjs",
+    "check:print": "node scripts/check-print.mjs",
+    "check:pages": "node scripts/check-pages.mjs 375",
+    "evidence": "node scripts/run-evidence.mjs"
   },
   "engines": {
     "node": ">=20"

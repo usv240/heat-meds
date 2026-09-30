@@ -271,3 +271,9 @@ h2 .info-btn, h3 .info-btn { font-size: .8rem; }
 .all-rows { margin-top: 1rem; }
 details > summary { cursor: pointer; font-weight: 700; }
 @media (max-width: 600px) { .evidence-table { font-size: .78rem; } .evidence-table th, .evidence-table td { padding: .3rem .3rem; } }
+
+/* Wide tables scroll inside their box instead of widening the page */
+.table-wrap { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: .5rem 0 1rem; }
+.table-wrap:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.table-wrap .evidence-table { margin: 0; min-width: 32rem; }
+.evidence-table td, .evidence-table th { overflow-wrap: anywhere; }

@@ -46,12 +46,13 @@ test('forecastFor returns ok with a week from a stubbed fetch', async () => {
 });
 
 test('forecastFor returns unavailable when every sample is NoData, and error on network failure', async () => {
+  // Phoenix coordinates, so the point is inside the forecast area and the stubbed fetch is reached.
   const nodata = { samples: [{ value: '5.0', attributes: { name: 'HeatRisk_1_Mercator', idp_validtime: 1790769600000 } }] };
-  const r1 = await forecastFor(0, 0, { fetchImpl: async () => ({ ok: true, json: async () => nodata }) });
+  const r1 = await forecastFor(33.45, -112.07, { fetchImpl: async () => ({ ok: true, json: async () => nodata }) });
   assert.equal(r1.status, 'unavailable');
-  const r2 = await forecastFor(0, 0, { fetchImpl: async () => { throw new Error('offline'); } });
+  const r2 = await forecastFor(33.45, -112.07, { fetchImpl: async () => { throw new Error('offline'); } });
   assert.equal(r2.status, 'error');
-  const r3 = await forecastFor(0, 0, { fetchImpl: async () => ({ ok: false, status: 503 }) });
+  const r3 = await forecastFor(33.45, -112.07, { fetchImpl: async () => ({ ok: false, status: 503 }) });
   assert.equal(r3.status, 'error');
 });
 
@@ -84,7 +85,7 @@ test('chooseWeek: live when ok, replay when asked, saved fallback on error, none
   assert.match(fb.label, /^Saved data: /);
   assert.deepEqual(fb.week.map((d) => d.level), [2, 2, 2, 4, 4, 3, 2]);
   assert.equal(chooseWeek({ result: null, saved }).mode, 'none');
-  const nodata = await forecastFor(0, 0, { fetchImpl: async () => ({ ok: true, json: async () => ({ samples: [{ value: '5', attributes: { name: 'HeatRisk_1_Mercator', idp_validtime: 1790769600000 } }] }) }) });
+  const nodata = await forecastFor(33.45, -112.07, { fetchImpl: async () => ({ ok: true, json: async () => ({ samples: [{ value: '5', attributes: { name: 'HeatRisk_1_Mercator', idp_validtime: 1790769600000 } }] }) }) });
   assert.equal(chooseWeek({ result: nodata, saved }).mode, 'unavailable', 'out of area is reported, not replaced by saved data');
   assert.equal(savedWeek(saved)[0].date, '2025-08-03');
 });

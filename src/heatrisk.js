@@ -61,18 +61,37 @@ export function parseSamples(json) {
   return days;
 }
 
+// The HeatRisk ImageServer covers the contiguous United States only. Points outside this box
+// (Hawaii, Alaska, Puerto Rico, the territories) get HTTP 400 "Invalid or missing input
+// parameters" from getSamples, verified by the project author for Honolulu, Anchorage, and
+// San Juan. They are "outside the forecast area", never a reason to show saved data.
+export const CONUS_BOUNDS = { latMin: 24.3, latMax: 49.6, lonMin: -125.2, lonMax: -66.8 };
+
+export function insideForecastArea(lat, lon) {
+  return Number.isFinite(lat) && Number.isFinite(lon)
+    && lat >= CONUS_BOUNDS.latMin && lat <= CONUS_BOUNDS.latMax
+    && lon >= CONUS_BOUNDS.lonMin && lon <= CONUS_BOUNDS.lonMax;
+}
+
 // Fetches the week for a point. Returns one of:
 //   { status: 'ok', week }            seven (or fewer) days with levels
-//   { status: 'unavailable', week }   the service answered but has no data here
+//   { status: 'unavailable', week }   outside the forecast area, or the service has no data here
 //   { status: 'error', error }        network or service failure (caller decides fallback)
 export async function forecastFor(lat, lon, { fetchImpl = fetch, timeoutMs = 10000 } = {}) {
+  if (!insideForecastArea(lat, lon)) return { status: 'unavailable', week: [], reason: 'outside forecast area' };
   const controller = typeof AbortController === 'function' ? new AbortController() : null;
   const timer = controller ? setTimeout(() => controller.abort(), timeoutMs) : null;
   try {
     const res = await fetchImpl(buildUrl(lat, lon), { signal: controller?.signal });
+    // A 400 means the point is not covered (the service rejects it), not that the service is down.
+    if (res.status === 400) return { status: 'unavailable', week: [], reason: 'service rejected point' };
     if (!res.ok) return { status: 'error', error: new Error(`HTTP ${res.status}`) };
     const json = await res.json();
-    if (json?.error) return { status: 'error', error: new Error(json.error.message || 'service error') };
+    // ArcGIS may answer HTTP 200 with an error body; code 400 means the point is not covered.
+    if (json?.error) {
+      if (Number(json.error.code) === 400) return { status: 'unavailable', week: [], reason: 'service rejected point' };
+      return { status: 'error', error: new Error(json.error.message || 'service error') };
+    }
     const week = parseSamples(json);
     const usable = week.filter((d) => d.level !== null);
     if (usable.length === 0) return { status: 'unavailable', week };

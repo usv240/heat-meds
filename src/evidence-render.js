@@ -13,13 +13,14 @@ function tile(value, label, infoKey, cls = '') {
   ]);
 }
 
+// Every table sits in a horizontally scrollable box so a wide table never widens the page on a phone.
 function table(headers, rows) {
   const t = el('table', { class: 'evidence-table' });
   t.append(el('thead', {}, [el('tr', {}, headers.map((h) => el('th', { text: h })))]));
   const body = el('tbody');
   for (const r of rows) body.append(el('tr', {}, r.map((c) => (c instanceof Node ? el('td', {}, [c]) : el('td', { text: String(c) })))));
   t.append(body);
-  return t;
+  return el('div', { class: 'table-wrap', tabindex: '0' }, [t]);
 }
 
 export function renderEvidence(e) {

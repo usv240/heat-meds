@@ -85,7 +85,14 @@ function listDates(dates) {
 
 function summarize(week, todayIso, { mode = 'live', place = null } = {}) {
   if (!week) {
-    return { level_max: null, planning_days: [], text: "Add a ZIP code to see this week's heat where you live." };
+    // No boxes are shown. Only the no-ZIP invitation may say "where you live", because the person
+    // has not told us where that is yet; every other case names what happened to their ZIP.
+    const text = {
+      unavailable: "The heat forecast isn't available for this ZIP, so this plan covers your medicines only.",
+      zip_not_found: "That ZIP code wasn't found, so this plan covers your medicines only.",
+      unreachable: "The heat forecast couldn't be reached right now, so this plan covers your medicines only.",
+    }[mode] ?? "Add a ZIP code to see this week's heat where you live.";
+    return { level_max: null, planning_days: [], text };
   }
   const max = maxLevel(week);
   const planning = planningDays(week);

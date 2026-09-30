@@ -70,7 +70,7 @@ async function loadLive(zip) {
 
 function heatNoteFor(mode, liveNote) {
   if (mode === 'none') return liveNote;
-  if (mode === 'unavailable') return 'The HeatRisk forecast is not available for this ZIP. It covers the contiguous United States. The medicine check below still applies.';
+  if (mode === 'unavailable') return "The heat forecast isn't available for this ZIP. HeatRisk covers the contiguous United States. The medicine check below still applies.";
   if (mode === 'error') return 'The National Weather Service forecast could not be reached right now. The medicine check below still applies.';
   return null;
 }
@@ -110,7 +110,16 @@ async function run() {
     } else {
       heatLabel.hidden = true;
     }
-    const plan = evaluate({ medicines, forecast: chosen.week, rules, answerKeys, today: todayIso(), mode: chosen.mode === 'replay' ? 'replay' : 'live', place: chosen.mode === 'replay' ? (saved.place ?? null) : null });
+    // Saved data, whether chosen (replay) or forced (fallback), is a past week: the summary must
+    // never say "today" or "where you live" about it. With no boxes, the summary names why.
+    const savedMode = chosen.mode === 'replay' || chosen.mode === 'fallback';
+    const summaryMode = savedMode ? 'replay'
+      : chosen.mode === 'live' ? 'live'
+      : chosen.mode === 'unavailable' ? 'unavailable'
+      : chosen.mode === 'error' ? 'unreachable'
+      : zip ? 'zip_not_found'
+      : 'no_zip';
+    const plan = evaluate({ medicines, forecast: chosen.week, rules, answerKeys, today: todayIso(), mode: summaryMode, place: savedMode ? (saved.place ?? null) : null });
     summaryArea.replaceChildren(renderSummary(plan));
     planArea.replaceChildren(renderPlanSections(plan));
   }

@@ -30,7 +30,7 @@ Requires Node 20 or newer. No install is needed for the tests.
 node --test
 ```
 
-The print test uses headless Chrome or Edge when one is installed and skips otherwise.
+The print and page-width tests use headless Chrome or Edge when one is installed and skip otherwise.
 
 Live checks against the outside services:
 
@@ -39,6 +39,7 @@ node scripts/smoke-heatrisk.mjs      # HeatRisk at downtown Phoenix
 node scripts/probe-names.mjs         # RxNorm and RxClass for the spec's tricky names
 node scripts/example-plan.mjs        # The Phoenix example as text
 node scripts/check-print.mjs         # Prints the example to PDF and counts pages
+node scripts/check-pages.mjs 375     # Page widths at 375 px, and the Honolulu out-of-area plan
 ```
 
 ## Regenerating the data
