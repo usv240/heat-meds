@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heat Meds App Map</title>
+<meta name="description" content="A compact guide to where things live in Heat Meds: one action traced through the code, where to start a change, and a practice to reuse.">
+<style>
+  :root {
+    --bg: #f8f6f1; --card: #ffffff; --ink: #1f2328; --muted: #58616c; --line: #d8d3c7;
+    --accent: #a84d17; --accent-soft: #fbeadf; --live: #1d5c8a; --live-soft: #e0edf7;
+    --data: #7a5a12; --data-soft: #f8efd6; --ok: #2f7d4f; --ok-soft: #e3f2e8; --code-bg: #f1ede3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15181d; --card: #1f242b; --ink: #eef0f3; --muted: #a5adb8; --line: #353c46;
+      --accent: #f19a5f; --accent-soft: #3a2415; --live: #8cc0ea; --live-soft: #14283a;
+      --data: #e0b85a; --data-soft: #322912; --ok: #7bd39a; --ok-soft: #173322; --code-bg: #262b33;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 18px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.55; }
+  main { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.8rem; margin: 0 0 .3rem; }
+  h2 { font-size: 1.3rem; margin: 2rem 0 .6rem; }
+  h3 { font-size: 1.05rem; margin: 0 0 .3rem; }
+  p { margin: .4rem 0 .8rem; }
+  .muted { color: var(--muted); }
+  .small { font-size: .88rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; padding: 1rem 1.15rem; margin: .8rem 0; }
+  .stop { border-left: 5px solid var(--accent); }
+  .stop .num { display: inline-block; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--accent); color: var(--bg); text-align: center; font-weight: 800; margin-right: .4rem; line-height: 1.7rem; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .88em; background: var(--code-bg); padding: .08rem .35rem; border-radius: .3rem; overflow-wrap: anywhere; }
+  pre { background: var(--code-bg); border-radius: .6rem; padding: .8rem 1rem; overflow-x: auto; font-size: .85rem; margin: .5rem 0; }
+  pre code { background: transparent; padding: 0; }
+  .where { font-size: .9rem; margin: .2rem 0 .5rem; }
+  .badge { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: .12rem .5rem; border-radius: .35rem; background: var(--ok-soft); color: var(--ok); border: 1px solid var(--ok); vertical-align: middle; }
+  .badge.ref { background: var(--live-soft); color: var(--live); border-color: var(--live); }
+  svg { width: 100%; height: auto; display: block; }
+  .legend { display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; font-size: .85rem; color: var(--muted); }
+  .legend span::before { content: ""; display: inline-block; width: .8rem; height: .8rem; border-radius: .2rem; margin-right: .4rem; vertical-align: -.05rem; }
+  .l-code::before { background: var(--accent); }
+  .l-live::before { background: var(--live); }
+  .l-data::before { background: var(--data); }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th, td { text-align: left; vertical-align: top; padding: .5rem .5rem; border-bottom: 1px solid var(--line); }
+  th { font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  .table-wrap { overflow-x: auto; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; margin: .6rem 0; }
+  summary { cursor: pointer; padding: .8rem 1rem; font-weight: 700; }
+  summary:focus-visible, a:focus-visible, .table-wrap:focus-visible { outline: 3px solid var(--live); outline-offset: 2px; }
+  details > div { padding: 0 1rem 1rem; }
+  .practice { border-left: 5px solid var(--ok); }
+  ol.steps li, ul.tight li { margin: .3rem 0; }
+  footer { margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: .8rem; }
+  @media (max-width: 520px) { html { font-size: 17px; } h1 { font-size: 1.5rem; } }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Heat Meds app map</h1>
+<p class="muted">A take-home guide: what the pieces are, one action traced through the code, where to start a change, and a practice worth reusing. Built from the code at commit <code>ed8ddfd</code> on 2026-09-30. It is a snapshot and can drift as the code changes.</p>
+
+<h2>What the app is</h2>
+<p>Three static pages with no server of their own: <code>index.html</code> (entry), <code>plan.html</code> (the printable plan), and <code>evidence.html</code> (the 300-medicine results). Everything runs in the browser from plain JavaScript modules in <code>src/</code>.</p>
+<ul class="tight">
+  <li><strong>Name lookup.</strong> The National Library of Medicine's RxNorm turns what is on the bottle into ingredients; RxClass gives each ingredient its drug-class code.</li>
+  <li><strong>Forecast.</strong> A bundled Census ZIP file gives coordinates; the National Weather Service HeatRisk service gives seven days of heat risk, or an honest note when it cannot.</li>
+  <li><strong>Rules engine.</strong> <code>src/rules.js</code> matches classes against <code>data/cdc-rules.json</code>, the hand-checked CDC table. Every card's words come from that file, with the exact CDC quote.</li>
+  <li><strong>Evidence run.</strong> <code>scripts/run-evidence.mjs</code> pushes 300 real prescriptions through the same modules and writes the numbers the Evidence page shows.</li>
+</ul>
+
+<h2>One action, traced</h2>
+<p>Someone types <strong>Lasix</strong>, enters ZIP <strong>85004</strong>, and presses <strong>See my plan</strong>.</p>
+<div class="card">
+  <svg viewBox="0 0 860 330" role="img" aria-labelledby="mapTitle mapDesc">
+    <title id="mapTitle">From typed name and ZIP to the printed plan</title>
+    <desc id="mapDesc">Lasix goes to resolveMedicine in src/rxnorm.js, which asks RxNorm, then classifyMedicine in src/rxclass.js, which asks RxClass. ZIP 85004 goes to lookupZip in src/zip.js, then forecastFor and chooseWeek in src/heatrisk.js, which ask HeatRisk. Both results meet in evaluate in src/rules.js, which reads data/cdc-rules.json. renderPlanSections in src/plan-render.js draws the plan the person sees.</desc>
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+    </defs>
+    <g stroke="var(--muted)" stroke-width="2" fill="none" marker-end="url(#arr)">
+      <path d="M130,60 L175,60"/>
+      <path d="M345,60 L390,60"/>
+      <path d="M130,210 L175,210"/>
+      <path d="M345,210 L390,210"/>
+      <path d="M560,60 C600,60 600,135 632,135"/>
+      <path d="M560,210 C600,210 600,150 632,150"/>
+      <path d="M745,175 L745,245"/>
+    </g>
+    <g stroke="var(--live)" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
+      <path d="M260,85 L260,112"/>
+      <path d="M475,85 L475,112"/>
+      <path d="M475,235 L475,262"/>
+    </g>
+    <g stroke="var(--data)" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
+      <path d="M745,105 L745,92"/>
+    </g>
+    <g font-family="system-ui, sans-serif">
+      <rect x="10" y="35" width="120" height="50" rx="10" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+      <text x="70" y="65" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">"Lasix"</text>
+      <rect x="10" y="185" width="120" height="50" rx="10" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+      <text x="70" y="215" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">ZIP 85004</text>
+
+      <rect x="175" y="35" width="170" height="50" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="260" y="56" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">resolveMedicine</text>
+      <text x="260" y="74" text-anchor="middle" font-size="11.5" fill="var(--accent)">src/rxnorm.js</text>
+      <rect x="390" y="35" width="170" height="50" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="475" y="56" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">classifyMedicine</text>
+      <text x="475" y="74" text-anchor="middle" font-size="11.5" fill="var(--accent)">src/rxclass.js</text>
+
+      <rect x="175" y="185" width="170" height="50" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="260" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">lookupZip</text>
+      <text x="260" y="224" text-anchor="middle" font-size="11.5" fill="var(--accent)">src/zip.js</text>
+      <rect x="390" y="185" width="170" height="50" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="475" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">forecastFor, chooseWeek</text>
+      <text x="475" y="224" text-anchor="middle" font-size="11.5" fill="var(--accent)">src/heatrisk.js</text>
+
+      <rect x="185" y="112" width="150" height="34" rx="8" fill="var(--live-soft)" stroke="var(--live)"/>
+      <text x="260" y="134" text-anchor="middle" font-size="12" fill="var(--live)">NLM RxNorm</text>
+      <rect x="400" y="112" width="150" height="34" rx="8" fill="var(--live-soft)" stroke="var(--live)"/>
+      <text x="475" y="134" text-anchor="middle" font-size="12" fill="var(--live)">NLM RxClass</text>
+      <rect x="400" y="262" width="150" height="34" rx="8" fill="var(--live-soft)" stroke="var(--live)"/>
+      <text x="475" y="284" text-anchor="middle" font-size="12" fill="var(--live)">NWS HeatRisk</text>
+
+      <rect x="640" y="58" width="210" height="34" rx="8" fill="var(--data-soft)" stroke="var(--data)"/>
+      <text x="745" y="80" text-anchor="middle" font-size="12" fill="var(--data)">data/cdc-rules.json</text>
+      <rect x="632" y="105" width="226" height="70" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="745" y="133" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">evaluate</text>
+      <text x="745" y="153" text-anchor="middle" font-size="11.5" fill="var(--accent)">src/rules.js</text>
+      <rect x="632" y="245" width="226" height="70" rx="10" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+      <text x="745" y="272" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">The plan on screen</text>
+      <text x="745" y="292" text-anchor="middle" font-size="11.5" fill="var(--muted)">renderPlanSections, src/plan-render.js</text>
+    </g>
+  </svg>
+  <div class="legend"><span class="l-code">Code in this repo</span><span class="l-live">Outside service, called live</span><span class="l-data">Hand-checked data file</span></div>
+</div>
+
+<h2>The route <span class="badge ref">reference route</span></h2>
+<p class="small muted">Three stops, in the order the action runs. Open each file and search for the quoted text. This route was not toured live in the session; it is here to use when you come back to the code.</p>
+
+<div class="card stop">
+  <h3><span class="num">1</span>Name to ingredients</h3>
+  <p class="where"><code>src/rxnorm.js</code>, search <code>export async function resolveMedicine</code>; then <code>src/rxclass.js</code>, search <code>export async function classifyMedicine</code></p>
+  <p><code>normalizeName</code> strips dose and form words, so "Lasix 40 mg" becomes "lasix". An exact RxNorm match resolves; anything approximate comes back as a "did you mean" that the person must tap, so the app never guesses. RxClass then adds the drug-class code (furosemide gets C03CA, a loop diuretic), keeping only rows for the ingredient itself.</p>
+</div>
+
+<div class="card stop">
+  <h3><span class="num">2</span>ZIP to a heat week, or an honest note</h3>
+  <p class="where"><code>src/heatrisk.js</code>, search <code>export function insideForecastArea</code>, <code>export async function forecastFor</code>, and <code>export function chooseWeek</code></p>
+  <p>Points outside the contiguous United States are "not available" before any call is made, and the service's own "not covered" error counts the same way. Only a real outage falls back to the saved Phoenix heat wave, and <code>chooseWeek</code> labels it. This is the stop to read if a place ever shows the wrong heat.</p>
+</div>
+
+<div class="card stop">
+  <h3><span class="num">3</span>Medicines and week to the plan</h3>
+  <p class="where"><code>src/rules.js</code>, search <code>export function evaluate</code> and <code>function summarize</code>; drawn by <code>src/plan-render.js</code>, search <code>export function renderPlanSections</code></p>
+  <p><code>evaluate</code> is pure: no network, no page. It builds cards from <code>data/cdc-rules.json</code> only, adds one combination warning at most, and lets the weather change nothing but the summary and each card's "this week" line. The same function runs in the browser, the tests, and the evidence run, which is why the Evidence page describes the code the site runs.</p>
+</div>
+
+<h2>To change this, start here</h2>
+<div class="table-wrap" tabindex="0">
+<table>
+  <thead><tr><th>You want to change</th><th>Start in</th><th>Then check with</th></tr></thead>
+  <tbody>
+    <tr><td>A card's wording, or add a CDC class</td><td><code>data/cdc-rules.json</code></td><td><code>node --test</code> (a rule without a CDC quote refuses to load)</td></tr>
+    <tr><td>The summary line at the top of the plan</td><td><code>function summarize</code> in <code>src/rules.js</code></td><td><code>test/forecast-modes.test.mjs</code> holds the exact strings</td></tr>
+    <tr><td>Which places get a forecast</td><td><code>CONUS_BOUNDS</code> in <code>src/heatrisk.js</code></td><td><code>node scripts/check-pages.mjs 375</code> (includes Honolulu)</td></tr>
+    <tr><td>Heat colors or their words</td><td><code>LEVELS</code> in <code>src/heatrisk.js</code></td><td><code>node --test</code></td></tr>
+    <tr><td>How typed names are cleaned</td><td><code>normalizeName</code> in <code>src/rxnorm.js</code></td><td><code>test/rxnorm.test.mjs</code>, <code>node scripts/probe-names.mjs</code></td></tr>
+    <tr><td>The printed page</td><td><code>assets/print.css</code></td><td><code>node scripts/check-print.mjs</code> (must stay one page)</td></tr>
+    <tr><td>How UK or Canadian guidance is mapped</td><td><code>data/answer-keys/</code></td><td><code>node scripts/run-evidence.mjs</code>; record why, since the keys were committed before the first run</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>A practice to reuse</h2>
+<div class="card practice">
+  <p><strong>For every "must never" requirement, test it with a real input from the edge of coverage, and make the test prove it can fail.</strong></p>
+  <p><strong>The decision.</strong> The product requirements separated two cases on purpose: a ZIP outside the forecast area shows a note, and only a service outage shows labeled saved data (<code>devpost/prd.md</code>, "Entering the ZIP and getting the forecast").</p>
+  <p><strong>The evidence.</strong> Every test passed on Phoenix fixtures. A real Honolulu ZIP, tried during final review, showed the Phoenix heat wave with "Wed is an Extreme heat risk day where you live." The service reports "not covered" as an error inside a normal reply, which no fixture contained. Because the requirement was precise, the failure was obvious, and it became two sharper rules and a test (<code>test/forecast-modes.test.mjs</code>, commit <code>ed8ddfd</code>). While writing that test, a guard check showed the first version of the "never say today" pattern could not fail at all. The fix was a test that runs the pattern against a known-bad sentence.</p>
+  <p><strong>On the next project.</strong> Next to each happy-path example, add the input most likely to be different from what you built on: another region, an empty list, a service error. Beside every "never" check, assert that it catches one sentence it is meant to catch.</p>
+</div>
+<details>
+  <summary>The same pattern, found by the 300-medicine run</summary>
+  <div>
+    <p>Hand-picked examples all resolved to drug classes. The 300 most-prescribed medicines did not: olmesartan (a blood pressure medicine) and isosorbide (a nitrate) were missed because RxClass files their class codes under a precise form, such as olmesartan medoxomil. The fix is <code>async function classesViaPreciseForms</code> in <code>src/rxclass.js</code> (commit <code>d662dd7</code>). Real outside data exposed what the fixtures could not.</p>
+  </div>
+</details>
+
+<h2>Run it again</h2>
+<pre><code>python -m http.server 8000     # then open http://localhost:8000/
+node --test                    # 67 tests; print and page checks need Chrome or Edge
+node scripts/check-print.mjs   # the Phoenix example prints on one page
+node scripts/check-pages.mjs 375
+node scripts/run-evidence.mjs  # regenerates the Evidence page numbers</code></pre>
+
+<footer>
+  <p class="small muted">Heat Meds, a proof of concept for the Devpost Build With AI: Basics hackathon. MIT license. This map is a static page with no scripts and no network access.</p>
+</footer>
+</main>
+</body>
+</html>

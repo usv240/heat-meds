@@ -83,29 +83,29 @@ Agreed order from `scope.md` and `spec.md`: HeatRisk smoke check first, then the
 
 ## Hands-on Checkpoints
 
-- [x] Early usable behavior explored — after slice 2, the Phoenix example with real forecast and the rules-file curation pass
-- [x] Full user-facing app explored — after slice 5, before the evidence work begins
-- [ ] Final kick-the-tires exploration and feedback completed
+- [x] Early usable behavior explored: after slice 2, the Phoenix example with real forecast and the rules-file curation pass
+- [x] Full user-facing app explored: after slice 5, before the evidence work begins
+- [x] Final kick-the-tires exploration and feedback completed: learner explored every page at 375 px and desktop, light and dark, and reported the Hawaii saved-data bug, the Evidence overflow, and the 300-row table decision
 
 ## Final Review
 
-- [ ] Hawaii, Alaska, Puerto Rico, and territory ZIPs show "The heat forecast isn't available for this ZIP" with no boxes, never the saved heat wave. Verified: points outside the contiguous US are rejected before any call; an HTTP 400 or an ArcGIS error body with code 400 is treated as not covered; only a real failure uses saved data. Tests in `test/forecast-modes.test.mjs`; browser check `scripts/check-pages.mjs` (Honolulu 96813: 0 boxes). Awaiting learner retry.
-- [ ] Saved or replay data never says "today" or "where you live". Verified: replay and fallback both use the past-heat-wave wording; with no boxes the summary names what happened to the ZIP. Awaiting learner retry.
-- [ ] Evidence page fits 375 px. Verified: wide tables scroll inside their own box; `scripts/check-pages.mjs` measures 552 px before and 375 px after. Awaiting learner retry.
+- [x] Hawaii, Alaska, Puerto Rico, and territory ZIPs show "The heat forecast isn't available for this ZIP" with no boxes, never the saved heat wave. Verified: points outside the contiguous US are rejected before any call; an HTTP 400 or an ArcGIS error body with code 400 is treated as not covered; only a real failure uses saved data. Tests in `test/forecast-modes.test.mjs`; browser check `scripts/check-pages.mjs` (Honolulu 96813: 0 boxes). Learner retried and confirmed.
+- [x] Saved or replay data never says "today" or "where you live". Verified: replay and fallback both use the past-heat-wave wording; with no boxes the summary names what happened to the ZIP. Learner retried and confirmed.
+- [x] Evidence page fits 375 px. Verified: wide tables scroll inside their own box; `scripts/check-pages.mjs` measures 552 px before and 375 px after. Learner retried and confirmed.
 - [x] 300-row table stays collapsed, as the learner decided. No change.
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete: feedback resolved, 67 tests pass, and the learner retried Hawaii 96813, Alaska 99501, Puerto Rico 00901, the Evidence page on a phone, and the replay summary, then confirmed "It's ready to ship."
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete: guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed: offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: [not started]
-Route and stops: [not started]
-Edit outcome: [not started]
-Reflection: [not started]
-Activity mode: [not started]
+Activity and evidence: Prior practice connected. The desired outcome was requirements precise enough to test and proof with real outside data. Both were practiced in the final review: a real Honolulu ZIP showed saved Phoenix data as local weather, which broke the out-of-area criterion in `prd.md > Features and Behavior > Entering the ZIP and getting the forecast`. The learner turned it into two sharper requirements (only a real outage uses saved data; saved data never says "today" or "where you live") and asked for a test covering replay and fallback. Evidence: `test/forecast-modes.test.mjs`, `scripts/check-pages.mjs`, commit ed8ddfd, and the learner's retry of 96813, 99501, and 00901. A second example of the same practice: the 300-medicine run found the precise-form drug-class gap (`classesViaPreciseForms` in `src/rxclass.js`, commit d662dd7).
+Route and stops: Reference-only route in the app map, not toured live. 1) `src/rxnorm.js` `resolveMedicine`, then `src/rxclass.js` `classifyMedicine`. 2) `src/heatrisk.js` `insideForecastArea`, `forecastFor`, `chooseWeek`. 3) `src/rules.js` `evaluate` and `summarize`, drawn by `src/plan-render.js` `renderPlanSections`.
+Edit outcome: Offered as optional at hand-off; no code changed as part of the wrap-up.
+Reflection: Offered at hand-off ("What would you do differently next time you start with an agent?"). Any answer is kept in the ignored learner profile.
+Activity mode: Prior practice connected, with a static reference route and the app map. Map checked by script (16 paths, 13 anchors, 2 commits, test count) and rendered in light and dark mode with headless Chrome.
 
 ## Revisions
 
