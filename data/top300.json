@@ -1,0 +1,3859 @@
+{
+  "title": "The 300 most-prescribed US medicines, by ingredient",
+  "source": {
+    "title": "AHRQ Medical Expenditure Panel Survey, HC-254A: 2024 Prescribed Medicines File (public domain)",
+    "url": "https://meps.ahrq.gov/mepsweb/data_stats/download_data_files_detail.jsp?cboPufNumber=HC-254A",
+    "layout": "https://meps.ahrq.gov/data_stats/download_data/pufs/h254a/h254aru.txt"
+  },
+  "method": [
+    "Each MEPS record is one household-reported prescription fill in 2024. Fills whose drug name MEPS masked with a therapeutic-class placeholder (RXNDC = -15) were dropped.",
+    "Fills were grouped by RXDRGNAM (the MEPS normalized drug name) and weighted by PERWT24F, the full-year person weight, so each fill counts for the people it represents nationally.",
+    "The 428 highest-weight names were resolved to RxNorm ingredients with the same rxnorm.js module the site uses. A combination product credits its full weight to each ingredient. Precise ingredients (for example metoprolol succinate) were merged into their base ingredient.",
+    "Ingredients were ranked by total weight and the top 300 kept. Weighted fills are rounded."
+  ],
+  "derived_on": "2026-09-30",
+  "fill_rows": 204550,
+  "masked_rows_dropped": 17006,
+  "distinct_names": 428,
+  "names_resolved": 410,
+  "names_unresolved": [
+    {
+      "name": "EMTRICITABINE-TENOFOVIR",
+      "weight": 2603696.7363680024
+    },
+    {
+      "name": "OCULAR LUBRICANT",
+      "weight": 2395797.269861999
+    },
+    {
+      "name": "OMEGA-3 POLYUNSATURATED FATTY ACIDS",
+      "weight": 2218266.552456997
+    },
+    {
+      "name": "MULTIVITAMIN",
+      "weight": 1976322.7815009977
+    },
+    {
+      "name": "MULTIVITAMIN, PRENATAL",
+      "weight": 1513140.4755339995
+    },
+    {
+      "name": "MULTIVITAMIN WITH IRON",
+      "weight": 1338055.521544
+    },
+    {
+      "name": "CALCIUM-VITAMIN D",
+      "weight": 1313968.4868529984
+    },
+    {
+      "name": "MULTIVITAMIN WITH MINERALS",
+      "weight": 1034524.5351839993
+    },
+    {
+      "name": "POLYETHYLENE GLYCOL 3350 WITH ELECTROLYTES",
+      "weight": 993988.6338029997
+    },
+    {
+      "name": "FLUORIDE TOPICAL",
+      "weight": 939797.297087
+    },
+    {
+      "name": "MULTIVITAMIN WITH FLUORIDE",
+      "weight": 742714.9263220002
+    },
+    {
+      "name": "FLUORIDE",
+      "weight": 636312.7462659999
+    },
+    {
+      "name": "SULFACETAMIDE SODIUM-SULFUR TOPICAL",
+      "weight": 558534.289529
+    },
+    {
+      "name": "EMOLLIENTS, TOPICAL",
+      "weight": 221417.66455299998
+    },
+    {
+      "name": "ELECTROLYTE REPLACEMENT SOLUTIONS, ORAL",
+      "weight": 190087.51327399997
+    },
+    {
+      "name": "POLYCARBOPHIL",
+      "weight": 142359.549974
+    },
+    {
+      "name": "POTASSIUM BICARBONATE-POTASSIUM CHLORIDE",
+      "weight": 98917.849697
+    },
+    {
+      "name": "MULTIVITAMIN WITH IRON AND FLUORIDE",
+      "weight": 55146.358549
+    }
+  ],
+  "approximate_matches_accepted": [
+    {
+      "meps_name": "nirmatrelvir ritonavir",
+      "rxnorm": "{10 (nirmatrelvir 150 MG Oral Tablet) / 10 (ritonavir 100 MG Oral Tablet) } Pack"
+    },
+    {
+      "meps_name": "insulin isophane insulin",
+      "rxnorm": "insulin isophane"
+    },
+    {
+      "meps_name": "budesonide formoterol glycopyrrolate",
+      "rxnorm": "budesonide / formoterol fumarate / glycopyrrolate Inhalant Product"
+    },
+    {
+      "meps_name": "potassium phosphate sodium phosphate",
+      "rxnorm": "potassium phosphate / sodium phosphate, monobasic"
+    }
+  ],
+  "approximate_matches_rejected": [
+    {
+      "meps_name": "omega polyunsaturated fatty acids",
+      "rejected_candidate": "omega-3 fatty acids"
+    },
+    {
+      "meps_name": "polyethylene glycol electrolytes",
+      "rejected_candidate": "polyethylene glycols"
+    }
+  ],
+  "sanity_check": {
+    "note": "Compare the top 20 below with published top-drug rankings for comparison only; those rankings are not reproduced here.",
+    "top20": [
+      "atorvastatin",
+      "metformin",
+      "levothyroxine",
+      "lisinopril",
+      "amlodipine",
+      "losartan",
+      "albuterol",
+      "metoprolol",
+      "rosuvastatin",
+      "hydrochlorothiazide",
+      "omeprazole",
+      "gabapentin",
+      "sertraline",
+      "fluticasone",
+      "escitalopram",
+      "semaglutide",
+      "dextroamphetamine",
+      "amphetamine",
+      "acetaminophen",
+      "pantoprazole"
+    ]
+  },
+  "medicines": [
+    {
+      "rank": 1,
+      "ingredient": "atorvastatin",
+      "rxcuis": [
+        "83367"
+      ],
+      "weighted_fills": 115776198,
+      "fills": 8281,
+      "meps_names": [
+        "ATORVASTATIN"
+      ]
+    },
+    {
+      "rank": 2,
+      "ingredient": "metformin",
+      "rxcuis": [
+        "6809"
+      ],
+      "weighted_fills": 82567253,
+      "fills": 5633,
+      "meps_names": [
+        "METFORMIN"
+      ]
+    },
+    {
+      "rank": 3,
+      "ingredient": "levothyroxine",
+      "rxcuis": [
+        "10582"
+      ],
+      "weighted_fills": 82380628,
+      "fills": 5525,
+      "meps_names": [
+        "LEVOTHYROXINE"
+      ]
+    },
+    {
+      "rank": 4,
+      "ingredient": "lisinopril",
+      "rxcuis": [
+        "29046"
+      ],
+      "weighted_fills": 75886216,
+      "fills": 5518,
+      "meps_names": [
+        "LISINOPRIL",
+        "HYDROCHLOROTHIAZIDE-LISINOPRIL"
+      ]
+    },
+    {
+      "rank": 5,
+      "ingredient": "amlodipine",
+      "rxcuis": [
+        "17767"
+      ],
+      "weighted_fills": 73987552,
+      "fills": 5339,
+      "meps_names": [
+        "AMLODIPINE",
+        "AMLODIPINE-BENAZEPRIL"
+      ]
+    },
+    {
+      "rank": 6,
+      "ingredient": "losartan",
+      "rxcuis": [
+        "52175"
+      ],
+      "weighted_fills": 66749284,
+      "fills": 4648,
+      "meps_names": [
+        "LOSARTAN",
+        "HYDROCHLOROTHIAZIDE-LOSARTAN"
+      ]
+    },
+    {
+      "rank": 7,
+      "ingredient": "albuterol",
+      "rxcuis": [
+        "435"
+      ],
+      "weighted_fills": 65908602,
+      "fills": 4587,
+      "meps_names": [
+        "ALBUTEROL",
+        "ALBUTEROL-IPRATROPIUM"
+      ]
+    },
+    {
+      "rank": 8,
+      "ingredient": "metoprolol",
+      "rxcuis": [
+        "6918"
+      ],
+      "weighted_fills": 58253383,
+      "fills": 4334,
+      "meps_names": [
+        "METOPROLOL"
+      ]
+    },
+    {
+      "rank": 9,
+      "ingredient": "rosuvastatin",
+      "rxcuis": [
+        "301542"
+      ],
+      "weighted_fills": 53766324,
+      "fills": 3608,
+      "meps_names": [
+        "ROSUVASTATIN"
+      ]
+    },
+    {
+      "rank": 10,
+      "ingredient": "hydrochlorothiazide",
+      "rxcuis": [
+        "5487"
+      ],
+      "weighted_fills": 53358298,
+      "fills": 3922,
+      "meps_names": [
+        "HYDROCHLOROTHIAZIDE",
+        "HYDROCHLOROTHIAZIDE-LISINOPRIL",
+        "HYDROCHLOROTHIAZIDE-LOSARTAN",
+        "HYDROCHLOROTHIAZIDE-TRIAMTERENE"
+      ]
+    },
+    {
+      "rank": 11,
+      "ingredient": "omeprazole",
+      "rxcuis": [
+        "7646"
+      ],
+      "weighted_fills": 49725708,
+      "fills": 3379,
+      "meps_names": [
+        "OMEPRAZOLE"
+      ]
+    },
+    {
+      "rank": 12,
+      "ingredient": "gabapentin",
+      "rxcuis": [
+        "25480"
+      ],
+      "weighted_fills": 46937114,
+      "fills": 3489,
+      "meps_names": [
+        "GABAPENTIN"
+      ]
+    },
+    {
+      "rank": 13,
+      "ingredient": "sertraline",
+      "rxcuis": [
+        "36437"
+      ],
+      "weighted_fills": 44634056,
+      "fills": 2591,
+      "meps_names": [
+        "SERTRALINE"
+      ]
+    },
+    {
+      "rank": 14,
+      "ingredient": "fluticasone",
+      "rxcuis": [
+        "41126"
+      ],
+      "weighted_fills": 42854319,
+      "fills": 2963,
+      "meps_names": [
+        "FLUTICASONE NASAL",
+        "FLUTICASONE-SALMETEROL",
+        "FLUTICASONE/UMECLIDINIUM/VILANTEROL",
+        "FLUTICASONE",
+        "FLUTICASONE-VILANTEROL",
+        "AZELASTINE-FLUTICASONE NASAL"
+      ]
+    },
+    {
+      "rank": 15,
+      "ingredient": "escitalopram",
+      "rxcuis": [
+        "321988"
+      ],
+      "weighted_fills": 41800787,
+      "fills": 2444,
+      "meps_names": [
+        "ESCITALOPRAM"
+      ]
+    },
+    {
+      "rank": 16,
+      "ingredient": "semaglutide",
+      "rxcuis": [
+        "1991302"
+      ],
+      "weighted_fills": 41184050,
+      "fills": 2553,
+      "meps_names": [
+        "SEMAGLUTIDE"
+      ]
+    },
+    {
+      "rank": 17,
+      "ingredient": "dextroamphetamine",
+      "rxcuis": [
+        "3288"
+      ],
+      "weighted_fills": 38788652,
+      "fills": 2069,
+      "meps_names": [
+        "AMPHETAMINE-DEXTROAMPHETAMINE",
+        "DEXTROAMPHETAMINE"
+      ]
+    },
+    {
+      "rank": 18,
+      "ingredient": "amphetamine",
+      "rxcuis": [
+        "725"
+      ],
+      "weighted_fills": 36934740,
+      "fills": 1959,
+      "meps_names": [
+        "AMPHETAMINE-DEXTROAMPHETAMINE"
+      ]
+    },
+    {
+      "rank": 19,
+      "ingredient": "acetaminophen",
+      "rxcuis": [
+        "161"
+      ],
+      "weighted_fills": 35942803,
+      "fills": 2575,
+      "meps_names": [
+        "ACETAMINOPHEN-HYDROCODONE",
+        "ACETAMINOPHEN-OXYCODONE",
+        "ACETAMINOPHEN",
+        "ACETAMINOPHEN-CODEINE",
+        "ACETAMINOPHEN/BUTALBITAL/CAFFEINE"
+      ]
+    },
+    {
+      "rank": 20,
+      "ingredient": "pantoprazole",
+      "rxcuis": [
+        "40790"
+      ],
+      "weighted_fills": 34940432,
+      "fills": 2395,
+      "meps_names": [
+        "PANTOPRAZOLE"
+      ]
+    },
+    {
+      "rank": 21,
+      "ingredient": "bupropion",
+      "rxcuis": [
+        "42347"
+      ],
+      "weighted_fills": 34914025,
+      "fills": 2029,
+      "meps_names": [
+        "BUPROPION"
+      ]
+    },
+    {
+      "rank": 22,
+      "ingredient": "amoxicillin",
+      "rxcuis": [
+        "723"
+      ],
+      "weighted_fills": 34671428,
+      "fills": 1945,
+      "meps_names": [
+        "AMOXICILLIN",
+        "AMOXICILLIN-CLAVULANATE"
+      ]
+    },
+    {
+      "rank": 23,
+      "ingredient": "ethinyl estradiol",
+      "rxcuis": [
+        "4124"
+      ],
+      "weighted_fills": 30497690,
+      "fills": 1251,
+      "meps_names": [
+        "ETHINYL ESTRADIOL-NORETHINDRONE",
+        "ETHINYL ESTRADIOL-NORGESTIMATE",
+        "ETHINYL ESTRADIOL-ETONOGESTREL",
+        "ETHINYL ESTRADIOL-LEVONORGESTREL",
+        "DROSPIRENONE-ETHINYL ESTRADIOL",
+        "ETHINYL ESTRADIOL-NORELGESTROMIN"
+      ]
+    },
+    {
+      "rank": 24,
+      "ingredient": "fluoxetine",
+      "rxcuis": [
+        "4493"
+      ],
+      "weighted_fills": 29517276,
+      "fills": 1631,
+      "meps_names": [
+        "FLUOXETINE"
+      ]
+    },
+    {
+      "rank": 25,
+      "ingredient": "trazodone",
+      "rxcuis": [
+        "10737"
+      ],
+      "weighted_fills": 26159532,
+      "fills": 1688,
+      "meps_names": [
+        "TRAZODONE"
+      ]
+    },
+    {
+      "rank": 26,
+      "ingredient": "montelukast",
+      "rxcuis": [
+        "88249"
+      ],
+      "weighted_fills": 25780477,
+      "fills": 1720,
+      "meps_names": [
+        "MONTELUKAST"
+      ]
+    },
+    {
+      "rank": 27,
+      "ingredient": "tamsulosin",
+      "rxcuis": [
+        "77492"
+      ],
+      "weighted_fills": 22619048,
+      "fills": 1620,
+      "meps_names": [
+        "TAMSULOSIN"
+      ]
+    },
+    {
+      "rank": 28,
+      "ingredient": "apixaban",
+      "rxcuis": [
+        "1364430"
+      ],
+      "weighted_fills": 21857073,
+      "fills": 1695,
+      "meps_names": [
+        "APIXABAN"
+      ]
+    },
+    {
+      "rank": 29,
+      "ingredient": "insulin glargine",
+      "rxcuis": [
+        "274783"
+      ],
+      "weighted_fills": 21827210,
+      "fills": 1578,
+      "meps_names": [
+        "INSULIN GLARGINE"
+      ]
+    },
+    {
+      "rank": 30,
+      "ingredient": "simvastatin",
+      "rxcuis": [
+        "36567"
+      ],
+      "weighted_fills": 21477296,
+      "fills": 1588,
+      "meps_names": [
+        "SIMVASTATIN"
+      ]
+    },
+    {
+      "rank": 31,
+      "ingredient": "oxycodone",
+      "rxcuis": [
+        "7804"
+      ],
+      "weighted_fills": 21396789,
+      "fills": 1508,
+      "meps_names": [
+        "OXYCODONE",
+        "ACETAMINOPHEN-OXYCODONE"
+      ]
+    },
+    {
+      "rank": 32,
+      "ingredient": "empagliflozin",
+      "rxcuis": [
+        "1545653"
+      ],
+      "weighted_fills": 20797026,
+      "fills": 1532,
+      "meps_names": [
+        "EMPAGLIFLOZIN"
+      ]
+    },
+    {
+      "rank": 33,
+      "ingredient": "furosemide",
+      "rxcuis": [
+        "4603"
+      ],
+      "weighted_fills": 20051956,
+      "fills": 1571,
+      "meps_names": [
+        "FUROSEMIDE"
+      ]
+    },
+    {
+      "rank": 34,
+      "ingredient": "meloxicam",
+      "rxcuis": [
+        "41493"
+      ],
+      "weighted_fills": 19699162,
+      "fills": 1304,
+      "meps_names": [
+        "MELOXICAM"
+      ]
+    },
+    {
+      "rank": 35,
+      "ingredient": "hydrocodone",
+      "rxcuis": [
+        "5489"
+      ],
+      "weighted_fills": 19345020,
+      "fills": 1476,
+      "meps_names": [
+        "ACETAMINOPHEN-HYDROCODONE",
+        "HOMATROPINE-HYDROCODONE",
+        "HYDROCODONE",
+        "CHLORPHENIRAMINE-HYDROCODONE"
+      ]
+    },
+    {
+      "rank": 36,
+      "ingredient": "tirzepatide",
+      "rxcuis": [
+        "2601723"
+      ],
+      "weighted_fills": 18827849,
+      "fills": 1110,
+      "meps_names": [
+        "TIRZEPATIDE"
+      ]
+    },
+    {
+      "rank": 37,
+      "ingredient": "methylphenidate",
+      "rxcuis": [
+        "6901"
+      ],
+      "weighted_fills": 18572946,
+      "fills": 967,
+      "meps_names": [
+        "METHYLPHENIDATE"
+      ]
+    },
+    {
+      "rank": 38,
+      "ingredient": "duloxetine",
+      "rxcuis": [
+        "72625"
+      ],
+      "weighted_fills": 17860264,
+      "fills": 1378,
+      "meps_names": [
+        "DULOXETINE"
+      ]
+    },
+    {
+      "rank": 39,
+      "ingredient": "prednisone",
+      "rxcuis": [
+        "8640"
+      ],
+      "weighted_fills": 17833597,
+      "fills": 1177,
+      "meps_names": [
+        "PREDNISONE"
+      ]
+    },
+    {
+      "rank": 40,
+      "ingredient": "carvedilol",
+      "rxcuis": [
+        "20352"
+      ],
+      "weighted_fills": 17059037,
+      "fills": 1366,
+      "meps_names": [
+        "CARVEDILOL"
+      ]
+    },
+    {
+      "rank": 41,
+      "ingredient": "famotidine",
+      "rxcuis": [
+        "4278"
+      ],
+      "weighted_fills": 16999827,
+      "fills": 1214,
+      "meps_names": [
+        "FAMOTIDINE"
+      ]
+    },
+    {
+      "rank": 42,
+      "ingredient": "ibuprofen",
+      "rxcuis": [
+        "5640"
+      ],
+      "weighted_fills": 16808954,
+      "fills": 1036,
+      "meps_names": [
+        "IBUPROFEN"
+      ]
+    },
+    {
+      "rank": 43,
+      "ingredient": "buspirone",
+      "rxcuis": [
+        "1827"
+      ],
+      "weighted_fills": 16718781,
+      "fills": 1049,
+      "meps_names": [
+        "BUSPIRONE"
+      ]
+    },
+    {
+      "rank": 44,
+      "ingredient": "venlafaxine",
+      "rxcuis": [
+        "39786"
+      ],
+      "weighted_fills": 16273306,
+      "fills": 972,
+      "meps_names": [
+        "VENLAFAXINE"
+      ]
+    },
+    {
+      "rank": 45,
+      "ingredient": "norethindrone",
+      "rxcuis": [
+        "7514"
+      ],
+      "weighted_fills": 15813214,
+      "fills": 678,
+      "meps_names": [
+        "ETHINYL ESTRADIOL-NORETHINDRONE",
+        "NORETHINDRONE"
+      ]
+    },
+    {
+      "rank": 46,
+      "ingredient": "potassium chloride",
+      "rxcuis": [
+        "8591"
+      ],
+      "weighted_fills": 15314765,
+      "fills": 1166,
+      "meps_names": [
+        "POTASSIUM CHLORIDE",
+        "MAGNESIUM SULFATE/POTASSIUM CHLORIDE/SODIUM SULFATE"
+      ]
+    },
+    {
+      "rank": 47,
+      "ingredient": "tramadol",
+      "rxcuis": [
+        "10689"
+      ],
+      "weighted_fills": 14950505,
+      "fills": 1083,
+      "meps_names": [
+        "TRAMADOL"
+      ]
+    },
+    {
+      "rank": 48,
+      "ingredient": "allopurinol",
+      "rxcuis": [
+        "519"
+      ],
+      "weighted_fills": 14857746,
+      "fills": 1080,
+      "meps_names": [
+        "ALLOPURINOL"
+      ]
+    },
+    {
+      "rank": 49,
+      "ingredient": "hydroxyzine",
+      "rxcuis": [
+        "5553"
+      ],
+      "weighted_fills": 14857241,
+      "fills": 961,
+      "meps_names": [
+        "HYDROXYZINE"
+      ]
+    },
+    {
+      "rank": 50,
+      "ingredient": "clopidogrel",
+      "rxcuis": [
+        "32968"
+      ],
+      "weighted_fills": 14613274,
+      "fills": 1105,
+      "meps_names": [
+        "CLOPIDOGREL"
+      ]
+    },
+    {
+      "rank": 51,
+      "ingredient": "ergocalciferol",
+      "rxcuis": [
+        "4018"
+      ],
+      "weighted_fills": 14478963,
+      "fills": 980,
+      "meps_names": [
+        "ERGOCALCIFEROL"
+      ]
+    },
+    {
+      "rank": 52,
+      "ingredient": "cetirizine",
+      "rxcuis": [
+        "20610"
+      ],
+      "weighted_fills": 14363215,
+      "fills": 995,
+      "meps_names": [
+        "CETIRIZINE"
+      ]
+    },
+    {
+      "rank": 53,
+      "ingredient": "valsartan",
+      "rxcuis": [
+        "69749"
+      ],
+      "weighted_fills": 13818330,
+      "fills": 992,
+      "meps_names": [
+        "VALSARTAN",
+        "SACUBITRIL-VALSARTAN"
+      ]
+    },
+    {
+      "rank": 54,
+      "ingredient": "ondansetron",
+      "rxcuis": [
+        "26225"
+      ],
+      "weighted_fills": 13794024,
+      "fills": 798,
+      "meps_names": [
+        "ONDANSETRON"
+      ]
+    },
+    {
+      "rank": 55,
+      "ingredient": "cyclobenzaprine",
+      "rxcuis": [
+        "21949"
+      ],
+      "weighted_fills": 13771868,
+      "fills": 1017,
+      "meps_names": [
+        "CYCLOBENZAPRINE"
+      ]
+    },
+    {
+      "rank": 56,
+      "ingredient": "spironolactone",
+      "rxcuis": [
+        "9997"
+      ],
+      "weighted_fills": 13427857,
+      "fills": 910,
+      "meps_names": [
+        "SPIRONOLACTONE"
+      ]
+    },
+    {
+      "rank": 57,
+      "ingredient": "estradiol",
+      "rxcuis": [
+        "4083"
+      ],
+      "weighted_fills": 12891354,
+      "fills": 807,
+      "meps_names": [
+        "ESTRADIOL",
+        "ESTRADIOL TOPICAL"
+      ]
+    },
+    {
+      "rank": 58,
+      "ingredient": "glipizide",
+      "rxcuis": [
+        "4821"
+      ],
+      "weighted_fills": 12855415,
+      "fills": 939,
+      "meps_names": [
+        "GLIPIZIDE"
+      ]
+    },
+    {
+      "rank": 59,
+      "ingredient": "zolpidem",
+      "rxcuis": [
+        "39993"
+      ],
+      "weighted_fills": 12744221,
+      "fills": 870,
+      "meps_names": [
+        "ZOLPIDEM"
+      ]
+    },
+    {
+      "rank": 60,
+      "ingredient": "lamotrigine",
+      "rxcuis": [
+        "28439"
+      ],
+      "weighted_fills": 12624285,
+      "fills": 744,
+      "meps_names": [
+        "LAMOTRIGINE"
+      ]
+    },
+    {
+      "rank": 61,
+      "ingredient": "alprazolam",
+      "rxcuis": [
+        "596"
+      ],
+      "weighted_fills": 12541990,
+      "fills": 830,
+      "meps_names": [
+        "ALPRAZOLAM"
+      ]
+    },
+    {
+      "rank": 62,
+      "ingredient": "citalopram",
+      "rxcuis": [
+        "2556"
+      ],
+      "weighted_fills": 12504000,
+      "fills": 864,
+      "meps_names": [
+        "CITALOPRAM"
+      ]
+    },
+    {
+      "rank": 63,
+      "ingredient": "aspirin",
+      "rxcuis": [
+        "1191"
+      ],
+      "weighted_fills": 12456254,
+      "fills": 975,
+      "meps_names": [
+        "ASPIRIN"
+      ]
+    },
+    {
+      "rank": 64,
+      "ingredient": "pregabalin",
+      "rxcuis": [
+        "187832"
+      ],
+      "weighted_fills": 12188941,
+      "fills": 790,
+      "meps_names": [
+        "PREGABALIN"
+      ]
+    },
+    {
+      "rank": 65,
+      "ingredient": "clonazepam",
+      "rxcuis": [
+        "2598"
+      ],
+      "weighted_fills": 11861003,
+      "fills": 797,
+      "meps_names": [
+        "CLONAZEPAM"
+      ]
+    },
+    {
+      "rank": 66,
+      "ingredient": "budesonide",
+      "rxcuis": [
+        "19831"
+      ],
+      "weighted_fills": 11642909,
+      "fills": 858,
+      "meps_names": [
+        "BUDESONIDE-FORMOTEROL",
+        "BUDESONIDE",
+        "BUDESONIDE/FORMOTEROL/GLYCOPYRROLATE"
+      ]
+    },
+    {
+      "rank": 67,
+      "ingredient": "cholecalciferol",
+      "rxcuis": [
+        "2418"
+      ],
+      "weighted_fills": 11472467,
+      "fills": 794,
+      "meps_names": [
+        "CHOLECALCIFEROL"
+      ]
+    },
+    {
+      "rank": 68,
+      "ingredient": "azithromycin",
+      "rxcuis": [
+        "18631"
+      ],
+      "weighted_fills": 11404300,
+      "fills": 659,
+      "meps_names": [
+        "AZITHROMYCIN"
+      ]
+    },
+    {
+      "rank": 69,
+      "ingredient": "pravastatin",
+      "rxcuis": [
+        "42463"
+      ],
+      "weighted_fills": 11270968,
+      "fills": 833,
+      "meps_names": [
+        "PRAVASTATIN"
+      ]
+    },
+    {
+      "rank": 70,
+      "ingredient": "ezetimibe",
+      "rxcuis": [
+        "341248"
+      ],
+      "weighted_fills": 10693932,
+      "fills": 778,
+      "meps_names": [
+        "EZETIMIBE"
+      ]
+    },
+    {
+      "rank": 71,
+      "ingredient": "vilanterol",
+      "rxcuis": [
+        "1424884"
+      ],
+      "weighted_fills": 10492322,
+      "fills": 842,
+      "meps_names": [
+        "FLUTICASONE/UMECLIDINIUM/VILANTEROL",
+        "FLUTICASONE-VILANTEROL"
+      ]
+    },
+    {
+      "rank": 72,
+      "ingredient": "insulin lispro",
+      "rxcuis": [
+        "86009"
+      ],
+      "weighted_fills": 10412617,
+      "fills": 683,
+      "meps_names": [
+        "INSULIN LISPRO"
+      ]
+    },
+    {
+      "rank": 73,
+      "ingredient": "diclofenac",
+      "rxcuis": [
+        "3355"
+      ],
+      "weighted_fills": 10297887,
+      "fills": 719,
+      "meps_names": [
+        "DICLOFENAC",
+        "DICLOFENAC TOPICAL",
+        "DICLOFENAC-MISOPROSTOL"
+      ]
+    },
+    {
+      "rank": 74,
+      "ingredient": "propranolol",
+      "rxcuis": [
+        "8787"
+      ],
+      "weighted_fills": 10263170,
+      "fills": 644,
+      "meps_names": [
+        "PROPRANOLOL"
+      ]
+    },
+    {
+      "rank": 75,
+      "ingredient": "latanoprost",
+      "rxcuis": [
+        "43611"
+      ],
+      "weighted_fills": 10260351,
+      "fills": 738,
+      "meps_names": [
+        "LATANOPROST OPHTHALMIC"
+      ]
+    },
+    {
+      "rank": 76,
+      "ingredient": "lisdexamfetamine",
+      "rxcuis": [
+        "700810"
+      ],
+      "weighted_fills": 9944999,
+      "fills": 513,
+      "meps_names": [
+        "LISDEXAMFETAMINE"
+      ]
+    },
+    {
+      "rank": 77,
+      "ingredient": "atenolol",
+      "rxcuis": [
+        "1202"
+      ],
+      "weighted_fills": 9934162,
+      "fills": 725,
+      "meps_names": [
+        "ATENOLOL"
+      ]
+    },
+    {
+      "rank": 78,
+      "ingredient": "doxycycline",
+      "rxcuis": [
+        "3640"
+      ],
+      "weighted_fills": 9807852,
+      "fills": 648,
+      "meps_names": [
+        "DOXYCYCLINE"
+      ]
+    },
+    {
+      "rank": 79,
+      "ingredient": "clavulanate",
+      "rxcuis": [
+        "48203"
+      ],
+      "weighted_fills": 9700116,
+      "fills": 575,
+      "meps_names": [
+        "AMOXICILLIN-CLAVULANATE"
+      ]
+    },
+    {
+      "rank": 80,
+      "ingredient": "dulaglutide",
+      "rxcuis": [
+        "1551291"
+      ],
+      "weighted_fills": 9211040,
+      "fills": 645,
+      "meps_names": [
+        "DULAGLUTIDE"
+      ]
+    },
+    {
+      "rank": 81,
+      "ingredient": "salmeterol",
+      "rxcuis": [
+        "36117"
+      ],
+      "weighted_fills": 9171728,
+      "fills": 659,
+      "meps_names": [
+        "FLUTICASONE-SALMETEROL"
+      ]
+    },
+    {
+      "rank": 82,
+      "ingredient": "lorazepam",
+      "rxcuis": [
+        "6470"
+      ],
+      "weighted_fills": 9095808,
+      "fills": 579,
+      "meps_names": [
+        "LORAZEPAM"
+      ]
+    },
+    {
+      "rank": 83,
+      "ingredient": "formoterol",
+      "rxcuis": [
+        "25255"
+      ],
+      "weighted_fills": 9045199,
+      "fills": 674,
+      "meps_names": [
+        "BUDESONIDE-FORMOTEROL",
+        "BUDESONIDE/FORMOTEROL/GLYCOPYRROLATE"
+      ]
+    },
+    {
+      "rank": 84,
+      "ingredient": "insulin aspart, human",
+      "rxcuis": [
+        "51428"
+      ],
+      "weighted_fills": 8979716,
+      "fills": 617,
+      "meps_names": [
+        "INSULIN ASPART"
+      ]
+    },
+    {
+      "rank": 85,
+      "ingredient": "celecoxib",
+      "rxcuis": [
+        "140587"
+      ],
+      "weighted_fills": 8925992,
+      "fills": 600,
+      "meps_names": [
+        "CELECOXIB"
+      ]
+    },
+    {
+      "rank": 86,
+      "ingredient": "finasteride",
+      "rxcuis": [
+        "25025"
+      ],
+      "weighted_fills": 8845007,
+      "fills": 616,
+      "meps_names": [
+        "FINASTERIDE"
+      ]
+    },
+    {
+      "rank": 87,
+      "ingredient": "quetiapine",
+      "rxcuis": [
+        "51272"
+      ],
+      "weighted_fills": 8669046,
+      "fills": 589,
+      "meps_names": [
+        "QUETIAPINE"
+      ]
+    },
+    {
+      "rank": 88,
+      "ingredient": "clonidine",
+      "rxcuis": [
+        "2599"
+      ],
+      "weighted_fills": 8409025,
+      "fills": 516,
+      "meps_names": [
+        "CLONIDINE"
+      ]
+    },
+    {
+      "rank": 89,
+      "ingredient": "aripiprazole",
+      "rxcuis": [
+        "89013"
+      ],
+      "weighted_fills": 8246932,
+      "fills": 521,
+      "meps_names": [
+        "ARIPIPRAZOLE"
+      ]
+    },
+    {
+      "rank": 90,
+      "ingredient": "cephalexin",
+      "rxcuis": [
+        "2231"
+      ],
+      "weighted_fills": 8216857,
+      "fills": 544,
+      "meps_names": [
+        "CEPHALEXIN"
+      ]
+    },
+    {
+      "rank": 91,
+      "ingredient": "alendronate",
+      "rxcuis": [
+        "46041"
+      ],
+      "weighted_fills": 8209513,
+      "fills": 647,
+      "meps_names": [
+        "ALENDRONATE"
+      ]
+    },
+    {
+      "rank": 92,
+      "ingredient": "topiramate",
+      "rxcuis": [
+        "38404"
+      ],
+      "weighted_fills": 8077537,
+      "fills": 495,
+      "meps_names": [
+        "TOPIRAMATE"
+      ]
+    },
+    {
+      "rank": 93,
+      "ingredient": "tizanidine",
+      "rxcuis": [
+        "57258"
+      ],
+      "weighted_fills": 8036601,
+      "fills": 584,
+      "meps_names": [
+        "TIZANIDINE"
+      ]
+    },
+    {
+      "rank": 94,
+      "ingredient": "dapagliflozin",
+      "rxcuis": [
+        "1488564"
+      ],
+      "weighted_fills": 8017363,
+      "fills": 588,
+      "meps_names": [
+        "DAPAGLIFLOZIN"
+      ]
+    },
+    {
+      "rank": 95,
+      "ingredient": "testosterone",
+      "rxcuis": [
+        "10379"
+      ],
+      "weighted_fills": 7843493,
+      "fills": 439,
+      "meps_names": [
+        "TESTOSTERONE"
+      ]
+    },
+    {
+      "rank": 96,
+      "ingredient": "olmesartan",
+      "rxcuis": [
+        "321064"
+      ],
+      "weighted_fills": 7659035,
+      "fills": 490,
+      "meps_names": [
+        "OLMESARTAN"
+      ]
+    },
+    {
+      "rank": 97,
+      "ingredient": "amitriptyline",
+      "rxcuis": [
+        "704"
+      ],
+      "weighted_fills": 7533046,
+      "fills": 518,
+      "meps_names": [
+        "AMITRIPTYLINE"
+      ]
+    },
+    {
+      "rank": 98,
+      "ingredient": "folic acid",
+      "rxcuis": [
+        "4511"
+      ],
+      "weighted_fills": 7503346,
+      "fills": 582,
+      "meps_names": [
+        "FOLIC ACID"
+      ]
+    },
+    {
+      "rank": 99,
+      "ingredient": "loratadine",
+      "rxcuis": [
+        "28889"
+      ],
+      "weighted_fills": 7448419,
+      "fills": 550,
+      "meps_names": [
+        "LORATADINE",
+        "LORATADINE-PSEUDOEPHEDRINE"
+      ]
+    },
+    {
+      "rank": 100,
+      "ingredient": "rivaroxaban",
+      "rxcuis": [
+        "1114195"
+      ],
+      "weighted_fills": 7423624,
+      "fills": 556,
+      "meps_names": [
+        "RIVAROXABAN"
+      ]
+    },
+    {
+      "rank": 101,
+      "ingredient": "fenofibrate",
+      "rxcuis": [
+        "8703"
+      ],
+      "weighted_fills": 7367061,
+      "fills": 491,
+      "meps_names": [
+        "FENOFIBRATE"
+      ]
+    },
+    {
+      "rank": 102,
+      "ingredient": "triamcinolone",
+      "rxcuis": [
+        "10759"
+      ],
+      "weighted_fills": 7330182,
+      "fills": 471,
+      "meps_names": [
+        "TRIAMCINOLONE TOPICAL",
+        "TRIAMCINOLONE NASAL"
+      ]
+    },
+    {
+      "rank": 103,
+      "ingredient": "paroxetine",
+      "rxcuis": [
+        "32937"
+      ],
+      "weighted_fills": 7173802,
+      "fills": 446,
+      "meps_names": [
+        "PAROXETINE"
+      ]
+    },
+    {
+      "rank": 104,
+      "ingredient": "ferrous sulfate",
+      "rxcuis": [
+        "24947"
+      ],
+      "weighted_fills": 6961338,
+      "fills": 561,
+      "meps_names": [
+        "FERROUS SULFATE"
+      ]
+    },
+    {
+      "rank": 105,
+      "ingredient": "valacyclovir",
+      "rxcuis": [
+        "73645"
+      ],
+      "weighted_fills": 6960962,
+      "fills": 402,
+      "meps_names": [
+        "VALACYCLOVIR"
+      ]
+    },
+    {
+      "rank": 106,
+      "ingredient": "warfarin",
+      "rxcuis": [
+        "11289"
+      ],
+      "weighted_fills": 6951089,
+      "fills": 520,
+      "meps_names": [
+        "WARFARIN"
+      ]
+    },
+    {
+      "rank": 107,
+      "ingredient": "norgestimate",
+      "rxcuis": [
+        "31994"
+      ],
+      "weighted_fills": 6753928,
+      "fills": 272,
+      "meps_names": [
+        "ETHINYL ESTRADIOL-NORGESTIMATE"
+      ]
+    },
+    {
+      "rank": 108,
+      "ingredient": "umeclidinium",
+      "rxcuis": [
+        "1487514"
+      ],
+      "weighted_fills": 6694201,
+      "fills": 530,
+      "meps_names": [
+        "FLUTICASONE/UMECLIDINIUM/VILANTEROL"
+      ]
+    },
+    {
+      "rank": 109,
+      "ingredient": "methocarbamol",
+      "rxcuis": [
+        "6845"
+      ],
+      "weighted_fills": 6573638,
+      "fills": 446,
+      "meps_names": [
+        "METHOCARBAMOL"
+      ]
+    },
+    {
+      "rank": 110,
+      "ingredient": "diltiazem",
+      "rxcuis": [
+        "3443"
+      ],
+      "weighted_fills": 6250457,
+      "fills": 454,
+      "meps_names": [
+        "DILTIAZEM"
+      ]
+    },
+    {
+      "rank": 111,
+      "ingredient": "trimethoprim",
+      "rxcuis": [
+        "10829"
+      ],
+      "weighted_fills": 6117861,
+      "fills": 390,
+      "meps_names": [
+        "SULFAMETHOXAZOLE-TRIMETHOPRIM",
+        "POLYMYXIN B-TRIMETHOPRIM OPHTHALMIC"
+      ]
+    },
+    {
+      "rank": 112,
+      "ingredient": "thyroid (USP)",
+      "rxcuis": [
+        "10572"
+      ],
+      "weighted_fills": 6060183,
+      "fills": 327,
+      "meps_names": [
+        "THYROID DESICCATED"
+      ]
+    },
+    {
+      "rank": 113,
+      "ingredient": "baclofen",
+      "rxcuis": [
+        "1292"
+      ],
+      "weighted_fills": 6027670,
+      "fills": 414,
+      "meps_names": [
+        "BACLOFEN"
+      ]
+    },
+    {
+      "rank": 114,
+      "ingredient": "sumatriptan",
+      "rxcuis": [
+        "37418"
+      ],
+      "weighted_fills": 5831978,
+      "fills": 375,
+      "meps_names": [
+        "SUMATRIPTAN"
+      ]
+    },
+    {
+      "rank": 115,
+      "ingredient": "prednisolone",
+      "rxcuis": [
+        "8638"
+      ],
+      "weighted_fills": 5811591,
+      "fills": 378,
+      "meps_names": [
+        "PREDNISOLONE OPHTHALMIC",
+        "PREDNISOLONE"
+      ]
+    },
+    {
+      "rank": 116,
+      "ingredient": "esomeprazole",
+      "rxcuis": [
+        "283742"
+      ],
+      "weighted_fills": 5677193,
+      "fills": 396,
+      "meps_names": [
+        "ESOMEPRAZOLE"
+      ]
+    },
+    {
+      "rank": 117,
+      "ingredient": "benazepril",
+      "rxcuis": [
+        "18867"
+      ],
+      "weighted_fills": 5649390,
+      "fills": 418,
+      "meps_names": [
+        "BENAZEPRIL",
+        "AMLODIPINE-BENAZEPRIL"
+      ]
+    },
+    {
+      "rank": 118,
+      "ingredient": "mirtazapine",
+      "rxcuis": [
+        "15996"
+      ],
+      "weighted_fills": 5605882,
+      "fills": 469,
+      "meps_names": [
+        "MIRTAZAPINE"
+      ]
+    },
+    {
+      "rank": 119,
+      "ingredient": "levetiracetam",
+      "rxcuis": [
+        "114477"
+      ],
+      "weighted_fills": 5508579,
+      "fills": 355,
+      "meps_names": [
+        "LEVETIRACETAM"
+      ]
+    },
+    {
+      "rank": 120,
+      "ingredient": "naproxen",
+      "rxcuis": [
+        "7258"
+      ],
+      "weighted_fills": 5485679,
+      "fills": 361,
+      "meps_names": [
+        "NAPROXEN"
+      ]
+    },
+    {
+      "rank": 121,
+      "ingredient": "tadalafil",
+      "rxcuis": [
+        "358263"
+      ],
+      "weighted_fills": 5478136,
+      "fills": 329,
+      "meps_names": [
+        "TADALAFIL"
+      ]
+    },
+    {
+      "rank": 122,
+      "ingredient": "nifedipine",
+      "rxcuis": [
+        "7417"
+      ],
+      "weighted_fills": 5474488,
+      "fills": 392,
+      "meps_names": [
+        "NIFEDIPINE"
+      ]
+    },
+    {
+      "rank": 123,
+      "ingredient": "progesterone",
+      "rxcuis": [
+        "8727"
+      ],
+      "weighted_fills": 5468709,
+      "fills": 322,
+      "meps_names": [
+        "PROGESTERONE"
+      ]
+    },
+    {
+      "rank": 124,
+      "ingredient": "insulin degludec",
+      "rxcuis": [
+        "1670007"
+      ],
+      "weighted_fills": 5466073,
+      "fills": 345,
+      "meps_names": [
+        "INSULIN DEGLUDEC"
+      ]
+    },
+    {
+      "rank": 125,
+      "ingredient": "hydralazine",
+      "rxcuis": [
+        "5470"
+      ],
+      "weighted_fills": 5391649,
+      "fills": 412,
+      "meps_names": [
+        "HYDRALAZINE"
+      ]
+    },
+    {
+      "rank": 126,
+      "ingredient": "azelastine",
+      "rxcuis": [
+        "18603"
+      ],
+      "weighted_fills": 5365714,
+      "fills": 329,
+      "meps_names": [
+        "AZELASTINE NASAL",
+        "AZELASTINE OPHTHALMIC",
+        "AZELASTINE-FLUTICASONE NASAL"
+      ]
+    },
+    {
+      "rank": 127,
+      "ingredient": "ipratropium",
+      "rxcuis": [
+        "7213"
+      ],
+      "weighted_fills": 5356847,
+      "fills": 415,
+      "meps_names": [
+        "ALBUTEROL-IPRATROPIUM",
+        "IPRATROPIUM NASAL"
+      ]
+    },
+    {
+      "rank": 128,
+      "ingredient": "timolol",
+      "rxcuis": [
+        "10600"
+      ],
+      "weighted_fills": 5353359,
+      "fills": 409,
+      "meps_names": [
+        "TIMOLOL OPHTHALMIC",
+        "DORZOLAMIDE-TIMOLOL OPHTHALMIC"
+      ]
+    },
+    {
+      "rank": 129,
+      "ingredient": "adalimumab",
+      "rxcuis": [
+        "327361"
+      ],
+      "weighted_fills": 5198809,
+      "fills": 351,
+      "meps_names": [
+        "ADALIMUMAB"
+      ]
+    },
+    {
+      "rank": 130,
+      "ingredient": "sitagliptin",
+      "rxcuis": [
+        "593411"
+      ],
+      "weighted_fills": 5147491,
+      "fills": 443,
+      "meps_names": [
+        "SITAGLIPTIN"
+      ]
+    },
+    {
+      "rank": 131,
+      "ingredient": "glimepiride",
+      "rxcuis": [
+        "25789"
+      ],
+      "weighted_fills": 5109702,
+      "fills": 403,
+      "meps_names": [
+        "GLIMEPIRIDE"
+      ]
+    },
+    {
+      "rank": 132,
+      "ingredient": "chlorthalidone",
+      "rxcuis": [
+        "2409"
+      ],
+      "weighted_fills": 4931283,
+      "fills": 336,
+      "meps_names": [
+        "CHLORTHALIDONE"
+      ]
+    },
+    {
+      "rank": 133,
+      "ingredient": "oxybutynin",
+      "rxcuis": [
+        "32675"
+      ],
+      "weighted_fills": 4908780,
+      "fills": 389,
+      "meps_names": [
+        "OXYBUTYNIN"
+      ]
+    },
+    {
+      "rank": 134,
+      "ingredient": "pioglitazone",
+      "rxcuis": [
+        "33738"
+      ],
+      "weighted_fills": 4851830,
+      "fills": 336,
+      "meps_names": [
+        "PIOGLITAZONE"
+      ]
+    },
+    {
+      "rank": 135,
+      "ingredient": "clindamycin",
+      "rxcuis": [
+        "2582"
+      ],
+      "weighted_fills": 4850541,
+      "fills": 281,
+      "meps_names": [
+        "CLINDAMYCIN TOPICAL",
+        "CLINDAMYCIN",
+        "BENZOYL PEROXIDE-CLINDAMYCIN TOPICAL",
+        "ADAPALENE/BENZOYL PEROXIDE/CLINDAMYCIN TOPICAL"
+      ]
+    },
+    {
+      "rank": 136,
+      "ingredient": "ketoconazole",
+      "rxcuis": [
+        "6135"
+      ],
+      "weighted_fills": 4820502,
+      "fills": 283,
+      "meps_names": [
+        "KETOCONAZOLE TOPICAL"
+      ]
+    },
+    {
+      "rank": 137,
+      "ingredient": "irbesartan",
+      "rxcuis": [
+        "83818"
+      ],
+      "weighted_fills": 4753050,
+      "fills": 343,
+      "meps_names": [
+        "IRBESARTAN"
+      ]
+    },
+    {
+      "rank": 138,
+      "ingredient": "hydroxychloroquine",
+      "rxcuis": [
+        "5521"
+      ],
+      "weighted_fills": 4708302,
+      "fills": 327,
+      "meps_names": [
+        "HYDROXYCHLOROQUINE"
+      ]
+    },
+    {
+      "rank": 139,
+      "ingredient": "vitamin B12",
+      "rxcuis": [
+        "11248"
+      ],
+      "weighted_fills": 4684025,
+      "fills": 352,
+      "meps_names": [
+        "CYANOCOBALAMIN"
+      ]
+    },
+    {
+      "rank": 140,
+      "ingredient": "nitrofurantoin",
+      "rxcuis": [
+        "7454"
+      ],
+      "weighted_fills": 4676985,
+      "fills": 332,
+      "meps_names": [
+        "NITROFURANTOIN"
+      ]
+    },
+    {
+      "rank": 141,
+      "ingredient": "sulfamethoxazole",
+      "rxcuis": [
+        "10180"
+      ],
+      "weighted_fills": 4636825,
+      "fills": 310,
+      "meps_names": [
+        "SULFAMETHOXAZOLE-TRIMETHOPRIM"
+      ]
+    },
+    {
+      "rank": 142,
+      "ingredient": "benzonatate",
+      "rxcuis": [
+        "18993"
+      ],
+      "weighted_fills": 4617061,
+      "fills": 314,
+      "meps_names": [
+        "BENZONATATE"
+      ]
+    },
+    {
+      "rank": 143,
+      "ingredient": "isosorbide",
+      "rxcuis": [
+        "28004"
+      ],
+      "weighted_fills": 4599942,
+      "fills": 338,
+      "meps_names": [
+        "ISOSORBIDE MONONITRATE"
+      ]
+    },
+    {
+      "rank": 144,
+      "ingredient": "methylprednisolone",
+      "rxcuis": [
+        "6902"
+      ],
+      "weighted_fills": 4523154,
+      "fills": 280,
+      "meps_names": [
+        "METHYLPREDNISOLONE"
+      ]
+    },
+    {
+      "rank": 145,
+      "ingredient": "triamterene",
+      "rxcuis": [
+        "10763"
+      ],
+      "weighted_fills": 4440460,
+      "fills": 331,
+      "meps_names": [
+        "HYDROCHLOROTHIAZIDE-TRIAMTERENE"
+      ]
+    },
+    {
+      "rank": 146,
+      "ingredient": "levocetirizine",
+      "rxcuis": [
+        "356887"
+      ],
+      "weighted_fills": 4423399,
+      "fills": 315,
+      "meps_names": [
+        "LEVOCETIRIZINE"
+      ]
+    },
+    {
+      "rank": 147,
+      "ingredient": "ciprofloxacin",
+      "rxcuis": [
+        "2551"
+      ],
+      "weighted_fills": 4231365,
+      "fills": 261,
+      "meps_names": [
+        "CIPROFLOXACIN",
+        "CIPROFLOXACIN OPHTHALMIC",
+        "CIPROFLOXACIN-DEXAMETHASONE OTIC"
+      ]
+    },
+    {
+      "rank": 148,
+      "ingredient": "atomoxetine",
+      "rxcuis": [
+        "38400"
+      ],
+      "weighted_fills": 4208254,
+      "fills": 186,
+      "meps_names": [
+        "ATOMOXETINE"
+      ]
+    },
+    {
+      "rank": 149,
+      "ingredient": "docusate",
+      "rxcuis": [
+        "82003"
+      ],
+      "weighted_fills": 4208228,
+      "fills": 326,
+      "meps_names": [
+        "DOCUSATE",
+        "DOCUSATE-SENNA"
+      ]
+    },
+    {
+      "rank": 150,
+      "ingredient": "dorzolamide",
+      "rxcuis": [
+        "60207"
+      ],
+      "weighted_fills": 4047484,
+      "fills": 311,
+      "meps_names": [
+        "DORZOLAMIDE-TIMOLOL OPHTHALMIC",
+        "DORZOLAMIDE OPHTHALMIC"
+      ]
+    },
+    {
+      "rank": 151,
+      "ingredient": "dexmethylphenidate",
+      "rxcuis": [
+        "352372"
+      ],
+      "weighted_fills": 4033754,
+      "fills": 174,
+      "meps_names": [
+        "DEXMETHYLPHENIDATE"
+      ]
+    },
+    {
+      "rank": 152,
+      "ingredient": "promethazine",
+      "rxcuis": [
+        "8745"
+      ],
+      "weighted_fills": 4028952,
+      "fills": 273,
+      "meps_names": [
+        "PROMETHAZINE",
+        "DEXTROMETHORPHAN-PROMETHAZINE",
+        "CODEINE-PROMETHAZINE"
+      ]
+    },
+    {
+      "rank": 153,
+      "ingredient": "methotrexate",
+      "rxcuis": [
+        "6851"
+      ],
+      "weighted_fills": 4014150,
+      "fills": 328,
+      "meps_names": [
+        "METHOTREXATE"
+      ]
+    },
+    {
+      "rank": 154,
+      "ingredient": "donepezil",
+      "rxcuis": [
+        "135447"
+      ],
+      "weighted_fills": 3938045,
+      "fills": 345,
+      "meps_names": [
+        "DONEPEZIL"
+      ]
+    },
+    {
+      "rank": 155,
+      "ingredient": "desvenlafaxine",
+      "rxcuis": [
+        "734064"
+      ],
+      "weighted_fills": 3875578,
+      "fills": 190,
+      "meps_names": [
+        "DESVENLAFAXINE"
+      ]
+    },
+    {
+      "rank": 156,
+      "ingredient": "ropinirole",
+      "rxcuis": [
+        "72302"
+      ],
+      "weighted_fills": 3839678,
+      "fills": 232,
+      "meps_names": [
+        "ROPINIROLE"
+      ]
+    },
+    {
+      "rank": 157,
+      "ingredient": "clobetasol",
+      "rxcuis": [
+        "2590"
+      ],
+      "weighted_fills": 3823176,
+      "fills": 279,
+      "meps_names": [
+        "CLOBETASOL TOPICAL"
+      ]
+    },
+    {
+      "rank": 158,
+      "ingredient": "ofloxacin",
+      "rxcuis": [
+        "7623"
+      ],
+      "weighted_fills": 3816254,
+      "fills": 205,
+      "meps_names": [
+        "OFLOXACIN OPHTHALMIC",
+        "OFLOXACIN OTIC"
+      ]
+    },
+    {
+      "rank": 159,
+      "ingredient": "phentermine",
+      "rxcuis": [
+        "8152"
+      ],
+      "weighted_fills": 3766803,
+      "fills": 213,
+      "meps_names": [
+        "PHENTERMINE"
+      ]
+    },
+    {
+      "rank": 160,
+      "ingredient": "mupirocin",
+      "rxcuis": [
+        "42372"
+      ],
+      "weighted_fills": 3716448,
+      "fills": 226,
+      "meps_names": [
+        "MUPIROCIN TOPICAL"
+      ]
+    },
+    {
+      "rank": 161,
+      "ingredient": "verapamil",
+      "rxcuis": [
+        "11170"
+      ],
+      "weighted_fills": 3686373,
+      "fills": 199,
+      "meps_names": [
+        "VERAPAMIL"
+      ]
+    },
+    {
+      "rank": 162,
+      "ingredient": "etonogestrel",
+      "rxcuis": [
+        "14584"
+      ],
+      "weighted_fills": 3645671,
+      "fills": 143,
+      "meps_names": [
+        "ETHINYL ESTRADIOL-ETONOGESTREL"
+      ]
+    },
+    {
+      "rank": 163,
+      "ingredient": "olanzapine",
+      "rxcuis": [
+        "61381"
+      ],
+      "weighted_fills": 3642411,
+      "fills": 239,
+      "meps_names": [
+        "OLANZAPINE"
+      ]
+    },
+    {
+      "rank": 164,
+      "ingredient": "metronidazole",
+      "rxcuis": [
+        "6922"
+      ],
+      "weighted_fills": 3599382,
+      "fills": 235,
+      "meps_names": [
+        "METRONIDAZOLE",
+        "METRONIDAZOLE TOPICAL"
+      ]
+    },
+    {
+      "rank": 165,
+      "ingredient": "prazosin",
+      "rxcuis": [
+        "8629"
+      ],
+      "weighted_fills": 3554064,
+      "fills": 191,
+      "meps_names": [
+        "PRAZOSIN"
+      ]
+    },
+    {
+      "rank": 166,
+      "ingredient": "sildenafil",
+      "rxcuis": [
+        "136411"
+      ],
+      "weighted_fills": 3545862,
+      "fills": 213,
+      "meps_names": [
+        "SILDENAFIL"
+      ]
+    },
+    {
+      "rank": 167,
+      "ingredient": "insulin isophane",
+      "rxcuis": [
+        "1605101",
+        "253181"
+      ],
+      "weighted_fills": 3542180,
+      "fills": 252,
+      "meps_names": [
+        "INSULIN ISOPHANE-INSULIN REGULAR",
+        "INSULIN ISOPHANE (NPH)"
+      ]
+    },
+    {
+      "rank": 168,
+      "ingredient": "levonorgestrel",
+      "rxcuis": [
+        "6373"
+      ],
+      "weighted_fills": 3541217,
+      "fills": 172,
+      "meps_names": [
+        "ETHINYL ESTRADIOL-LEVONORGESTREL"
+      ]
+    },
+    {
+      "rank": 169,
+      "ingredient": "evolocumab",
+      "rxcuis": [
+        "1665684"
+      ],
+      "weighted_fills": 3521049,
+      "fills": 223,
+      "meps_names": [
+        "EVOLOCUMAB"
+      ]
+    },
+    {
+      "rank": 170,
+      "ingredient": "dexamethasone",
+      "rxcuis": [
+        "3264"
+      ],
+      "weighted_fills": 3436101,
+      "fills": 211,
+      "meps_names": [
+        "DEXAMETHASONE",
+        "DEXAMETHASONE/NEOMYCIN/POLYMYXIN B OPHTHALMIC",
+        "CIPROFLOXACIN-DEXAMETHASONE OTIC"
+      ]
+    },
+    {
+      "rank": 171,
+      "ingredient": "mesalamine",
+      "rxcuis": [
+        "52582"
+      ],
+      "weighted_fills": 3392014,
+      "fills": 176,
+      "meps_names": [
+        "MESALAMINE"
+      ]
+    },
+    {
+      "rank": 172,
+      "ingredient": "memantine",
+      "rxcuis": [
+        "6719"
+      ],
+      "weighted_fills": 3378923,
+      "fills": 288,
+      "meps_names": [
+        "MEMANTINE"
+      ]
+    },
+    {
+      "rank": 173,
+      "ingredient": "diazepam",
+      "rxcuis": [
+        "3322"
+      ],
+      "weighted_fills": 3346944,
+      "fills": 225,
+      "meps_names": [
+        "DIAZEPAM"
+      ]
+    },
+    {
+      "rank": 174,
+      "ingredient": "lithium",
+      "rxcuis": [
+        "6448"
+      ],
+      "weighted_fills": 3301040,
+      "fills": 168,
+      "meps_names": [
+        "LITHIUM"
+      ]
+    },
+    {
+      "rank": 175,
+      "ingredient": "nortriptyline",
+      "rxcuis": [
+        "7531"
+      ],
+      "weighted_fills": 3297511,
+      "fills": 177,
+      "meps_names": [
+        "NORTRIPTYLINE"
+      ]
+    },
+    {
+      "rank": 176,
+      "ingredient": "cefdinir",
+      "rxcuis": [
+        "25037"
+      ],
+      "weighted_fills": 3282421,
+      "fills": 205,
+      "meps_names": [
+        "CEFDINIR"
+      ]
+    },
+    {
+      "rank": 177,
+      "ingredient": "magnesium oxide",
+      "rxcuis": [
+        "6582"
+      ],
+      "weighted_fills": 3274579,
+      "fills": 247,
+      "meps_names": [
+        "MAGNESIUM OXIDE",
+        "CITRIC ACID/MAGNESIUM OXIDE/SODIUM PICOSULFATE"
+      ]
+    },
+    {
+      "rank": 178,
+      "ingredient": "clotrimazole",
+      "rxcuis": [
+        "2623"
+      ],
+      "weighted_fills": 3254441,
+      "fills": 189,
+      "meps_names": [
+        "BETAMETHASONE-CLOTRIMAZOLE TOPICAL",
+        "CLOTRIMAZOLE TOPICAL"
+      ]
+    },
+    {
+      "rank": 179,
+      "ingredient": "meclizine",
+      "rxcuis": [
+        "6676"
+      ],
+      "weighted_fills": 3246112,
+      "fills": 266,
+      "meps_names": [
+        "MECLIZINE"
+      ]
+    },
+    {
+      "rank": 180,
+      "ingredient": "cyclosporine",
+      "rxcuis": [
+        "3008"
+      ],
+      "weighted_fills": 3231769,
+      "fills": 241,
+      "meps_names": [
+        "CYCLOSPORINE OPHTHALMIC"
+      ]
+    },
+    {
+      "rank": 181,
+      "ingredient": "tretinoin",
+      "rxcuis": [
+        "10753"
+      ],
+      "weighted_fills": 3161133,
+      "fills": 173,
+      "meps_names": [
+        "TRETINOIN TOPICAL"
+      ]
+    },
+    {
+      "rank": 182,
+      "ingredient": "fluconazole",
+      "rxcuis": [
+        "4450"
+      ],
+      "weighted_fills": 3157604,
+      "fills": 216,
+      "meps_names": [
+        "FLUCONAZOLE"
+      ]
+    },
+    {
+      "rank": 183,
+      "ingredient": "rimegepant",
+      "rxcuis": [
+        "2282307"
+      ],
+      "weighted_fills": 3155303,
+      "fills": 158,
+      "meps_names": [
+        "RIMEGEPANT"
+      ]
+    },
+    {
+      "rank": 184,
+      "ingredient": "lovastatin",
+      "rxcuis": [
+        "6472"
+      ],
+      "weighted_fills": 3113074,
+      "fills": 254,
+      "meps_names": [
+        "LOVASTATIN"
+      ]
+    },
+    {
+      "rank": 185,
+      "ingredient": "drospirenone",
+      "rxcuis": [
+        "11636"
+      ],
+      "weighted_fills": 3110100,
+      "fills": 109,
+      "meps_names": [
+        "DROSPIRENONE-ETHINYL ESTRADIOL"
+      ]
+    },
+    {
+      "rank": 186,
+      "ingredient": "codeine",
+      "rxcuis": [
+        "2670"
+      ],
+      "weighted_fills": 3088431,
+      "fills": 204,
+      "meps_names": [
+        "ACETAMINOPHEN-CODEINE",
+        "CODEINE-GUAIFENESIN",
+        "CODEINE",
+        "CODEINE-PROMETHAZINE"
+      ]
+    },
+    {
+      "rank": 187,
+      "ingredient": "tiotropium",
+      "rxcuis": [
+        "69120"
+      ],
+      "weighted_fills": 3084835,
+      "fills": 230,
+      "meps_names": [
+        "TIOTROPIUM"
+      ]
+    },
+    {
+      "rank": 188,
+      "ingredient": "temazepam",
+      "rxcuis": [
+        "10355"
+      ],
+      "weighted_fills": 3020872,
+      "fills": 194,
+      "meps_names": [
+        "TEMAZEPAM"
+      ]
+    },
+    {
+      "rank": 189,
+      "ingredient": "brimonidine",
+      "rxcuis": [
+        "134615"
+      ],
+      "weighted_fills": 2999164,
+      "fills": 232,
+      "meps_names": [
+        "BRIMONIDINE OPHTHALMIC"
+      ]
+    },
+    {
+      "rank": 190,
+      "ingredient": "nirmatrelvir",
+      "rxcuis": [
+        "2587892"
+      ],
+      "weighted_fills": 2963343,
+      "fills": 173,
+      "meps_names": [
+        "NIRMATRELVIR-RITONAVIR"
+      ]
+    },
+    {
+      "rank": 191,
+      "ingredient": "ritonavir",
+      "rxcuis": [
+        "85762"
+      ],
+      "weighted_fills": 2963343,
+      "fills": 173,
+      "meps_names": [
+        "NIRMATRELVIR-RITONAVIR"
+      ]
+    },
+    {
+      "rank": 192,
+      "ingredient": "sacubitril",
+      "rxcuis": [
+        "1656328"
+      ],
+      "weighted_fills": 2846805,
+      "fills": 220,
+      "meps_names": [
+        "SACUBITRIL-VALSARTAN"
+      ]
+    },
+    {
+      "rank": 193,
+      "ingredient": "valproate",
+      "rxcuis": [
+        "266856"
+      ],
+      "weighted_fills": 2837435,
+      "fills": 185,
+      "meps_names": [
+        "DIVALPROEX SODIUM"
+      ]
+    },
+    {
+      "rank": 194,
+      "ingredient": "dextromethorphan",
+      "rxcuis": [
+        "3289"
+      ],
+      "weighted_fills": 2812210,
+      "fills": 160,
+      "meps_names": [
+        "DEXTROMETHORPHAN-PROMETHAZINE",
+        "BROMPHENIRAMINE/DEXTROMETHORPHAN/PSEUDOEPHEDRINE",
+        "DEXTROMETHORPHAN-TRIPROLIDINE",
+        "CHLORPHENIRAMINE/DEXTROMETHORPHAN/PHENYLEPHRINE",
+        "DEXTROMETHORPHAN",
+        "DEXTROMETHORPHAN-GUAIFENESIN"
+      ]
+    },
+    {
+      "rank": 195,
+      "ingredient": "nebivolol",
+      "rxcuis": [
+        "31555"
+      ],
+      "weighted_fills": 2808667,
+      "fills": 157,
+      "meps_names": [
+        "NEBIVOLOL"
+      ]
+    },
+    {
+      "rank": 196,
+      "ingredient": "acyclovir",
+      "rxcuis": [
+        "281"
+      ],
+      "weighted_fills": 2696268,
+      "fills": 194,
+      "meps_names": [
+        "ACYCLOVIR"
+      ]
+    },
+    {
+      "rank": 197,
+      "ingredient": "betamethasone",
+      "rxcuis": [
+        "1514"
+      ],
+      "weighted_fills": 2691663,
+      "fills": 166,
+      "meps_names": [
+        "BETAMETHASONE-CLOTRIMAZOLE TOPICAL",
+        "BETAMETHASONE TOPICAL"
+      ]
+    },
+    {
+      "rank": 198,
+      "ingredient": "morphine",
+      "rxcuis": [
+        "7052"
+      ],
+      "weighted_fills": 2684280,
+      "fills": 220,
+      "meps_names": [
+        "MORPHINE"
+      ]
+    },
+    {
+      "rank": 199,
+      "ingredient": "doxazosin",
+      "rxcuis": [
+        "49276"
+      ],
+      "weighted_fills": 2661286,
+      "fills": 186,
+      "meps_names": [
+        "DOXAZOSIN"
+      ]
+    },
+    {
+      "rank": 200,
+      "ingredient": "tacrolimus",
+      "rxcuis": [
+        "42316"
+      ],
+      "weighted_fills": 2592551,
+      "fills": 138,
+      "meps_names": [
+        "TACROLIMUS",
+        "TACROLIMUS TOPICAL"
+      ]
+    },
+    {
+      "rank": 201,
+      "ingredient": "dupilumab",
+      "rxcuis": [
+        "1876376"
+      ],
+      "weighted_fills": 2557602,
+      "fills": 158,
+      "meps_names": [
+        "DUPILUMAB"
+      ]
+    },
+    {
+      "rank": 202,
+      "ingredient": "enalapril",
+      "rxcuis": [
+        "3827"
+      ],
+      "weighted_fills": 2548322,
+      "fills": 181,
+      "meps_names": [
+        "ENALAPRIL"
+      ]
+    },
+    {
+      "rank": 203,
+      "ingredient": "polymyxin B",
+      "rxcuis": [
+        "8536"
+      ],
+      "weighted_fills": 2545245,
+      "fills": 151,
+      "meps_names": [
+        "POLYMYXIN B-TRIMETHOPRIM OPHTHALMIC",
+        "DEXAMETHASONE/NEOMYCIN/POLYMYXIN B OPHTHALMIC",
+        "BACITRACIN-POLYMYXIN B TOPICAL",
+        "BACITRACIN/NEOMYCIN/POLYMYXIN B/PRAMOXINE TOPICAL",
+        "BACITRACIN/NEOMYCIN/POLYMYXIN B TOPICAL"
+      ]
+    },
+    {
+      "rank": 204,
+      "ingredient": "anastrozole",
+      "rxcuis": [
+        "84857"
+      ],
+      "weighted_fills": 2505483,
+      "fills": 178,
+      "meps_names": [
+        "ANASTROZOLE"
+      ]
+    },
+    {
+      "rank": 205,
+      "ingredient": "torsemide",
+      "rxcuis": [
+        "38413"
+      ],
+      "weighted_fills": 2417567,
+      "fills": 192,
+      "meps_names": [
+        "TORSEMIDE"
+      ]
+    },
+    {
+      "rank": 206,
+      "ingredient": "ketorolac",
+      "rxcuis": [
+        "35827"
+      ],
+      "weighted_fills": 2411772,
+      "fills": 161,
+      "meps_names": [
+        "KETOROLAC",
+        "KETOROLAC OPHTHALMIC"
+      ]
+    },
+    {
+      "rank": 207,
+      "ingredient": "nitroglycerin",
+      "rxcuis": [
+        "4917"
+      ],
+      "weighted_fills": 2390280,
+      "fills": 182,
+      "meps_names": [
+        "NITROGLYCERIN"
+      ]
+    },
+    {
+      "rank": 208,
+      "ingredient": "polyethylene glycols",
+      "rxcuis": [
+        "8516"
+      ],
+      "weighted_fills": 2357645,
+      "fills": 146,
+      "meps_names": [
+        "POLYETHYLENE GLYCOL 3350"
+      ]
+    },
+    {
+      "rank": 209,
+      "ingredient": "flecainide",
+      "rxcuis": [
+        "4441"
+      ],
+      "weighted_fills": 2344552,
+      "fills": 184,
+      "meps_names": [
+        "FLECAINIDE"
+      ]
+    },
+    {
+      "rank": 210,
+      "ingredient": "melatonin",
+      "rxcuis": [
+        "6711"
+      ],
+      "weighted_fills": 2337827,
+      "fills": 165,
+      "meps_names": [
+        "MELATONIN"
+      ]
+    },
+    {
+      "rank": 211,
+      "ingredient": "liothyronine",
+      "rxcuis": [
+        "10814"
+      ],
+      "weighted_fills": 2328558,
+      "fills": 159,
+      "meps_names": [
+        "LIOTHYRONINE"
+      ]
+    },
+    {
+      "rank": 212,
+      "ingredient": "telmisartan",
+      "rxcuis": [
+        "73494"
+      ],
+      "weighted_fills": 2293871,
+      "fills": 168,
+      "meps_names": [
+        "TELMISARTAN"
+      ]
+    },
+    {
+      "rank": 213,
+      "ingredient": "risperidone",
+      "rxcuis": [
+        "35636"
+      ],
+      "weighted_fills": 2272519,
+      "fills": 154,
+      "meps_names": [
+        "RISPERIDONE"
+      ]
+    },
+    {
+      "rank": 214,
+      "ingredient": "colchicine",
+      "rxcuis": [
+        "2683"
+      ],
+      "weighted_fills": 2253946,
+      "fills": 168,
+      "meps_names": [
+        "COLCHICINE"
+      ]
+    },
+    {
+      "rank": 215,
+      "ingredient": "lansoprazole",
+      "rxcuis": [
+        "17128"
+      ],
+      "weighted_fills": 2231385,
+      "fills": 154,
+      "meps_names": [
+        "LANSOPRAZOLE"
+      ]
+    },
+    {
+      "rank": 216,
+      "ingredient": "oxcarbazepine",
+      "rxcuis": [
+        "32624"
+      ],
+      "weighted_fills": 2224621,
+      "fills": 134,
+      "meps_names": [
+        "OXCARBAZEPINE"
+      ]
+    },
+    {
+      "rank": 217,
+      "ingredient": "dicyclomine",
+      "rxcuis": [
+        "3361"
+      ],
+      "weighted_fills": 2210375,
+      "fills": 159,
+      "meps_names": [
+        "DICYCLOMINE"
+      ]
+    },
+    {
+      "rank": 218,
+      "ingredient": "linaclotide",
+      "rxcuis": [
+        "1307404"
+      ],
+      "weighted_fills": 2163073,
+      "fills": 179,
+      "meps_names": [
+        "LINACLOTIDE"
+      ]
+    },
+    {
+      "rank": 219,
+      "ingredient": "metoclopramide",
+      "rxcuis": [
+        "6915"
+      ],
+      "weighted_fills": 2134983,
+      "fills": 126,
+      "meps_names": [
+        "METOCLOPRAMIDE"
+      ]
+    },
+    {
+      "rank": 220,
+      "ingredient": "rizatriptan",
+      "rxcuis": [
+        "88014"
+      ],
+      "weighted_fills": 2077661,
+      "fills": 134,
+      "meps_names": [
+        "RIZATRIPTAN"
+      ]
+    },
+    {
+      "rank": 221,
+      "ingredient": "oseltamivir",
+      "rxcuis": [
+        "260101"
+      ],
+      "weighted_fills": 2075218,
+      "fills": 89,
+      "meps_names": [
+        "OSELTAMIVIR"
+      ]
+    },
+    {
+      "rank": 222,
+      "ingredient": "nystatin",
+      "rxcuis": [
+        "7597"
+      ],
+      "weighted_fills": 2074092,
+      "fills": 136,
+      "meps_names": [
+        "NYSTATIN TOPICAL",
+        "NYSTATIN"
+      ]
+    },
+    {
+      "rank": 223,
+      "ingredient": "glycopyrronium",
+      "rxcuis": [
+        "1546438"
+      ],
+      "weighted_fills": 2060690,
+      "fills": 148,
+      "meps_names": [
+        "BUDESONIDE/FORMOTEROL/GLYCOPYRROLATE"
+      ]
+    },
+    {
+      "rank": 224,
+      "ingredient": "terazosin",
+      "rxcuis": [
+        "37798"
+      ],
+      "weighted_fills": 2049140,
+      "fills": 147,
+      "meps_names": [
+        "TERAZOSIN"
+      ]
+    },
+    {
+      "rank": 225,
+      "ingredient": "erythromycin",
+      "rxcuis": [
+        "4053"
+      ],
+      "weighted_fills": 2029574,
+      "fills": 123,
+      "meps_names": [
+        "ERYTHROMYCIN OPHTHALMIC",
+        "ERYTHROMYCIN TOPICAL",
+        "BENZOYL PEROXIDE-ERYTHROMYCIN TOPICAL"
+      ]
+    },
+    {
+      "rank": 226,
+      "ingredient": "dexlansoprazole",
+      "rxcuis": [
+        "816346"
+      ],
+      "weighted_fills": 2022254,
+      "fills": 112,
+      "meps_names": [
+        "DEXLANSOPRAZOLE"
+      ]
+    },
+    {
+      "rank": 227,
+      "ingredient": "hydrocortisone",
+      "rxcuis": [
+        "5492"
+      ],
+      "weighted_fills": 1946974,
+      "fills": 116,
+      "meps_names": [
+        "HYDROCORTISONE TOPICAL"
+      ]
+    },
+    {
+      "rank": 228,
+      "ingredient": "bisoprolol",
+      "rxcuis": [
+        "19484"
+      ],
+      "weighted_fills": 1943970,
+      "fills": 144,
+      "meps_names": [
+        "BISOPROLOL"
+      ]
+    },
+    {
+      "rank": 229,
+      "ingredient": "solifenacin",
+      "rxcuis": [
+        "322167"
+      ],
+      "weighted_fills": 1910370,
+      "fills": 121,
+      "meps_names": [
+        "SOLIFENACIN"
+      ]
+    },
+    {
+      "rank": 230,
+      "ingredient": "carbamazepine",
+      "rxcuis": [
+        "2002"
+      ],
+      "weighted_fills": 1893437,
+      "fills": 140,
+      "meps_names": [
+        "CARBAMAZEPINE"
+      ]
+    },
+    {
+      "rank": 231,
+      "ingredient": "epinephrine",
+      "rxcuis": [
+        "3992"
+      ],
+      "weighted_fills": 1835103,
+      "fills": 117,
+      "meps_names": [
+        "EPINEPHRINE"
+      ]
+    },
+    {
+      "rank": 232,
+      "ingredient": "calcium carbonate",
+      "rxcuis": [
+        "1897"
+      ],
+      "weighted_fills": 1829172,
+      "fills": 141,
+      "meps_names": [
+        "CALCIUM CARBONATE"
+      ]
+    },
+    {
+      "rank": 233,
+      "ingredient": "levofloxacin",
+      "rxcuis": [
+        "82122"
+      ],
+      "weighted_fills": 1796203,
+      "fills": 128,
+      "meps_names": [
+        "LEVOFLOXACIN"
+      ]
+    },
+    {
+      "rank": 234,
+      "ingredient": "ramipril",
+      "rxcuis": [
+        "35296"
+      ],
+      "weighted_fills": 1772326,
+      "fills": 124,
+      "meps_names": [
+        "RAMIPRIL"
+      ]
+    },
+    {
+      "rank": 235,
+      "ingredient": "loperamide",
+      "rxcuis": [
+        "6468"
+      ],
+      "weighted_fills": 1765231,
+      "fills": 80,
+      "meps_names": [
+        "LOPERAMIDE"
+      ]
+    },
+    {
+      "rank": 236,
+      "ingredient": "mirabegron",
+      "rxcuis": [
+        "1300786"
+      ],
+      "weighted_fills": 1764668,
+      "fills": 142,
+      "meps_names": [
+        "MIRABEGRON"
+      ]
+    },
+    {
+      "rank": 237,
+      "ingredient": "medroxyprogesterone",
+      "rxcuis": [
+        "6691"
+      ],
+      "weighted_fills": 1762492,
+      "fills": 93,
+      "meps_names": [
+        "MEDROXYPROGESTERONE"
+      ]
+    },
+    {
+      "rank": 238,
+      "ingredient": "minoxidil",
+      "rxcuis": [
+        "6984"
+      ],
+      "weighted_fills": 1744285,
+      "fills": 104,
+      "meps_names": [
+        "MINOXIDIL"
+      ]
+    },
+    {
+      "rank": 239,
+      "ingredient": "sucralfate",
+      "rxcuis": [
+        "10156"
+      ],
+      "weighted_fills": 1625940,
+      "fills": 124,
+      "meps_names": [
+        "SUCRALFATE"
+      ]
+    },
+    {
+      "rank": 240,
+      "ingredient": "ubrogepant",
+      "rxcuis": [
+        "2268216"
+      ],
+      "weighted_fills": 1621728,
+      "fills": 85,
+      "meps_names": [
+        "UBROGEPANT"
+      ]
+    },
+    {
+      "rank": 241,
+      "ingredient": "pseudoephedrine",
+      "rxcuis": [
+        "8896"
+      ],
+      "weighted_fills": 1621442,
+      "fills": 98,
+      "meps_names": [
+        "BROMPHENIRAMINE/DEXTROMETHORPHAN/PSEUDOEPHEDRINE",
+        "LORATADINE-PSEUDOEPHEDRINE",
+        "PSEUDOEPHEDRINE",
+        "FEXOFENADINE-PSEUDOEPHEDRINE",
+        "DEXTROMETHORPHAN/GUAIFENESIN/PSEUDOEPHEDRINE",
+        "CHLOPHEDIANOL/DEXBROMPHENIRAMINE/PSEUDOEPHEDRINE"
+      ]
+    },
+    {
+      "rank": 242,
+      "ingredient": "pramipexole",
+      "rxcuis": [
+        "746741"
+      ],
+      "weighted_fills": 1619372,
+      "fills": 121,
+      "meps_names": [
+        "PRAMIPEXOLE"
+      ]
+    },
+    {
+      "rank": 243,
+      "ingredient": "calcitriol",
+      "rxcuis": [
+        "1894"
+      ],
+      "weighted_fills": 1578255,
+      "fills": 82,
+      "meps_names": [
+        "CALCITRIOL"
+      ]
+    },
+    {
+      "rank": 244,
+      "ingredient": "sennosides, USP",
+      "rxcuis": [
+        "36387"
+      ],
+      "weighted_fills": 1566016,
+      "fills": 111,
+      "meps_names": [
+        "DOCUSATE-SENNA",
+        "SENNA"
+      ]
+    },
+    {
+      "rank": 245,
+      "ingredient": "fexofenadine",
+      "rxcuis": [
+        "87636"
+      ],
+      "weighted_fills": 1561369,
+      "fills": 115,
+      "meps_names": [
+        "FEXOFENADINE",
+        "FEXOFENADINE-PSEUDOEPHEDRINE"
+      ]
+    },
+    {
+      "rank": 246,
+      "ingredient": "ticagrelor",
+      "rxcuis": [
+        "1116632"
+      ],
+      "weighted_fills": 1556746,
+      "fills": 119,
+      "meps_names": [
+        "TICAGRELOR"
+      ]
+    },
+    {
+      "rank": 247,
+      "ingredient": "lipase",
+      "rxcuis": [
+        "6406"
+      ],
+      "weighted_fills": 1512707,
+      "fills": 72,
+      "meps_names": [
+        "PANCRELIPASE"
+      ]
+    },
+    {
+      "rank": 248,
+      "ingredient": "amylase",
+      "rxcuis": [
+        "743"
+      ],
+      "weighted_fills": 1512707,
+      "fills": 72,
+      "meps_names": [
+        "PANCRELIPASE"
+      ]
+    },
+    {
+      "rank": 249,
+      "ingredient": "protease",
+      "rxcuis": [
+        "8031"
+      ],
+      "weighted_fills": 1512707,
+      "fills": 72,
+      "meps_names": [
+        "PANCRELIPASE"
+      ]
+    },
+    {
+      "rank": 250,
+      "ingredient": "bumetanide",
+      "rxcuis": [
+        "1808"
+      ],
+      "weighted_fills": 1462843,
+      "fills": 108,
+      "meps_names": [
+        "BUMETANIDE"
+      ]
+    },
+    {
+      "rank": 251,
+      "ingredient": "labetalol",
+      "rxcuis": [
+        "6185"
+      ],
+      "weighted_fills": 1425357,
+      "fills": 80,
+      "meps_names": [
+        "LABETALOL"
+      ]
+    },
+    {
+      "rank": 252,
+      "ingredient": "guaifenesin",
+      "rxcuis": [
+        "5032"
+      ],
+      "weighted_fills": 1417135,
+      "fills": 98,
+      "meps_names": [
+        "CODEINE-GUAIFENESIN",
+        "GUAIFENESIN",
+        "DEXTROMETHORPHAN-GUAIFENESIN",
+        "DEXTROMETHORPHAN/GUAIFENESIN/PHENYLEPHRINE",
+        "DEXTROMETHORPHAN/GUAIFENESIN/PSEUDOEPHEDRINE",
+        "GUAIFENESIN-PHENYLEPHRINE"
+      ]
+    },
+    {
+      "rank": 253,
+      "ingredient": "alfuzosin",
+      "rxcuis": [
+        "17300"
+      ],
+      "weighted_fills": 1406964,
+      "fills": 95,
+      "meps_names": [
+        "ALFUZOSIN"
+      ]
+    },
+    {
+      "rank": 254,
+      "ingredient": "moxifloxacin",
+      "rxcuis": [
+        "139462"
+      ],
+      "weighted_fills": 1396789,
+      "fills": 112,
+      "meps_names": [
+        "MOXIFLOXACIN OPHTHALMIC"
+      ]
+    },
+    {
+      "rank": 255,
+      "ingredient": "terbinafine",
+      "rxcuis": [
+        "37801"
+      ],
+      "weighted_fills": 1372774,
+      "fills": 84,
+      "meps_names": [
+        "TERBINAFINE"
+      ]
+    },
+    {
+      "rank": 256,
+      "ingredient": "isotretinoin",
+      "rxcuis": [
+        "6064"
+      ],
+      "weighted_fills": 1369346,
+      "fills": 70,
+      "meps_names": [
+        "ISOTRETINOIN"
+      ]
+    },
+    {
+      "rank": 257,
+      "ingredient": "insulin detemir",
+      "rxcuis": [
+        "139825"
+      ],
+      "weighted_fills": 1310971,
+      "fills": 117,
+      "meps_names": [
+        "INSULIN DETEMIR"
+      ]
+    },
+    {
+      "rank": 258,
+      "ingredient": "letrozole",
+      "rxcuis": [
+        "72965"
+      ],
+      "weighted_fills": 1296963,
+      "fills": 89,
+      "meps_names": [
+        "LETROZOLE"
+      ]
+    },
+    {
+      "rank": 259,
+      "ingredient": "benzoyl peroxide",
+      "rxcuis": [
+        "1418"
+      ],
+      "weighted_fills": 1272113,
+      "fills": 66,
+      "meps_names": [
+        "BENZOYL PEROXIDE TOPICAL",
+        "BENZOYL PEROXIDE-CLINDAMYCIN TOPICAL",
+        "ADAPALENE-BENZOYL PEROXIDE TOPICAL",
+        "BENZOYL PEROXIDE-ERYTHROMYCIN TOPICAL",
+        "ADAPALENE/BENZOYL PEROXIDE/CLINDAMYCIN TOPICAL"
+      ]
+    },
+    {
+      "rank": 260,
+      "ingredient": "caffeine",
+      "rxcuis": [
+        "1886"
+      ],
+      "weighted_fills": 1242180,
+      "fills": 85,
+      "meps_names": [
+        "ACETAMINOPHEN/BUTALBITAL/CAFFEINE"
+      ]
+    },
+    {
+      "rank": 261,
+      "ingredient": "butalbital",
+      "rxcuis": [
+        "19860"
+      ],
+      "weighted_fills": 1242180,
+      "fills": 85,
+      "meps_names": [
+        "ACETAMINOPHEN/BUTALBITAL/CAFFEINE"
+      ]
+    },
+    {
+      "rank": 262,
+      "ingredient": "ciclopirox",
+      "rxcuis": [
+        "21090"
+      ],
+      "weighted_fills": 1228558,
+      "fills": 75,
+      "meps_names": [
+        "CICLOPIROX TOPICAL"
+      ]
+    },
+    {
+      "rank": 263,
+      "ingredient": "cyproheptadine",
+      "rxcuis": [
+        "3013"
+      ],
+      "weighted_fills": 1222741,
+      "fills": 57,
+      "meps_names": [
+        "CYPROHEPTADINE"
+      ]
+    },
+    {
+      "rank": 264,
+      "ingredient": "amiodarone",
+      "rxcuis": [
+        "703"
+      ],
+      "weighted_fills": 1201280,
+      "fills": 87,
+      "meps_names": [
+        "AMIODARONE"
+      ]
+    },
+    {
+      "rank": 265,
+      "ingredient": "norelgestromin",
+      "rxcuis": [
+        "326374"
+      ],
+      "weighted_fills": 1194977,
+      "fills": 50,
+      "meps_names": [
+        "ETHINYL ESTRADIOL-NORELGESTROMIN"
+      ]
+    },
+    {
+      "rank": 266,
+      "ingredient": "desogestrel",
+      "rxcuis": [
+        "22656"
+      ],
+      "weighted_fills": 1194184,
+      "fills": 56,
+      "meps_names": [
+        "DESOGESTREL-ETHINYL ESTRADIOL"
+      ]
+    },
+    {
+      "rank": 267,
+      "ingredient": "lidocaine",
+      "rxcuis": [
+        "6387"
+      ],
+      "weighted_fills": 1055304,
+      "fills": 76,
+      "meps_names": [
+        "LIDOCAINE TOPICAL"
+      ]
+    },
+    {
+      "rank": 268,
+      "ingredient": "chlorhexidine",
+      "rxcuis": [
+        "2358"
+      ],
+      "weighted_fills": 1048173,
+      "fills": 60,
+      "meps_names": [
+        "CHLORHEXIDINE TOPICAL"
+      ]
+    },
+    {
+      "rank": 269,
+      "ingredient": "nabumetone",
+      "rxcuis": [
+        "31448"
+      ],
+      "weighted_fills": 1038360,
+      "fills": 76,
+      "meps_names": [
+        "NABUMETONE"
+      ]
+    },
+    {
+      "rank": 270,
+      "ingredient": "neomycin",
+      "rxcuis": [
+        "7299"
+      ],
+      "weighted_fills": 1035231,
+      "fills": 69,
+      "meps_names": [
+        "DEXAMETHASONE/NEOMYCIN/POLYMYXIN B OPHTHALMIC",
+        "BACITRACIN/NEOMYCIN/POLYMYXIN B/PRAMOXINE TOPICAL",
+        "BACITRACIN/NEOMYCIN/POLYMYXIN B TOPICAL"
+      ]
+    },
+    {
+      "rank": 271,
+      "ingredient": "hydroquinone",
+      "rxcuis": [
+        "5509"
+      ],
+      "weighted_fills": 1025108,
+      "fills": 57,
+      "meps_names": [
+        "HYDROQUINONE TOPICAL"
+      ]
+    },
+    {
+      "rank": 272,
+      "ingredient": "penicillin V",
+      "rxcuis": [
+        "203195"
+      ],
+      "weighted_fills": 985827,
+      "fills": 59,
+      "meps_names": [
+        "PENICILLIN V POTASSIUM"
+      ]
+    },
+    {
+      "rank": 273,
+      "ingredient": "diphenhydramine",
+      "rxcuis": [
+        "3498"
+      ],
+      "weighted_fills": 913286,
+      "fills": 62,
+      "meps_names": [
+        "DIPHENHYDRAMINE"
+      ]
+    },
+    {
+      "rank": 274,
+      "ingredient": "mometasone",
+      "rxcuis": [
+        "108118"
+      ],
+      "weighted_fills": 900627,
+      "fills": 63,
+      "meps_names": [
+        "MOMETASONE NASAL",
+        "MOMETASONE TOPICAL",
+        "MOMETASONE-OLOPATADINE NASAL"
+      ]
+    },
+    {
+      "rank": 275,
+      "ingredient": "levalbuterol",
+      "rxcuis": [
+        "237159"
+      ],
+      "weighted_fills": 897717,
+      "fills": 50,
+      "meps_names": [
+        "LEVALBUTEROL"
+      ]
+    },
+    {
+      "rank": 276,
+      "ingredient": "lactate",
+      "rxcuis": [
+        "215247"
+      ],
+      "weighted_fills": 869413,
+      "fills": 64,
+      "meps_names": [
+        "AMMONIUM LACTATE TOPICAL"
+      ]
+    },
+    {
+      "rank": 277,
+      "ingredient": "sodium chloride",
+      "rxcuis": [
+        "9863"
+      ],
+      "weighted_fills": 840906,
+      "fills": 61,
+      "meps_names": [
+        "SODIUM CHLORIDE",
+        "SODIUM CHLORIDE NASAL"
+      ]
+    },
+    {
+      "rank": 278,
+      "ingredient": "liraglutide",
+      "rxcuis": [
+        "475968"
+      ],
+      "weighted_fills": 826310,
+      "fills": 60,
+      "meps_names": [
+        "LIRAGLUTIDE"
+      ]
+    },
+    {
+      "rank": 279,
+      "ingredient": "guanfacine",
+      "rxcuis": [
+        "40114"
+      ],
+      "weighted_fills": 826202,
+      "fills": 41,
+      "meps_names": [
+        "GUANFACINE"
+      ]
+    },
+    {
+      "rank": 280,
+      "ingredient": "fluorouracil",
+      "rxcuis": [
+        "4492"
+      ],
+      "weighted_fills": 798275,
+      "fills": 65,
+      "meps_names": [
+        "FLUOROURACIL TOPICAL"
+      ]
+    },
+    {
+      "rank": 281,
+      "ingredient": "olopatadine",
+      "rxcuis": [
+        "135391"
+      ],
+      "weighted_fills": 775629,
+      "fills": 64,
+      "meps_names": [
+        "OLOPATADINE OPHTHALMIC",
+        "MOMETASONE-OLOPATADINE NASAL",
+        "OLOPATADINE NASAL"
+      ]
+    },
+    {
+      "rank": 282,
+      "ingredient": "beclomethasone",
+      "rxcuis": [
+        "1347"
+      ],
+      "weighted_fills": 754576,
+      "fills": 52,
+      "meps_names": [
+        "BECLOMETHASONE",
+        "BECLOMETHASONE NASAL"
+      ]
+    },
+    {
+      "rank": 283,
+      "ingredient": "ascorbic acid",
+      "rxcuis": [
+        "1151"
+      ],
+      "weighted_fills": 742976,
+      "fills": 58,
+      "meps_names": [
+        "ASCORBIC ACID",
+        "ASCORBIC ACID-CARBONYL IRON"
+      ]
+    },
+    {
+      "rank": 284,
+      "ingredient": "mycophenolate mofetil",
+      "rxcuis": [
+        "68149"
+      ],
+      "weighted_fills": 735030,
+      "fills": 61,
+      "meps_names": [
+        "MYCOPHENOLATE MOFETIL"
+      ]
+    },
+    {
+      "rank": 285,
+      "ingredient": "brompheniramine",
+      "rxcuis": [
+        "1767"
+      ],
+      "weighted_fills": 731353,
+      "fills": 35,
+      "meps_names": [
+        "BROMPHENIRAMINE/DEXTROMETHORPHAN/PSEUDOEPHEDRINE",
+        "BROMPHENIRAMINE/DEXTROMETHORPHAN/PHENYLEPHRINE"
+      ]
+    },
+    {
+      "rank": 286,
+      "ingredient": "indomethacin",
+      "rxcuis": [
+        "5781"
+      ],
+      "weighted_fills": 720259,
+      "fills": 60,
+      "meps_names": [
+        "INDOMETHACIN"
+      ]
+    },
+    {
+      "rank": 287,
+      "ingredient": "phenazopyridine",
+      "rxcuis": [
+        "8120"
+      ],
+      "weighted_fills": 640512,
+      "fills": 41,
+      "meps_names": [
+        "PHENAZOPYRIDINE"
+      ]
+    },
+    {
+      "rank": 288,
+      "ingredient": "cefuroxime",
+      "rxcuis": [
+        "2194"
+      ],
+      "weighted_fills": 609282,
+      "fills": 39,
+      "meps_names": [
+        "CEFUROXIME"
+      ]
+    },
+    {
+      "rank": 289,
+      "ingredient": "thiamine",
+      "rxcuis": [
+        "10454"
+      ],
+      "weighted_fills": 607640,
+      "fills": 44,
+      "meps_names": [
+        "THIAMINE"
+      ]
+    },
+    {
+      "rank": 290,
+      "ingredient": "sodium bicarbonate",
+      "rxcuis": [
+        "36676"
+      ],
+      "weighted_fills": 583770,
+      "fills": 44,
+      "meps_names": [
+        "SODIUM BICARBONATE"
+      ]
+    },
+    {
+      "rank": 291,
+      "ingredient": "norgestrel",
+      "rxcuis": [
+        "7518"
+      ],
+      "weighted_fills": 582945,
+      "fills": 19,
+      "meps_names": [
+        "ETHINYL ESTRADIOL-NORGESTREL"
+      ]
+    },
+    {
+      "rank": 292,
+      "ingredient": "carbidopa",
+      "rxcuis": [
+        "2019"
+      ],
+      "weighted_fills": 500748,
+      "fills": 40,
+      "meps_names": [
+        "CARBIDOPA-LEVODOPA"
+      ]
+    },
+    {
+      "rank": 293,
+      "ingredient": "levodopa",
+      "rxcuis": [
+        "6375"
+      ],
+      "weighted_fills": 500748,
+      "fills": 40,
+      "meps_names": [
+        "CARBIDOPA-LEVODOPA"
+      ]
+    },
+    {
+      "rank": 294,
+      "ingredient": "lactulose",
+      "rxcuis": [
+        "6218"
+      ],
+      "weighted_fills": 500694,
+      "fills": 39,
+      "meps_names": [
+        "LACTULOSE"
+      ]
+    },
+    {
+      "rank": 295,
+      "ingredient": "tobramycin",
+      "rxcuis": [
+        "10627"
+      ],
+      "weighted_fills": 469216,
+      "fills": 26,
+      "meps_names": [
+        "TOBRAMYCIN OPHTHALMIC"
+      ]
+    },
+    {
+      "rank": 296,
+      "ingredient": "ketotifen",
+      "rxcuis": [
+        "6146"
+      ],
+      "weighted_fills": 454881,
+      "fills": 29,
+      "meps_names": [
+        "KETOTIFEN OPHTHALMIC"
+      ]
+    },
+    {
+      "rank": 297,
+      "ingredient": "magnesium sulfate",
+      "rxcuis": [
+        "6585"
+      ],
+      "weighted_fills": 452011,
+      "fills": 21,
+      "meps_names": [
+        "MAGNESIUM SULFATE/POTASSIUM CHLORIDE/SODIUM SULFATE",
+        "MAGNESIUM SULFATE"
+      ]
+    },
+    {
+      "rank": 298,
+      "ingredient": "chlorpheniramine",
+      "rxcuis": [
+        "2400"
+      ],
+      "weighted_fills": 449591,
+      "fills": 29,
+      "meps_names": [
+        "CHLORPHENIRAMINE",
+        "CHLORPHENIRAMINE/DEXTROMETHORPHAN/PHENYLEPHRINE",
+        "CHLORPHENIRAMINE-PHENYLEPHRINE",
+        "CHLORPHENIRAMINE-HYDROCODONE"
+      ]
+    },
+    {
+      "rank": 299,
+      "ingredient": "etodolac",
+      "rxcuis": [
+        "24605"
+      ],
+      "weighted_fills": 436916,
+      "fills": 36,
+      "meps_names": [
+        "ETODOLAC"
+      ]
+    },
+    {
+      "rank": 300,
+      "ingredient": "atropine",
+      "rxcuis": [
+        "1223"
+      ],
+      "weighted_fills": 424572,
+      "fills": 26,
+      "meps_names": [
+        "ATROPINE-DIPHENOXYLATE"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "key": "health_canada",
+  "title": "Health Canada, Extreme heat and human health: For pharmacists and pharmacist technicians",
+  "section": "Heat-Risk Factors Associated with Medications",
+  "url": "https://www.canada.ca/en/health-canada/services/publications/healthy-living/extreme-heat-human-health-pharmacists-technicians.html",
+  "published": "2024-08-30",
+  "license": "Government of Canada publication; terms at https://www.canada.ca/en/transparency/terms.html",
+  "checked_on": "2026-09-30",
+  "scored": true,
+  "mapping_rule": "Health Canada lists example drug classes without per-class reasons. Each class is mapped to ATC prefixes or ingredient names with a one-line reason. Ambiguous classes take the narrower reading. Committed before the first evidence run.",
+  "phrases": [
+    {
+      "phrase": "Antipsychotics/ Neuroleptics",
+      "atc_prefixes": ["N05A"],
+      "ingredients": [],
+      "reason": "Antipsychotics N05A. Lithium (N05AN) is listed separately by Health Canada and counted under its own phrase."
+    },
+    {
+      "phrase": "Antidepressants",
+      "atc_prefixes": ["N06A"],
+      "ingredients": [],
+      "reason": "All antidepressants N06A: SSRIs, SNRIs, tricyclics, and others such as bupropion, mirtazapine, and trazodone. Health Canada gives no narrower class."
+    },
+    {
+      "phrase": "Lithium",
+      "atc_prefixes": ["N05AN"],
+      "ingredients": ["lithium"],
+      "reason": "Lithium N05AN."
+    },
+    {
+      "phrase": "Anti-epileptics",
+      "atc_prefixes": ["N03A"],
+      "ingredients": [],
+      "reason": "Antiepileptics N03A, which includes gabapentin and pregabalin (N03AX) even when prescribed for pain."
+    },
+    {
+      "phrase": "Anti-Alzheimer's agents (Cholinesterase inhibitors)",
+      "atc_prefixes": ["N06DA"],
+      "ingredients": ["donepezil", "rivastigmine", "galantamine"],
+      "reason": "Cholinesterase inhibitors N06DA. Narrower reading: memantine (N06DX) is an anti-Alzheimer agent but not a cholinesterase inhibitor, which Health Canada specifies in parentheses, so it is excluded."
+    },
+    {
+      "phrase": "Anti-Parkinson's agents",
+      "atc_prefixes": ["N04"],
+      "ingredients": [],
+      "reason": "All antiparkinson agents N04, anticholinergic and dopaminergic."
+    },
+    {
+      "phrase": "Diuretics",
+      "atc_prefixes": ["C03"],
+      "ingredients": [],
+      "reason": "All diuretics C03."
+    },
+    {
+      "phrase": "Nitrate vasodilators",
+      "atc_prefixes": ["C01DA"],
+      "ingredients": [],
+      "reason": "Organic nitrates C01DA."
+    },
+    {
+      "phrase": "ACE inhibitors",
+      "atc_prefixes": ["C09A", "C09B"],
+      "ingredients": [],
+      "reason": "ACE inhibitors plain (C09A) and in combinations (C09B). Narrower reading: ARBs (C09C, C09D) are not named by Health Canada and are excluded."
+    },
+    {
+      "phrase": "Calcium channel blockers & beta blockers",
+      "atc_prefixes": ["C08", "C07"],
+      "ingredients": [],
+      "reason": "Calcium channel blockers C08 and beta blockers C07."
+    }
+  ]
+}

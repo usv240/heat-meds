@@ -1,0 +1,67 @@
+{
+  "key": "ukhsa",
+  "title": "UK Health Security Agency, Supporting vulnerable people before and during hot weather: healthcare professionals",
+  "section": "Medications with increased risk during hot weather",
+  "url": "https://www.gov.uk/guidance/supporting-vulnerable-people-before-and-during-hot-weather-healthcare-professionals",
+  "published": "2024-12-19",
+  "license": "Open Government Licence v3.0, Crown copyright",
+  "checked_on": "2026-09-30",
+  "scored": true,
+  "mapping_rule": "Each UKHSA phrase is mapped to ATC prefixes or ingredient names with a one-line reason. Where a phrase is broad or ambiguous, the narrower reading is taken and noted. This file was committed before the first evidence run so the mapping could not be tuned to the results.",
+  "phrases": [
+    {
+      "phrase": "diuretics, especially loop diuretics, which can lead to dehydration and electrolyte abnormalities",
+      "atc_prefixes": ["C03"],
+      "ingredients": [],
+      "reason": "All diuretics (C03); UKHSA singles out loop diuretics but names diuretics as the class."
+    },
+    {
+      "phrase": "medications that interfere with cardiovascular responses such as antihypertensives and antianginal drugs",
+      "atc_prefixes": ["C02", "C07", "C08", "C09", "C01DA"],
+      "ingredients": [],
+      "reason": "Antihypertensives read as the ATC blood-pressure groups C02, C07, C08, C09; antianginals as nitrates C01DA. Narrower reading: diuretics are counted under the diuretics phrase, not here; C01 antiarrhythmics and cardiac glycosides are excluded."
+    },
+    {
+      "phrase": "medications that interfere with sweating, such as anticholinergics or beta blockers",
+      "atc_prefixes": ["C07", "N04A", "A03B", "G04BD", "R06AA", "R06AD"],
+      "ingredients": ["diphenhydramine", "doxylamine", "promethazine", "hydroxyzine", "oxybutynin", "tolterodine", "solifenacin", "benztropine", "trihexyphenidyl", "scopolamine", "amitriptyline", "nortriptyline", "imipramine", "clomipramine", "doxepin"],
+      "reason": "Beta blockers C07. Anticholinergics read narrowly as classes whose main action is anticholinergic: anticholinergic antiparkinson agents N04A, gut antispasmodics A03B, urinary antispasmodics G04BD, first-generation antihistamines by name, and tricyclics by name. Antipsychotics are not counted here; they fall under thermoregulation below."
+    },
+    {
+      "phrase": "medications that cause diarrhoea or vomiting, such as colchicine, antibiotics and opiates, which can lead to dehydration",
+      "atc_prefixes": ["N02A", "J01"],
+      "ingredients": ["colchicine"],
+      "reason": "Opiates N02A, colchicine by name, and antibacterials J01. Narrower reading: antifungals and antivirals are not antibiotics in the everyday sense and are excluded."
+    },
+    {
+      "phrase": "medications that can impair renal function, such as certain antimicrobials, immunosuppressants, non-steroidal anti-inflammatories, anti-ulcer agents and chemotherapies",
+      "atc_prefixes": ["M01A", "L04A", "L01", "A02B"],
+      "ingredients": ["aspirin"],
+      "reason": "NSAIDs M01A plus aspirin by name, immunosuppressants L04A, antineoplastics L01, anti-ulcer agents A02B (proton pump inhibitors and H2 blockers). Narrower reading: 'certain antimicrobials' is too vague to map beyond the J01 already counted above."
+    },
+    {
+      "phrase": "agents with levels affected by dehydration, such as lithium, digoxin, antiepileptics",
+      "atc_prefixes": ["N05AN", "C01AA", "N03A"],
+      "ingredients": ["lithium", "digoxin"],
+      "reason": "Lithium N05AN, digoxin C01AA, antiepileptics N03A. Gabapentin and pregabalin are N03AX and are therefore counted; noted because they are very common and mostly prescribed for pain."
+    },
+    {
+      "phrase": "drugs that alter states of alertness, such as hypnotics, anxiolytics and analgesics",
+      "atc_prefixes": ["N05B", "N05C", "N02A"],
+      "ingredients": [],
+      "reason": "Anxiolytics N05B, hypnotics N05C, and analgesics read narrowly as opioids N02A (already counted). Narrower reading: non-opioid painkillers such as acetaminophen do not alter alertness and are excluded."
+    },
+    {
+      "phrase": "medications that can interfere with central nervous system thermoregulation, such as neuroleptics and serotoninergic agonists",
+      "atc_prefixes": ["N05A", "N06AB", "N06AX", "N02CC"],
+      "ingredients": ["venlafaxine", "duloxetine", "desvenlafaxine", "levomilnacipran", "trazodone", "buspirone"],
+      "reason": "Neuroleptics N05A (minus lithium, counted separately); serotoninergic agonists read as SSRIs N06AB, SNRIs and other serotonergic antidepressants N06AX and by name, and triptans N02CC. Narrower reading: tricyclics are counted under sweating, not here."
+    },
+    {
+      "phrase": "drugs that increase the basal metabolic rate such as thyroxine",
+      "atc_prefixes": ["H03AA"],
+      "ingredients": ["levothyroxine", "liothyronine"],
+      "reason": "Thyroid hormones H03AA."
+    }
+  ]
+}

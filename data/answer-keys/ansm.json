@@ -1,0 +1,10 @@
+{
+  "key": "ansm",
+  "title": "ANSM (France), Bon usage des medicaments en cas de vague de chaleur",
+  "url": "https://ansm.sante.fr/dossiers-thematiques/conditions-climatiques-extremes-et-produits-de-sante/medicaments-et-fortes-chaleurs",
+  "checked_on": "2026-09-30",
+  "scored": false,
+  "why_not_scored": "The ANSM list is much broader than the CDC, UKHSA, or Health Canada lists; it includes, for example, statins and many other classes reviewed for other reasons. Scoring against it would swamp the comparison. It is shown only as context in the 'i' panel.",
+  "context_note": "France's medicines agency recommends reviewing a wide range of medicines during heat waves, including diuretics, NSAIDs, ACE inhibitors and ARBs, antipsychotics, antidepressants, lithium, antiepileptics, and others. The exact list is on the ANSM page above and is not reproduced or mapped here.",
+  "phrases": []
+}
