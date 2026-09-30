@@ -26,7 +26,8 @@ function table(headers, rows) {
 export function renderEvidence(e) {
   const frag = document.createDocumentFragment();
   const runDate = new Date(e.run_on).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  frag.append(el('p', { class: 'muted small', text: `Run on ${runDate}${e.commit ? `, code version ${e.commit}` : ''}, rules file ${e.rules_version}. ${n(e.counts.resolved)} of ${n(e.test_set.count)} medicines resolved.` }));
+  const version = e.commit ? `, code version ${e.commit}${e.commit_clean === false ? ' plus uncommitted changes' : ''}` : '';
+  frag.append(el('p', { class: 'muted small', text: `Run on ${runDate}${version}, rules file ${e.rules_version}. ${n(e.counts.resolved)} of ${n(e.test_set.count)} medicines resolved.` }));
 
   // 1. The two must-be-zero numbers.
   const must = el('section', { 'aria-labelledby': 'mustHeading' });

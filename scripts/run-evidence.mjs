@@ -135,13 +135,22 @@ for (const r of scored) {
   }
 }
 
+// Record the commit whose code produced these numbers, and whether every input matched it.
+// If code or curated data had uncommitted changes, the commit alone would not reproduce the run.
+const INPUTS = ['src', 'scripts/run-evidence.mjs', 'data/cdc-rules.json', 'data/answer-keys', 'data/top300.json', 'data/saved-heatwave.json'];
 let commit = null;
-try { commit = execSync('git rev-parse --short HEAD', { encoding: 'utf8' }).trim(); } catch { /* not in git */ }
+let commitClean = null;
+try {
+  commit = execSync('git rev-parse --short HEAD', { encoding: 'utf8' }).trim();
+  commitClean = execSync(`git status --porcelain -- ${INPUTS.join(' ')}`, { encoding: 'utf8' }).trim() === '';
+} catch { /* not in git */ }
+if (commitClean === false) console.warn('Warning: inputs have uncommitted changes; the recorded commit will be marked as not matching.');
 
 const evidence = {
   title: 'How Heat Meds performs on the 300 most-prescribed US medicines',
   run_on: new Date().toISOString(),
   commit,
+  commit_clean: commitClean,
   rules_version: rules.version,
   test_set: { title: top.title, source: top.source, count: top.medicines.length, derived_on: top.derived_on, method: top.method },
   answer_keys: {
