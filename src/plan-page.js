@@ -9,6 +9,7 @@ import { evaluate } from './rules.js';
 import { classifyMedicine } from './rxclass.js';
 import { renderHeatWeek, renderHeatNote, renderSummary, renderPlanSections } from './plan-render.js';
 import { loadGlossary, infoButton } from './info.js';
+import { makeMatcher } from './answer-keys.js';
 
 initTheme();
 
@@ -76,7 +77,11 @@ function heatNoteFor(mode, liveNote) {
 
 async function run() {
   dateLine.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-  const [medicines, rules, saved] = await Promise.all([loadMedicines(), loadJson('data/cdc-rules.json'), loadJson('data/saved-heatwave.json').catch(() => null), loadGlossary()]);
+  const [medicines, rules, saved, , ukhsaKey, canadaKey] = await Promise.all([
+    loadMedicines(), loadJson('data/cdc-rules.json'), loadJson('data/saved-heatwave.json').catch(() => null), loadGlossary(),
+    loadJson('data/answer-keys/ukhsa.json').catch(() => null), loadJson('data/answer-keys/health-canada.json').catch(() => null),
+  ]);
+  const answerKeys = ukhsaKey && canadaKey ? { ukhsa: makeMatcher(ukhsaKey), health_canada: makeMatcher(canadaKey) } : null;
   document.getElementById('heatHeading')?.append(infoButton('heatrisk'));
   const zip = getZip();
   placeLine.textContent = zip ? `ZIP ${zip}` : 'No ZIP code';
@@ -105,7 +110,7 @@ async function run() {
     } else {
       heatLabel.hidden = true;
     }
-    const plan = evaluate({ medicines, forecast: chosen.week, rules, today: todayIso(), mode: chosen.mode === 'replay' ? 'replay' : 'live', place: chosen.mode === 'replay' ? (saved.place ?? null) : null });
+    const plan = evaluate({ medicines, forecast: chosen.week, rules, answerKeys, today: todayIso(), mode: chosen.mode === 'replay' ? 'replay' : 'live', place: chosen.mode === 'replay' ? (saved.place ?? null) : null });
     summaryArea.replaceChildren(renderSummary(plan));
     planArea.replaceChildren(renderPlanSections(plan));
   }

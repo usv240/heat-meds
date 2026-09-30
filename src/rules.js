@@ -35,7 +35,8 @@ function matchesRule(ing, rule) {
   if (atc.some((code) => exAtc.some((p) => code.startsWith(p)))) return false;
   const byAtc = (rule.atc_prefixes ?? []).some((p) => atc.some((code) => code.startsWith(p)));
   const byName = (rule.ingredients ?? []).map(norm).some((n) => names.includes(n));
-  return byAtc || byName;
+  const byContains = (rule.name_contains ?? []).map(norm).some((n) => names.some((x) => x.includes(n)));
+  return byAtc || byName || byContains;
 }
 
 // Collapses the chip list into unique ingredients, keeping every name it was typed as.

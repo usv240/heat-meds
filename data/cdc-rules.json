@@ -772,7 +772,11 @@
       "checked_on": "2026-09-30",
       "quote_status": "verified",
       "verified_on": "2026-09-30",
-      "verified_by": "project author, against the live CDC page"
+      "verified_by": "project author, against the live CDC page",
+      "name_contains": [
+        "insulin"
+      ],
+      "note": "Matched by ATC A10A and by any ingredient name containing \"insulin\", because RxClass carries no ATC code for some insulins (for example insulin isophane)."
     },
     {
       "id": "inhalers",

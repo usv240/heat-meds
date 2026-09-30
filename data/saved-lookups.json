@@ -11,7 +11,17 @@
       "name": "Lasix",
       "tty": "BN",
       "status": "resolved",
-      "ingredients": [{ "rxcui": "4603", "name": "furosemide", "tty": "IN", "base_name": "furosemide", "atc": ["C03CA"] }]
+      "ingredients": [
+        {
+          "rxcui": "4603",
+          "name": "furosemide",
+          "tty": "IN",
+          "base_name": "furosemide",
+          "atc": [
+            "C03CA"
+          ]
+        }
+      ]
     },
     "furosemide": {
       "input": "furosemide",
@@ -19,8 +29,18 @@
       "rxcui": "4603",
       "name": "furosemide",
       "tty": "IN",
-      "status": "resolved",
-      "ingredients": [{ "rxcui": "4603", "name": "furosemide", "tty": "IN", "base_name": "furosemide", "atc": ["C03CA"] }]
+      "ingredients": [
+        {
+          "rxcui": "4603",
+          "name": "furosemide",
+          "tty": "IN",
+          "base_name": "furosemide",
+          "atc": [
+            "C03CA"
+          ]
+        }
+      ],
+      "status": "resolved"
     },
     "lisinopril": {
       "input": "lisinopril",
@@ -28,8 +48,18 @@
       "rxcui": "29046",
       "name": "lisinopril",
       "tty": "IN",
-      "status": "resolved",
-      "ingredients": [{ "rxcui": "29046", "name": "lisinopril", "tty": "IN", "base_name": "lisinopril", "atc": ["C09AA"] }]
+      "ingredients": [
+        {
+          "rxcui": "29046",
+          "name": "lisinopril",
+          "tty": "IN",
+          "base_name": "lisinopril",
+          "atc": [
+            "C09AA"
+          ]
+        }
+      ],
+      "status": "resolved"
     },
     "zoloft": {
       "input": "Zoloft",
@@ -38,7 +68,17 @@
       "name": "Zoloft",
       "tty": "BN",
       "status": "resolved",
-      "ingredients": [{ "rxcui": "36437", "name": "sertraline", "tty": "IN", "base_name": "sertraline", "atc": ["N06AB"] }]
+      "ingredients": [
+        {
+          "rxcui": "36437",
+          "name": "sertraline",
+          "tty": "IN",
+          "base_name": "sertraline",
+          "atc": [
+            "N06AB"
+          ]
+        }
+      ]
     },
     "lantus": {
       "input": "Lantus",
@@ -47,7 +87,17 @@
       "name": "Lantus",
       "tty": "BN",
       "status": "resolved",
-      "ingredients": [{ "rxcui": "274783", "name": "insulin glargine", "tty": "IN", "base_name": "insulin glargine", "atc": ["A10AE"] }]
+      "ingredients": [
+        {
+          "rxcui": "274783",
+          "name": "insulin glargine",
+          "tty": "IN",
+          "base_name": "insulin glargine",
+          "atc": [
+            "A10AE"
+          ]
+        }
+      ]
     },
     "atorvastatin": {
       "input": "atorvastatin",
@@ -55,8 +105,18 @@
       "rxcui": "83367",
       "name": "atorvastatin",
       "tty": "IN",
-      "status": "resolved",
-      "ingredients": [{ "rxcui": "83367", "name": "atorvastatin", "tty": "IN", "base_name": "atorvastatin", "atc": ["C10AA"] }]
+      "ingredients": [
+        {
+          "rxcui": "83367",
+          "name": "atorvastatin",
+          "tty": "IN",
+          "base_name": "atorvastatin",
+          "atc": [
+            "C10AA"
+          ]
+        }
+      ],
+      "status": "resolved"
     },
     "lisinopril-hydrochlorothiazide": {
       "input": "lisinopril-hydrochlorothiazide",
@@ -66,15 +126,5848 @@
       "tty": "MIN",
       "status": "resolved",
       "ingredients": [
-        { "rxcui": "29046", "name": "lisinopril", "tty": "IN", "base_name": "lisinopril", "atc": ["C09AA"] },
-        { "rxcui": "5487", "name": "hydrochlorothiazide", "tty": "IN", "base_name": "hydrochlorothiazide", "atc": ["C03AA"] }
+        {
+          "rxcui": "29046",
+          "name": "lisinopril",
+          "tty": "IN",
+          "base_name": "lisinopril",
+          "atc": [
+            "C09AA"
+          ]
+        },
+        {
+          "rxcui": "5487",
+          "name": "hydrochlorothiazide",
+          "tty": "IN",
+          "base_name": "hydrochlorothiazide",
+          "atc": [
+            "C03AA"
+          ]
+        }
       ]
+    },
+    "metformin": {
+      "input": "metformin",
+      "query": "metformin",
+      "rxcui": "6809",
+      "name": "metformin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6809",
+          "name": "metformin",
+          "tty": "IN",
+          "base_name": "metformin",
+          "atc": [
+            "A10BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "levothyroxine": {
+      "input": "levothyroxine",
+      "query": "levothyroxine",
+      "rxcui": "10582",
+      "name": "levothyroxine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10582",
+          "name": "levothyroxine",
+          "tty": "IN",
+          "base_name": "levothyroxine",
+          "atc": [
+            "H03AA"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "amlodipine": {
+      "input": "amlodipine",
+      "query": "amlodipine",
+      "rxcui": "17767",
+      "name": "amlodipine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "17767",
+          "name": "amlodipine",
+          "tty": "IN",
+          "base_name": "amlodipine",
+          "atc": [
+            "C08CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "losartan": {
+      "input": "losartan",
+      "query": "losartan",
+      "rxcui": "52175",
+      "name": "losartan",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "52175",
+          "name": "losartan",
+          "tty": "IN",
+          "base_name": "losartan",
+          "atc": [
+            "C09CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "albuterol": {
+      "input": "albuterol",
+      "query": "albuterol",
+      "rxcui": "435",
+      "name": "albuterol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "435",
+          "name": "albuterol",
+          "tty": "IN",
+          "base_name": "albuterol",
+          "atc": [
+            "R03AC",
+            "R03CC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "metoprolol": {
+      "input": "metoprolol",
+      "query": "metoprolol",
+      "rxcui": "6918",
+      "name": "metoprolol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6918",
+          "name": "metoprolol",
+          "tty": "IN",
+          "base_name": "metoprolol",
+          "atc": [
+            "C07AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "rosuvastatin": {
+      "input": "rosuvastatin",
+      "query": "rosuvastatin",
+      "rxcui": "301542",
+      "name": "rosuvastatin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "301542",
+          "name": "rosuvastatin",
+          "tty": "IN",
+          "base_name": "rosuvastatin",
+          "atc": [
+            "C10AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "hydrochlorothiazide": {
+      "input": "hydrochlorothiazide",
+      "query": "hydrochlorothiazide",
+      "rxcui": "5487",
+      "name": "hydrochlorothiazide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "5487",
+          "name": "hydrochlorothiazide",
+          "tty": "IN",
+          "base_name": "hydrochlorothiazide",
+          "atc": [
+            "C03AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "omeprazole": {
+      "input": "omeprazole",
+      "query": "omeprazole",
+      "rxcui": "7646",
+      "name": "omeprazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7646",
+          "name": "omeprazole",
+          "tty": "IN",
+          "base_name": "omeprazole",
+          "atc": [
+            "A02BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "gabapentin": {
+      "input": "gabapentin",
+      "query": "gabapentin",
+      "rxcui": "25480",
+      "name": "gabapentin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "25480",
+          "name": "gabapentin",
+          "tty": "IN",
+          "base_name": "gabapentin",
+          "atc": [
+            "N02BF"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "sertraline": {
+      "input": "sertraline",
+      "query": "sertraline",
+      "rxcui": "36437",
+      "name": "sertraline",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "36437",
+          "name": "sertraline",
+          "tty": "IN",
+          "base_name": "sertraline",
+          "atc": [
+            "N06AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "fluticasone": {
+      "input": "fluticasone",
+      "query": "fluticasone",
+      "rxcui": "41126",
+      "name": "fluticasone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "41126",
+          "name": "fluticasone",
+          "tty": "IN",
+          "base_name": "fluticasone",
+          "atc": [
+            "D07AC",
+            "R01AD",
+            "R03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "escitalopram": {
+      "input": "escitalopram",
+      "query": "escitalopram",
+      "rxcui": "321988",
+      "name": "escitalopram",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "321988",
+          "name": "escitalopram",
+          "tty": "IN",
+          "base_name": "escitalopram",
+          "atc": [
+            "N06AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "semaglutide": {
+      "input": "semaglutide",
+      "query": "semaglutide",
+      "rxcui": "1991302",
+      "name": "semaglutide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1991302",
+          "name": "semaglutide",
+          "tty": "IN",
+          "base_name": "semaglutide",
+          "atc": [
+            "A10BJ"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "dextroamphetamine": {
+      "input": "dextroamphetamine",
+      "query": "dextroamphetamine",
+      "rxcui": "3288",
+      "name": "dextroamphetamine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3288",
+          "name": "dextroamphetamine",
+          "tty": "IN",
+          "base_name": "dextroamphetamine",
+          "atc": [
+            "N06BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "amphetamine": {
+      "input": "amphetamine",
+      "query": "amphetamine",
+      "rxcui": "725",
+      "name": "amphetamine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "725",
+          "name": "amphetamine",
+          "tty": "IN",
+          "base_name": "amphetamine",
+          "atc": [
+            "N06BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "acetaminophen": {
+      "input": "acetaminophen",
+      "query": "acetaminophen",
+      "rxcui": "161",
+      "name": "acetaminophen",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "161",
+          "name": "acetaminophen",
+          "tty": "IN",
+          "base_name": "acetaminophen",
+          "atc": [
+            "N02BE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "pantoprazole": {
+      "input": "pantoprazole",
+      "query": "pantoprazole",
+      "rxcui": "40790",
+      "name": "pantoprazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "40790",
+          "name": "pantoprazole",
+          "tty": "IN",
+          "base_name": "pantoprazole",
+          "atc": [
+            "A02BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "bupropion": {
+      "input": "bupropion",
+      "query": "bupropion",
+      "rxcui": "42347",
+      "name": "bupropion",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "42347",
+          "name": "bupropion",
+          "tty": "IN",
+          "base_name": "bupropion",
+          "atc": [
+            "N06AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "amoxicillin": {
+      "input": "amoxicillin",
+      "query": "amoxicillin",
+      "rxcui": "723",
+      "name": "amoxicillin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "723",
+          "name": "amoxicillin",
+          "tty": "IN",
+          "base_name": "amoxicillin",
+          "atc": [
+            "J01CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ethinyl estradiol": {
+      "input": "ethinyl estradiol",
+      "query": "ethinyl estradiol",
+      "rxcui": "4124",
+      "name": "ethinyl estradiol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4124",
+          "name": "ethinyl estradiol",
+          "tty": "IN",
+          "base_name": "ethinyl estradiol",
+          "atc": [
+            "G03CA",
+            "L02AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "fluoxetine": {
+      "input": "fluoxetine",
+      "query": "fluoxetine",
+      "rxcui": "4493",
+      "name": "fluoxetine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4493",
+          "name": "fluoxetine",
+          "tty": "IN",
+          "base_name": "fluoxetine",
+          "atc": [
+            "N06AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "trazodone": {
+      "input": "trazodone",
+      "query": "trazodone",
+      "rxcui": "10737",
+      "name": "trazodone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10737",
+          "name": "trazodone",
+          "tty": "IN",
+          "base_name": "trazodone",
+          "atc": [
+            "N06AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "montelukast": {
+      "input": "montelukast",
+      "query": "montelukast",
+      "rxcui": "88249",
+      "name": "montelukast",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "88249",
+          "name": "montelukast",
+          "tty": "IN",
+          "base_name": "montelukast",
+          "atc": [
+            "R03DC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "tamsulosin": {
+      "input": "tamsulosin",
+      "query": "tamsulosin",
+      "rxcui": "77492",
+      "name": "tamsulosin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "77492",
+          "name": "tamsulosin",
+          "tty": "IN",
+          "base_name": "tamsulosin",
+          "atc": [
+            "G04CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "apixaban": {
+      "input": "apixaban",
+      "query": "apixaban",
+      "rxcui": "1364430",
+      "name": "apixaban",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1364430",
+          "name": "apixaban",
+          "tty": "IN",
+          "base_name": "apixaban",
+          "atc": [
+            "B01AF"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "insulin glargine": {
+      "input": "insulin glargine",
+      "query": "insulin glargine",
+      "rxcui": "274783",
+      "name": "insulin glargine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "274783",
+          "name": "insulin glargine",
+          "tty": "IN",
+          "base_name": "insulin glargine",
+          "atc": [
+            "A10AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "simvastatin": {
+      "input": "simvastatin",
+      "query": "simvastatin",
+      "rxcui": "36567",
+      "name": "simvastatin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "36567",
+          "name": "simvastatin",
+          "tty": "IN",
+          "base_name": "simvastatin",
+          "atc": [
+            "C10AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "oxycodone": {
+      "input": "oxycodone",
+      "query": "oxycodone",
+      "rxcui": "7804",
+      "name": "oxycodone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7804",
+          "name": "oxycodone",
+          "tty": "IN",
+          "base_name": "oxycodone",
+          "atc": [
+            "N02AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "empagliflozin": {
+      "input": "empagliflozin",
+      "query": "empagliflozin",
+      "rxcui": "1545653",
+      "name": "empagliflozin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1545653",
+          "name": "empagliflozin",
+          "tty": "IN",
+          "base_name": "empagliflozin",
+          "atc": [
+            "A10BK"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "meloxicam": {
+      "input": "meloxicam",
+      "query": "meloxicam",
+      "rxcui": "41493",
+      "name": "meloxicam",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "41493",
+          "name": "meloxicam",
+          "tty": "IN",
+          "base_name": "meloxicam",
+          "atc": [
+            "M01AC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "hydrocodone": {
+      "input": "hydrocodone",
+      "query": "hydrocodone",
+      "rxcui": "5489",
+      "name": "hydrocodone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "5489",
+          "name": "hydrocodone",
+          "tty": "IN",
+          "base_name": "hydrocodone",
+          "atc": [
+            "R05DA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "tirzepatide": {
+      "input": "tirzepatide",
+      "query": "tirzepatide",
+      "rxcui": "2601723",
+      "name": "tirzepatide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2601723",
+          "name": "tirzepatide",
+          "tty": "IN",
+          "base_name": "tirzepatide",
+          "atc": [
+            "A10BX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "methylphenidate": {
+      "input": "methylphenidate",
+      "query": "methylphenidate",
+      "rxcui": "6901",
+      "name": "methylphenidate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6901",
+          "name": "methylphenidate",
+          "tty": "IN",
+          "base_name": "methylphenidate",
+          "atc": [
+            "N06BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "duloxetine": {
+      "input": "duloxetine",
+      "query": "duloxetine",
+      "rxcui": "72625",
+      "name": "duloxetine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "72625",
+          "name": "duloxetine",
+          "tty": "IN",
+          "base_name": "duloxetine",
+          "atc": [
+            "N06AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "prednisone": {
+      "input": "prednisone",
+      "query": "prednisone",
+      "rxcui": "8640",
+      "name": "prednisone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8640",
+          "name": "prednisone",
+          "tty": "IN",
+          "base_name": "prednisone",
+          "atc": [
+            "A07EA",
+            "H02AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "carvedilol": {
+      "input": "carvedilol",
+      "query": "carvedilol",
+      "rxcui": "20352",
+      "name": "carvedilol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "20352",
+          "name": "carvedilol",
+          "tty": "IN",
+          "base_name": "carvedilol",
+          "atc": [
+            "C07AG"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "famotidine": {
+      "input": "famotidine",
+      "query": "famotidine",
+      "rxcui": "4278",
+      "name": "famotidine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4278",
+          "name": "famotidine",
+          "tty": "IN",
+          "base_name": "famotidine",
+          "atc": [
+            "A02BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ibuprofen": {
+      "input": "ibuprofen",
+      "query": "ibuprofen",
+      "rxcui": "5640",
+      "name": "ibuprofen",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "5640",
+          "name": "ibuprofen",
+          "tty": "IN",
+          "base_name": "ibuprofen",
+          "atc": [
+            "C01EB",
+            "G02CC",
+            "M01AE",
+            "M02AA",
+            "R02AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "buspirone": {
+      "input": "buspirone",
+      "query": "buspirone",
+      "rxcui": "1827",
+      "name": "buspirone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1827",
+          "name": "buspirone",
+          "tty": "IN",
+          "base_name": "buspirone",
+          "atc": [
+            "N05BE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "venlafaxine": {
+      "input": "venlafaxine",
+      "query": "venlafaxine",
+      "rxcui": "39786",
+      "name": "venlafaxine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "39786",
+          "name": "venlafaxine",
+          "tty": "IN",
+          "base_name": "venlafaxine",
+          "atc": [
+            "N06AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "norethindrone": {
+      "input": "norethindrone",
+      "query": "norethindrone",
+      "rxcui": "7514",
+      "name": "norethindrone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7514",
+          "name": "norethindrone",
+          "tty": "IN",
+          "base_name": "norethindrone",
+          "atc": [
+            "G03AC",
+            "G03DC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "potassium chloride": {
+      "input": "potassium chloride",
+      "query": "potassium chloride",
+      "rxcui": "8591",
+      "name": "potassium chloride",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8591",
+          "name": "potassium chloride",
+          "tty": "IN",
+          "base_name": "potassium chloride",
+          "atc": [
+            "A12BA",
+            "B05XA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "tramadol": {
+      "input": "tramadol",
+      "query": "tramadol",
+      "rxcui": "10689",
+      "name": "tramadol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10689",
+          "name": "tramadol",
+          "tty": "IN",
+          "base_name": "tramadol",
+          "atc": [
+            "N02AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "allopurinol": {
+      "input": "allopurinol",
+      "query": "allopurinol",
+      "rxcui": "519",
+      "name": "allopurinol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "519",
+          "name": "allopurinol",
+          "tty": "IN",
+          "base_name": "allopurinol",
+          "atc": [
+            "M04AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "hydroxyzine": {
+      "input": "hydroxyzine",
+      "query": "hydroxyzine",
+      "rxcui": "5553",
+      "name": "hydroxyzine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "5553",
+          "name": "hydroxyzine",
+          "tty": "IN",
+          "base_name": "hydroxyzine",
+          "atc": [
+            "N05BB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "clopidogrel": {
+      "input": "clopidogrel",
+      "query": "clopidogrel",
+      "rxcui": "32968",
+      "name": "clopidogrel",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "32968",
+          "name": "clopidogrel",
+          "tty": "IN",
+          "base_name": "clopidogrel",
+          "atc": [
+            "B01AC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ergocalciferol": {
+      "input": "ergocalciferol",
+      "query": "ergocalciferol",
+      "rxcui": "4018",
+      "name": "ergocalciferol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4018",
+          "name": "ergocalciferol",
+          "tty": "IN",
+          "base_name": "ergocalciferol",
+          "atc": [
+            "A11CC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "cetirizine": {
+      "input": "cetirizine",
+      "query": "cetirizine",
+      "rxcui": "20610",
+      "name": "cetirizine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "20610",
+          "name": "cetirizine",
+          "tty": "IN",
+          "base_name": "cetirizine",
+          "atc": [
+            "R06AE",
+            "S01GX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "valsartan": {
+      "input": "valsartan",
+      "query": "valsartan",
+      "rxcui": "69749",
+      "name": "valsartan",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "69749",
+          "name": "valsartan",
+          "tty": "IN",
+          "base_name": "valsartan",
+          "atc": [
+            "C09CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ondansetron": {
+      "input": "ondansetron",
+      "query": "ondansetron",
+      "rxcui": "26225",
+      "name": "ondansetron",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "26225",
+          "name": "ondansetron",
+          "tty": "IN",
+          "base_name": "ondansetron",
+          "atc": [
+            "A04AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "cyclobenzaprine": {
+      "input": "cyclobenzaprine",
+      "query": "cyclobenzaprine",
+      "rxcui": "21949",
+      "name": "cyclobenzaprine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "21949",
+          "name": "cyclobenzaprine",
+          "tty": "IN",
+          "base_name": "cyclobenzaprine",
+          "atc": [
+            "M03BX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "spironolactone": {
+      "input": "spironolactone",
+      "query": "spironolactone",
+      "rxcui": "9997",
+      "name": "spironolactone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "9997",
+          "name": "spironolactone",
+          "tty": "IN",
+          "base_name": "spironolactone",
+          "atc": [
+            "C03DA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "estradiol": {
+      "input": "estradiol",
+      "query": "estradiol",
+      "rxcui": "4083",
+      "name": "estradiol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4083",
+          "name": "estradiol",
+          "tty": "IN",
+          "base_name": "estradiol",
+          "atc": [
+            "G03CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "glipizide": {
+      "input": "glipizide",
+      "query": "glipizide",
+      "rxcui": "4821",
+      "name": "glipizide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4821",
+          "name": "glipizide",
+          "tty": "IN",
+          "base_name": "glipizide",
+          "atc": [
+            "A10BB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "zolpidem": {
+      "input": "zolpidem",
+      "query": "zolpidem",
+      "rxcui": "39993",
+      "name": "zolpidem",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "39993",
+          "name": "zolpidem",
+          "tty": "IN",
+          "base_name": "zolpidem",
+          "atc": [
+            "N05CF"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "lamotrigine": {
+      "input": "lamotrigine",
+      "query": "lamotrigine",
+      "rxcui": "28439",
+      "name": "lamotrigine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "28439",
+          "name": "lamotrigine",
+          "tty": "IN",
+          "base_name": "lamotrigine",
+          "atc": [
+            "N03AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "alprazolam": {
+      "input": "alprazolam",
+      "query": "alprazolam",
+      "rxcui": "596",
+      "name": "alprazolam",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "596",
+          "name": "alprazolam",
+          "tty": "IN",
+          "base_name": "alprazolam",
+          "atc": [
+            "N05BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "citalopram": {
+      "input": "citalopram",
+      "query": "citalopram",
+      "rxcui": "2556",
+      "name": "citalopram",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2556",
+          "name": "citalopram",
+          "tty": "IN",
+          "base_name": "citalopram",
+          "atc": [
+            "N06AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "aspirin": {
+      "input": "aspirin",
+      "query": "aspirin",
+      "rxcui": "1191",
+      "name": "aspirin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1191",
+          "name": "aspirin",
+          "tty": "IN",
+          "base_name": "aspirin",
+          "atc": [
+            "A01AD",
+            "B01AC",
+            "N02BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "pregabalin": {
+      "input": "pregabalin",
+      "query": "pregabalin",
+      "rxcui": "187832",
+      "name": "pregabalin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "187832",
+          "name": "pregabalin",
+          "tty": "IN",
+          "base_name": "pregabalin",
+          "atc": [
+            "N02BF"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "clonazepam": {
+      "input": "clonazepam",
+      "query": "clonazepam",
+      "rxcui": "2598",
+      "name": "clonazepam",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2598",
+          "name": "clonazepam",
+          "tty": "IN",
+          "base_name": "clonazepam",
+          "atc": [
+            "N03AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "budesonide": {
+      "input": "budesonide",
+      "query": "budesonide",
+      "rxcui": "19831",
+      "name": "budesonide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "19831",
+          "name": "budesonide",
+          "tty": "IN",
+          "base_name": "budesonide",
+          "atc": [
+            "A07EA",
+            "D07AC",
+            "R01AD",
+            "R03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "cholecalciferol": {
+      "input": "cholecalciferol",
+      "query": "cholecalciferol",
+      "rxcui": "2418",
+      "name": "cholecalciferol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2418",
+          "name": "cholecalciferol",
+          "tty": "IN",
+          "base_name": "cholecalciferol",
+          "atc": [
+            "A11CC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "azithromycin": {
+      "input": "azithromycin",
+      "query": "azithromycin",
+      "rxcui": "18631",
+      "name": "azithromycin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "18631",
+          "name": "azithromycin",
+          "tty": "IN",
+          "base_name": "azithromycin",
+          "atc": [
+            "J01FA",
+            "S01AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "pravastatin": {
+      "input": "pravastatin",
+      "query": "pravastatin",
+      "rxcui": "42463",
+      "name": "pravastatin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "42463",
+          "name": "pravastatin",
+          "tty": "IN",
+          "base_name": "pravastatin",
+          "atc": [
+            "C10AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ezetimibe": {
+      "input": "ezetimibe",
+      "query": "ezetimibe",
+      "rxcui": "341248",
+      "name": "ezetimibe",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "341248",
+          "name": "ezetimibe",
+          "tty": "IN",
+          "base_name": "ezetimibe",
+          "atc": [
+            "C10AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "vilanterol": {
+      "input": "vilanterol",
+      "query": "vilanterol",
+      "rxcui": "1424884",
+      "name": "vilanterol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1424884",
+          "name": "vilanterol",
+          "tty": "IN",
+          "base_name": "vilanterol",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "insulin lispro": {
+      "input": "insulin lispro",
+      "query": "insulin lispro",
+      "rxcui": "86009",
+      "name": "insulin lispro",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "86009",
+          "name": "insulin lispro",
+          "tty": "IN",
+          "base_name": "insulin lispro",
+          "atc": [
+            "A10AB",
+            "A10AC",
+            "A10AD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "diclofenac": {
+      "input": "diclofenac",
+      "query": "diclofenac",
+      "rxcui": "3355",
+      "name": "diclofenac",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3355",
+          "name": "diclofenac",
+          "tty": "IN",
+          "base_name": "diclofenac",
+          "atc": [
+            "D11AX",
+            "M01AB",
+            "M02AA",
+            "S01BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "propranolol": {
+      "input": "propranolol",
+      "query": "propranolol",
+      "rxcui": "8787",
+      "name": "propranolol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8787",
+          "name": "propranolol",
+          "tty": "IN",
+          "base_name": "propranolol",
+          "atc": [
+            "C07AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "latanoprost": {
+      "input": "latanoprost",
+      "query": "latanoprost",
+      "rxcui": "43611",
+      "name": "latanoprost",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "43611",
+          "name": "latanoprost",
+          "tty": "IN",
+          "base_name": "latanoprost",
+          "atc": [
+            "S01EE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "lisdexamfetamine": {
+      "input": "lisdexamfetamine",
+      "query": "lisdexamfetamine",
+      "rxcui": "700810",
+      "name": "lisdexamfetamine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "700810",
+          "name": "lisdexamfetamine",
+          "tty": "IN",
+          "base_name": "lisdexamfetamine",
+          "atc": [
+            "N06BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "atenolol": {
+      "input": "atenolol",
+      "query": "atenolol",
+      "rxcui": "1202",
+      "name": "atenolol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1202",
+          "name": "atenolol",
+          "tty": "IN",
+          "base_name": "atenolol",
+          "atc": [
+            "C07AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "doxycycline": {
+      "input": "doxycycline",
+      "query": "doxycycline",
+      "rxcui": "3640",
+      "name": "doxycycline",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3640",
+          "name": "doxycycline",
+          "tty": "IN",
+          "base_name": "doxycycline",
+          "atc": [
+            "A01AB",
+            "J01AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "clavulanate": {
+      "input": "clavulanate",
+      "query": "clavulanate",
+      "rxcui": "48203",
+      "name": "clavulanate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "48203",
+          "name": "clavulanate",
+          "tty": "IN",
+          "base_name": "clavulanate",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "dulaglutide": {
+      "input": "dulaglutide",
+      "query": "dulaglutide",
+      "rxcui": "1551291",
+      "name": "dulaglutide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1551291",
+          "name": "dulaglutide",
+          "tty": "IN",
+          "base_name": "dulaglutide",
+          "atc": [
+            "A10BJ"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "salmeterol": {
+      "input": "salmeterol",
+      "query": "salmeterol",
+      "rxcui": "36117",
+      "name": "salmeterol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "36117",
+          "name": "salmeterol",
+          "tty": "IN",
+          "base_name": "salmeterol",
+          "atc": [
+            "R03AC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "lorazepam": {
+      "input": "lorazepam",
+      "query": "lorazepam",
+      "rxcui": "6470",
+      "name": "lorazepam",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6470",
+          "name": "lorazepam",
+          "tty": "IN",
+          "base_name": "lorazepam",
+          "atc": [
+            "N05BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "formoterol": {
+      "input": "formoterol",
+      "query": "formoterol",
+      "rxcui": "25255",
+      "name": "formoterol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "25255",
+          "name": "formoterol",
+          "tty": "IN",
+          "base_name": "formoterol",
+          "atc": [
+            "R03AC",
+            "R03CC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "insulin aspart human": {
+      "input": "insulin aspart, human",
+      "query": "insulin aspart human",
+      "rxcui": "51428",
+      "name": "insulin aspart, human",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "51428",
+          "name": "insulin aspart, human",
+          "tty": "IN",
+          "base_name": "insulin aspart, human",
+          "atc": [
+            "A10AB",
+            "A10AD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "celecoxib": {
+      "input": "celecoxib",
+      "query": "celecoxib",
+      "rxcui": "140587",
+      "name": "celecoxib",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "140587",
+          "name": "celecoxib",
+          "tty": "IN",
+          "base_name": "celecoxib",
+          "atc": [
+            "L01XX",
+            "M01AH"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "finasteride": {
+      "input": "finasteride",
+      "query": "finasteride",
+      "rxcui": "25025",
+      "name": "finasteride",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "25025",
+          "name": "finasteride",
+          "tty": "IN",
+          "base_name": "finasteride",
+          "atc": [
+            "D11AX",
+            "G04CB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "quetiapine": {
+      "input": "quetiapine",
+      "query": "quetiapine",
+      "rxcui": "51272",
+      "name": "quetiapine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "51272",
+          "name": "quetiapine",
+          "tty": "IN",
+          "base_name": "quetiapine",
+          "atc": [
+            "N05AH"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "clonidine": {
+      "input": "clonidine",
+      "query": "clonidine",
+      "rxcui": "2599",
+      "name": "clonidine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2599",
+          "name": "clonidine",
+          "tty": "IN",
+          "base_name": "clonidine",
+          "atc": [
+            "C02AC",
+            "N02CX",
+            "S01EA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "aripiprazole": {
+      "input": "aripiprazole",
+      "query": "aripiprazole",
+      "rxcui": "89013",
+      "name": "aripiprazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "89013",
+          "name": "aripiprazole",
+          "tty": "IN",
+          "base_name": "aripiprazole",
+          "atc": [
+            "N05AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "cephalexin": {
+      "input": "cephalexin",
+      "query": "cephalexin",
+      "rxcui": "2231",
+      "name": "cephalexin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2231",
+          "name": "cephalexin",
+          "tty": "IN",
+          "base_name": "cephalexin",
+          "atc": [
+            "J01DB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "alendronate": {
+      "input": "alendronate",
+      "query": "alendronate",
+      "rxcui": "46041",
+      "name": "alendronate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "46041",
+          "name": "alendronate",
+          "tty": "IN",
+          "base_name": "alendronate",
+          "atc": [
+            "M05BA"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "topiramate": {
+      "input": "topiramate",
+      "query": "topiramate",
+      "rxcui": "38404",
+      "name": "topiramate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "38404",
+          "name": "topiramate",
+          "tty": "IN",
+          "base_name": "topiramate",
+          "atc": [
+            "N03AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "tizanidine": {
+      "input": "tizanidine",
+      "query": "tizanidine",
+      "rxcui": "57258",
+      "name": "tizanidine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "57258",
+          "name": "tizanidine",
+          "tty": "IN",
+          "base_name": "tizanidine",
+          "atc": [
+            "M03BX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "dapagliflozin": {
+      "input": "dapagliflozin",
+      "query": "dapagliflozin",
+      "rxcui": "1488564",
+      "name": "dapagliflozin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1488564",
+          "name": "dapagliflozin",
+          "tty": "IN",
+          "base_name": "dapagliflozin",
+          "atc": [
+            "A10BK"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "testosterone": {
+      "input": "testosterone",
+      "query": "testosterone",
+      "rxcui": "10379",
+      "name": "testosterone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10379",
+          "name": "testosterone",
+          "tty": "IN",
+          "base_name": "testosterone",
+          "atc": [
+            "G03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "olmesartan": {
+      "input": "olmesartan",
+      "query": "olmesartan",
+      "rxcui": "321064",
+      "name": "olmesartan",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "321064",
+          "name": "olmesartan",
+          "tty": "IN",
+          "base_name": "olmesartan",
+          "atc": [
+            "C09CA"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "amitriptyline": {
+      "input": "amitriptyline",
+      "query": "amitriptyline",
+      "rxcui": "704",
+      "name": "amitriptyline",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "704",
+          "name": "amitriptyline",
+          "tty": "IN",
+          "base_name": "amitriptyline",
+          "atc": [
+            "N06AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "folic acid": {
+      "input": "folic acid",
+      "query": "folic acid",
+      "rxcui": "4511",
+      "name": "folic acid",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4511",
+          "name": "folic acid",
+          "tty": "IN",
+          "base_name": "folic acid",
+          "atc": [
+            "B03BB",
+            "V04CX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "loratadine": {
+      "input": "loratadine",
+      "query": "loratadine",
+      "rxcui": "28889",
+      "name": "loratadine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "28889",
+          "name": "loratadine",
+          "tty": "IN",
+          "base_name": "loratadine",
+          "atc": [
+            "R06AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "rivaroxaban": {
+      "input": "rivaroxaban",
+      "query": "rivaroxaban",
+      "rxcui": "1114195",
+      "name": "rivaroxaban",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1114195",
+          "name": "rivaroxaban",
+          "tty": "IN",
+          "base_name": "rivaroxaban",
+          "atc": [
+            "B01AF"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "fenofibrate": {
+      "input": "fenofibrate",
+      "query": "fenofibrate",
+      "rxcui": "8703",
+      "name": "fenofibrate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8703",
+          "name": "fenofibrate",
+          "tty": "IN",
+          "base_name": "fenofibrate",
+          "atc": [
+            "C10AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "triamcinolone": {
+      "input": "triamcinolone",
+      "query": "triamcinolone",
+      "rxcui": "10759",
+      "name": "triamcinolone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10759",
+          "name": "triamcinolone",
+          "tty": "IN",
+          "base_name": "triamcinolone",
+          "atc": [
+            "A01AC",
+            "C05AA",
+            "D07AB",
+            "D07XB",
+            "H02AB",
+            "R01AD",
+            "R03BA",
+            "S01BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "paroxetine": {
+      "input": "paroxetine",
+      "query": "paroxetine",
+      "rxcui": "32937",
+      "name": "paroxetine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "32937",
+          "name": "paroxetine",
+          "tty": "IN",
+          "base_name": "paroxetine",
+          "atc": [
+            "N06AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ferrous sulfate": {
+      "input": "ferrous sulfate",
+      "query": "ferrous sulfate",
+      "rxcui": "24947",
+      "name": "ferrous sulfate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "24947",
+          "name": "ferrous sulfate",
+          "tty": "IN",
+          "base_name": "ferrous sulfate",
+          "atc": [
+            "B03AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "valacyclovir": {
+      "input": "valacyclovir",
+      "query": "valacyclovir",
+      "rxcui": "73645",
+      "name": "valacyclovir",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "73645",
+          "name": "valacyclovir",
+          "tty": "IN",
+          "base_name": "valacyclovir",
+          "atc": [
+            "J05AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "warfarin": {
+      "input": "warfarin",
+      "query": "warfarin",
+      "rxcui": "11289",
+      "name": "warfarin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "11289",
+          "name": "warfarin",
+          "tty": "IN",
+          "base_name": "warfarin",
+          "atc": [
+            "B01AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "norgestimate": {
+      "input": "norgestimate",
+      "query": "norgestimate",
+      "rxcui": "31994",
+      "name": "norgestimate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "31994",
+          "name": "norgestimate",
+          "tty": "IN",
+          "base_name": "norgestimate",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "umeclidinium": {
+      "input": "umeclidinium",
+      "query": "umeclidinium",
+      "rxcui": "1487514",
+      "name": "umeclidinium",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1487514",
+          "name": "umeclidinium",
+          "tty": "IN",
+          "base_name": "umeclidinium",
+          "atc": [
+            "R03BB"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "methocarbamol": {
+      "input": "methocarbamol",
+      "query": "methocarbamol",
+      "rxcui": "6845",
+      "name": "methocarbamol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6845",
+          "name": "methocarbamol",
+          "tty": "IN",
+          "base_name": "methocarbamol",
+          "atc": [
+            "M03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "diltiazem": {
+      "input": "diltiazem",
+      "query": "diltiazem",
+      "rxcui": "3443",
+      "name": "diltiazem",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3443",
+          "name": "diltiazem",
+          "tty": "IN",
+          "base_name": "diltiazem",
+          "atc": [
+            "C05AE",
+            "C08DB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "trimethoprim": {
+      "input": "trimethoprim",
+      "query": "trimethoprim",
+      "rxcui": "10829",
+      "name": "trimethoprim",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10829",
+          "name": "trimethoprim",
+          "tty": "IN",
+          "base_name": "trimethoprim",
+          "atc": [
+            "J01EA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "thyroid usp": {
+      "input": "thyroid (USP)",
+      "query": "thyroid usp",
+      "rxcui": "10572",
+      "name": "thyroid (USP)",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10572",
+          "name": "thyroid (USP)",
+          "tty": "IN",
+          "base_name": "thyroid (USP)",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "baclofen": {
+      "input": "baclofen",
+      "query": "baclofen",
+      "rxcui": "1292",
+      "name": "baclofen",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1292",
+          "name": "baclofen",
+          "tty": "IN",
+          "base_name": "baclofen",
+          "atc": [
+            "M03BX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "sumatriptan": {
+      "input": "sumatriptan",
+      "query": "sumatriptan",
+      "rxcui": "37418",
+      "name": "sumatriptan",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "37418",
+          "name": "sumatriptan",
+          "tty": "IN",
+          "base_name": "sumatriptan",
+          "atc": [
+            "N02CC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "prednisolone": {
+      "input": "prednisolone",
+      "query": "prednisolone",
+      "rxcui": "8638",
+      "name": "prednisolone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8638",
+          "name": "prednisolone",
+          "tty": "IN",
+          "base_name": "prednisolone",
+          "atc": [
+            "A01AC",
+            "A07EA",
+            "C05AA",
+            "D07AA",
+            "D07XA",
+            "H02AB",
+            "R01AD",
+            "S01BA",
+            "S01CB",
+            "S02BA",
+            "S03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "esomeprazole": {
+      "input": "esomeprazole",
+      "query": "esomeprazole",
+      "rxcui": "283742",
+      "name": "esomeprazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "283742",
+          "name": "esomeprazole",
+          "tty": "IN",
+          "base_name": "esomeprazole",
+          "atc": [
+            "A02BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "benazepril": {
+      "input": "benazepril",
+      "query": "benazepril",
+      "rxcui": "18867",
+      "name": "benazepril",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "18867",
+          "name": "benazepril",
+          "tty": "IN",
+          "base_name": "benazepril",
+          "atc": [
+            "C09AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "mirtazapine": {
+      "input": "mirtazapine",
+      "query": "mirtazapine",
+      "rxcui": "15996",
+      "name": "mirtazapine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "15996",
+          "name": "mirtazapine",
+          "tty": "IN",
+          "base_name": "mirtazapine",
+          "atc": [
+            "N06AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "levetiracetam": {
+      "input": "levetiracetam",
+      "query": "levetiracetam",
+      "rxcui": "114477",
+      "name": "levetiracetam",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "114477",
+          "name": "levetiracetam",
+          "tty": "IN",
+          "base_name": "levetiracetam",
+          "atc": [
+            "N03AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "naproxen": {
+      "input": "naproxen",
+      "query": "naproxen",
+      "rxcui": "7258",
+      "name": "naproxen",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7258",
+          "name": "naproxen",
+          "tty": "IN",
+          "base_name": "naproxen",
+          "atc": [
+            "G02CC",
+            "M01AE",
+            "M02AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "tadalafil": {
+      "input": "tadalafil",
+      "query": "tadalafil",
+      "rxcui": "358263",
+      "name": "tadalafil",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "358263",
+          "name": "tadalafil",
+          "tty": "IN",
+          "base_name": "tadalafil",
+          "atc": [
+            "G04BE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "nifedipine": {
+      "input": "nifedipine",
+      "query": "nifedipine",
+      "rxcui": "7417",
+      "name": "nifedipine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7417",
+          "name": "nifedipine",
+          "tty": "IN",
+          "base_name": "nifedipine",
+          "atc": [
+            "C08CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "progesterone": {
+      "input": "progesterone",
+      "query": "progesterone",
+      "rxcui": "8727",
+      "name": "progesterone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8727",
+          "name": "progesterone",
+          "tty": "IN",
+          "base_name": "progesterone",
+          "atc": [
+            "G03DA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "insulin degludec": {
+      "input": "insulin degludec",
+      "query": "insulin degludec",
+      "rxcui": "1670007",
+      "name": "insulin degludec",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1670007",
+          "name": "insulin degludec",
+          "tty": "IN",
+          "base_name": "insulin degludec",
+          "atc": [
+            "A10AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "hydralazine": {
+      "input": "hydralazine",
+      "query": "hydralazine",
+      "rxcui": "5470",
+      "name": "hydralazine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "5470",
+          "name": "hydralazine",
+          "tty": "IN",
+          "base_name": "hydralazine",
+          "atc": [
+            "C02DB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "azelastine": {
+      "input": "azelastine",
+      "query": "azelastine",
+      "rxcui": "18603",
+      "name": "azelastine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "18603",
+          "name": "azelastine",
+          "tty": "IN",
+          "base_name": "azelastine",
+          "atc": [
+            "R01AC",
+            "R06AX",
+            "S01GX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ipratropium": {
+      "input": "ipratropium",
+      "query": "ipratropium",
+      "rxcui": "7213",
+      "name": "ipratropium",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7213",
+          "name": "ipratropium",
+          "tty": "IN",
+          "base_name": "ipratropium",
+          "atc": [
+            "R01AX",
+            "R03BB"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "timolol": {
+      "input": "timolol",
+      "query": "timolol",
+      "rxcui": "10600",
+      "name": "timolol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10600",
+          "name": "timolol",
+          "tty": "IN",
+          "base_name": "timolol",
+          "atc": [
+            "C07AA",
+            "S01ED"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "adalimumab": {
+      "input": "adalimumab",
+      "query": "adalimumab",
+      "rxcui": "327361",
+      "name": "adalimumab",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "327361",
+          "name": "adalimumab",
+          "tty": "IN",
+          "base_name": "adalimumab",
+          "atc": [
+            "L04AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "sitagliptin": {
+      "input": "sitagliptin",
+      "query": "sitagliptin",
+      "rxcui": "593411",
+      "name": "sitagliptin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "593411",
+          "name": "sitagliptin",
+          "tty": "IN",
+          "base_name": "sitagliptin",
+          "atc": [
+            "A10BH"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "glimepiride": {
+      "input": "glimepiride",
+      "query": "glimepiride",
+      "rxcui": "25789",
+      "name": "glimepiride",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "25789",
+          "name": "glimepiride",
+          "tty": "IN",
+          "base_name": "glimepiride",
+          "atc": [
+            "A10BB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "chlorthalidone": {
+      "input": "chlorthalidone",
+      "query": "chlorthalidone",
+      "rxcui": "2409",
+      "name": "chlorthalidone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2409",
+          "name": "chlorthalidone",
+          "tty": "IN",
+          "base_name": "chlorthalidone",
+          "atc": [
+            "C03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "oxybutynin": {
+      "input": "oxybutynin",
+      "query": "oxybutynin",
+      "rxcui": "32675",
+      "name": "oxybutynin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "32675",
+          "name": "oxybutynin",
+          "tty": "IN",
+          "base_name": "oxybutynin",
+          "atc": [
+            "G04BD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "pioglitazone": {
+      "input": "pioglitazone",
+      "query": "pioglitazone",
+      "rxcui": "33738",
+      "name": "pioglitazone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "33738",
+          "name": "pioglitazone",
+          "tty": "IN",
+          "base_name": "pioglitazone",
+          "atc": [
+            "A10BG"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "clindamycin": {
+      "input": "clindamycin",
+      "query": "clindamycin",
+      "rxcui": "2582",
+      "name": "clindamycin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2582",
+          "name": "clindamycin",
+          "tty": "IN",
+          "base_name": "clindamycin",
+          "atc": [
+            "D10AF",
+            "G01AA",
+            "J01FF"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ketoconazole": {
+      "input": "ketoconazole",
+      "query": "ketoconazole",
+      "rxcui": "6135",
+      "name": "ketoconazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6135",
+          "name": "ketoconazole",
+          "tty": "IN",
+          "base_name": "ketoconazole",
+          "atc": [
+            "D01AC",
+            "G01AF",
+            "H02CA",
+            "J02AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "irbesartan": {
+      "input": "irbesartan",
+      "query": "irbesartan",
+      "rxcui": "83818",
+      "name": "irbesartan",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "83818",
+          "name": "irbesartan",
+          "tty": "IN",
+          "base_name": "irbesartan",
+          "atc": [
+            "C09CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "hydroxychloroquine": {
+      "input": "hydroxychloroquine",
+      "query": "hydroxychloroquine",
+      "rxcui": "5521",
+      "name": "hydroxychloroquine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "5521",
+          "name": "hydroxychloroquine",
+          "tty": "IN",
+          "base_name": "hydroxychloroquine",
+          "atc": [
+            "P01BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "vitamin b12": {
+      "input": "vitamin B12",
+      "query": "vitamin b12",
+      "rxcui": "11248",
+      "name": "vitamin B12",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "11248",
+          "name": "vitamin B12",
+          "tty": "IN",
+          "base_name": "vitamin B12",
+          "atc": [
+            "B03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "nitrofurantoin": {
+      "input": "nitrofurantoin",
+      "query": "nitrofurantoin",
+      "rxcui": "7454",
+      "name": "nitrofurantoin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7454",
+          "name": "nitrofurantoin",
+          "tty": "IN",
+          "base_name": "nitrofurantoin",
+          "atc": [
+            "J01XE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "sulfamethoxazole": {
+      "input": "sulfamethoxazole",
+      "query": "sulfamethoxazole",
+      "rxcui": "10180",
+      "name": "sulfamethoxazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10180",
+          "name": "sulfamethoxazole",
+          "tty": "IN",
+          "base_name": "sulfamethoxazole",
+          "atc": [
+            "J01EC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "benzonatate": {
+      "input": "benzonatate",
+      "query": "benzonatate",
+      "rxcui": "18993",
+      "name": "benzonatate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "18993",
+          "name": "benzonatate",
+          "tty": "IN",
+          "base_name": "benzonatate",
+          "atc": [
+            "R05DB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "isosorbide": {
+      "input": "isosorbide",
+      "query": "isosorbide",
+      "rxcui": "6057",
+      "name": "isosorbide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6057",
+          "name": "isosorbide",
+          "tty": "IN",
+          "base_name": "isosorbide",
+          "atc": [
+            "C01DA"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "methylprednisolone": {
+      "input": "methylprednisolone",
+      "query": "methylprednisolone",
+      "rxcui": "6902",
+      "name": "methylprednisolone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6902",
+          "name": "methylprednisolone",
+          "tty": "IN",
+          "base_name": "methylprednisolone",
+          "atc": [
+            "D07AA",
+            "D10AA",
+            "H02AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "triamterene": {
+      "input": "triamterene",
+      "query": "triamterene",
+      "rxcui": "10763",
+      "name": "triamterene",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10763",
+          "name": "triamterene",
+          "tty": "IN",
+          "base_name": "triamterene",
+          "atc": [
+            "C03DB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "levocetirizine": {
+      "input": "levocetirizine",
+      "query": "levocetirizine",
+      "rxcui": "356887",
+      "name": "levocetirizine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "356887",
+          "name": "levocetirizine",
+          "tty": "IN",
+          "base_name": "levocetirizine",
+          "atc": [
+            "R06AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ciprofloxacin": {
+      "input": "ciprofloxacin",
+      "query": "ciprofloxacin",
+      "rxcui": "2551",
+      "name": "ciprofloxacin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2551",
+          "name": "ciprofloxacin",
+          "tty": "IN",
+          "base_name": "ciprofloxacin",
+          "atc": [
+            "J01MA",
+            "S01AE",
+            "S02AA",
+            "S03AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "atomoxetine": {
+      "input": "atomoxetine",
+      "query": "atomoxetine",
+      "rxcui": "38400",
+      "name": "atomoxetine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "38400",
+          "name": "atomoxetine",
+          "tty": "IN",
+          "base_name": "atomoxetine",
+          "atc": [
+            "N06BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "docusate": {
+      "input": "docusate",
+      "query": "docusate",
+      "rxcui": "82003",
+      "name": "docusate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "82003",
+          "name": "docusate",
+          "tty": "IN",
+          "base_name": "docusate",
+          "atc": [
+            "A06AA"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "dorzolamide": {
+      "input": "dorzolamide",
+      "query": "dorzolamide",
+      "rxcui": "60207",
+      "name": "dorzolamide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "60207",
+          "name": "dorzolamide",
+          "tty": "IN",
+          "base_name": "dorzolamide",
+          "atc": [
+            "S01EC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "dexmethylphenidate": {
+      "input": "dexmethylphenidate",
+      "query": "dexmethylphenidate",
+      "rxcui": "352372",
+      "name": "dexmethylphenidate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "352372",
+          "name": "dexmethylphenidate",
+          "tty": "IN",
+          "base_name": "dexmethylphenidate",
+          "atc": [
+            "N06BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "promethazine": {
+      "input": "promethazine",
+      "query": "promethazine",
+      "rxcui": "8745",
+      "name": "promethazine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8745",
+          "name": "promethazine",
+          "tty": "IN",
+          "base_name": "promethazine",
+          "atc": [
+            "D04AA",
+            "R06AD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "methotrexate": {
+      "input": "methotrexate",
+      "query": "methotrexate",
+      "rxcui": "6851",
+      "name": "methotrexate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6851",
+          "name": "methotrexate",
+          "tty": "IN",
+          "base_name": "methotrexate",
+          "atc": [
+            "L01BA",
+            "L04AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "donepezil": {
+      "input": "donepezil",
+      "query": "donepezil",
+      "rxcui": "135447",
+      "name": "donepezil",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "135447",
+          "name": "donepezil",
+          "tty": "IN",
+          "base_name": "donepezil",
+          "atc": [
+            "N06DA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "desvenlafaxine": {
+      "input": "desvenlafaxine",
+      "query": "desvenlafaxine",
+      "rxcui": "734064",
+      "name": "desvenlafaxine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "734064",
+          "name": "desvenlafaxine",
+          "tty": "IN",
+          "base_name": "desvenlafaxine",
+          "atc": [
+            "N06AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ropinirole": {
+      "input": "ropinirole",
+      "query": "ropinirole",
+      "rxcui": "72302",
+      "name": "ropinirole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "72302",
+          "name": "ropinirole",
+          "tty": "IN",
+          "base_name": "ropinirole",
+          "atc": [
+            "N04BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "clobetasol": {
+      "input": "clobetasol",
+      "query": "clobetasol",
+      "rxcui": "2590",
+      "name": "clobetasol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2590",
+          "name": "clobetasol",
+          "tty": "IN",
+          "base_name": "clobetasol",
+          "atc": [
+            "D07AD",
+            "S01BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ofloxacin": {
+      "input": "ofloxacin",
+      "query": "ofloxacin",
+      "rxcui": "7623",
+      "name": "ofloxacin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7623",
+          "name": "ofloxacin",
+          "tty": "IN",
+          "base_name": "ofloxacin",
+          "atc": [
+            "J01MA",
+            "S01AE",
+            "S02AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "phentermine": {
+      "input": "phentermine",
+      "query": "phentermine",
+      "rxcui": "8152",
+      "name": "phentermine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8152",
+          "name": "phentermine",
+          "tty": "IN",
+          "base_name": "phentermine",
+          "atc": [
+            "A08AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "mupirocin": {
+      "input": "mupirocin",
+      "query": "mupirocin",
+      "rxcui": "42372",
+      "name": "mupirocin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "42372",
+          "name": "mupirocin",
+          "tty": "IN",
+          "base_name": "mupirocin",
+          "atc": [
+            "D06AX",
+            "R01AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "verapamil": {
+      "input": "verapamil",
+      "query": "verapamil",
+      "rxcui": "11170",
+      "name": "verapamil",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "11170",
+          "name": "verapamil",
+          "tty": "IN",
+          "base_name": "verapamil",
+          "atc": [
+            "C08DA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "etonogestrel": {
+      "input": "etonogestrel",
+      "query": "etonogestrel",
+      "rxcui": "14584",
+      "name": "etonogestrel",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "14584",
+          "name": "etonogestrel",
+          "tty": "IN",
+          "base_name": "etonogestrel",
+          "atc": [
+            "G03AC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "olanzapine": {
+      "input": "olanzapine",
+      "query": "olanzapine",
+      "rxcui": "61381",
+      "name": "olanzapine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "61381",
+          "name": "olanzapine",
+          "tty": "IN",
+          "base_name": "olanzapine",
+          "atc": [
+            "N05AH"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "metronidazole": {
+      "input": "metronidazole",
+      "query": "metronidazole",
+      "rxcui": "6922",
+      "name": "metronidazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6922",
+          "name": "metronidazole",
+          "tty": "IN",
+          "base_name": "metronidazole",
+          "atc": [
+            "A01AB",
+            "D06BX",
+            "G01AF",
+            "J01XD",
+            "P01AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "prazosin": {
+      "input": "prazosin",
+      "query": "prazosin",
+      "rxcui": "8629",
+      "name": "prazosin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8629",
+          "name": "prazosin",
+          "tty": "IN",
+          "base_name": "prazosin",
+          "atc": [
+            "C02CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "sildenafil": {
+      "input": "sildenafil",
+      "query": "sildenafil",
+      "rxcui": "136411",
+      "name": "sildenafil",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "136411",
+          "name": "sildenafil",
+          "tty": "IN",
+          "base_name": "sildenafil",
+          "atc": [
+            "G04BE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "insulin isophane": {
+      "input": "insulin isophane",
+      "query": "insulin isophane",
+      "rxcui": "1605101",
+      "name": "insulin isophane",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1605101",
+          "name": "insulin isophane",
+          "tty": "IN",
+          "base_name": "insulin isophane",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "levonorgestrel": {
+      "input": "levonorgestrel",
+      "query": "levonorgestrel",
+      "rxcui": "6373",
+      "name": "levonorgestrel",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6373",
+          "name": "levonorgestrel",
+          "tty": "IN",
+          "base_name": "levonorgestrel",
+          "atc": [
+            "G03AC",
+            "G03AD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "evolocumab": {
+      "input": "evolocumab",
+      "query": "evolocumab",
+      "rxcui": "1665684",
+      "name": "evolocumab",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1665684",
+          "name": "evolocumab",
+          "tty": "IN",
+          "base_name": "evolocumab",
+          "atc": [
+            "C10AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "dexamethasone": {
+      "input": "dexamethasone",
+      "query": "dexamethasone",
+      "rxcui": "3264",
+      "name": "dexamethasone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3264",
+          "name": "dexamethasone",
+          "tty": "IN",
+          "base_name": "dexamethasone",
+          "atc": [
+            "A01AC",
+            "C05AA",
+            "D07AB",
+            "D07XB",
+            "D10AA",
+            "H02AB",
+            "R01AD",
+            "S01BA",
+            "S01CB",
+            "S02BA",
+            "S03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "mesalamine": {
+      "input": "mesalamine",
+      "query": "mesalamine",
+      "rxcui": "52582",
+      "name": "mesalamine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "52582",
+          "name": "mesalamine",
+          "tty": "IN",
+          "base_name": "mesalamine",
+          "atc": [
+            "A07EC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "memantine": {
+      "input": "memantine",
+      "query": "memantine",
+      "rxcui": "6719",
+      "name": "memantine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6719",
+          "name": "memantine",
+          "tty": "IN",
+          "base_name": "memantine",
+          "atc": [
+            "N06DX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "diazepam": {
+      "input": "diazepam",
+      "query": "diazepam",
+      "rxcui": "3322",
+      "name": "diazepam",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3322",
+          "name": "diazepam",
+          "tty": "IN",
+          "base_name": "diazepam",
+          "atc": [
+            "N05BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "lithium": {
+      "input": "lithium",
+      "query": "lithium",
+      "rxcui": "6448",
+      "name": "lithium",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6448",
+          "name": "lithium",
+          "tty": "IN",
+          "base_name": "lithium",
+          "atc": [
+            "N05AN"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "nortriptyline": {
+      "input": "nortriptyline",
+      "query": "nortriptyline",
+      "rxcui": "7531",
+      "name": "nortriptyline",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7531",
+          "name": "nortriptyline",
+          "tty": "IN",
+          "base_name": "nortriptyline",
+          "atc": [
+            "N06AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "cefdinir": {
+      "input": "cefdinir",
+      "query": "cefdinir",
+      "rxcui": "25037",
+      "name": "cefdinir",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "25037",
+          "name": "cefdinir",
+          "tty": "IN",
+          "base_name": "cefdinir",
+          "atc": [
+            "J01DD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "magnesium oxide": {
+      "input": "magnesium oxide",
+      "query": "magnesium oxide",
+      "rxcui": "6582",
+      "name": "magnesium oxide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6582",
+          "name": "magnesium oxide",
+          "tty": "IN",
+          "base_name": "magnesium oxide",
+          "atc": [
+            "A02AA",
+            "A06AD",
+            "A12CC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "clotrimazole": {
+      "input": "clotrimazole",
+      "query": "clotrimazole",
+      "rxcui": "2623",
+      "name": "clotrimazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2623",
+          "name": "clotrimazole",
+          "tty": "IN",
+          "base_name": "clotrimazole",
+          "atc": [
+            "A01AB",
+            "D01AC",
+            "G01AF"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "meclizine": {
+      "input": "meclizine",
+      "query": "meclizine",
+      "rxcui": "6676",
+      "name": "meclizine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6676",
+          "name": "meclizine",
+          "tty": "IN",
+          "base_name": "meclizine",
+          "atc": [
+            "R06AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "cyclosporine": {
+      "input": "cyclosporine",
+      "query": "cyclosporine",
+      "rxcui": "3008",
+      "name": "cyclosporine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3008",
+          "name": "cyclosporine",
+          "tty": "IN",
+          "base_name": "cyclosporine",
+          "atc": [
+            "L04AD",
+            "S01XA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "tretinoin": {
+      "input": "tretinoin",
+      "query": "tretinoin",
+      "rxcui": "10753",
+      "name": "tretinoin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10753",
+          "name": "tretinoin",
+          "tty": "IN",
+          "base_name": "tretinoin",
+          "atc": [
+            "D10AD",
+            "L01XF"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "fluconazole": {
+      "input": "fluconazole",
+      "query": "fluconazole",
+      "rxcui": "4450",
+      "name": "fluconazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4450",
+          "name": "fluconazole",
+          "tty": "IN",
+          "base_name": "fluconazole",
+          "atc": [
+            "D01AC",
+            "J02AC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "rimegepant": {
+      "input": "rimegepant",
+      "query": "rimegepant",
+      "rxcui": "2282307",
+      "name": "rimegepant",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2282307",
+          "name": "rimegepant",
+          "tty": "IN",
+          "base_name": "rimegepant",
+          "atc": [
+            "N02CD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "lovastatin": {
+      "input": "lovastatin",
+      "query": "lovastatin",
+      "rxcui": "6472",
+      "name": "lovastatin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6472",
+          "name": "lovastatin",
+          "tty": "IN",
+          "base_name": "lovastatin",
+          "atc": [
+            "C10AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "drospirenone": {
+      "input": "drospirenone",
+      "query": "drospirenone",
+      "rxcui": "11636",
+      "name": "drospirenone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "11636",
+          "name": "drospirenone",
+          "tty": "IN",
+          "base_name": "drospirenone",
+          "atc": [
+            "G03AC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "codeine": {
+      "input": "codeine",
+      "query": "codeine",
+      "rxcui": "2670",
+      "name": "codeine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2670",
+          "name": "codeine",
+          "tty": "IN",
+          "base_name": "codeine",
+          "atc": [
+            "R05DA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "tiotropium": {
+      "input": "tiotropium",
+      "query": "tiotropium",
+      "rxcui": "69120",
+      "name": "tiotropium",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "69120",
+          "name": "tiotropium",
+          "tty": "IN",
+          "base_name": "tiotropium",
+          "atc": [
+            "R03BB"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "temazepam": {
+      "input": "temazepam",
+      "query": "temazepam",
+      "rxcui": "10355",
+      "name": "temazepam",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10355",
+          "name": "temazepam",
+          "tty": "IN",
+          "base_name": "temazepam",
+          "atc": [
+            "N05CD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "brimonidine": {
+      "input": "brimonidine",
+      "query": "brimonidine",
+      "rxcui": "134615",
+      "name": "brimonidine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "134615",
+          "name": "brimonidine",
+          "tty": "IN",
+          "base_name": "brimonidine",
+          "atc": [
+            "D11AX",
+            "S01EA",
+            "S01GA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "nirmatrelvir": {
+      "input": "nirmatrelvir",
+      "query": "nirmatrelvir",
+      "rxcui": "2587892",
+      "name": "nirmatrelvir",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2587892",
+          "name": "nirmatrelvir",
+          "tty": "IN",
+          "base_name": "nirmatrelvir",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "ritonavir": {
+      "input": "ritonavir",
+      "query": "ritonavir",
+      "rxcui": "85762",
+      "name": "ritonavir",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "85762",
+          "name": "ritonavir",
+          "tty": "IN",
+          "base_name": "ritonavir",
+          "atc": [
+            "J05AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "sacubitril": {
+      "input": "sacubitril",
+      "query": "sacubitril",
+      "rxcui": "1656328",
+      "name": "sacubitril",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1656328",
+          "name": "sacubitril",
+          "tty": "IN",
+          "base_name": "sacubitril",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "valproate": {
+      "input": "valproate",
+      "query": "valproate",
+      "rxcui": "40254",
+      "name": "valproate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "40254",
+          "name": "valproate",
+          "tty": "IN",
+          "base_name": "valproate",
+          "atc": [
+            "N03AG"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "dextromethorphan": {
+      "input": "dextromethorphan",
+      "query": "dextromethorphan",
+      "rxcui": "3289",
+      "name": "dextromethorphan",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3289",
+          "name": "dextromethorphan",
+          "tty": "IN",
+          "base_name": "dextromethorphan",
+          "atc": [
+            "R05DA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "nebivolol": {
+      "input": "nebivolol",
+      "query": "nebivolol",
+      "rxcui": "31555",
+      "name": "nebivolol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "31555",
+          "name": "nebivolol",
+          "tty": "IN",
+          "base_name": "nebivolol",
+          "atc": [
+            "C07AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "acyclovir": {
+      "input": "acyclovir",
+      "query": "acyclovir",
+      "rxcui": "281",
+      "name": "acyclovir",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "281",
+          "name": "acyclovir",
+          "tty": "IN",
+          "base_name": "acyclovir",
+          "atc": [
+            "D06BB",
+            "J05AB",
+            "S01AD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "betamethasone": {
+      "input": "betamethasone",
+      "query": "betamethasone",
+      "rxcui": "1514",
+      "name": "betamethasone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1514",
+          "name": "betamethasone",
+          "tty": "IN",
+          "base_name": "betamethasone",
+          "atc": [
+            "A07EA",
+            "C05AA",
+            "D07AC",
+            "D07XC",
+            "H02AB",
+            "R01AD",
+            "R03BA",
+            "S01BA",
+            "S01CB",
+            "S02BA",
+            "S03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "morphine": {
+      "input": "morphine",
+      "query": "morphine",
+      "rxcui": "7052",
+      "name": "morphine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7052",
+          "name": "morphine",
+          "tty": "IN",
+          "base_name": "morphine",
+          "atc": [
+            "N02AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "doxazosin": {
+      "input": "doxazosin",
+      "query": "doxazosin",
+      "rxcui": "49276",
+      "name": "doxazosin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "49276",
+          "name": "doxazosin",
+          "tty": "IN",
+          "base_name": "doxazosin",
+          "atc": [
+            "C02CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "tacrolimus": {
+      "input": "tacrolimus",
+      "query": "tacrolimus",
+      "rxcui": "42316",
+      "name": "tacrolimus",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "42316",
+          "name": "tacrolimus",
+          "tty": "IN",
+          "base_name": "tacrolimus",
+          "atc": [
+            "D11AH",
+            "L04AD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "dupilumab": {
+      "input": "dupilumab",
+      "query": "dupilumab",
+      "rxcui": "1876376",
+      "name": "dupilumab",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1876376",
+          "name": "dupilumab",
+          "tty": "IN",
+          "base_name": "dupilumab",
+          "atc": [
+            "D11AH"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "enalapril": {
+      "input": "enalapril",
+      "query": "enalapril",
+      "rxcui": "3827",
+      "name": "enalapril",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3827",
+          "name": "enalapril",
+          "tty": "IN",
+          "base_name": "enalapril",
+          "atc": [
+            "C09AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "polymyxin b": {
+      "input": "polymyxin B",
+      "query": "polymyxin b",
+      "rxcui": "8536",
+      "name": "polymyxin B",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8536",
+          "name": "polymyxin B",
+          "tty": "IN",
+          "base_name": "polymyxin B",
+          "atc": [
+            "A07AA",
+            "J01XB",
+            "S01AA",
+            "S02AA",
+            "S03AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "anastrozole": {
+      "input": "anastrozole",
+      "query": "anastrozole",
+      "rxcui": "84857",
+      "name": "anastrozole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "84857",
+          "name": "anastrozole",
+          "tty": "IN",
+          "base_name": "anastrozole",
+          "atc": [
+            "L02BG"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "torsemide": {
+      "input": "torsemide",
+      "query": "torsemide",
+      "rxcui": "38413",
+      "name": "torsemide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "38413",
+          "name": "torsemide",
+          "tty": "IN",
+          "base_name": "torsemide",
+          "atc": [
+            "C03CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ketorolac": {
+      "input": "ketorolac",
+      "query": "ketorolac",
+      "rxcui": "35827",
+      "name": "ketorolac",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "35827",
+          "name": "ketorolac",
+          "tty": "IN",
+          "base_name": "ketorolac",
+          "atc": [
+            "M01AB",
+            "S01BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "nitroglycerin": {
+      "input": "nitroglycerin",
+      "query": "nitroglycerin",
+      "rxcui": "4917",
+      "name": "nitroglycerin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4917",
+          "name": "nitroglycerin",
+          "tty": "IN",
+          "base_name": "nitroglycerin",
+          "atc": [
+            "C01DA",
+            "C05AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "polyethylene glycols": {
+      "input": "polyethylene glycols",
+      "query": "polyethylene glycols",
+      "rxcui": "8516",
+      "name": "polyethylene glycols",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8516",
+          "name": "polyethylene glycols",
+          "tty": "IN",
+          "base_name": "polyethylene glycols",
+          "atc": [
+            "A06AD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "flecainide": {
+      "input": "flecainide",
+      "query": "flecainide",
+      "rxcui": "4441",
+      "name": "flecainide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4441",
+          "name": "flecainide",
+          "tty": "IN",
+          "base_name": "flecainide",
+          "atc": [
+            "C01BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "melatonin": {
+      "input": "melatonin",
+      "query": "melatonin",
+      "rxcui": "6711",
+      "name": "melatonin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6711",
+          "name": "melatonin",
+          "tty": "IN",
+          "base_name": "melatonin",
+          "atc": [
+            "N05CH"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "liothyronine": {
+      "input": "liothyronine",
+      "query": "liothyronine",
+      "rxcui": "10814",
+      "name": "liothyronine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10814",
+          "name": "liothyronine",
+          "tty": "IN",
+          "base_name": "liothyronine",
+          "atc": [
+            "H03AA"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "telmisartan": {
+      "input": "telmisartan",
+      "query": "telmisartan",
+      "rxcui": "73494",
+      "name": "telmisartan",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "73494",
+          "name": "telmisartan",
+          "tty": "IN",
+          "base_name": "telmisartan",
+          "atc": [
+            "C09CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "risperidone": {
+      "input": "risperidone",
+      "query": "risperidone",
+      "rxcui": "35636",
+      "name": "risperidone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "35636",
+          "name": "risperidone",
+          "tty": "IN",
+          "base_name": "risperidone",
+          "atc": [
+            "N05AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "colchicine": {
+      "input": "colchicine",
+      "query": "colchicine",
+      "rxcui": "2683",
+      "name": "colchicine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2683",
+          "name": "colchicine",
+          "tty": "IN",
+          "base_name": "colchicine",
+          "atc": [
+            "M04AC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "lansoprazole": {
+      "input": "lansoprazole",
+      "query": "lansoprazole",
+      "rxcui": "17128",
+      "name": "lansoprazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "17128",
+          "name": "lansoprazole",
+          "tty": "IN",
+          "base_name": "lansoprazole",
+          "atc": [
+            "A02BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "oxcarbazepine": {
+      "input": "oxcarbazepine",
+      "query": "oxcarbazepine",
+      "rxcui": "32624",
+      "name": "oxcarbazepine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "32624",
+          "name": "oxcarbazepine",
+          "tty": "IN",
+          "base_name": "oxcarbazepine",
+          "atc": [
+            "N03AF"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "dicyclomine": {
+      "input": "dicyclomine",
+      "query": "dicyclomine",
+      "rxcui": "3361",
+      "name": "dicyclomine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3361",
+          "name": "dicyclomine",
+          "tty": "IN",
+          "base_name": "dicyclomine",
+          "atc": [
+            "A03AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "linaclotide": {
+      "input": "linaclotide",
+      "query": "linaclotide",
+      "rxcui": "1307404",
+      "name": "linaclotide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1307404",
+          "name": "linaclotide",
+          "tty": "IN",
+          "base_name": "linaclotide",
+          "atc": [
+            "A06AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "metoclopramide": {
+      "input": "metoclopramide",
+      "query": "metoclopramide",
+      "rxcui": "6915",
+      "name": "metoclopramide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6915",
+          "name": "metoclopramide",
+          "tty": "IN",
+          "base_name": "metoclopramide",
+          "atc": [
+            "A03FA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "rizatriptan": {
+      "input": "rizatriptan",
+      "query": "rizatriptan",
+      "rxcui": "88014",
+      "name": "rizatriptan",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "88014",
+          "name": "rizatriptan",
+          "tty": "IN",
+          "base_name": "rizatriptan",
+          "atc": [
+            "N02CC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "oseltamivir": {
+      "input": "oseltamivir",
+      "query": "oseltamivir",
+      "rxcui": "260101",
+      "name": "oseltamivir",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "260101",
+          "name": "oseltamivir",
+          "tty": "IN",
+          "base_name": "oseltamivir",
+          "atc": [
+            "J05AH"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "nystatin": {
+      "input": "nystatin",
+      "query": "nystatin",
+      "rxcui": "7597",
+      "name": "nystatin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7597",
+          "name": "nystatin",
+          "tty": "IN",
+          "base_name": "nystatin",
+          "atc": [
+            "A07AA",
+            "D01AA",
+            "G01AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "glycopyrronium": {
+      "input": "glycopyrronium",
+      "query": "glycopyrronium",
+      "rxcui": "1546438",
+      "name": "glycopyrronium",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1546438",
+          "name": "glycopyrronium",
+          "tty": "IN",
+          "base_name": "glycopyrronium",
+          "atc": [
+            "D11AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "terazosin": {
+      "input": "terazosin",
+      "query": "terazosin",
+      "rxcui": "37798",
+      "name": "terazosin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "37798",
+          "name": "terazosin",
+          "tty": "IN",
+          "base_name": "terazosin",
+          "atc": [
+            "G04CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "erythromycin": {
+      "input": "erythromycin",
+      "query": "erythromycin",
+      "rxcui": "4053",
+      "name": "erythromycin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4053",
+          "name": "erythromycin",
+          "tty": "IN",
+          "base_name": "erythromycin",
+          "atc": [
+            "D10AF",
+            "J01FA",
+            "S01AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "dexlansoprazole": {
+      "input": "dexlansoprazole",
+      "query": "dexlansoprazole",
+      "rxcui": "816346",
+      "name": "dexlansoprazole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "816346",
+          "name": "dexlansoprazole",
+          "tty": "IN",
+          "base_name": "dexlansoprazole",
+          "atc": [
+            "A02BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "hydrocortisone": {
+      "input": "hydrocortisone",
+      "query": "hydrocortisone",
+      "rxcui": "5492",
+      "name": "hydrocortisone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "5492",
+          "name": "hydrocortisone",
+          "tty": "IN",
+          "base_name": "hydrocortisone",
+          "atc": [
+            "A01AC",
+            "A07EA",
+            "C05AA",
+            "D07AA",
+            "D07XA",
+            "H02AB",
+            "S01BA",
+            "S01CB",
+            "S02BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "bisoprolol": {
+      "input": "bisoprolol",
+      "query": "bisoprolol",
+      "rxcui": "19484",
+      "name": "bisoprolol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "19484",
+          "name": "bisoprolol",
+          "tty": "IN",
+          "base_name": "bisoprolol",
+          "atc": [
+            "C07AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "solifenacin": {
+      "input": "solifenacin",
+      "query": "solifenacin",
+      "rxcui": "322167",
+      "name": "solifenacin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "322167",
+          "name": "solifenacin",
+          "tty": "IN",
+          "base_name": "solifenacin",
+          "atc": [
+            "G04BD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "carbamazepine": {
+      "input": "carbamazepine",
+      "query": "carbamazepine",
+      "rxcui": "2002",
+      "name": "carbamazepine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2002",
+          "name": "carbamazepine",
+          "tty": "IN",
+          "base_name": "carbamazepine",
+          "atc": [
+            "N03AF"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "epinephrine": {
+      "input": "epinephrine",
+      "query": "epinephrine",
+      "rxcui": "3992",
+      "name": "epinephrine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3992",
+          "name": "epinephrine",
+          "tty": "IN",
+          "base_name": "epinephrine",
+          "atc": [
+            "A01AD",
+            "B02BC",
+            "C01CA",
+            "R01AA",
+            "R03AA",
+            "S01EA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "calcium carbonate": {
+      "input": "calcium carbonate",
+      "query": "calcium carbonate",
+      "rxcui": "1897",
+      "name": "calcium carbonate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1897",
+          "name": "calcium carbonate",
+          "tty": "IN",
+          "base_name": "calcium carbonate",
+          "atc": [
+            "A02AC",
+            "A12AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "levofloxacin": {
+      "input": "levofloxacin",
+      "query": "levofloxacin",
+      "rxcui": "82122",
+      "name": "levofloxacin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "82122",
+          "name": "levofloxacin",
+          "tty": "IN",
+          "base_name": "levofloxacin",
+          "atc": [
+            "J01MA",
+            "S01AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ramipril": {
+      "input": "ramipril",
+      "query": "ramipril",
+      "rxcui": "35296",
+      "name": "ramipril",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "35296",
+          "name": "ramipril",
+          "tty": "IN",
+          "base_name": "ramipril",
+          "atc": [
+            "C09AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "loperamide": {
+      "input": "loperamide",
+      "query": "loperamide",
+      "rxcui": "6468",
+      "name": "loperamide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6468",
+          "name": "loperamide",
+          "tty": "IN",
+          "base_name": "loperamide",
+          "atc": [
+            "A07DA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "mirabegron": {
+      "input": "mirabegron",
+      "query": "mirabegron",
+      "rxcui": "1300786",
+      "name": "mirabegron",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1300786",
+          "name": "mirabegron",
+          "tty": "IN",
+          "base_name": "mirabegron",
+          "atc": [
+            "G04BD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "medroxyprogesterone": {
+      "input": "medroxyprogesterone",
+      "query": "medroxyprogesterone",
+      "rxcui": "6691",
+      "name": "medroxyprogesterone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6691",
+          "name": "medroxyprogesterone",
+          "tty": "IN",
+          "base_name": "medroxyprogesterone",
+          "atc": [
+            "G03AC",
+            "G03DA",
+            "L02AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "minoxidil": {
+      "input": "minoxidil",
+      "query": "minoxidil",
+      "rxcui": "6984",
+      "name": "minoxidil",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6984",
+          "name": "minoxidil",
+          "tty": "IN",
+          "base_name": "minoxidil",
+          "atc": [
+            "C02DC",
+            "D11AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "sucralfate": {
+      "input": "sucralfate",
+      "query": "sucralfate",
+      "rxcui": "10156",
+      "name": "sucralfate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10156",
+          "name": "sucralfate",
+          "tty": "IN",
+          "base_name": "sucralfate",
+          "atc": [
+            "A02BX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ubrogepant": {
+      "input": "ubrogepant",
+      "query": "ubrogepant",
+      "rxcui": "2268216",
+      "name": "ubrogepant",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2268216",
+          "name": "ubrogepant",
+          "tty": "IN",
+          "base_name": "ubrogepant",
+          "atc": [
+            "N02CD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "pseudoephedrine": {
+      "input": "pseudoephedrine",
+      "query": "pseudoephedrine",
+      "rxcui": "8896",
+      "name": "pseudoephedrine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8896",
+          "name": "pseudoephedrine",
+          "tty": "IN",
+          "base_name": "pseudoephedrine",
+          "atc": [
+            "R01BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "pramipexole": {
+      "input": "pramipexole",
+      "query": "pramipexole",
+      "rxcui": "746741",
+      "name": "pramipexole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "746741",
+          "name": "pramipexole",
+          "tty": "IN",
+          "base_name": "pramipexole",
+          "atc": [
+            "N04BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "calcitriol": {
+      "input": "calcitriol",
+      "query": "calcitriol",
+      "rxcui": "1894",
+      "name": "calcitriol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1894",
+          "name": "calcitriol",
+          "tty": "IN",
+          "base_name": "calcitriol",
+          "atc": [
+            "A11CC",
+            "D05AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "sennosides usp": {
+      "input": "sennosides, USP",
+      "query": "sennosides usp",
+      "rxcui": "36387",
+      "name": "sennosides, USP",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "36387",
+          "name": "sennosides, USP",
+          "tty": "IN",
+          "base_name": "sennosides, USP",
+          "atc": [
+            "A06AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "fexofenadine": {
+      "input": "fexofenadine",
+      "query": "fexofenadine",
+      "rxcui": "87636",
+      "name": "fexofenadine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "87636",
+          "name": "fexofenadine",
+          "tty": "IN",
+          "base_name": "fexofenadine",
+          "atc": [
+            "R06AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ticagrelor": {
+      "input": "ticagrelor",
+      "query": "ticagrelor",
+      "rxcui": "1116632",
+      "name": "ticagrelor",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1116632",
+          "name": "ticagrelor",
+          "tty": "IN",
+          "base_name": "ticagrelor",
+          "atc": [
+            "B01AC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "lipase": {
+      "input": "lipase",
+      "query": "lipase",
+      "rxcui": "6406",
+      "name": "lipase",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6406",
+          "name": "lipase",
+          "tty": "IN",
+          "base_name": "lipase",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "amylase": {
+      "input": "amylase",
+      "query": "amylase",
+      "rxcui": "743",
+      "name": "amylase",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "743",
+          "name": "amylase",
+          "tty": "IN",
+          "base_name": "amylase",
+          "atc": [
+            "A09AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "protease": {
+      "input": "protease",
+      "query": "protease",
+      "rxcui": "8031",
+      "name": "protease",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8031",
+          "name": "protease",
+          "tty": "IN",
+          "base_name": "protease",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "bumetanide": {
+      "input": "bumetanide",
+      "query": "bumetanide",
+      "rxcui": "1808",
+      "name": "bumetanide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1808",
+          "name": "bumetanide",
+          "tty": "IN",
+          "base_name": "bumetanide",
+          "atc": [
+            "C03CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "labetalol": {
+      "input": "labetalol",
+      "query": "labetalol",
+      "rxcui": "6185",
+      "name": "labetalol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6185",
+          "name": "labetalol",
+          "tty": "IN",
+          "base_name": "labetalol",
+          "atc": [
+            "C07AG"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "guaifenesin": {
+      "input": "guaifenesin",
+      "query": "guaifenesin",
+      "rxcui": "5032",
+      "name": "guaifenesin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "5032",
+          "name": "guaifenesin",
+          "tty": "IN",
+          "base_name": "guaifenesin",
+          "atc": [
+            "R05CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "alfuzosin": {
+      "input": "alfuzosin",
+      "query": "alfuzosin",
+      "rxcui": "17300",
+      "name": "alfuzosin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "17300",
+          "name": "alfuzosin",
+          "tty": "IN",
+          "base_name": "alfuzosin",
+          "atc": [
+            "G04CA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "moxifloxacin": {
+      "input": "moxifloxacin",
+      "query": "moxifloxacin",
+      "rxcui": "139462",
+      "name": "moxifloxacin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "139462",
+          "name": "moxifloxacin",
+          "tty": "IN",
+          "base_name": "moxifloxacin",
+          "atc": [
+            "J01MA",
+            "S01AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "terbinafine": {
+      "input": "terbinafine",
+      "query": "terbinafine",
+      "rxcui": "37801",
+      "name": "terbinafine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "37801",
+          "name": "terbinafine",
+          "tty": "IN",
+          "base_name": "terbinafine",
+          "atc": [
+            "D01AE",
+            "D01BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "isotretinoin": {
+      "input": "isotretinoin",
+      "query": "isotretinoin",
+      "rxcui": "6064",
+      "name": "isotretinoin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6064",
+          "name": "isotretinoin",
+          "tty": "IN",
+          "base_name": "isotretinoin",
+          "atc": [
+            "D10AD",
+            "D10BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "insulin detemir": {
+      "input": "insulin detemir",
+      "query": "insulin detemir",
+      "rxcui": "139825",
+      "name": "insulin detemir",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "139825",
+          "name": "insulin detemir",
+          "tty": "IN",
+          "base_name": "insulin detemir",
+          "atc": [
+            "A10AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "letrozole": {
+      "input": "letrozole",
+      "query": "letrozole",
+      "rxcui": "72965",
+      "name": "letrozole",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "72965",
+          "name": "letrozole",
+          "tty": "IN",
+          "base_name": "letrozole",
+          "atc": [
+            "L02BG"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "benzoyl peroxide": {
+      "input": "benzoyl peroxide",
+      "query": "benzoyl peroxide",
+      "rxcui": "1418",
+      "name": "benzoyl peroxide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1418",
+          "name": "benzoyl peroxide",
+          "tty": "IN",
+          "base_name": "benzoyl peroxide",
+          "atc": [
+            "D10AE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "caffeine": {
+      "input": "caffeine",
+      "query": "caffeine",
+      "rxcui": "1886",
+      "name": "caffeine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1886",
+          "name": "caffeine",
+          "tty": "IN",
+          "base_name": "caffeine",
+          "atc": [
+            "D11AX",
+            "N06BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "butalbital": {
+      "input": "butalbital",
+      "query": "butalbital",
+      "rxcui": "19860",
+      "name": "butalbital",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "19860",
+          "name": "butalbital",
+          "tty": "IN",
+          "base_name": "butalbital",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "ciclopirox": {
+      "input": "ciclopirox",
+      "query": "ciclopirox",
+      "rxcui": "21090",
+      "name": "ciclopirox",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "21090",
+          "name": "ciclopirox",
+          "tty": "IN",
+          "base_name": "ciclopirox",
+          "atc": [
+            "D01AE",
+            "G01AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "cyproheptadine": {
+      "input": "cyproheptadine",
+      "query": "cyproheptadine",
+      "rxcui": "3013",
+      "name": "cyproheptadine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3013",
+          "name": "cyproheptadine",
+          "tty": "IN",
+          "base_name": "cyproheptadine",
+          "atc": [
+            "R06AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "amiodarone": {
+      "input": "amiodarone",
+      "query": "amiodarone",
+      "rxcui": "703",
+      "name": "amiodarone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "703",
+          "name": "amiodarone",
+          "tty": "IN",
+          "base_name": "amiodarone",
+          "atc": [
+            "C01BD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "norelgestromin": {
+      "input": "norelgestromin",
+      "query": "norelgestromin",
+      "rxcui": "326374",
+      "name": "norelgestromin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "326374",
+          "name": "norelgestromin",
+          "tty": "IN",
+          "base_name": "norelgestromin",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "desogestrel": {
+      "input": "desogestrel",
+      "query": "desogestrel",
+      "rxcui": "22656",
+      "name": "desogestrel",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "22656",
+          "name": "desogestrel",
+          "tty": "IN",
+          "base_name": "desogestrel",
+          "atc": [
+            "G03AC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "lidocaine": {
+      "input": "lidocaine",
+      "query": "lidocaine",
+      "rxcui": "6387",
+      "name": "lidocaine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6387",
+          "name": "lidocaine",
+          "tty": "IN",
+          "base_name": "lidocaine",
+          "atc": [
+            "C01BB",
+            "C05AD",
+            "D04AB",
+            "N01BB",
+            "R02AD",
+            "S01HA",
+            "S02DA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "chlorhexidine": {
+      "input": "chlorhexidine",
+      "query": "chlorhexidine",
+      "rxcui": "2358",
+      "name": "chlorhexidine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2358",
+          "name": "chlorhexidine",
+          "tty": "IN",
+          "base_name": "chlorhexidine",
+          "atc": [
+            "A01AB",
+            "B05CA",
+            "D08AC",
+            "D09AA",
+            "R02AA",
+            "S01AX",
+            "S02AA",
+            "S03AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "nabumetone": {
+      "input": "nabumetone",
+      "query": "nabumetone",
+      "rxcui": "31448",
+      "name": "nabumetone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "31448",
+          "name": "nabumetone",
+          "tty": "IN",
+          "base_name": "nabumetone",
+          "atc": [
+            "M01AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "neomycin": {
+      "input": "neomycin",
+      "query": "neomycin",
+      "rxcui": "7299",
+      "name": "neomycin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7299",
+          "name": "neomycin",
+          "tty": "IN",
+          "base_name": "neomycin",
+          "atc": [
+            "A01AB",
+            "A07AA",
+            "B05CA",
+            "D06AX",
+            "J01GB",
+            "R02AB",
+            "S01AA",
+            "S02AA",
+            "S03AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "hydroquinone": {
+      "input": "hydroquinone",
+      "query": "hydroquinone",
+      "rxcui": "5509",
+      "name": "hydroquinone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "5509",
+          "name": "hydroquinone",
+          "tty": "IN",
+          "base_name": "hydroquinone",
+          "atc": [
+            "D11AX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "penicillin v": {
+      "input": "penicillin V",
+      "query": "penicillin v",
+      "rxcui": "7984",
+      "name": "penicillin V",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7984",
+          "name": "penicillin V",
+          "tty": "IN",
+          "base_name": "penicillin V",
+          "atc": [
+            "J01CE"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "diphenhydramine": {
+      "input": "diphenhydramine",
+      "query": "diphenhydramine",
+      "rxcui": "3498",
+      "name": "diphenhydramine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "3498",
+          "name": "diphenhydramine",
+          "tty": "IN",
+          "base_name": "diphenhydramine",
+          "atc": [
+            "D04AA",
+            "R06AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "mometasone": {
+      "input": "mometasone",
+      "query": "mometasone",
+      "rxcui": "108118",
+      "name": "mometasone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "108118",
+          "name": "mometasone",
+          "tty": "IN",
+          "base_name": "mometasone",
+          "atc": [
+            "D07AC",
+            "D07XC",
+            "R01AD",
+            "R03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "levalbuterol": {
+      "input": "levalbuterol",
+      "query": "levalbuterol",
+      "rxcui": "237159",
+      "name": "levalbuterol",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "237159",
+          "name": "levalbuterol",
+          "tty": "IN",
+          "base_name": "levalbuterol",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "lactate": {
+      "input": "lactate",
+      "query": "lactate",
+      "rxcui": "114202",
+      "name": "lactate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "114202",
+          "name": "lactate",
+          "tty": "IN",
+          "base_name": "lactate",
+          "atc": [
+            "G01AD"
+          ],
+          "atc_via": "precise forms"
+        }
+      ],
+      "status": "resolved"
+    },
+    "sodium chloride": {
+      "input": "sodium chloride",
+      "query": "sodium chloride",
+      "rxcui": "9863",
+      "name": "sodium chloride",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "9863",
+          "name": "sodium chloride",
+          "tty": "IN",
+          "base_name": "sodium chloride",
+          "atc": [
+            "A12CA",
+            "B05CB",
+            "B05XA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "liraglutide": {
+      "input": "liraglutide",
+      "query": "liraglutide",
+      "rxcui": "475968",
+      "name": "liraglutide",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "475968",
+          "name": "liraglutide",
+          "tty": "IN",
+          "base_name": "liraglutide",
+          "atc": [
+            "A10BJ"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "guanfacine": {
+      "input": "guanfacine",
+      "query": "guanfacine",
+      "rxcui": "40114",
+      "name": "guanfacine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "40114",
+          "name": "guanfacine",
+          "tty": "IN",
+          "base_name": "guanfacine",
+          "atc": [
+            "C02AC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "fluorouracil": {
+      "input": "fluorouracil",
+      "query": "fluorouracil",
+      "rxcui": "4492",
+      "name": "fluorouracil",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "4492",
+          "name": "fluorouracil",
+          "tty": "IN",
+          "base_name": "fluorouracil",
+          "atc": [
+            "L01BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "olopatadine": {
+      "input": "olopatadine",
+      "query": "olopatadine",
+      "rxcui": "135391",
+      "name": "olopatadine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "135391",
+          "name": "olopatadine",
+          "tty": "IN",
+          "base_name": "olopatadine",
+          "atc": [
+            "R01AC",
+            "S01GX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "beclomethasone": {
+      "input": "beclomethasone",
+      "query": "beclomethasone",
+      "rxcui": "1347",
+      "name": "beclomethasone",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1347",
+          "name": "beclomethasone",
+          "tty": "IN",
+          "base_name": "beclomethasone",
+          "atc": [
+            "A07EA",
+            "D07AC",
+            "R01AD",
+            "R03BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ascorbic acid": {
+      "input": "ascorbic acid",
+      "query": "ascorbic acid",
+      "rxcui": "1151",
+      "name": "ascorbic acid",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1151",
+          "name": "ascorbic acid",
+          "tty": "IN",
+          "base_name": "ascorbic acid",
+          "atc": [
+            "A11GA",
+            "G01AD",
+            "S01XA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "mycophenolate mofetil": {
+      "input": "mycophenolate mofetil",
+      "query": "mycophenolate mofetil",
+      "rxcui": "68149",
+      "name": "mycophenolate mofetil",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "68149",
+          "name": "mycophenolate mofetil",
+          "tty": "IN",
+          "base_name": "mycophenolate mofetil",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "brompheniramine": {
+      "input": "brompheniramine",
+      "query": "brompheniramine",
+      "rxcui": "1767",
+      "name": "brompheniramine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1767",
+          "name": "brompheniramine",
+          "tty": "IN",
+          "base_name": "brompheniramine",
+          "atc": [
+            "R06AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "indomethacin": {
+      "input": "indomethacin",
+      "query": "indomethacin",
+      "rxcui": "5781",
+      "name": "indomethacin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "5781",
+          "name": "indomethacin",
+          "tty": "IN",
+          "base_name": "indomethacin",
+          "atc": [
+            "C01EB",
+            "M01AB",
+            "M02AA",
+            "S01BC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "phenazopyridine": {
+      "input": "phenazopyridine",
+      "query": "phenazopyridine",
+      "rxcui": "8120",
+      "name": "phenazopyridine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "8120",
+          "name": "phenazopyridine",
+          "tty": "IN",
+          "base_name": "phenazopyridine",
+          "atc": [
+            "G04BX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "cefuroxime": {
+      "input": "cefuroxime",
+      "query": "cefuroxime",
+      "rxcui": "2194",
+      "name": "cefuroxime",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2194",
+          "name": "cefuroxime",
+          "tty": "IN",
+          "base_name": "cefuroxime",
+          "atc": [
+            "J01DC",
+            "S01AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "thiamine": {
+      "input": "thiamine",
+      "query": "thiamine",
+      "rxcui": "10454",
+      "name": "thiamine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10454",
+          "name": "thiamine",
+          "tty": "IN",
+          "base_name": "thiamine",
+          "atc": [
+            "A11DA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "sodium bicarbonate": {
+      "input": "sodium bicarbonate",
+      "query": "sodium bicarbonate",
+      "rxcui": "36676",
+      "name": "sodium bicarbonate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "36676",
+          "name": "sodium bicarbonate",
+          "tty": "IN",
+          "base_name": "sodium bicarbonate",
+          "atc": [
+            "B05CB",
+            "B05XA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "norgestrel": {
+      "input": "norgestrel",
+      "query": "norgestrel",
+      "rxcui": "7518",
+      "name": "norgestrel",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "7518",
+          "name": "norgestrel",
+          "tty": "IN",
+          "base_name": "norgestrel",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "carbidopa": {
+      "input": "carbidopa",
+      "query": "carbidopa",
+      "rxcui": "2019",
+      "name": "carbidopa",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2019",
+          "name": "carbidopa",
+          "tty": "IN",
+          "base_name": "carbidopa",
+          "atc": []
+        }
+      ],
+      "status": "resolved"
+    },
+    "levodopa": {
+      "input": "levodopa",
+      "query": "levodopa",
+      "rxcui": "6375",
+      "name": "levodopa",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6375",
+          "name": "levodopa",
+          "tty": "IN",
+          "base_name": "levodopa",
+          "atc": [
+            "N04BA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "lactulose": {
+      "input": "lactulose",
+      "query": "lactulose",
+      "rxcui": "6218",
+      "name": "lactulose",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6218",
+          "name": "lactulose",
+          "tty": "IN",
+          "base_name": "lactulose",
+          "atc": [
+            "A06AD"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "tobramycin": {
+      "input": "tobramycin",
+      "query": "tobramycin",
+      "rxcui": "10627",
+      "name": "tobramycin",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "10627",
+          "name": "tobramycin",
+          "tty": "IN",
+          "base_name": "tobramycin",
+          "atc": [
+            "J01GB",
+            "S01AA"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "ketotifen": {
+      "input": "ketotifen",
+      "query": "ketotifen",
+      "rxcui": "6146",
+      "name": "ketotifen",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6146",
+          "name": "ketotifen",
+          "tty": "IN",
+          "base_name": "ketotifen",
+          "atc": [
+            "R06AX",
+            "S01GX"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "magnesium sulfate": {
+      "input": "magnesium sulfate",
+      "query": "magnesium sulfate",
+      "rxcui": "6585",
+      "name": "magnesium sulfate",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "6585",
+          "name": "magnesium sulfate",
+          "tty": "IN",
+          "base_name": "magnesium sulfate",
+          "atc": [
+            "A06AD",
+            "A12CC",
+            "B05XA",
+            "D11AX",
+            "V04CC"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "chlorpheniramine": {
+      "input": "chlorpheniramine",
+      "query": "chlorpheniramine",
+      "rxcui": "2400",
+      "name": "chlorpheniramine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "2400",
+          "name": "chlorpheniramine",
+          "tty": "IN",
+          "base_name": "chlorpheniramine",
+          "atc": [
+            "R06AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "etodolac": {
+      "input": "etodolac",
+      "query": "etodolac",
+      "rxcui": "24605",
+      "name": "etodolac",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "24605",
+          "name": "etodolac",
+          "tty": "IN",
+          "base_name": "etodolac",
+          "atc": [
+            "M01AB"
+          ]
+        }
+      ],
+      "status": "resolved"
+    },
+    "atropine": {
+      "input": "atropine",
+      "query": "atropine",
+      "rxcui": "1223",
+      "name": "atropine",
+      "tty": "IN",
+      "ingredients": [
+        {
+          "rxcui": "1223",
+          "name": "atropine",
+          "tty": "IN",
+          "base_name": "atropine",
+          "atc": [
+            "A03BA",
+            "S01FA"
+          ]
+        }
+      ],
+      "status": "resolved"
     }
   },
   "example": {
     "label": "Try an example",
     "description": "Mom, 74, in Phoenix: a water pill, a blood pressure pill, an antidepressant, insulin, and a cholesterol pill.",
     "zip": "85004",
-    "medicines": ["lasix", "lisinopril", "zoloft", "lantus", "atorvastatin"]
+    "medicines": [
+      "lasix",
+      "lisinopril",
+      "zoloft",
+      "lantus",
+      "atorvastatin"
+    ]
   }
 }
