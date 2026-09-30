@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your heat and medicine plan</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <a class="brand" href="index.html">Heat Meds</a>
+    <button type="button" class="secondary" id="themeToggle">Dark mode</button>
+  </div>
+
+  <h1>Your heat and medicine plan</h1>
+
+  <section class="card" id="heatSection" aria-labelledby="heatHeading">
+    <div class="plan-header">
+      <span class="place" id="placeLine">Loading</span>
+      <span class="muted small" id="dateLine"></span>
+    </div>
+    <h2 id="heatHeading" style="margin-top:.6rem">This week's heat risk</h2>
+    <div id="heatArea" aria-live="polite">
+      <p class="muted">Checking the National Weather Service forecast for your ZIP.</p>
+    </div>
+  </section>
+
+  <p><a class="button secondary" href="index.html">Change ZIP</a></p>
+
+  <footer>
+    <p class="small muted">Heat forecast: National Weather Service HeatRisk (experimental). ZIP locations: U.S. Census Bureau ZCTA Gazetteer.</p>
+  </footer>
+</main>
+<script type="module" src="src/plan-page.js"></script>
+</body>
+</html>

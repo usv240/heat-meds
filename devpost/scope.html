@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heat Meds: Scope</title>
+<style>
+  :root {
+    --bg: #f7f5f0; --card: #ffffff; --ink: #1f2328; --muted: #5b6470; --line: #d9d4c8;
+    --accent: #b8541a; --accent-soft: #fbe9dc; --ok: #2f7d4f; --ok-soft: #e3f2e8;
+    --live: #1d5c8a; --live-soft: #e0edf7; --curated: #7a5a12; --curated-soft: #f8efd6;
+    --heat-green: #4caf50; --heat-yellow: #ffd54f; --heat-orange: #ff9800; --heat-red: #e53935;
+  }
+  [data-theme="dark"] {
+    --bg: #14171c; --card: #1e232a; --ink: #eceef1; --muted: #a2abb6; --line: #333a44;
+    --accent: #f0955a; --accent-soft: #3a2415; --ok: #7bd39a; --ok-soft: #173322;
+    --live: #7fb5e0; --live-soft: #14283a; --curated: #e0b85a; --curated-soft: #322912;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 18px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.55; }
+  main { max-width: 900px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+  header { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start; justify-content: space-between; margin-bottom: 1.5rem; }
+  h1 { font-size: 2rem; margin: 0 0 .25rem; letter-spacing: -.01em; }
+  h2 { font-size: 1.35rem; margin: 2.25rem 0 .75rem; }
+  h3 { font-size: 1.05rem; margin: 0 0 .35rem; }
+  p { margin: .4rem 0 .8rem; }
+  .sub { color: var(--muted); max-width: 60ch; }
+  .badge { display: inline-block; padding: .2rem .6rem; border-radius: 999px; font-size: .8rem; font-weight: 600; background: var(--ok-soft); color: var(--ok); border: 1px solid var(--ok); vertical-align: middle; }
+  .toggle { border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: .45rem .8rem; border-radius: .5rem; cursor: pointer; font-size: .9rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; padding: 1.1rem 1.25rem; }
+  .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .kernel { border-left: 6px solid var(--accent); }
+  .quote { color: var(--muted); font-style: italic; }
+  .tag { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: .15rem .5rem; border-radius: .35rem; margin-right: .4rem; }
+  .tag.live { background: var(--live-soft); color: var(--live); }
+  .tag.curated { background: var(--curated-soft); color: var(--curated); }
+  .tag.test { background: var(--ok-soft); color: var(--ok); }
+  svg { width: 100%; height: auto; display: block; }
+  .diagram { padding: .75rem; }
+  .legend { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; font-size: .85rem; color: var(--muted); margin-top: .5rem; }
+  .legend span::before { content: ""; display: inline-block; width: .8rem; height: .8rem; border-radius: .2rem; margin-right: .4rem; vertical-align: -.05rem; }
+  .legend .l-live::before { background: var(--live); }
+  .legend .l-curated::before { background: var(--curated); }
+  .legend .l-test::before { background: var(--ok); }
+  .page { background: var(--card); border: 1px solid var(--line); border-radius: .4rem; padding: 1.25rem 1.4rem; box-shadow: 0 6px 24px rgba(0,0,0,.08); max-width: 620px; margin: 0 auto; font-size: .95rem; }
+  .page .top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; color: var(--muted); font-size: .85rem; }
+  .heat { display: grid; grid-template-columns: repeat(7, 1fr); gap: .35rem; margin: .6rem 0 1rem; }
+  .heat div { border-radius: .35rem; padding: .35rem 0; text-align: center; font-weight: 700; color: #111; font-size: .8rem; }
+  .page ul { padding-left: 1.1rem; margin: .3rem 0 .8rem; }
+  .page li { margin: .25rem 0; }
+  .page .rule { font-weight: 800; border-top: 2px solid var(--ink); padding-top: .6rem; margin-top: .8rem; }
+  .page .src { color: var(--muted); font-size: .8rem; margin-top: .4rem; }
+  .tiles { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .tile { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; padding: 1rem; }
+  .tile .num { font-size: 2.4rem; font-weight: 800; line-height: 1; color: var(--accent); }
+  .tile .num.ok { color: var(--ok); }
+  .tile .lbl { color: var(--muted); font-size: .9rem; margin-top: .3rem; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; margin: .6rem 0; }
+  summary { cursor: pointer; padding: .9rem 1.1rem; font-weight: 700; list-style: none; display: flex; align-items: center; gap: .6rem; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "▸"; color: var(--muted); transition: transform .15s; }
+  details[open] summary::before { transform: rotate(90deg); }
+  details .body { padding: 0 1.1rem 1rem; }
+  details ul { margin: .2rem 0; padding-left: 1.2rem; }
+  details li { margin: .3rem 0; }
+  .count { color: var(--muted); font-weight: 500; font-size: .85rem; }
+  .order { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: .6rem; padding: .8rem; }
+  .step b { display: block; font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-bottom: .2rem; }
+  .step.first { border-color: var(--accent); }
+  .step.last { border-color: var(--ok); }
+  footer { color: var(--muted); font-size: .85rem; margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; background: var(--accent-soft); padding: .05rem .3rem; border-radius: .25rem; }
+  @media (max-width: 600px) { html { font-size: 17px; } h1 { font-size: 1.6rem; } }
+  @media print { .toggle { display: none; } details { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div>
+    <h1>Heat Meds <span class="badge">scope approved</span></h1>
+    <p class="sub">Type in your medicines and ZIP code. Get one printable page that says which of your medicines make hot days more dangerous, what this week's heat looks like where you live, and what to ask your pharmacist. It never tells anyone to stop a medicine.</p>
+  </div>
+  <button class="toggle" id="themeBtn" type="button">Dark mode</button>
+</header>
+
+<section class="card kernel">
+  <h3>The unique kernel</h3>
+  <p>The CDC asked doctors in 2025 to make a heat-and-medication plan with patients, but patients have no tool to do it themselves. This flips that: the patient or their family drives it, the plan is tied to the real 7-day heat forecast for their ZIP, and every medicine line traces back to a quoted, dated line of CDC guidance.</p>
+  <p class="quote">It names the medicines that matter and also lists the ones checked with no known heat concern, "so it's honest and not just scary."</p>
+</section>
+
+<h2>How it fits together</h2>
+<div class="card diagram">
+  <svg viewBox="0 0 900 470" role="img" aria-labelledby="dTitle dDesc">
+    <title id="dTitle">Flow from the user through live and curated data to the printed plan and the proof</title>
+    <desc id="dDesc">A daughter or her mom enters medicines and a ZIP. Names go to RxNorm (live), the ZIP goes to NWS HeatRisk (live), and drug classes are matched against a curated CDC rules file. Together they produce one printed page for the pharmacist. A separate proof track runs 300 medicines against UKHSA and Health Canada answer keys.</desc>
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+      </marker>
+    </defs>
+    <g stroke="var(--muted)" stroke-width="2" fill="none" marker-end="url(#arr)">
+      <path d="M160,120 L235,120"/>
+      <path d="M395,95 L470,60"/>
+      <path d="M395,120 L470,120"/>
+      <path d="M395,145 L470,180"/>
+      <path d="M630,60 L705,105"/>
+      <path d="M630,120 L705,120"/>
+      <path d="M630,180 L705,135"/>
+      <path d="M785,165 L785,220"/>
+    </g>
+    <g>
+      <rect x="20" y="80" width="140" height="80" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+      <text x="90" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">Daughter (45)</text>
+      <text x="90" y="134" text-anchor="middle" font-size="14" fill="var(--muted)">or Mom (74), Phoenix</text>
+    </g>
+    <g>
+      <rect x="235" y="80" width="160" height="80" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+      <text x="315" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">Medicines + ZIP</text>
+      <text x="315" y="134" text-anchor="middle" font-size="14" fill="var(--muted)">any name on the bottle</text>
+    </g>
+    <g>
+      <rect x="470" y="25" width="160" height="66" rx="12" fill="var(--live-soft)" stroke="var(--live)" stroke-width="2"/>
+      <text x="550" y="52" text-anchor="middle" font-size="15" font-weight="700" fill="var(--live)">RxNorm / RxNav</text>
+      <text x="550" y="74" text-anchor="middle" font-size="13" fill="var(--live)">live: Lasix becomes furosemide</text>
+    </g>
+    <g>
+      <rect x="470" y="87" width="160" height="66" rx="12" fill="var(--live-soft)" stroke="var(--live)" stroke-width="2"/>
+      <text x="550" y="114" text-anchor="middle" font-size="15" font-weight="700" fill="var(--live)">NWS HeatRisk</text>
+      <text x="550" y="136" text-anchor="middle" font-size="13" fill="var(--live)">live: 7 days for the ZIP</text>
+    </g>
+    <g>
+      <rect x="470" y="149" width="160" height="66" rx="12" fill="var(--curated-soft)" stroke="var(--curated)" stroke-width="2"/>
+      <text x="550" y="176" text-anchor="middle" font-size="15" font-weight="700" fill="var(--curated)">CDC rules file</text>
+      <text x="550" y="198" text-anchor="middle" font-size="13" fill="var(--curated)">curated: quoted, dated</text>
+    </g>
+    <g>
+      <rect x="705" y="80" width="175" height="80" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="792" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="var(--accent)">One printed page</text>
+      <text x="792" y="134" text-anchor="middle" font-size="13" fill="var(--accent)">fridge or pharmacist</text>
+    </g>
+    <g>
+      <rect x="705" y="222" width="160" height="70" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+      <text x="785" y="250" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Pharmacist</text>
+      <text x="785" y="272" text-anchor="middle" font-size="13" fill="var(--muted)">the only one who changes a dose</text>
+    </g>
+    <g>
+      <rect x="20" y="330" width="860" height="120" rx="12" fill="var(--ok-soft)" stroke="var(--ok)" stroke-width="2"/>
+      <text x="40" y="360" font-size="15" font-weight="700" fill="var(--ok)">PROOF TRACK (not shown to users)</text>
+      <text x="40" y="388" font-size="14" fill="var(--ink)">Run the 300 most-prescribed US medicines through the same live + curated path.</text>
+      <text x="40" y="410" font-size="14" fill="var(--ink)">Compare what gets flagged against UKHSA and Health Canada heat-medicine lists as independent answer keys.</text>
+      <text x="40" y="432" font-size="14" fill="var(--ink)">Track: false alarms on unflagged common medicines (goal 0). Plans that say "stop a medicine" (must be 0).</text>
+    </g>
+    <path d="M550,215 L550,330" stroke="var(--ok)" stroke-width="2" stroke-dasharray="6 5" fill="none" marker-end="url(#arr)"/>
+    <text x="562" y="300" font-size="13" fill="var(--ok)">same path, tested</text>
+  </svg>
+  <div class="legend">
+    <span class="l-live">Live outside data at runtime</span>
+    <span class="l-curated">Curated by the learner, source cited</span>
+    <span class="l-test">Proof against independent answer keys</span>
+  </div>
+</div>
+
+<h2>Who and why</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Who it's for</h3>
+    <p>A daughter, around 45, whose mom is 74 and lives alone in Phoenix. Mom takes a water pill, a blood pressure pill, an antidepressant, and insulin. It's June and the next few days are really hot. Today, neither of them knows those medicines change the risk, and nobody has handed them a plan.</p>
+  </div>
+  <div class="card">
+    <h3>The core loop</h3>
+    <p>Type the medicines and the ZIP. In about a minute, get one page to print, take to the pharmacist, or stick on the fridge. Come back when the forecast changes or a medicine changes.</p>
+  </div>
+  <div class="card">
+    <h3>Why it matters to the learner</h3>
+    <p class="quote">"Some everyday medicines, like water pills, some blood pressure pills and some antidepressants, make hot days more dangerous, and most people don't know that."</p>
+    <p>Learning goals riding on it: requirements precise enough to test, and proof on real outside data, not hand-picked examples.</p>
+  </div>
+  <div class="card">
+    <h3>Look and feel</h3>
+    <p>Calm and very easy to read for older eyes: large text, light and dark mode, phone and desktop. Someone who has never heard of this should understand it on their first visit. Honest, not alarming.</p>
+  </div>
+</div>
+
+<h2>What "working" looks like</h2>
+<p class="sub">The finish line, sketched as the page itself. Layout is illustrative of the plan, not real forecast data.</p>
+<div class="page">
+  <div class="top"><span>Heat and Medicine Plan</span><span>Phoenix, AZ, June</span></div>
+  <div class="heat" aria-label="Seven-day heat risk, illustrative">
+    <div style="background:var(--heat-yellow)">Mon</div>
+    <div style="background:var(--heat-orange)">Tue</div>
+    <div style="background:var(--heat-red);color:#fff">Wed</div>
+    <div style="background:var(--heat-red);color:#fff">Thu</div>
+    <div style="background:var(--heat-orange)">Fri</div>
+    <div style="background:var(--heat-yellow)">Sat</div>
+    <div style="background:var(--heat-green);color:#fff">Sun</div>
+  </div>
+  <strong>Medicines that matter in heat</strong>
+  <ul>
+    <li><b>Furosemide (water pill):</b> can make you less thirsty and dehydrated faster in heat. Watch for dizziness, very dark urine, confusion. <i>Ask your pharmacist: should I change how much water I drink on hot days?</i></li>
+    <li><b>Combination:</b> water pill + blood pressure pill. The CDC calls this combination out.</li>
+    <li><b>Storage:</b> don't leave your insulin in a hot car.</li>
+  </ul>
+  <strong>Checked, no known heat concern</strong>
+  <ul><li>Atorvastatin</li></ul>
+  <strong>Call 911 if</strong>
+  <ul><li>Warning signs of heat illness, listed plainly.</li></ul>
+  <div class="rule">Never stop or change a medicine on your own. Talk to your pharmacist or doctor.</div>
+  <div class="src">Sources: CDC heat and medication guidance (date checked), NWS HeatRisk, NLM RxNorm</div>
+</div>
+<div class="card" style="margin-top:1rem">
+  <h3>The "oh, that's cool" beat</h3>
+  <p>Type <b>Lasix</b>, watch it resolve to <b>furosemide</b>, land in the CDC's diuretics row with the exact quote and link, next to the real HeatRisk colors for that ZIP. Then it prints on one page.</p>
+</div>
+
+<h2>Proof it works on real data</h2>
+<div class="tiles">
+  <div class="tile"><div class="num">300</div><div class="lbl">most-prescribed US medicines run through the app</div></div>
+  <div class="tile"><div class="num">2</div><div class="lbl">independent answer keys: UKHSA and Health Canada</div></div>
+  <div class="tile"><div class="num ok">0</div><div class="lbl">goal: false alarms on common medicines no guideline flags</div></div>
+  <div class="tile"><div class="num ok">0</div><div class="lbl">must: plans that tell someone to stop a medicine</div></div>
+</div>
+<p class="sub" style="margin-top:.8rem">Unrecognized medicines say "not recognized" and never guess.</p>
+
+<h2>The proof-of-concept boundary</h2>
+<details open>
+  <summary>In <span class="count">(needed to prove the kernel)</span></summary>
+  <div class="body"><ul>
+    <li><span class="tag live">live</span>Medicine name recognition via RxNorm/RxNav: brand or generic to generic ingredient and standard drug class code. Misspellings get RxNorm's spelling suggestions.</li>
+    <li><span class="tag live">live</span>NWS HeatRisk for the ZIP, 7 days, shown as colors.</li>
+    <li><span class="tag curated">curated</span>A small, versioned CDC rules file: each CDC drug class mapped to class codes, the reason it matters in heat, the exact quote plus link, and the date checked. Same for combination warnings and storage notes.</li>
+    <li>The one-page printable plan: calm, large text, light and dark mode, phone and desktop.</li>
+    <li>A simple static site on GitHub Pages with a "try an example" button, so judges and real people can try it without installing anything.</li>
+    <li>Clearly labeled saved data (RxNorm lookups for common medicines, one past heat-wave forecast) so the demo still works if a government service is slow or down.</li>
+    <li><span class="tag test">test</span>The 300-medicine run with UKHSA and Health Canada answer keys and the two tracked numbers.</li>
+  </ul></div>
+</details>
+<details>
+  <summary>Later <span class="count">(worth doing, not now)</span></summary>
+  <div class="body"><ul>
+    <li>An API so other apps can run the same check.</li>
+    <li>A hot-day calendar reminder when the forecast for your ZIP turns orange or red.</li>
+    <li>Reading a photo of pill bottles instead of typing the names.</li>
+    <li>Re-checking the CDC page automatically for changes, rather than by hand with a dated file.</li>
+    <li>Multiple people or saved medicine lists per user.</li>
+  </ul></div>
+</details>
+<details>
+  <summary>Explicitly cut <span class="count">(each with a reason)</span></summary>
+  <div class="body"><ul>
+    <li><b>Any advice to stop, skip, or change a dose.</b> The learner's hard rule; the page points to the pharmacist or doctor instead.</li>
+    <li><b>Drug-drug interactions in general.</b> Only the heat combinations the CDC names are in; everything else is a pharmacist's job.</li>
+    <li><b>Accounts, logins, or saving plans on a server.</b> Not needed to prove the kernel; the printed page is the artifact.</li>
+    <li><b>A hand-maintained list of drug names.</b> RxNorm already knows nearly every US prescription.</li>
+  </ul></div>
+</details>
+
+<h2>Build order agreed at approval</h2>
+<div class="order">
+  <div class="step first"><b>First</b>CDC rules file, then the Phoenix example working end to end.</div>
+  <div class="step"><b>Middle</b>Sequenced in <code>5-build</code>: HeatRisk, RxNorm, print layout, GitHub Pages, fallback data.</div>
+  <div class="step last"><b>Last</b>The 300-medicine run against the UKHSA and Health Canada answer keys.</div>
+</div>
+
+<h2>Notes for later phases</h2>
+<div class="card">
+  <ul style="margin:0;padding-left:1.2rem">
+    <li>A static site means RxNorm and NWS calls happen from the browser with no server. <code>4-spec</code> should confirm both allow that (CORS) and decide how the saved fallback data is loaded.</li>
+    <li>The CDC rules file, the answer-key comparison, and the two tracked numbers are the natural home for the testable-requirements goal in <code>3-prd</code>.</li>
+  </ul>
+</div>
+
+<footer>Visual companion to <code>devpost/scope.md</code>, which is the canonical plan. Regenerated after each revision. Works offline; no external scripts or fonts.</footer>
+</main>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeBtn');
+    var saved = null;
+    try { saved = localStorage.getItem('heatmeds-theme'); } catch (e) {}
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function apply(t) {
+      root.setAttribute('data-theme', t);
+      btn.textContent = t === 'dark' ? 'Light mode' : 'Dark mode';
+    }
+    apply(saved || (prefersDark ? 'dark' : 'light'));
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem('heatmeds-theme', next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>

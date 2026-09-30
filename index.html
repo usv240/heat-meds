@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heat Meds: a heat and medicine plan to go over with your pharmacist</title>
+  <meta name="description" content="Type in your medicines and ZIP code. Get one printable page that says which of your medicines make hot days more dangerous and what to ask your pharmacist.">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <a class="brand" href="index.html">Heat Meds</a>
+    <button type="button" class="secondary" id="themeToggle">Dark mode</button>
+  </div>
+
+  <h1>Some everyday medicines make hot days more dangerous.</h1>
+  <p>Type in your medicines and ZIP code. Get one printable page that says which of your medicines matter in heat, what this week's heat looks like where you live, and what to ask your pharmacist.</p>
+  <p class="muted">This page is being built in steps. Right now you can enter a ZIP code and see this week's heat risk. Medicines come next.</p>
+
+  <form id="zipForm" class="card" novalidate>
+    <div class="field">
+      <label for="zip">ZIP code</label>
+      <div class="row">
+        <div class="grow">
+          <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="85004">
+        </div>
+        <button type="submit">See my plan</button>
+      </div>
+      <p id="zipError" class="error small" hidden></p>
+    </div>
+  </form>
+
+  <footer>
+    <p class="small muted">Heat forecast: National Weather Service HeatRisk (experimental). ZIP locations: U.S. Census Bureau ZCTA Gazetteer.</p>
+  </footer>
+</main>
+<script type="module">
+  import { initTheme } from './src/theme.js';
+  import { isZip } from './src/zip.js';
+  import { getZip, setZip } from './src/storage.js';
+
+  initTheme();
+  const form = document.getElementById('zipForm');
+  const input = document.getElementById('zip');
+  const err = document.getElementById('zipError');
+  input.value = getZip();
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const zip = input.value.trim();
+    if (zip && !isZip(zip)) {
+      err.textContent = 'A ZIP code is five digits, like 85001.';
+      err.hidden = false;
+      input.focus();
+      return;
+    }
+    err.hidden = true;
+    setZip(zip);
+    window.location.href = 'plan.html';
+  });
+</script>
+</body>
+</html>

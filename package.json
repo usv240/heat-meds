@@ -1,0 +1,15 @@
+{
+  "name": "heat-meds",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Type in your medicines and ZIP code, get one printable heat-and-medicine plan to go over with your pharmacist.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "serve": "python -m http.server 8000",
+    "zip-index": "node scripts/build-zip-index.mjs",
+    "smoke:heatrisk": "node scripts/smoke-heatrisk.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

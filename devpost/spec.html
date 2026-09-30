@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heat Meds: Technical Spec</title>
+<style>
+  :root {
+    --bg: #f7f5f0; --card: #ffffff; --ink: #1f2328; --muted: #5b6470; --line: #d9d4c8;
+    --accent: #b8541a; --accent-soft: #fbe9dc; --ok: #2f7d4f; --ok-soft: #e3f2e8;
+    --live: #1d5c8a; --live-soft: #e0edf7; --curated: #7a5a12; --curated-soft: #f8efd6;
+    --gen: #5b4a8a; --gen-soft: #ece7f7; --warn: #8a4b00; --warn-soft: #fff1d6;
+  }
+  [data-theme="dark"] {
+    --bg: #14171c; --card: #1e232a; --ink: #eceef1; --muted: #a2abb6; --line: #333a44;
+    --accent: #f0955a; --accent-soft: #3a2415; --ok: #7bd39a; --ok-soft: #173322;
+    --live: #7fb5e0; --live-soft: #14283a; --curated: #e0b85a; --curated-soft: #322912;
+    --gen: #b9a7e6; --gen-soft: #241d38; --warn: #f2c56b; --warn-soft: #332612;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 18px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.55; }
+  main { max-width: 980px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+  header { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem; }
+  h1 { font-size: 2rem; margin: 0 0 .25rem; letter-spacing: -.01em; }
+  h2 { font-size: 1.35rem; margin: 2.25rem 0 .75rem; }
+  h3 { font-size: 1.05rem; margin: 0 0 .35rem; }
+  h4 { margin: .2rem 0 .3rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  p { margin: .4rem 0 .8rem; }
+  .sub { color: var(--muted); max-width: 64ch; }
+  .badge { display: inline-block; padding: .2rem .6rem; border-radius: 999px; font-size: .8rem; font-weight: 600; background: var(--warn-soft); color: var(--warn); border: 1px solid var(--warn); vertical-align: middle; }
+  .toggle { border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: .45rem .8rem; border-radius: .5rem; cursor: pointer; font-size: .9rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; padding: 1.1rem 1.25rem; }
+  .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em; background: var(--accent-soft); padding: .05rem .3rem; border-radius: .25rem; }
+  pre { background: var(--card); border: 1px solid var(--line); border-radius: .6rem; padding: .9rem 1rem; overflow-x: auto; font-size: .82rem; line-height: 1.45; }
+  pre code { background: transparent; padding: 0; }
+  svg { width: 100%; height: auto; display: block; }
+  .diagram { padding: .75rem; }
+  .legend { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; font-size: .85rem; color: var(--muted); margin-top: .5rem; }
+  .legend span::before { content: ""; display: inline-block; width: .8rem; height: .8rem; border-radius: .2rem; margin-right: .4rem; vertical-align: -.05rem; }
+  .l-live::before { background: var(--live); } .l-curated::before { background: var(--curated); } .l-gen::before { background: var(--gen); } .l-test::before { background: var(--ok); }
+  .stepper { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; overflow: hidden; }
+  .steps-nav { display: flex; flex-wrap: wrap; gap: .35rem; padding: .75rem; border-bottom: 1px solid var(--line); }
+  .steps-nav button { border: 1px solid var(--line); background: transparent; color: var(--ink); padding: .35rem .7rem; border-radius: 999px; cursor: pointer; font-size: .85rem; }
+  .steps-nav button[aria-current="step"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .step-panel { display: none; padding: 1rem 1.25rem; }
+  .step-panel.active { display: block; }
+  .step-controls { display: flex; justify-content: space-between; padding: .75rem 1.25rem; border-top: 1px solid var(--line); }
+  .step-controls button { border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: .45rem .9rem; border-radius: .5rem; cursor: pointer; }
+  .step-controls button:disabled { opacity: .4; cursor: default; }
+  .cols { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  ul.plain { padding-left: 1.2rem; margin: .2rem 0; } ul.plain li { margin: .3rem 0; }
+  .file { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; color: var(--gen); }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; margin: .6rem 0; }
+  summary { cursor: pointer; padding: .85rem 1.1rem; font-weight: 700; list-style: none; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "▸"; color: var(--muted); transition: transform .15s; }
+  details[open] summary::before { transform: rotate(90deg); }
+  details .body { padding: 0 1.1rem 1rem; }
+  .tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: .12rem .45rem; border-radius: .35rem; }
+  .tag.live { background: var(--live-soft); color: var(--live); } .tag.curated { background: var(--curated-soft); color: var(--curated); } .tag.gen { background: var(--gen-soft); color: var(--gen); } .tag.test { background: var(--ok-soft); color: var(--ok); }
+  .ref { font-size: .8rem; color: var(--muted); }
+  .ask { border-left: 5px solid var(--warn); }
+  .unknown { border-left: 5px solid var(--ok); }
+  table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+  th, td { text-align: left; padding: .45rem .55rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .76rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  footer { color: var(--muted); font-size: .85rem; margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+  @media (max-width: 600px) { html { font-size: 17px; } h1 { font-size: 1.6rem; } }
+  @media print { .toggle, .step-controls, .steps-nav { display: none; } .step-panel { display: block; border-top: 1px solid var(--line); } details { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div>
+    <h1>Heat Meds <span class="badge" id="statusBadge" style="background:var(--ok-soft);color:var(--ok);border-color:var(--ok)">spec approved</span></h1>
+    <p class="sub">Technical blueprint. Three static pages on GitHub Pages, no server of ours, one rules module shared by the site and the test harness so the Evidence numbers describe the exact code the site runs.</p>
+    <p class="ref">Implements <code>prd.md</code>. Canonical text lives in <code>spec.md</code>.</p>
+  </div>
+  <button class="toggle" id="themeBtn" type="button">Dark mode</button>
+</header>
+
+<h2>The pieces and how data moves</h2>
+<div class="card diagram">
+  <svg viewBox="0 0 980 560" role="img" aria-labelledby="aTitle aDesc">
+    <title id="aTitle">Architecture: browser modules call RxNorm, RxClass, and HeatRisk; read curated and generated data files; the evidence runner shares the rules module</title>
+    <desc id="aDesc">Left column: three external services, RxNorm, RxClass, HeatRisk ImageServer. Center: the browser with modules chips, rxnorm, rxclass, zip, heatrisk, rules, plan-render, info, storage, evidence. Right: data files, curated (cdc-rules, glossary, answer-keys) and generated (zip slices, saved heat wave, top300, saved lookups, evidence). Bottom: scripts and the evidence runner, which imports the same rules module and writes evidence.json.</desc>
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+      <marker id="arrok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ok)"/></marker>
+    </defs>
+    <!-- services -->
+    <rect x="20" y="30" width="200" height="60" rx="10" fill="var(--live-soft)" stroke="var(--live)" stroke-width="2"/>
+    <text x="120" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="var(--live)">NLM RxNorm</text>
+    <text x="120" y="75" text-anchor="middle" font-size="12" fill="var(--live)">name → RxCUI → ingredients</text>
+    <rect x="20" y="105" width="200" height="60" rx="10" fill="var(--live-soft)" stroke="var(--live)" stroke-width="2"/>
+    <text x="120" y="130" text-anchor="middle" font-size="14" font-weight="700" fill="var(--live)">NLM RxClass</text>
+    <text x="120" y="150" text-anchor="middle" font-size="12" fill="var(--live)">ingredient → ATC classes</text>
+    <rect x="20" y="180" width="200" height="60" rx="10" fill="var(--live-soft)" stroke="var(--live)" stroke-width="2"/>
+    <text x="120" y="205" text-anchor="middle" font-size="14" font-weight="700" fill="var(--live)">NWS HeatRisk ImageServer</text>
+    <text x="120" y="225" text-anchor="middle" font-size="12" fill="var(--live)">getSamples at a point, 7 days</text>
+    <!-- browser -->
+    <rect x="280" y="20" width="400" height="330" rx="14" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+    <text x="480" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Visitor's browser (GitHub Pages, no server of ours)</text>
+    <g font-size="12.5" fill="var(--ink)">
+      <rect x="300" y="65" width="170" height="34" rx="8" fill="var(--bg)" stroke="var(--line)"/><text x="385" y="87" text-anchor="middle">chips.js + rxnorm.js</text>
+      <rect x="490" y="65" width="170" height="34" rx="8" fill="var(--bg)" stroke="var(--line)"/><text x="575" y="87" text-anchor="middle">rxclass.js</text>
+      <rect x="300" y="110" width="170" height="34" rx="8" fill="var(--bg)" stroke="var(--line)"/><text x="385" y="132" text-anchor="middle">zip.js → heatrisk.js</text>
+      <rect x="490" y="110" width="170" height="34" rx="8" fill="var(--bg)" stroke="var(--line)"/><text x="575" y="132" text-anchor="middle">storage.js (localStorage)</text>
+      <rect x="300" y="165" width="360" height="44" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><text x="480" y="192" text-anchor="middle" font-weight="700" fill="var(--accent)">rules.js  evaluate({ medicines, forecast, rules })</text>
+      <rect x="300" y="225" width="170" height="34" rx="8" fill="var(--bg)" stroke="var(--line)"/><text x="385" y="247" text-anchor="middle">plan-render.js + info.js</text>
+      <rect x="490" y="225" width="170" height="34" rx="8" fill="var(--bg)" stroke="var(--line)"/><text x="575" y="247" text-anchor="middle">evidence.js</text>
+      <rect x="300" y="275" width="360" height="56" rx="8" fill="var(--bg)" stroke="var(--line)"/>
+      <text x="480" y="297" text-anchor="middle">index.html  ·  plan.html  ·  evidence.html</text>
+      <text x="480" y="317" text-anchor="middle" fill="var(--muted)">site.css · print.css · Atkinson Hyperlegible Next</text>
+    </g>
+    <!-- data files -->
+    <rect x="740" y="20" width="220" height="150" rx="12" fill="var(--curated-soft)" stroke="var(--curated)" stroke-width="2"/>
+    <text x="850" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="var(--curated)">Curated by the learner</text>
+    <g font-size="12.5" fill="var(--curated)">
+      <text x="760" y="72">data/cdc-rules.json</text>
+      <text x="760" y="94">data/glossary.json</text>
+      <text x="760" y="116">data/answer-keys/ukhsa.json</text>
+      <text x="760" y="138">data/answer-keys/health-canada.json</text>
+      <text x="760" y="160">data/answer-keys/ansm.json (context)</text>
+    </g>
+    <rect x="740" y="190" width="220" height="160" rx="12" fill="var(--gen-soft)" stroke="var(--gen)" stroke-width="2"/>
+    <text x="850" y="215" text-anchor="middle" font-size="14" font-weight="700" fill="var(--gen)">Generated by scripts</text>
+    <g font-size="12.5" fill="var(--gen)">
+      <text x="760" y="242">data/zip/850.json …</text>
+      <text x="760" y="264">data/saved-heatwave.json</text>
+      <text x="760" y="286">data/top300.json</text>
+      <text x="760" y="308">data/saved-lookups.json</text>
+      <text x="760" y="330">data/evidence.json</text>
+    </g>
+    <!-- runner -->
+    <rect x="280" y="400" width="680" height="140" rx="14" fill="var(--ok-soft)" stroke="var(--ok)" stroke-width="2"/>
+    <text x="300" y="428" font-size="14" font-weight="700" fill="var(--ok)">Node: scripts/run-evidence.mjs + test/*.test.mjs (node:test)</text>
+    <text x="300" y="452" font-size="12.5" fill="var(--ink)">Imports the same src/rules.js. Runs 300 MEPS-derived medicines through RxNorm → RxClass → rules → plan text.</text>
+    <text x="300" y="474" font-size="12.5" fill="var(--ink)">Compares flags with UKHSA and Health Canada. Scans every plan line for stop/skip/change-dose language.</text>
+    <text x="300" y="496" font-size="12.5" fill="var(--ink)">Writes data/evidence.json and data/saved-lookups.json. Throttled to 4 concurrent, cached to data/cache/.</text>
+    <text x="300" y="522" font-size="12.5" fill="var(--ok)" font-weight="700">Answer keys are committed before the first run, so the history shows they weren't tuned afterwards.</text>
+    <!-- arrows -->
+    <g stroke="var(--muted)" stroke-width="2" fill="none" marker-end="url(#arr)">
+      <path d="M220,60 L300,80"/>
+      <path d="M220,135 L490,90"/>
+      <path d="M220,210 L300,128"/>
+      <path d="M740,95 L660,185"/>
+      <path d="M740,250 L660,128"/>
+      <path d="M740,330 L660,245"/>
+    </g>
+    <g stroke="var(--ok)" stroke-width="2" fill="none" stroke-dasharray="6 5" marker-end="url(#arrok)">
+      <path d="M480,400 L480,215"/>
+      <path d="M850,400 L850,352"/>
+    </g>
+    <text x="492" y="380" font-size="12" fill="var(--ok)">same rules module</text>
+    <text x="862" y="380" font-size="12" fill="var(--ok)">writes</text>
+  </svg>
+  <div class="legend">
+    <span class="l-live">Live services, no keys</span>
+    <span class="l-curated">Curated by hand, quoted and dated</span>
+    <span class="l-gen">Generated by a script, committed</span>
+    <span class="l-test">Proof: same code path, tested</span>
+  </div>
+</div>
+
+<h2>The Phoenix example through the system</h2>
+<p class="sub">Step through what happens, in order, when the daughter types Lasix and 85001.</p>
+<div class="stepper">
+  <div class="steps-nav" role="tablist" aria-label="Journey steps">
+    <button type="button" data-step="0" aria-current="step">1 Type Lasix</button>
+    <button type="button" data-step="1">2 Classify</button>
+    <button type="button" data-step="2">3 ZIP and HeatRisk</button>
+    <button type="button" data-step="3">4 Build the plan</button>
+    <button type="button" data-step="4">5 Replay and print</button>
+    <button type="button" data-step="5">6 Evidence</button>
+  </div>
+  <section class="step-panel active" data-step="0">
+    <h3>1. "Lasix" becomes furosemide</h3>
+    <div class="cols">
+      <div><h4>What happens</h4><ul class="plain">
+        <li><code>normalizeName("Lasix 40 mg")</code> strips dose and form words → "lasix". Exact search fails on "Toprol XL" and "lasix 40 mg" without this.</li>
+        <li><code>rxnorm.js</code> calls <code>rxcui.json?name=lasix&amp;search=2</code> and gets an RxCUI.</li>
+        <li><code>rxcui/{id}/properties.json</code> says it's a brand (<code>BN</code>), so the module asks <code>related.json?tty=IN</code> and gets furosemide.</li>
+        <li>A plain ingredient input (tty <code>IN</code> or <code>PIN</code>) stops here and never follows related combination products. A PIN like metoprolol succinate also records its base ingredient for name rules.</li>
+        <li>No exact match → <code>approximateTerm.json</code>; the top candidate becomes a "Did you mean metoprolol (Toprol XL)?" chip that needs one tap. Scores are unreliable, so nothing approximate is accepted silently.</li>
+        <li>No candidate → <code>spellingsuggestions.json</code>; still nothing → "not recognized."</li>
+        <li>The list is written to localStorage.</li>
+      </ul></div>
+      <div><h4>Files</h4><p class="file">src/chips.js · src/rxnorm.js · src/storage.js</p><h4>PRD</h4><p class="ref">Adding medicines</p></div>
+    </div>
+  </section>
+  <section class="step-panel" data-step="1">
+    <h3>2. Furosemide gets its ATC codes</h3>
+    <div class="cols">
+      <div><h4>What happens</h4><ul class="plain">
+        <li><code>rxclass.js</code> calls <code>rxclass/class/byRxcui.json?rxcui=…&amp;relaSource=ATC</code>.</li>
+        <li>Keeps only rows where <code>minConcept.rxcui</code> is furosemide itself. Rows for combination products that contain furosemide (the C03CB leak the learner found) are dropped.</li>
+        <li>Result: C03CA, loop diuretics. RxClass returns ATC level 4, verified by the learner.</li>
+      </ul></div>
+      <div><h4>Files</h4><p class="file">src/rxclass.js</p><h4>PRD</h4><p class="ref">The plan: medicine cards</p></div>
+    </div>
+  </section>
+  <section class="step-panel" data-step="2">
+    <h3>3. 85001 becomes coordinates, then 7 heat levels</h3>
+    <div class="cols">
+      <div><h4>What happens</h4><ul class="plain">
+        <li><code>zip.js</code> fetches <code>data/zip/850.json</code>, a slice of the Census ZCTA gazetteer, and finds Phoenix.</li>
+        <li><code>heatrisk.js</code> calls the ImageServer <code>getSamples</code> at that point and gets one sample per day layer: <code>value</code> is a string ("1"), <code>idp_validtime</code> is epoch milliseconds. Verified by the learner.</li>
+        <li>Empty or NoData → "forecast not available for this ZIP." Any failure → the saved Phoenix heat wave, labeled "saved data."</li>
+        <li>No ZIP typed → "Add a ZIP code to see this week's heat where you live."</li>
+      </ul></div>
+      <div><h4>Files</h4><p class="file">src/zip.js · src/heatrisk.js · data/zip/ · data/saved-heatwave.json</p><h4>PRD</h4><p class="ref">Entering the ZIP and getting the forecast</p><p class="ref"><b>Build step one:</b> verify this call; the service is experimental.</p></div>
+    </div>
+  </section>
+  <section class="step-panel" data-step="3">
+    <h3>4. The rules engine builds the plan</h3>
+    <div class="cols">
+      <div><h4>What happens</h4><ul class="plain">
+        <li><code>rules.js</code> deduplicates ingredients by RxCUI, matches ATC prefixes and ingredient names against <code>cdc-rules.json</code>.</li>
+        <li>Cards for furosemide and lisinopril; one combination warning (diuretic + ACE inhibitor), once, even if a combo pill and a separate water pill both appear.</li>
+        <li>Insulin → storage note. Atorvastatin → "Not listed in CDC heat guidance" with UKHSA and Health Canada badges.</li>
+        <li>Forecast touches only <code>this_week_days</code> (level 2 or higher) and the summary. Card text never changes.</li>
+        <li><code>plan-render.js</code> draws it; <code>info.js</code> attaches an "i" to every term and number.</li>
+      </ul></div>
+      <div><h4>Files</h4><p class="file">src/rules.js · data/cdc-rules.json · src/plan-render.js · src/info.js · data/glossary.json</p><h4>PRD</h4><p class="ref">Medicine cards · Combination warnings · Not listed · Summary and heat boxes · Info buttons</p></div>
+    </div>
+  </section>
+  <section class="step-panel" data-step="4">
+    <h3>5. Replay a real heat wave, then print</h3>
+    <div class="cols">
+      <div><h4>What happens</h4><ul class="plain">
+        <li>The toggle swaps the forecast for Phoenix Aug 3 to 9, 2025 (orange, orange, orange, magenta, magenta, red, orange), labeled with date, place, and source.</li>
+        <li><code>evaluate</code> reruns with the same medicines; only boxes, summary, and "this week" lines change.</li>
+        <li>"Try an example" starts with the replay on and the label visible.</li>
+        <li>Print calls the browser's print; <code>print.css</code> hides controls and fits one Letter page.</li>
+      </ul></div>
+      <div><h4>Files</h4><p class="file">data/saved-heatwave.json · assets/print.css · plan.html</p><h4>PRD</h4><p class="ref">Past heat wave replay · Printing</p></div>
+    </div>
+  </section>
+  <section class="step-panel" data-step="5">
+    <h3>6. The Evidence page reads the last run</h3>
+    <div class="cols">
+      <div><h4>What happens</h4><ul class="plain">
+        <li><code>scripts/run-evidence.mjs</code> pushes the 300 MEPS-derived medicines through the same modules and writes <code>data/evidence.json</code>.</li>
+        <li><code>evidence.js</code> renders: two must-be-zero numbers (flags without a CDC quote, enforced in code; stop instructions), then app flags among top-300 medicines neither UKHSA nor Health Canada lists with their CDC quotes, agreement with UKHSA and Health Canada, every disagreement in both directions with a reason, the answer-key mapping table, the ANSM context note, the limitation sentence, the source and date.</li>
+        <li>"False alarms" was dropped: "listed by CDC" came from the app's own rules file, so it was partly circular.</li>
+        <li>Nothing typed by hand. Change a rule, rerun, the page changes.</li>
+      </ul></div>
+      <div><h4>Files</h4><p class="file">scripts/run-evidence.mjs · data/top300.json · data/answer-keys/ · data/evidence.json · src/evidence.js</p><h4>PRD</h4><p class="ref">The Evidence page and the 300-medicine test</p></div>
+    </div>
+  </section>
+  <div class="step-controls">
+    <button type="button" id="prevBtn">← Previous</button>
+    <button type="button" id="nextBtn">Next →</button>
+  </div>
+</div>
+
+<h2>Stack and where it runs</h2>
+<div class="grid">
+  <div class="card"><h3>Stack</h3><ul class="plain">
+    <li>HTML, CSS, JavaScript ES modules. No bundler, no framework, no runtime dependencies.</li>
+    <li>Node 20+ for scripts and tests, built-in <code>node:test</code> and <code>fetch</code>.</li>
+    <li>One dev dependency, <code>geotiff</code>, for the one-time heat wave sampling script.</li>
+    <li>Font: Atkinson Hyperlegible Next, OFL, self-hosted from the Google Fonts repo. 20 px base.</li>
+  </ul></div>
+  <div class="card"><h3>Run, test, deploy</h3><ul class="plain">
+    <li>Local: <code>npx serve .</code> or <code>python -m http.server 8000</code>, open <code>http://localhost:8000/</code>. Modules need HTTP, not <code>file://</code>.</li>
+    <li>Tests: <code>node --test</code>. Proof: <code>node scripts/run-evidence.mjs</code> (minutes; throttled and cached).</li>
+    <li>Deploy: GitHub Pages, main branch root, with <code>.nojekyll</code>.</li>
+    <li>Submission: public repo + short demo video required; the Pages URL is extra.</li>
+  </ul></div>
+</div>
+
+<h2>Components</h2>
+<details><summary>Landing page <span class="tag">index.html</span></summary><div class="body"><p>Explanation, sources, "Try an example," exact trust line, Evidence link, References with NLM's attribution line. Entry form below the explanation; "See my plan" goes to <code>plan.html</code>. Example writes the list and ZIP to localStorage and opens <code>plan.html?example=1</code>.</p><p class="ref">PRD: Landing page · Look and Feel</p></div></details>
+<details><summary>Chips and RxNorm client <span class="tag live">live</span> <span class="tag">src/chips.js · src/rxnorm.js</span></summary><div class="body"><p><code>resolveMedicine(text)</code> → <code>{ input, rxcui, name, tty, ingredients[], suggestions[], status }</code>. Lookup, properties, related ingredients only for non-ingredient inputs, spelling suggestions, then "not recognized." In-memory session cache; on network failure, <code>data/saved-lookups.json</code> with the chip marked "saved lookup."</p><p class="ref">PRD: Adding medicines</p></div></details>
+<details><summary>RxClass client <span class="tag live">live</span> <span class="tag">src/rxclass.js</span></summary><div class="body"><p><code>classesForIngredient(rxcui)</code> → ATC codes, filtered to rows whose member is the ingredient itself. Verified: codes come back at ATC level 4 (C03CA, C07AB, H03AA). A PIN such as metoprolol succinate gets codes directly; name-based rules use the base ingredient.</p><p class="ref">PRD: The plan: medicine cards</p></div></details>
+<details><summary>CDC rules file <span class="tag curated">curated</span> <span class="tag">data/cdc-rules.json</span></summary><div class="body">
+  <p>Three arrays: <code>classes[]</code>, <code>combinations[]</code>, <code>storage[]</code>. Every entry carries the exact CDC quote, link, and date checked. Seed from the CDC page dated Sept 18, 2025, for the learner to confirm:</p>
+  <table><thead><tr><th>CDC class</th><th>Match by</th></tr></thead><tbody>
+    <tr><td>Diuretics</td><td>C03 prefix, plus acetazolamide by name</td></tr>
+    <tr><td>Beta blockers · Calcium channel blockers</td><td>C07 · C08</td></tr>
+    <tr><td>ACE inhibitors · ARBs · ARNI</td><td>C09A, C09B · C09C, C09D · sacubitril/valsartan by name</td></tr>
+    <tr><td>Antiplatelets · Nitrates</td><td>B01AC · C01DA</td></tr>
+    <tr><td>Lithium · Antipsychotics</td><td>N05AN · N05A minus lithium</td></tr>
+    <tr><td>SSRIs · SNRIs · Tricyclics</td><td>N06AB · by name (venlafaxine, duloxetine, desvenlafaxine, levomilnacipran) · N06AA</td></tr>
+    <tr><td>Topiramate · Oxcarbazepine · Carbamazepine</td><td>by name</td></tr>
+    <tr><td>Anticholinergic antihistamines</td><td>by name: diphenhydramine, doxylamine, promethazine (narrower reading)</td></tr>
+    <tr><td>NSAIDs · Aspirin</td><td>M01A · by name</td></tr>
+    <tr><td>Sulfonamide antibiotics · Stimulants</td><td>J01E · N06BA</td></tr>
+    <tr><td><b>Confirm or drop:</b> acetaminophen, levothyroxine, indinavir</td><td>by name, only if the CDC table lists them</td></tr>
+    <tr><td><b>Confirm:</b> laxatives, opiates, benzodiazepines, apixaban, antacids, sun-sensitizing drugs</td><td>mentioned in the page text; the learner decides whether each becomes a card</td></tr>
+    <tr><td>Combination</td><td>diuretic + ACE inhibitor or ARB (ARNI same additive risk)</td></tr>
+    <tr><td>Storage</td><td>insulins A10A · inhalers R03 · epinephrine autoinjector · "don't leave medicines in cars"</td></tr>
+  </tbody></table>
+  <p>Curated line by line from the CDC page; anything not on the page is dropped. Every entry must carry a <code>cdc_quote</code> or the engine refuses to load it.</p>
+  <p class="ref">PRD: The CDC rules file (as product content)</p></div></details>
+<details open><summary>Rules engine <span class="tag test">shared with tests</span> <span class="tag">src/rules.js</span></summary><div class="body">
+<pre><code>evaluate({ medicines, forecast, rules }) → {
+  summary: { level_max, red_or_worse_days, text },
+  week: [{ date, level, word }] | null,
+  cards: [{ ingredient, as_typed, class, why, watch_for, ask, this_week_days, source }],
+  combinations: [{ text, source }],        // deduplicated by rule id
+  storage: [{ ingredient, text, source }],
+  not_listed: [{ ingredient, as_typed, badges: { ukhsa, health_canada } }],
+  unrecognized: [as_typed]
+}</code></pre>
+<p>Pure, no network. Deduplicates by RxCUI. A combination pill hitting both classes triggers the combination alone. Forecast affects only <code>this_week_days</code> (level 2+) and <code>summary</code>. Badges come from the answer-key files.</p><p class="ref">PRD: Medicine cards · Combination warnings and storage notes · Medicines not listed in CDC heat guidance · Summary and heat boxes</p></div></details>
+<details><summary>ZIP lookup <span class="tag gen">generated</span> <span class="tag">src/zip.js · data/zip/*.json</span></summary><div class="body"><p>Census ZCTA gazetteer (public domain) split by first three digits by <code>scripts/build-zip-index.mjs</code>. ZCTAs approximate ZIPs; a missing PO-box ZIP shows "ZIP not found" while the medicine check continues.</p><p class="ref">PRD: Entering the ZIP and getting the forecast</p></div></details>
+<details><summary>HeatRisk client <span class="tag live">live</span> <span class="tag">src/heatrisk.js</span></summary><div class="body">
+<pre><code>GET https://mapservices.weather.noaa.gov/experimental/rest/services/NWS_HeatRisk/ImageServer/getSamples
+  ?geometry={"x":&lt;lon&gt;,"y":&lt;lat&gt;,"spatialReference":{"wkid":4326}}
+  &amp;geometryType=esriGeometryPoint&amp;returnFirstValueOnly=false
+  &amp;outFields=name,idp_validtime&amp;f=json</code></pre>
+<p>One sample per day layer (<code>HeatRisk_1_Mercator</code> … <code>_7_</code>), sorted by valid time → <code>[{ date, level, word }]</code>. Verified by the learner on Sept 29, 2026, CORS included. Experimental, so verifying it is build step one. Any failure → saved heat wave, labeled.</p><p class="ref">PRD: Entering the ZIP and getting the forecast</p></div></details>
+<details><summary>Saved heat wave <span class="tag gen">generated</span> <span class="tag">data/saved-heatwave.json</span></summary><div class="body"><p>Phoenix, Aug 3 to 9, 2025, sampled once from the WPC archive's Day-1 GeoTIFFs by <code>scripts/sample-heatwave.mjs</code> (uses <code>geotiff</code>). Committed with the seven source URLs. Used by the replay toggle, "Try an example," and the outage fallback.</p><p class="ref">PRD: Past heat wave replay</p></div></details>
+<details><summary>Plan page, info buttons, storage, print <span class="tag">plan.html · src/plan-render.js · src/info.js · src/storage.js · assets/print.css</span></summary><div class="body"><p>Reads list and ZIP from localStorage (<code>heatmeds.list</code>, <code>heatmeds.zip</code>), resolves anything missing, fetches the forecast, calls <code>evaluate</code>, renders. "i" popovers from <code>data/glossary.json</code>: what it is, why it matters, source. Print: Letter, 0.5 in margins, controls hidden, colors kept with words.</p><p class="ref">PRD: Results page · Info buttons · Persistence · Printing</p></div></details>
+<details><summary>Evidence page and proof pipeline <span class="tag test">proof</span> <span class="tag">evidence.html · src/evidence.js · scripts/ · data/answer-keys/</span></summary><div class="body"><ul class="plain">
+  <li><b>Top 300</b> from AHRQ MEPS HC-254A (2024 Prescribed Medicines, public domain): group fills by drug name, sum person weight, normalize to RxNorm ingredients crediting combination fills to each ingredient. Top-20 sanity check against published rankings, comparison only.</li>
+  <li><b>Answer keys</b> UKHSA (OGL) and Health Canada 2024 pharmacist guidance, scored. ANSM context only. Phrase → ATC prefixes or ingredients with a one-line reason; narrower reading when ambiguous; committed before the run.</li>
+  <li><b>Runner</b> resolves, classifies, evaluates, renders plan text; 4 concurrent, cached; asserts every emitted card carries a CDC quote (must be 0 without), scans every plan line for stop instructions (must be 0), counts app flags among medicines neither UKHSA nor Health Canada lists (reported with quotes), computes agreement rates and the disagreement table both directions.</li>
+  <li><b>Page</b> renders the JSON in fixed order plus the mapping table and the limitation sentence.</li>
+</ul><p class="ref">PRD: The Evidence page and the 300-medicine test</p></div></details>
+<details><summary>Unit tests <span class="tag test">node:test</span> <span class="tag">test/rules.test.mjs · test/copy.test.mjs</span></summary><div class="body"><ul class="plain">
+  <li>Phoenix example → furosemide card, one combination warning, one storage note, atorvastatin under "Not listed."</li>
+  <li>lisinopril-HCTZ alone → combination warning. HCTZ + furosemide + lisinopril-HCTZ → still one.</li>
+  <li>Green week vs red week → identical card text except <code>this_week_days</code>. No forecast → <code>week: null</code>.</li>
+  <li>No plan text matches the stop-instruction pattern. A rules entry without <code>cdc_quote</code> makes <code>evaluate</code> throw.</li>
+  <li><code>normalizeName</code>: "lasix 40 mg" → "lasix", "Toprol-XL" → "toprol xl". A did-you-mean result is never stored without an explicit accept.</li>
+  <li>No em dash (U+2014), no emoji, in any HTML or data string. Trust line and closing line match the PRD exactly.</li>
+</ul></div></details>
+
+<h2>File structure</h2>
+<pre><code>heat-meds-app/
+├── index.html · plan.html · evidence.html · .nojekyll
+├── assets/        site.css · print.css · fonts/ (Atkinson Hyperlegible Next + OFL.txt)
+├── src/           chips.js · rxnorm.js · rxclass.js · rules.js · zip.js · heatrisk.js
+│                  plan-render.js · info.js · storage.js · evidence.js
+├── data/          cdc-rules.json · glossary.json · answer-keys/{ukhsa,health-canada,ansm}.json
+│                  zip/ · saved-heatwave.json · top300.json · saved-lookups.json · evidence.json · cache/ (ignored)
+├── scripts/       build-zip-index.mjs · sample-heatwave.mjs · derive-top300.mjs · run-evidence.mjs
+├── test/          rules.test.mjs · copy.test.mjs · fixtures/
+├── devpost/       planning docs
+├── package.json   "test": "node --test"; devDependency: geotiff
+├── LICENSE        MIT
+└── README.md</code></pre>
+
+<h2>Failure modes and simplifications</h2>
+<div class="grid">
+  <div class="card"><h3>Where it will break</h3><ul class="plain">
+    <li><b>HeatRisk fails or moves</b> → saved Phoenix heat wave, labeled. Fallback exercised by a test with fetch stubbed to fail.</li>
+    <li><b>RxNorm slow or down</b> → "couldn't check right now, try again"; saved lookups for the example and the 300.</li>
+    <li><b>ZIP missing or outside CONUS</b> → note in the heat area; cards still render.</li>
+    <li><b>Rate limit during the run</b> → throttle, retry once, cache.</li>
+  </ul></div>
+  <div class="card"><h3>What was simplified</h3><ul class="plain">
+    <li>Three static pages, no bundler, no framework.</li>
+    <li>Bundled ZIP slices instead of a geocoding service.</li>
+    <li>One saved heat wave instead of an archive browser.</li>
+    <li>Committed <code>evidence.json</code>; CI later.</li>
+    <li>ANSM shown, not scored.</li>
+    <li>Single-ingredient inputs never expand to combination products.</li>
+  </ul></div>
+</div>
+
+<h2>Decisions and open issues</h2>
+<div class="card unknown" style="margin-bottom:1rem">
+  <h3>The useful unknown</h3>
+  <p><b>Mapping UKHSA's broad phrases to ATC codes decides the agreement numbers and could be tuned to flatter the app.</b> The learner's check: write both mappings with a reason per phrase and commit them before the run; take the narrower reading of anything ambiguous; show the mapping table on the Evidence page. Evidence: the answer-key commit precedes the first <code>evidence.json</code> commit.</p>
+  <p>Second: <b>MEPS name normalization.</b> Count by ingredient, credit combination fills to each ingredient, sanity-check the top 20 against published rankings (comparison only). Evidence: a note in <code>top300.json</code>.</p>
+</div>
+<details open><summary>Learner decisions</summary><div class="body"><ul class="plain">
+  <li>Plain HTML/CSS/JS ES modules; Node <code>node:test</code>. Same rules module in site and test.</li>
+  <li>HeatRisk via ImageServer getSamples from the browser, verified Sept 29, 2026; saved-data fallback; verification is build step one.</li>
+  <li>Past heat wave: Phoenix Aug 3 to 9, 2025, from archive Day-1 GeoTIFFs, committed with sources.</li>
+  <li>ZIP from a bundled Census gazetteer split by first three digits. No third service.</li>
+  <li>Top 300 from MEPS, not ClinCalc (license). By ingredient.</li>
+  <li>UKHSA and Health Canada scored; ANSM context only. False alarm = flagged by app, listed by none of the three.</li>
+  <li>"Not listed in CDC heat guidance" with UK and Canada badges replaces "no known heat concern."</li>
+  <li>RxClass filter to the ingredient's own RxCUI; split ingredients only for combination inputs.</li>
+  <li>Atkinson Hyperlegible Next from the Google Fonts repo, self-hosted, 20 px base.</li>
+  <li>Commit the generated evidence file; GitHub Action later.</li>
+  <li>Name lookup never guesses silently: strip dose and form words; approximate matches become a one-tap "Did you mean ...?" chip.</li>
+  <li>"Flags without a CDC quote" (must be 0, enforced in code) replaces the partly circular "false alarms." Flags among medicines neither UKHSA nor Health Canada lists are reported with their quotes.</li>
+  <li>CDC list curated line by line; acetaminophen, levothyroxine, indinavir are "confirm or drop"; laxatives, opiates, benzodiazepines, apixaban, antacids, sun-sensitizing drugs are "confirm."</li>
+  <li>MIT LICENSE file. No em dashes in site text, devpost docs, or README.</li>
+</ul></div></details>
+<div class="card ask" style="margin-top:1rem">
+  <h3>Open issues for the build</h3>
+  <ul class="plain" style="margin:0">
+    <li><b>Step one:</b> live smoke check of getSamples from the browser at the Phoenix point. Shape already known; this is confirmation because the service is experimental.</li>
+    <li>MEPS HC-254A download format; adapt the reader.</li>
+    <li>Exact HeatRisk hex colors from the WPC legend; NoData outside CONUS (archive rasters use 5; confirm live).</li>
+    <li>Exact UKHSA and Health Canada URLs and license text for References.</li>
+    <li>The CDC classes, quotes, and storage items are curated first, per the agreed build order.</li>
+    <li><i>Resolved before approval:</i> RxClass returns ATC level 4; getSamples values are strings with epoch-ms times; archive GeoTIFFs are Web Mercator (pixel 2539.703 m, origin -14326021.825, 6722143.668, NoData 5) and sample correctly.</li>
+  </ul>
+</div>
+
+<footer>Visual companion to <code>devpost/spec.md</code>, which is the canonical document. Regenerated after each revision. Works offline; no external scripts or fonts.</footer>
+</main>
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('themeBtn');
+    var saved = null; try { saved = localStorage.getItem('heatmeds-theme'); } catch (e) {}
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function apply(t) { root.setAttribute('data-theme', t); btn.textContent = t === 'dark' ? 'Light mode' : 'Dark mode'; }
+    apply(saved || (prefersDark ? 'dark' : 'light'));
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      apply(next); try { localStorage.setItem('heatmeds-theme', next); } catch (e) {}
+    });
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.step-panel'));
+    var navBtns = Array.prototype.slice.call(document.querySelectorAll('.steps-nav button'));
+    var prev = document.getElementById('prevBtn'), next = document.getElementById('nextBtn');
+    var current = 0;
+    function show(i) {
+      current = Math.max(0, Math.min(panels.length - 1, i));
+      panels.forEach(function (p, idx) { p.classList.toggle('active', idx === current); });
+      navBtns.forEach(function (b, idx) { if (idx === current) { b.setAttribute('aria-current', 'step'); } else { b.removeAttribute('aria-current'); } });
+      prev.disabled = current === 0; next.disabled = current === panels.length - 1;
+    }
+    navBtns.forEach(function (b) { b.addEventListener('click', function () { show(parseInt(b.getAttribute('data-step'), 10)); }); });
+    prev.addEventListener('click', function () { show(current - 1); });
+    next.addEventListener('click', function () { show(current + 1); });
+    show(0);
+  })();
+</script>
+</body>
+</html>

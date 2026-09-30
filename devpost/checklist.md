@@ -1,0 +1,110 @@
+---
+doc: checklist
+status: approved
+---
+
+# Build Checklist
+
+Build mode: fast (chosen at first build session)
+
+Agreed order from `scope.md` and `spec.md`: HeatRisk smoke check first, then the CDC rules file and the Phoenix example, the answer-key comparison last. GitHub Pages enablement happens in `6-ship` once the repository is public; the site is built Pages-ready from slice 1 (`.nojekyll`, relative paths, no build step).
+
+## Slices
+
+- [x] **1. You type a ZIP and see this week's real HeatRisk, seven boxes with color and word**
+  Becomes usable: A running static site where entering 85001 shows Phoenix and seven day boxes from the live NWS HeatRisk service, each with the official color and its word. No medicines yet.
+  Why now: Bootstraps the whole project (pages, modules, styles, Node tests, LICENSE, `.nojekyll`) inside the first real behavior, and retires the biggest external risk first: the experimental HeatRisk service, which the spec makes build step one. The bundled ZIP index lands here too because the forecast can't be fetched without coordinates.
+  PRD ref: `prd.md > Features and Behavior > Entering the ZIP and getting the forecast`, `prd.md > The Core Journey` (steps 3 and 4, heat boxes only)
+  Spec ref: `spec.md > Components > ZIP lookup (src/zip.js, data/zip/*.json)`, `spec.md > Components > HeatRisk client (src/heatrisk.js)`, `spec.md > File Structure`, `spec.md > Stack`, `spec.md > Where It Runs and How Someone Tries It`
+  Build: Scaffold the file structure from the spec: `index.html` with a ZIP field and "See my plan," `plan.html` with the heat area, `assets/site.css` with the light and dark themes and 20 px base, `src/zip.js`, `src/heatrisk.js`, `src/storage.js` (ZIP only for now), `package.json` with `"test": "node --test"`, `LICENSE` (MIT), `.nojekyll`, README stub, and `.gitignore` additions for `node_modules/` and `data/cache/`. Write `scripts/build-zip-index.mjs` to turn the Census ZCTA gazetteer into `data/zip/{first3}.json` and run it. Implement getSamples parsing (string values, epoch-ms times) with the level-to-word map and a "forecast not available for this ZIP" state for empty or NoData results.
+  Verify (mechanical): `node scripts/build-zip-index.mjs` writes slices and `data/zip/850.json` contains 85001 with Phoenix coordinates; `node --test` passes a `zip.js` lookup test and a `heatrisk.js` parser test on a captured getSamples response; a Node smoke script calls the live getSamples at the Phoenix point and prints seven dated levels; serve the site locally and load `plan.html` with ZIP 85001 to confirm seven boxes render with color and word and no console errors.
+  Learner check: Start the local server, open the landing page, type 85001, press "See my plan," and confirm you see seven boxes for Phoenix with a color and a word on each. Try a ZIP outside the contiguous US and confirm you get the "forecast not available" note instead of an error.
+  Commit: `Scaffold site and show live HeatRisk for a ZIP`
+
+- [ ] **2. "Try an example" shows the Phoenix plan: CDC cards with quotes, the combination warning, the storage note, and the closing line**
+  Becomes usable: Pressing "Try an example" opens the plan for mom's four medicines plus atorvastatin with a real forecast for 85001: a furosemide card with why, watch-for, pharmacist question, and "this week" days; the diuretic plus ACE inhibitor warning; the insulin storage note; atorvastatin under "Not listed in CDC heat guidance"; "Call 911 if"; the bold closing line; sources. The example medicines come from a small labeled saved-lookups file so this slice doesn't depend on RxNorm yet.
+  Why now: This is `scope.md > The Unique Kernel`: a patient-driven plan where every line traces to a quoted, dated CDC entry, tied to the real forecast. It arrives second, not last, and the rules engine it introduces is the module every later slice and the evidence run share.
+  PRD ref: `prd.md > Features and Behavior > The plan: summary and heat boxes`, `prd.md > Features and Behavior > The plan: medicine cards`, `prd.md > Features and Behavior > Combination warnings and storage notes`, `prd.md > Features and Behavior > Medicines not listed in CDC heat guidance`, `prd.md > Features and Behavior > Warning signs and closing line`, `prd.md > Features and Behavior > The CDC rules file (as product content)`
+  Spec ref: `spec.md > Components > CDC rules file (data/cdc-rules.json)`, `spec.md > Components > Rules engine (src/rules.js)`, `spec.md > Components > Plan page (plan.html, src/plan-render.js)`, `spec.md > Components > Unit tests (test/)`
+  Build: Draft `data/cdc-rules.json` from the CDC clinician page with exact quotes, links, and `checked_on`, following the spec's seed list and its "confirm" and "confirm or drop" marks, for the learner to curate line by line at the learner check. Implement `src/rules.js` (`evaluate`, quote invariant that throws on a quoteless entry, RxCUI dedupe, ATC prefix and base-name matching, one combination warning, storage notes, not-listed list, summary and "this week" days at level 2 or higher, no-forecast handling). Implement `src/plan-render.js` and the plan page sections in the PRD's order. Add `data/saved-lookups.json` with the five example medicines, labeled, and wire "Try an example" to `plan.html?example=1`. Write `test/rules.test.mjs` fixtures: Phoenix example, lisinopril-HCTZ alone triggers the combination, HCTZ plus furosemide plus lisinopril-HCTZ still yields one warning, green week vs red week identical card text, no forecast yields `week: null`, quoteless entry throws, stop-instruction regex finds nothing in the rendered example.
+  Verify (mechanical): `node --test` passes every fixture above; serve the site, open `plan.html?example=1`, and confirm the furosemide card shows the CDC quote in its source, exactly one combination warning, the insulin storage note, atorvastatin under "Not listed," the closing line, and the "this week" line matches the days at orange or higher in the live boxes; console clean.
+  Learner check: Press "Try an example." Read the plan as if you were the daughter. Then open `data/cdc-rules.json` beside the CDC page and go line by line: confirm each quote, decide the "confirm or drop" and "confirm" entries, and tell me what to change. This is your curation pass; I'll apply the edits and rerun the tests.
+  Commit: `Add CDC rules engine and the Phoenix example plan`
+
+- [ ] **3. You type any medicine name and it resolves live: Lasix becomes furosemide, Toprol XL asks "Did you mean," combination pills stay one chip**
+  Becomes usable: The entry form accepts brand or generic names, strips dose and form words, shows chips in five states (checking, resolved, did-you-mean, suggestions, not recognized), keeps a combination pill as one chip with both ingredients, fetches ATC classes filtered to the ingredient itself, persists the list on this device, and feeds the same plan page. The saved-lookups file becomes the fallback only.
+  Why now: With the kernel proven on fixtures, the next risk is live name resolution against real RxNorm behavior, including the traps the learner found in testing. Doing it after the rules engine means the resolution output shape is already fixed by tests.
+  PRD ref: `prd.md > Features and Behavior > Adding medicines`, `prd.md > States and Boundaries` (Resolving a chip, Nothing recognized yet, Persistence)
+  Spec ref: `spec.md > Components > Medicine entry and chips (src/chips.js)`, `spec.md > Components > RxNorm client (src/rxnorm.js)`, `spec.md > Components > RxClass client (src/rxclass.js)`, `spec.md > Components > Local storage (src/storage.js)`, `spec.md > External Services and Dependencies > NLM RxNorm API`, `spec.md > External Services and Dependencies > NLM RxClass API`
+  Build: Implement `normalizeName`, `resolveMedicine` with the six spec steps and the did-you-mean status, `classesForIngredient` with the `minConcept.rxcui` filter and `base_name` for PIN concepts, `src/chips.js` with the five chip states and remove buttons, list persistence in `src/storage.js`, and the "at least one recognized chip" gate before "See my plan." Add unit tests for `normalizeName` and for the RxClass filter on a captured response containing a combination-class row.
+  Verify (mechanical): `node --test` passes the new tests; a Node script resolves "Lasix 40 mg" to furosemide, "Toprol XL" to a did-you-mean candidate of metoprolol, "lisinopril-hydrochlorothiazide" to two ingredients, "furosamide" to suggestions, and "xyzabc" to not recognized, against live RxNorm; furosemide's ATC result contains C03CA and not C03CB; in the browser, typing those names produces the matching chip states and the plan page renders from the typed list; console clean.
+  Learner check: Type the medicines from a real bottle or two, including a brand name, a misspelling, and "Toprol XL." Confirm nothing was accepted silently and that "Did you mean" needs your tap. Reload the page and confirm the list is still there.
+  Commit: `Resolve medicine names live with RxNorm and RxClass`
+
+- [ ] **4. You can replay a real past heat wave, and the plan still works with no ZIP, an out-of-area ZIP, or the weather service down**
+  Becomes usable: The plan page has the "See your list on a real past heat wave" toggle showing Phoenix Aug 3 to 9, 2025 with its label and source; "Try an example" starts with it on; with no ZIP the heat area says "Add a ZIP code to see this week's heat where you live"; when HeatRisk fails the boxes show the saved week labeled "saved data"; the summary line changes only on red or magenta days.
+  Why now: The replay is the demo's guarantee in any season and the outage fallback, and the three degraded states are cheap now that the plan renders from a single forecast object.
+  PRD ref: `prd.md > Features and Behavior > Past heat wave replay`, `prd.md > Features and Behavior > Entering the ZIP and getting the forecast`, `prd.md > States and Boundaries` (No ZIP, ZIP outside the forecast area, Forecast service down, Calm week, Red or magenta day ahead)
+  Spec ref: `spec.md > Components > Saved heat wave (data/saved-heatwave.json)`, `spec.md > Components > HeatRisk client (src/heatrisk.js)`, `spec.md > Important Failure Modes`
+  Build: Write `scripts/sample-heatwave.mjs` using `geotiff` to read the seven archive Day-1 GeoTIFFs in Web Mercator at Phoenix's coordinates and write `data/saved-heatwave.json` with source URLs and the label; add the toggle and label to the plan page; route fetch failures to the saved week with the "saved data" label; implement the no-ZIP and out-of-area states and the calm vs red-day summary text.
+  Verify (mechanical): `node scripts/sample-heatwave.mjs` writes levels orange, orange, orange, magenta, magenta, red, orange with seven source URLs; a `node:test` case stubs `fetch` to fail and asserts the fallback is returned with `fallback: true`; in the browser, the toggle swaps boxes and "this week" lines but not card text, no-ZIP shows the prompt, and blocking the HeatRisk host in devtools shows the labeled saved week.
+  Learner check: Flip the replay toggle and confirm the label names the real dates and place, the boxes change, and the furosemide card's explanation does not. Clear the ZIP and confirm the cards still appear with the "Add a ZIP code" prompt.
+  Commit: `Add past heat wave replay and forecast fallbacks`
+
+- [ ] **5. The landing page explains itself, the "i" buttons cite sources, and the plan prints on one page in the intended look**
+  Becomes usable: The landing page has the explanation, the exact trust line, sources, "Try an example," the Evidence link, and a References section with NLM's attribution; every term and number has an "i" popover with what it is, why it matters, and the source; the site uses self-hosted Atkinson Hyperlegible Next at 20 px with light and dark modes; Print produces one Letter page with colors and words, controls hidden.
+  Why now: Everything the daughter sees is now in place, so this is the right moment to make it look and read like the PRD's Look and Feel before the evidence work, and to lock the copy rules with tests.
+  PRD ref: `prd.md > Screens and Layout > Landing page`, `prd.md > Screens and Layout > Print view`, `prd.md > Look and Feel`, `prd.md > Features and Behavior > Info buttons`, `prd.md > Features and Behavior > Printing`
+  Spec ref: `spec.md > Components > Landing page (index.html)`, `spec.md > Components > Info buttons (src/info.js, data/glossary.json)`, `spec.md > Components > Print stylesheet (assets/print.css)`, `spec.md > Look and Feel`, `spec.md > External Services and Dependencies > Fonts`
+  Build: Write the landing copy and References; add `data/glossary.json` and `src/info.js` popovers (keyboard reachable, hidden in print); download the Atkinson Hyperlegible Next woff2 files and `OFL.txt` from the Google Fonts repo into `assets/fonts/`; finish `assets/site.css` and `assets/print.css`; add `test/copy.test.mjs` asserting no em dash and no emoji in any HTML or data string and that the trust line and closing line match the PRD exactly.
+  Verify (mechanical): `node --test` passes the copy tests; the font files load from `assets/fonts/` with no network request; a print-to-PDF of the Phoenix example is one page with heat boxes showing both color and word and no buttons; every "i" opens and closes by keyboard; Lighthouse or a manual check confirms text is at least 20 px.
+  Learner check: Read the landing page cold, as someone who has never heard of this, and say whether you understand what it does in under a minute. Open a few "i" buttons. Open the landing, plan, and Evidence pages at phone width (about 375 px) and in both light and dark mode, and say what breaks or looks wrong. Print the Phoenix plan to PDF and check it is one page you would hand to a pharmacist.
+  Commit: `Add landing page, info buttons, fonts, and print layout`
+
+- [ ] **6. The top-300 list and both answer keys exist and are committed before any evidence run**
+  Becomes usable: `data/top300.json` derived from MEPS HC-254A by ingredient with method notes and a top-20 sanity comparison; `data/answer-keys/ukhsa.json` and `health-canada.json` with a phrase-to-ATC mapping and a one-line reason per phrase, narrower reading noted; `data/answer-keys/ansm.json` as context only. A script prints the top 20 and the mapping tables.
+  Why now: This is the learner's own check on the useful unknown: the mappings must be in git history before the first evidence result exists, so the agreement numbers can't be tuned afterwards. It is the one slice that is data rather than behavior, justified because the commit order itself is the evidence.
+  PRD ref: `prd.md > Features and Behavior > The Evidence page and the 300-medicine test`
+  Spec ref: `spec.md > Components > Top-300 derivation (scripts/derive-top300.mjs, data/top300.json)`, `spec.md > Components > Answer keys (data/answer-keys/ukhsa.json, health-canada.json, ansm.json)`, `spec.md > Decisions and Open Issues > The useful unknown`, `spec.md > External Services and Dependencies > AHRQ MEPS HC-254A (2024 Prescribed Medicines)`
+  Build: Download MEPS HC-254A, check its format, write `scripts/derive-top300.mjs` (group by drug name, sum person weight, normalize to RxNorm ingredients crediting combination fills to each ingredient, rank, keep 300, record method and the top-20 comparison note). Draft the three answer-key files from the UKHSA, Health Canada, and ANSM documents with reasons for the learner to confirm at the learner check. Do not write any evidence results in this slice.
+  Verify (mechanical): `node scripts/derive-top300.mjs` writes 300 ingredients with weights and RxCUIs; `node --test` validates every answer-key entry has a phrase, a mapping, and a reason; `git log` after commit shows the answer keys committed with no `data/evidence.json` present.
+  Learner check: Read the answer-key mappings and the top 20. Tell me any phrase you'd map differently, and whether the top 20 matches what you expect from published rankings. Your edits go in before we commit, and the commit happens before slice 7 runs anything.
+  Commit: `Add MEPS top-300 list and answer keys before any evidence run`
+
+- [ ] **7. The Evidence page shows the 300-medicine results, generated from the run, with badges on the "Not listed" entries**
+  Becomes usable: `node scripts/run-evidence.mjs` runs the 300 through the live modules and writes `data/evidence.json` and the site's `saved-lookups.json`; `evidence.html` shows the two must-be-zero numbers, the app flags among medicines neither UKHSA nor Health Canada lists with their CDC quotes, agreement rates, the disagreement table in both directions with reasons, the mapping table, the ANSM note, the limitation sentence, the source and date; the plan's "Not listed" entries show UK and Canada badges.
+  Why now: Last by agreement. It needs every module from slices 2 and 3 and the data from slice 6, and it is the proof for the learner's "real outside data" goal.
+  PRD ref: `prd.md > Features and Behavior > The Evidence page and the 300-medicine test`, `prd.md > Screens and Layout > Evidence page`, `prd.md > Features and Behavior > Medicines not listed in CDC heat guidance`
+  Spec ref: `spec.md > Components > Evidence runner (scripts/run-evidence.mjs)`, `spec.md > Components > Evidence page (evidence.html, src/evidence.js, data/evidence.json)`, `spec.md > Components > Rules engine (src/rules.js)`
+  Build: Write the runner with 4-way concurrency, disk cache in `data/cache/`, one retry, the quote assertion, the stop-instruction scan over every rendered plan line, agreement and disagreement computation, and JSON output with timestamp and rules version; write `src/evidence.js` and `evidence.html`; load the answer keys in the plan page to render badges.
+  Verify (mechanical): The run completes with `flags_without_cdc_quote: 0` and `stop_instructions: 0`; the disagreement table lists every mismatch with a reason from the mapping; changing one rule in a scratch copy and rerunning changes the page; `node --test` still passes; the Evidence page renders every number from the JSON with nothing hard-coded, checked by grepping `evidence.html` and `src/evidence.js` for digits.
+  Learner check: Open the Evidence page. Check the two zero numbers, read the disagreement table, and say whether each reason is honest. Then look at the plan's "Not listed" entries and confirm the UK and Canada badges match what the keys say.
+  Commit: `Run the 300-medicine evidence and publish the Evidence page`
+
+## Hands-on Checkpoints
+
+- [ ] Early usable behavior explored — after slice 2, the Phoenix example with real forecast and the rules-file curation pass
+- [ ] Full user-facing app explored — after slice 5, before the evidence work begins
+- [ ] Final kick-the-tires exploration and feedback completed
+
+## Final Review
+
+- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+
+## Code Tour and App Map
+
+- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+
+Activity and evidence: [not started]
+Route and stops: [not started]
+Edit outcome: [not started]
+Reflection: [not started]
+Activity mode: [not started]
+
+## Revisions
+
+- Example ZIP changed from 85001 to 85004 (downtown Phoenix): the build found 85001 is a PO-box ZIP with no ZCTA in the Census gazetteer, the exact absent-ZIP case the spec predicted. The PRD and spec example references now mean 85004.
+- Place name comes from a best-effort call to the NWS points API (`src/place.js`), falling back to the ZIP alone: the Census gazetteer has coordinates but no place names, and the PRD header wants "date and place". Same organization as HeatRisk, so the trust line still holds. Learner can veto at the slice-2 checkpoint.
+- HeatRisk `value` arrives as a decimal string ("1.000000000"), not "1": parsed with parseFloat and rounded. Legend colors taken from the ImageServer legend swatches: 0 #e8f9e7, 1 #f4f257, 2 #f69632, 3 #e22f33, 4 #7a0e7f.

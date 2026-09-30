@@ -1,0 +1,17 @@
+# Personal learning context (Devpost Learn) - kept out of commits by default
+devpost/learner-profile.md
+
+# Local credentials - never commit secrets
+.env
+.env.*
+!.env.example
+
+# Installer copies of the skill pack and editor settings (skills-lock.json stays tracked)
+.agents/
+.claude/
+agent/
+.vscode/
+
+# Build and cache
+node_modules/
+data/cache/
