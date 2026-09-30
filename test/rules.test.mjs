@@ -154,6 +154,24 @@ test('every enabled rule text is free of stop instructions, and the scanner catc
   assert.deepEqual(stopInstructionMatches(['Never stop or change a medicine on your own.']), []);
 });
 
+test('"Try an example" uses generic names only, so the demo shows no trademarks, and still exercises the kernel', () => {
+  const example = saved.example.medicines.map((k) => saved.lookups[k]);
+  assert.equal(example.length, 5);
+  for (const med of example) {
+    assert.ok(med, 'every example key has a saved lookup');
+    assert.equal(med.tty, 'IN', `${med.input} is an ingredient, not a brand (${med.tty})`);
+    assert.equal(med.input.toLowerCase(), med.ingredients.map((i) => i.name).join(' + ').toLowerCase(), `${med.input} is typed as its generic name`);
+  }
+  const plan = evaluate({ medicines: structuredClone(example), forecast: redWeek, rules });
+  assert.deepEqual(plan.cards.map((c) => c.ingredient).sort(), ['furosemide', 'lisinopril', 'sertraline']);
+  assert.equal(plan.combinations.length, 1, 'the CDC combination warning still appears');
+  assert.deepEqual(plan.storage.map((s) => s.id), ['insulin']);
+  assert.deepEqual(plan.not_listed.map((n) => n.ingredient), ['atorvastatin']);
+  const text = planToText(plan).join(' ');
+  assert.ok(!/\b(Lasix|Zoloft|Lantus|Lipitor|Zestril|Prinivil)\b/i.test(text), 'no brand names in the example plan text');
+  assert.ok(/\bLasix\b/i.test('Lasix'), 'guard: the brand pattern can match');
+});
+
 test('uniqueIngredients merges the same ingredient from two chips', () => {
   const u = uniqueIngredients([L('furosemide'), L('lasix')]);
   assert.equal(u.length, 1);

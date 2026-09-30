@@ -18,7 +18,7 @@
     "drug_class": {
       "term": "Drug class",
       "what": "Medicines are grouped into classes by how they work, using the World Health Organization's ATC codes. The CDC lists heat risks by class, so the plan checks each medicine's class rather than every brand name.",
-      "why": "It means a brand you type, like Lasix, is checked as what it is, a water pill (diuretic), with the CDC's exact words for that class.",
+      "why": "It means whatever name you type from the bottle, brand or generic, is checked as what it is. Furosemide, for example, is checked as a water pill (diuretic), with the CDC's exact words for that class.",
       "source_title": "NLM RxClass",
       "source_url": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxClassAPIs.html"
     },

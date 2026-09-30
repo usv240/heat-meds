@@ -20,11 +20,16 @@ const WIDTH = Number(process.argv[2] ?? 375);
 const LOOKUPS = JSON.parse(readFileSync(join(ROOT, 'data', 'saved-lookups.json'), 'utf8')).lookups;
 const PAGES = [
   { page: 'index.html' },
-  { page: 'plan.html?example=1', expectPlan: true },
+  { page: 'plan.html?example=1', expectPlan: true, noBrands: true },
   { page: 'evidence.html' },
   { page: 'plan.html', label: 'plan.html (Honolulu 96813)', zip: '96813', list: [LOOKUPS.lasix, LOOKUPS.lisinopril], expectUnavailable: true },
   { page: 'index.html', label: 'index.html (type Lasix 40 mg)', type: 'Lasix 40 mg', expectChip: /Lasix 40 mg → furosemide/ },
+  // The three names the demo video types, checked the way a person would enter them.
+  { page: 'index.html', label: 'demo: furosamide', type: 'furosamide', expectChip: /furosamide: did you mean furosemide\?/ },
+  { page: 'index.html', label: 'demo: metoprolol succinate', type: 'metoprolol succinate 25 mg tablet', expectChip: /metoprolol succinate 25 mg tablet → metoprolol succinate/ },
+  { page: 'index.html', label: 'demo: combination pill', type: 'lisinopril-hydrochlorothiazide', expectChip: /lisinopril-hydrochlorothiazide → (lisinopril \+ hydrochlorothiazide|hydrochlorothiazide \+ lisinopril)/ },
 ];
+const BRANDS = /\b(Lasix|Zoloft|Lantus|Lipitor|Zestril|Prinivil|Toprol)\b/;
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2' };
 
 function serve() {
@@ -113,6 +118,7 @@ try {
       summary: document.getElementById('summaryArea')?.innerText ?? '',
       label: document.getElementById('heatLabel')?.hidden === false ? document.getElementById('heatLabel').innerText : '',
       cards: document.querySelectorAll('.med-card').length,
+      bodyText: document.body.innerText,
       chips: [...document.querySelectorAll('.chip .chip-text')].map((x) => x.innerText).join(' | '),
     })`;
     const { result } = await c.send('Runtime.evaluate', { expression: probe, returnByValue: true }, sessionId);
@@ -131,6 +137,7 @@ try {
       if (m.boxes !== 7) problems.push(`${m.boxes} heat boxes`);
     }
     if (spec.expectChip && !spec.expectChip.test(m.chips)) problems.push(`chips: "${m.chips}"`);
+    if (spec.noBrands && BRANDS.test(m.bodyText)) problems.push(`brand name on page: ${m.bodyText.match(BRANDS)[0]}`);
     if (problems.length) failures++;
     const detail = spec.expectUnavailable ? `; boxes ${m.boxes}; summary "${m.summary}"`
       : spec.expectPlan ? `; cards ${m.cards}; boxes ${m.boxes}`

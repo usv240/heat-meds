@@ -51,7 +51,7 @@ Learner-selected, with accepted tradeoffs.
 - **Deployment (chosen, optional for the hackathon):** GitHub Pages. Settings, Pages, source: main branch, root. The public URL becomes `https://<user>.github.io/<repo>/`. `6-ship` records the final URL.
 - **Public repository:** https://github.com/usv240/heat-meds (public, MIT license detected by GitHub, created 2026-09-30).
 - **Live site:** https://usv240.github.io/heat-meds/ (GitHub Pages from `main`, root). Verified without login; RxNorm, RxClass, HeatRisk, and the NWS points API all allow requests from this origin. Re-check any time with `BASE_URL=https://usv240.github.io/heat-meds/ node scripts/check-pages.mjs`.
-- **Demo video:** not recorded yet. Hackathon rules: under 3 minutes, public on YouTube or Vimeo, no third-party trademarks or copyrighted music.
+- **Demo video:** not recorded yet. Hackathon rules: under 3 minutes, public on YouTube or Vimeo, no third-party trademarks or copyrighted music. To keep trademarks out, "Try an example" uses generic names only (furosemide, lisinopril, sertraline, insulin glargine, atorvastatin) and the entry placeholder reads "furosemide"; typing a brand name still works. The video types "furosamide", "metoprolol succinate 25 mg tablet", and "lisinopril-hydrochlorothiazide", each checked live by `scripts/check-pages.mjs`.
 - **Submission:** a public GitHub repository and a short demo video are required. The Pages URL is in addition, so judges and real people can try it without installing anything.
 
 ## Look and Feel

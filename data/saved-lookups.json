@@ -5963,10 +5963,10 @@
     "description": "Mom, 74, in Phoenix: a water pill, a blood pressure pill, an antidepressant, insulin, and a cholesterol pill.",
     "zip": "85004",
     "medicines": [
-      "lasix",
+      "furosemide",
       "lisinopril",
-      "zoloft",
-      "lantus",
+      "sertraline",
+      "insulin glargine",
       "atorvastatin"
     ]
   }
