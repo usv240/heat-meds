@@ -7,6 +7,7 @@ import { lookupZip } from './zip.js';
 import { forecastFor } from './heatrisk.js';
 import { placeFor } from './place.js';
 import { evaluate } from './rules.js';
+import { classifyMedicine } from './rxclass.js';
 import { renderHeatWeek, renderHeatNote, renderSummary, renderPlanSections } from './plan-render.js';
 
 initTheme();
@@ -43,7 +44,15 @@ async function loadMedicines() {
     }
     return meds;
   }
-  return getList();
+  const list = getList();
+  // Fill in any ATC codes a chip is missing (for example if RxClass was slow when it was added).
+  for (const med of list) {
+    if ((med.ingredients ?? []).some((i) => !Array.isArray(i.atc))) {
+      try { await classifyMedicine(med); } catch { /* the engine treats missing codes as none */ }
+    }
+  }
+  setList(list);
+  return list;
 }
 
 async function loadForecast(zip) {

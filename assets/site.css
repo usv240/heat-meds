@@ -189,3 +189,16 @@ details.source q { font-style: italic; }
 .never-stop { font-size: 1.15rem; border-top: 3px solid var(--ink); padding-top: .8rem; margin-top: 1.5rem; }
 .sources ul { padding-left: 1.2rem; }
 .topbar-actions { display: inline-flex; gap: .5rem; }
+
+/* Chips */
+.chips { list-style: none; padding: 0; margin: .6rem 0 .3rem; display: flex; flex-direction: column; gap: .45rem; }
+.chip { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; border: 2px solid var(--line); border-radius: .8rem; padding: .45rem .7rem .45rem .9rem; background: var(--bg); }
+.chip-text { flex: 1 1 12rem; }
+.chip-resolved { border-color: var(--accent); }
+.chip-did_you_mean, .chip-suggestions { border-color: var(--warn-line); background: var(--warn-bg); }
+.chip-not_recognized, .chip-error { border-color: var(--line); color: var(--muted); }
+.chip-checking { opacity: .8; }
+.chip-note { font-size: .8rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: .05rem .5rem; }
+.chip-yes { min-height: 2.4rem; padding: .3rem .9rem; font-size: .95rem; }
+.chip-remove { min-height: 2.4rem; padding: .3rem .8rem; font-size: .9rem; background: transparent; color: var(--muted); border-color: var(--line); }
+button:disabled { opacity: .5; cursor: not-allowed; }

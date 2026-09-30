@@ -31,7 +31,7 @@ Agreed order from `scope.md` and `spec.md`: HeatRisk smoke check first, then the
   Learner check: Press "Try an example." Read the plan as if you were the daughter. Then open `data/cdc-rules.json` beside the CDC page and go line by line: confirm each quote, decide the "confirm or drop" and "confirm" entries, and tell me what to change. This is your curation pass; I'll apply the edits and rerun the tests.
   Commit: `Add CDC rules engine and the Phoenix example plan`
 
-- [ ] **3. You type any medicine name and it resolves live: Lasix becomes furosemide, Toprol XL asks "Did you mean," combination pills stay one chip**
+- [x] **3. You type any medicine name and it resolves live: Lasix becomes furosemide, Toprol XL asks "Did you mean," combination pills stay one chip**
   Becomes usable: The entry form accepts brand or generic names, strips dose and form words, shows chips in five states (checking, resolved, did-you-mean, suggestions, not recognized), keeps a combination pill as one chip with both ingredients, fetches ATC classes filtered to the ingredient itself, persists the list on this device, and feeds the same plan page. The saved-lookups file becomes the fallback only.
   Why now: With the kernel proven on fixtures, the next risk is live name resolution against real RxNorm behavior, including the traps the learner found in testing. Doing it after the rules engine means the resolution output shape is already fixed by tests.
   PRD ref: `prd.md > Features and Behavior > Adding medicines`, `prd.md > States and Boundaries` (Resolving a chip, Nothing recognized yet, Persistence)
@@ -114,3 +114,6 @@ Activity mode: [not started]
 - Card titles changed to "Zoloft → sertraline, an antidepressant (SSRI)" at the learner's request; plain names in the rules file were rewritten to read after a comma.
 - Favicon added (assets/favicon.svg) to stop the 404 in the console.
 - LICENSE holder still reads "Heat Meds contributors": the learner's message contained the literal placeholder "[your name]". To fill in when they give the name.
+- Misspellings usually resolve through the did-you-mean path rather than RxNorm spelling suggestions: approximateTerm finds "furosemide" for "furosamide" before spellingsuggestions is consulted. Both are one tap and neither accepts silently; the suggestions list remains the fallback when approximate matching finds nothing.
+- For a precise ingredient (PIN such as metoprolol succinate), RxClass reports the class member as the base ingredient, so the filter accepts the PIN or its base RxCUI. Found by the live probe; the spec assumed PINs matched directly.
+- The top approximate candidate for "Toprol XL" (RxCUI 220348) is a retired concept with no properties; the resolver skips candidates that yield no ingredients and offers the next one, "metoprolol (Toprol)".

@@ -18,43 +18,58 @@
   <h1>Some everyday medicines make hot days more dangerous.</h1>
   <p>Type in your medicines and ZIP code. Get one printable page that says which of your medicines matter in heat, what this week's heat looks like where you live, and what to ask your pharmacist.</p>
   <p><a class="button" href="plan.html?example=1">Try an example</a> <span class="muted small">Mom, 74, in Phoenix: a water pill, a blood pressure pill, an antidepressant, insulin, and a cholesterol pill.</span></p>
-  <p class="muted small">This page is being built in steps. Right now you can try the example or enter a ZIP code. Typing your own medicines comes next.</p>
 
-  <form id="zipForm" class="card" novalidate>
+  <form id="planForm" class="card" novalidate>
     <div class="field">
-      <label for="zip">ZIP code</label>
+      <label for="medicine">Your medicines</label>
+      <p class="small muted" style="margin-top:0">Type each name as it appears on the bottle, brand or generic, then press Add.</p>
+      <div class="row">
+        <div class="grow">
+          <input id="medicine" name="medicine" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Lasix">
+        </div>
+        <button type="button" class="secondary" id="addMedicine">Add</button>
+      </div>
+      <ul id="chips" class="chips" aria-live="polite" aria-label="Your medicines"></ul>
+      <p id="chipStatus" class="small muted">Add at least one medicine to see a plan.</p>
+    </div>
+
+    <div class="field">
+      <label for="zip">ZIP code <span class="muted" style="font-weight:400">(optional)</span></label>
       <div class="row">
         <div class="grow">
           <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="85004">
         </div>
-        <button type="submit">See my plan</button>
+        <button type="submit" id="seePlan" disabled>See my plan</button>
       </div>
       <p id="zipError" class="error small" hidden></p>
+      <p class="small muted">Without a ZIP you still get the medicine check, just not this week's heat.</p>
     </div>
   </form>
 
   <footer>
-    <p class="small muted">Heat forecast: National Weather Service HeatRisk (experimental). ZIP locations: U.S. Census Bureau ZCTA Gazetteer.</p>
+    <p class="small muted">Heat forecast: National Weather Service HeatRisk (experimental). ZIP locations: U.S. Census Bureau ZCTA Gazetteer. Medicine names and classes: NLM RxNorm and RxClass.</p>
   </footer>
 </main>
 <script type="module">
   import { initTheme } from './src/theme.js';
   import { isZip } from './src/zip.js';
   import { getZip, setZip } from './src/storage.js';
+  import { initChips } from './src/chips.js';
 
   initTheme();
-  const form = document.getElementById('zipForm');
-  const input = document.getElementById('zip');
+  initChips();
+  const form = document.getElementById('planForm');
+  const zipInput = document.getElementById('zip');
   const err = document.getElementById('zipError');
-  input.value = getZip();
+  zipInput.value = getZip();
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const zip = input.value.trim();
+    const zip = zipInput.value.trim();
     if (zip && !isZip(zip)) {
-      err.textContent = 'A ZIP code is five digits, like 85001.';
+      err.textContent = 'A ZIP code is five digits, like 85004.';
       err.hidden = false;
-      input.focus();
+      zipInput.focus();
       return;
     }
     err.hidden = true;
