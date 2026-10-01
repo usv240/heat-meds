@@ -122,6 +122,13 @@ Built plan-first with the Devpost Learn Skill Pack, in a coding agent (Claude Co
 
 This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product.
 
+## Credits and disclosures
+
+- All code in this repository was written during the hackathon's submission period (first commit Sept. 30, 2026), starting from an empty folder.
+- Built with Claude Code as the AI coding assistant, following the Devpost Learn Skill Pack (`skills-lock.json`). Commits made with the assistant carry a co-author line.
+- Background research on the idea and the data sources was gathered with AI assistance before the skill interviews. No code from that research is included.
+- Third-party material: the Atkinson Hyperlegible Next font (SIL OFL 1.1) and `geotiff` (MIT, used only by a one-time data script). Public data from the CDC, NWS, NLM, U.S. Census Bureau, AHRQ, UK Health Security Agency, and Health Canada, as listed under Sources.
+
 ## License
 
 MIT. See `LICENSE`. The Atkinson Hyperlegible Next font is under the SIL Open Font License 1.1, see `assets/fonts/OFL.txt`.
