@@ -4,6 +4,29 @@ Type in your medicines and ZIP code. Get one printable page that says which of y
 
 A proof of concept built for the Devpost Build With AI: Basics hackathon. Planning documents are in `devpost/`.
 
+**Live site:** https://usv240.github.io/heat-meds/ (press "Try an example", no account needed)
+
+![Heat Meds example: seven days of heat risk from a past Phoenix heat wave and a card for furosemide, a water pill](assets/social-preview.png)
+
+## Who it is for
+
+Older adults and the people who look after them. Some everyday medicines, such as water pills, some blood pressure pills, and some antidepressants, change how the body handles heat. In September 2025 the CDC asked clinicians to plan for this with their patients. Patients had no tool to start that conversation themselves.
+
+## Results on real prescriptions
+
+The 300 most-prescribed US medicines, derived from the AHRQ MEPS 2024 prescription survey, were run through the same code the site uses (run of September 30, 2026; the [Evidence page](https://usv240.github.io/heat-meds/evidence.html) reads the numbers straight from `data/evidence.json`):
+
+- 0 medicine cards without an exact CDC quote (enforced in code)
+- 0 plans that tell anyone to stop, skip, or change a dose
+- 75.0% agreement with UK Health Security Agency guidance and 82.3% with Health Canada guidance, used as independent answer keys
+- Every disagreement listed with a reason, including the 18 medicines flagged here that neither the UK nor Canada lists
+
+This measures agreement with national guidance, not clinical outcomes.
+
+## How this is different
+
+The CDC guidance is a table for clinicians. The HeatRisk forecast and the CDC HeatRisk Dashboard show heat for a place, not for a medicine list. Pill reminder apps have no heat data. Heat Meds joins a personal medicine list to the local heat forecast and gives one sourced page to take to a pharmacist.
+
 ## What it does
 
 - Resolves medicine names, brand or generic, through the National Library of Medicine's RxNorm, and never guesses: an uncertain match becomes a "Did you mean" you have to tap.
@@ -69,6 +92,23 @@ scripts/                                 one-time data scripts and live checks
 test/                                    node:test suites and fixtures
 devpost/                                 planning documents from the hackathon curriculum
 ```
+
+## How it was planned
+
+Built plan-first with the Devpost Learn Skill Pack, in a coding agent (Claude Code):
+
+- `devpost/scope.md`: the idea, the person it is for, and what was cut
+- `devpost/prd.md`: every screen and behavior, with acceptance criteria
+- `devpost/spec.md`: the technical plan, data sources, and failure modes
+- `devpost/checklist.md`: seven build slices, each verified and committed, plus every revision the build forced
+- `devpost/app-map.html`: a short guide to the code
+
+## Limits
+
+- The heat forecast covers the contiguous US only. Elsewhere the plan says the forecast is not available and still checks the medicines.
+- Medicine coverage depends on RxNorm and RxClass. 15 of the 300 test medicines have no drug class code there; the Evidence page lists them.
+- The rules follow the CDC page dated Sept. 18, 2025, checked by hand on Sept. 30, 2026. They do not update themselves.
+- Educational tool, not medical advice. It never tells anyone to stop or change a medicine.
 
 ## Sources
 

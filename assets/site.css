@@ -305,6 +305,13 @@ h2 .info-btn, h3 .info-btn { font-size: .8rem; }
   background: var(--accent); color: var(--accent-ink); border-radius: .35rem; padding: .15rem .55rem;
 }
 .hero-preview .heat-week { margin: .5rem 0; }
+/* The preview shows the whole week in one row whenever its box is wide enough, so it reads as a
+   week at a glance instead of four boxes and three. Narrower boxes keep the shared four-column rule. */
+@container (min-width: 520px) {
+  .hero-preview .heat-week { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .3rem; }
+  .hero-preview .heat-day { padding: .45rem 0; }
+  .hero-preview .heat-day .word { font-size: .7rem; }
+}
 .hero-preview .med-card { margin: .7rem 0 0; background: var(--bg); }
 
 /* Example call to action: the caption sits below the button on every screen size. */
@@ -327,11 +334,22 @@ h2 .info-btn, h3 .info-btn { font-size: .8rem; }
 .how-it-works li strong { display: block; font-size: 1.1rem; margin-bottom: .2rem; }
 .how-it-works li span { display: block; }
 
+/* How this is different: existing tools, then this one, highlighted. */
+.compare { list-style: none; padding: 0; margin: .6rem 0; display: grid; gap: .6rem; }
+.compare li { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; padding: .8rem 1rem; }
+.compare li strong { display: block; margin-bottom: .15rem; }
+.compare li span { display: block; color: var(--muted); }
+.compare li.ours { border: 2px solid var(--accent); background: var(--accent-soft); }
+.compare li.ours span { color: var(--ink); }
+
 /* Evidence page */
 .tiles { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); margin: .6rem 0; }
 .tile { background: var(--card); border: 1px solid var(--line); border-radius: .8rem; padding: .9rem 1rem; }
 .tile.ok { border-color: #2f7d4f; }
 .tile.bad { border-color: var(--bad); }
+/* Big statistics use the system font: Atkinson Hyperlegible Next draws a slashed zero (it has no
+   plain-zero alternate), which reads like "Ø" at this size. Body text keeps the slashed zero. */
+.tile-num, .summary-stats .stat-num { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-variant-numeric: tabular-nums; }
 .tile-num { font-size: 2.2rem; font-weight: 800; line-height: 1.05; }
 .tile.ok .tile-num { color: #2f7d4f; }
 [data-theme="dark"] .tile.ok .tile-num, [data-theme="dark"] .tile.ok { color: #7bd39a; border-color: #7bd39a; }
