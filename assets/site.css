@@ -187,7 +187,7 @@ label { display: block; font-weight: 700; margin-bottom: .35rem; }
   border: 1px solid rgba(0, 0, 0, .12);
 }
 .heat-day .dow { display: block; font-weight: 700; font-size: .95rem; }
-.heat-day .date { display: block; font-size: .75rem; opacity: .85; }
+.heat-day .date { display: block; font-size: .75rem; }
 .heat-day .word { display: block; font-size: .8rem; margin-top: .3rem; font-weight: 700; }
 .heat-day.unknown { background: var(--note-bg); color: var(--muted); }
 

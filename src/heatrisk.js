@@ -11,7 +11,9 @@ export const LEVELS = [
   { level: 0, word: 'Little to none', color: '#e8f9e7', ink: '#111111' },
   { level: 1, word: 'Minor', color: '#f4f257', ink: '#111111' },
   { level: 2, word: 'Moderate', color: '#f69632', ink: '#111111' },
-  { level: 3, word: 'Major', color: '#e22f33', ink: '#ffffff' },
+  // Major is darkened slightly from the legend's #e22f33, whose white label measures 4.48:1, to
+  // #dc2a2f (4.76:1) so the small day labels meet WCAG AA 4.5:1. Still reads as the official red.
+  { level: 3, word: 'Major', color: '#dc2a2f', ink: '#ffffff' },
   { level: 4, word: 'Extreme', color: '#7a0e7f', ink: '#ffffff' },
 ];
 

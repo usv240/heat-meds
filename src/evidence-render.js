@@ -108,7 +108,10 @@ export function renderEvidence(e) {
   for (const [k, key] of Object.entries(e.answer_keys)) {
     if (!key.phrases?.length) continue;
     const d = el('details');
-    d.append(el('summary', {}, [document.createTextNode(`${key.title} `), el('a', { href: key.url, target: '_blank', rel: 'noopener', class: 'small', text: '(source)' })]));
+    // The source link sits inside the panel, not the summary: a link inside a summary is a control
+    // nested in a control, which screen readers and touch targets handle badly.
+    d.append(el('summary', { text: key.title }));
+    d.append(el('p', { class: 'small' }, [el('a', { href: key.url, target: '_blank', rel: 'noopener', text: `Open the ${keyName(k)} source` })]));
     d.append(table(['Guidance phrase', 'Mapped to', 'Reason'], key.phrases.map((p) => [p.phrase, [...(p.atc_prefixes ?? []), ...((p.ingredients ?? []).length ? [`by name: ${p.ingredients.join(', ')}`] : [])].join(', '), p.reason])));
     map.append(d);
   }
@@ -122,6 +125,12 @@ export function renderEvidence(e) {
   lim.append(el('p', {}, [el('strong', { text: e.limitation })]));
   lim.append(el('p', { class: 'small' }, [el('strong', { text: 'Test set: ' }), document.createTextNode(`${e.test_set.title}, derived ${e.test_set.derived_on} from `), el('a', { href: e.test_set.source.url, target: '_blank', rel: 'noopener', text: e.test_set.source.title }), infoButton('top300')]));
   lim.append(el('ul', { class: 'small muted' }, e.test_set.method.map((m) => el('li', { text: m }))));
+  // Attribution each answer key's terms ask for.
+  lim.append(el('p', { class: 'small muted' }, [el('strong', { text: 'Attribution. ' }), document.createTextNode(
+    'UK Health Security Agency guidance: contains public sector information licensed under the Open Government Licence v3.0. ' +
+    'Health Canada guidance: source Health Canada; this site is not an official version of it and was not made in affiliation with, or with the endorsement of, the Government of Canada. ' +
+    `ANSM (France) guidance: source Agence nationale de securite du medicament et des produits de sante, consulted ${e.answer_keys.ansm?.checked_on ?? 'on the date in its answer-key file'}, cited for context only and not altered.`
+  )]));
   frag.append(lim);
 
   // 7. Every row, for anyone who wants to check a specific medicine.
