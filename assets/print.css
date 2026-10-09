@@ -53,4 +53,10 @@
   .sources p { margin: 1pt 0 0; font-size: 6pt; }
   .sources a::after { content: none; }
   a { color: #000; text-decoration: none; }
+
+  /* Long medicine lists: cards flow in two columns at the normal print size. The Phoenix example (5 medicines)
+     fits one page; measured, 8 to 15 medicines print on two pages without splitting a card. */
+  .cards-section.many { column-count: 2; column-gap: 6pt; }
+  .cards-section.many h2 { column-span: all; }
+  .cards-section.many .med-card { break-inside: avoid; display: inline-block; width: 100%; margin: 0 0 3pt; }
 }

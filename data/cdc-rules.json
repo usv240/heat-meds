@@ -485,7 +485,7 @@
       "id": "acetaminophen",
       "enabled": true,
       "curation": "keep",
-      "plain_name": "a pain reliever (Tylenol)",
+      "plain_name": "a pain and fever reliever",
       "cdc_label": "Acetaminophen",
       "atc_prefixes": [],
       "ingredients": [
@@ -689,7 +689,7 @@
       "id": "apixaban",
       "enabled": true,
       "curation": "keep",
-      "plain_name": "a blood thinner (Eliquis)",
+      "plain_name": "a blood thinner (anticoagulant)",
       "cdc_label": "Apixaban (mentioned in the page text, not the table)",
       "atc_prefixes": [],
       "ingredients": [

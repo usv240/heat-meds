@@ -32,7 +32,7 @@ The CDC guidance is a table for clinicians. The HeatRisk forecast and the CDC He
 - Resolves medicine names, brand or generic, through the National Library of Medicine's RxNorm, and never guesses: an uncertain match becomes a "Did you mean" you have to tap.
 - Looks up each ingredient's drug class (RxClass, ATC codes) and checks it against a hand-curated rules file built from the CDC's heat and medications guidance for clinicians. Every card carries the exact CDC quote, link, and the date it was checked.
 - Shows the next seven days of National Weather Service HeatRisk for your ZIP, each day with a color and a word, and a replay of a real past heat wave (Phoenix, Aug 3 to 9, 2025).
-- Prints on one Letter page.
+- Prints for the fridge or the pharmacist: the five-medicine example fits one Letter page, and longer lists (measured at 8 to 15 medicines) print on two, in two columns, without splitting a card.
 - Publishes its own evidence: the 300 most-prescribed US medicines (derived from a government survey) run through the same code, compared with the UK's and Canada's guidance, every disagreement listed with a reason.
 
 ## Try it
@@ -105,6 +105,7 @@ Built plan-first with the Devpost Learn Skill Pack, in a coding agent (Claude Co
 
 ## Limits
 
+- Print size stays readable for older eyes, so lists of about 8 or more medicines use a second page.
 - The heat forecast covers the contiguous US only. Elsewhere the plan says the forecast is not available and still checks the medicines.
 - Medicine coverage depends on RxNorm and RxClass. 15 of the 300 test medicines have no drug class code there; the Evidence page lists them.
 - The rules follow the CDC page dated Sept. 18, 2025, checked by hand on Sept. 30, 2026. They do not update themselves.

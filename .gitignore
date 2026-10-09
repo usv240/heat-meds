@@ -15,3 +15,6 @@ agent/
 # Build and cache
 node_modules/
 data/cache/
+
+# Local editor and agent tool state
+.serena/

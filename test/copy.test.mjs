@@ -7,7 +7,7 @@ import path from 'node:path';
 const root = new URL('../', import.meta.url);
 const read = (p) => readFileSync(new URL(p, root), 'utf8');
 
-const SITE_FILES = ['index.html', 'plan.html', 'evidence.html', 'README.md', ...readdirSync(new URL('src/', root)).map((f) => `src/${f}`)];
+const SITE_FILES = ['index.html', 'plan.html', 'evidence.html', '404.html', 'README.md', ...readdirSync(new URL('src/', root)).map((f) => `src/${f}`)];
 const DATA_FILES = readdirSync(new URL('data/', root)).filter((f) => f.endsWith('.json')).map((f) => `data/${f}`);
 
 const EM_DASH = /—/;
