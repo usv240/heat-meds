@@ -80,7 +80,7 @@ export function renderCard(card) {
   art.append(el('h3', {}, [document.createTextNode(cardTitle(card)), cdcInfo(`${card.ingredient}: what the CDC says`, card.source, `The CDC lists this medicine's class, ${card.cdc_label}, in its heat and medications table.`)]));
   art.append(el('p', { text: card.why }));
   art.append(el('p', {}, [el('strong', { text: 'Watch for: ' }), document.createTextNode(card.watch_for)]));
-  art.append(el('p', {}, [el('strong', { text: 'Ask your pharmacist: ' }), document.createTextNode(card.ask)]));
+  art.append(el('p', { class: 'ask' }, [el('strong', { text: 'Ask your pharmacist: ' }), document.createTextNode(card.ask)]));
   if (card.this_week) art.append(el('p', { class: 'this-week' }, [document.createTextNode(`This week: ${card.this_week}`), infoButton('this_week')]));
   for (const also of card.also_listed_under) art.append(el('p', { class: 'small muted' }, [document.createTextNode(`Also listed by the CDC under: ${also.class}`), cdcInfo(`${also.cdc_label}`, also.source, `The CDC also lists this medicine under ${also.cdc_label}.`)]));
   return art;
@@ -188,9 +188,31 @@ export function renderSources(extra = []) {
 }
 
 // The whole plan below the heat area, in the PRD's order.
+// Summary and next steps, from the AHRQ PEMAT checklist for printable patient materials:
+// a summary (item 11), one clear action (item 20), explicit steps (item 22), and a tangible
+// tool (item 23, the tick boxes beside each pharmacist question in print).
+const count = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+export function renderNextSteps(plan) {
+  const wrap = el('section', { class: 'card next-steps', 'aria-labelledby': 'nextHeading' });
+  wrap.append(el('h2', { id: 'nextHeading', text: 'In short' }));
+  const total = plan.cards.length + plan.not_listed.length;
+  const parts = [`${count(plan.cards.length, 'of your medicines matters', 'of your medicines matter')} in heat, out of ${total} checked.`];
+  if (plan.combinations.length) parts.push(`There is ${count(plan.combinations.length, 'combination warning', 'combination warnings')}.`);
+  if (plan.storage.length) parts.push(`There ${plan.storage.length === 1 ? 'is' : 'are'} ${count(plan.storage.length, 'storage note', 'storage notes')}.`);
+  if (plan.unrecognized?.length) parts.push(`${count(plan.unrecognized.length, 'name was', 'names were')} not recognized and not checked.`);
+  wrap.append(el('p', { text: parts.join(' ') }));
+  wrap.append(el('h3', { text: 'Your next steps' }));
+  wrap.append(el('ol', { class: 'steps' }, [
+    el('li', { text: 'Take this page to your pharmacist or doctor.' }),
+    el('li', { text: 'Ask the question on each card. Tick it when you have an answer.' }),
+    el('li', { text: 'On orange, red, or magenta days, watch for the signs on each card and keep medicines out of hot cars.' }),
+  ]));
+  return wrap;
+}
+
 export function renderPlanSections(plan) {
   const frag = document.createDocumentFragment();
-  for (const node of [renderCards(plan), renderCombinations(plan), renderStorage(plan), renderSunNotes(plan), renderNotListed(plan), renderWarningSigns(plan), renderClosing(plan), renderSources()]) {
+  for (const node of [plan.cards.length + plan.not_listed.length ? renderNextSteps(plan) : null, renderCards(plan), renderCombinations(plan), renderStorage(plan), renderSunNotes(plan), renderNotListed(plan), renderWarningSigns(plan), renderClosing(plan), renderSources()]) {
     if (node) frag.append(node);
   }
   return frag;

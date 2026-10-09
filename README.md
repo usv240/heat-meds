@@ -23,6 +23,10 @@ The 300 most-prescribed US medicines, derived from the AHRQ MEPS 2024 prescripti
 
 This measures agreement with national guidance, not clinical outcomes.
 
+## Usability, checked against published standards
+
+No live user testing was possible, so the printed plan was scored with AHRQ's PEMAT-P checklist for patient materials: 100% understandability (15 of 15 items) and 100% actionability (6 of 6), after adding the summary, numbered next steps, and tick boxes the checklist called for. Card text reads at grade 7.3. An axe-core WCAG 2.2 AA scan finds 0 violations on every page, at phone and desktop width, in light and dark mode. Details and limits: `devpost/usability-review.md`.
+
 ## How this is different
 
 The CDC guidance is a table for clinicians. The HeatRisk forecast and the CDC HeatRisk Dashboard show heat for a place, not for a medicine list. Pill reminder apps have no heat data. Heat Meds joins a personal medicine list to the local heat forecast and gives one sourced page to take to a pharmacist.
