@@ -32,6 +32,9 @@ export function parseMedicineList(text) {
     if (!s || SKIP_LINE.test(s)) continue;
     s = s.replace(/\s{2,}/g, ' ').replace(/[\s:,-]+$/, '').trim();
     if (s.length < 3 || !/[a-z]/i.test(s)) continue;
+    // A piece that starts with a number ("1 tablet", "2 puffs") or is only a form word is the tail of
+    // the previous name's directions after a comma, not a medicine.
+    if (/^\d/.test(s) || /^(?:tablets?|tabs?|capsules?|caps?|pills?|puffs?|drops?|units?|once|twice|daily|nightly)$/i.test(s)) continue;
     const key = s.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);

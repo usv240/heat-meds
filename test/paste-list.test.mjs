@@ -29,6 +29,13 @@ test('timing and purpose words after a name are dropped too', () => {
   );
 });
 
+test('directions after a comma never become a medicine ("1 tablet daily", "2 puffs")', () => {
+  assert.deepEqual(
+    parseMedicineList('lisinopril-hydrochlorothiazide, 1 tablet daily\nalbuterol, 2 puffs\nmetformin, tablet'),
+    ['lisinopril-hydrochlorothiazide', 'albuterol', 'metformin'],
+  );
+});
+
 test(`a pasted list is capped at ${MAX_ITEMS} names`, () => {
   const many = Array.from({ length: 40 }, (_, i) => `medicine${i}`).join('\n');
   assert.equal(parseMedicineList(many).length, MAX_ITEMS);
