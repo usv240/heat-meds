@@ -44,6 +44,7 @@ const PAGES = [
   { page: 'index.html', ready: READY.home, expectHome: true },
   { page: 'plan.html?example=1', ready: READY.plan, expectPlan: true, noBrands: true },
   { page: 'evidence.html', ready: READY.evidence, expectEvidence: true, openDetails: true },
+  { page: 'developers.html', ready: `!!document.getElementById('devForm')` },
   { page: 'plan.html', label: 'plan.html (Honolulu 96813)', ready: READY.summary, zip: '96813', list: [LOOKUPS.lasix, LOOKUPS.lisinopril], expectUnavailable: true },
   { page: 'index.html', label: 'index.html (type Lasix 40 mg)', ready: READY.home, type: 'Lasix 40 mg', expectChip: /Lasix 40 mg → furosemide/, onlyWidth: 375 },
   // The three names the demo video types, checked the way a person would enter them.
@@ -252,7 +253,7 @@ try {
       const m = JSON.parse(await evaluate(c, sessionId, PROBE));
       if (m.sw > m.cw) problems.push(`scrollWidth ${m.sw} > viewport ${m.cw}`);
       if (m.err) problems.push('page error');
-      if (!m.header || m.header.brand !== 'Heat Meds' || m.header.links.join('|') !== 'Check my medicines|Evidence' || !m.header.toggle) problems.push(`header: ${JSON.stringify(m.header)}`);
+      if (!m.header || m.header.brand !== 'Heat Meds' || m.header.links.join('|') !== 'Check my medicines|Evidence|Developers' || !m.header.toggle) problems.push(`header: ${JSON.stringify(m.header)}`);
       const narrow = await evaluate(c, sessionId, WORD_CHECK);
       if (narrow?.length) problems.push(`${narrow.length} cells narrower than a word, e.g. ${narrow.slice(0, 3).join('; ')}`);
 

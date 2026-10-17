@@ -121,6 +121,13 @@ export function initChips({ listId = 'chips', inputId = 'medicine', addId = 'add
     await finishResolve(chip, med);
   }
 
+  // Bring your own list: resolve pasted names in small batches so RxNorm's rate limit is respected.
+  async function addMany(names) {
+    for (let i = 0; i < names.length; i += 3) {
+      await Promise.all(names.slice(i, i + 3).map((n) => add(n)));
+    }
+  }
+
   addBtn.addEventListener('click', () => add(input.value));
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -130,5 +137,5 @@ export function initChips({ listId = 'chips', inputId = 'medicine', addId = 'add
   });
 
   render();
-  return { add, getChips: () => chips };
+  return { add, addMany, getChips: () => chips };
 }

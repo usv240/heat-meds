@@ -7,7 +7,7 @@ import path from 'node:path';
 const root = new URL('../', import.meta.url);
 const read = (p) => readFileSync(new URL(p, root), 'utf8');
 
-const SITE_FILES = ['index.html', 'plan.html', 'evidence.html', '404.html', 'README.md', ...readdirSync(new URL('src/', root)).map((f) => `src/${f}`)];
+const SITE_FILES = ['index.html', 'plan.html', 'evidence.html', 'developers.html', '404.html', 'README.md', ...readdirSync(new URL('src/', root)).map((f) => `src/${f}`)];
 const DATA_FILES = readdirSync(new URL('data/', root)).filter((f) => f.endsWith('.json')).map((f) => `data/${f}`);
 
 const EM_DASH = /—/;
@@ -61,11 +61,13 @@ test('all three pages share the same header: Heat Meds, Check my medicines, Evid
   const headerOf = (f) => {
     const m = read(f).match(/<header class="site-header">[\s\S]*?<\/header>/);
     assert.ok(m, `${f} has the site header`);
-    return m[0].replace(/ aria-current="page"/g, '');
+    return m[0].replace(/\r\n/g, '\n').replace(/ aria-current="page"/g, '');
   };
   const home = headerOf('index.html');
   assert.equal(headerOf('plan.html'), home, 'plan.html header matches the home page');
   assert.equal(headerOf('evidence.html'), home, 'evidence.html header matches the home page');
+  assert.equal(headerOf('developers.html'), home, 'developers.html header matches the home page');
+  assert.match(home, /href="developers.html">Developers</);
   assert.match(home, />Heat Meds</);
   assert.match(home, /href="index.html#check">Check my medicines</);
   assert.match(home, /href="evidence.html">Evidence</);

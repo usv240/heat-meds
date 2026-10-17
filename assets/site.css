@@ -386,3 +386,16 @@ details > summary { cursor: pointer; font-weight: 700; }
 .next-steps h3 { margin: .6rem 0 .2rem; }
 .next-steps .steps { margin: .2rem 0 .4rem; padding-left: 1.4rem; }
 .next-steps .steps li { margin: .25rem 0; }
+
+/* Bring your own list */
+.paste-list { margin: .6rem 0 0; }
+.paste-list summary { color: var(--focus); padding: .4rem 0; min-height: 2.75rem; display: flex; align-items: center; }
+.paste-list textarea { font: inherit; font-size: 1rem; width: 100%; padding: .7rem .9rem; border-radius: .6rem; border: 2px solid var(--line); background: var(--card); color: var(--ink); margin: .2rem 0 .5rem; }
+.paste-list textarea:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* Developers page */
+.page-developers textarea { font: inherit; font-size: 1rem; width: 100%; padding: .7rem .9rem; border-radius: .6rem; border: 2px solid var(--line); background: var(--card); color: var(--ink); }
+.page-developers textarea:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.code { background: var(--note-bg); border: 1px solid var(--line); border-radius: .6rem; padding: .8rem 1rem; overflow-x: auto; font-size: .8rem; line-height: 1.45; white-space: pre; max-height: 28rem; }
+.code:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+code { font-size: .9em; background: var(--note-bg); border-radius: .3rem; padding: 0 .25rem; }

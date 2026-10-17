@@ -28,6 +28,7 @@
   <nav class="site-nav" aria-label="Main">
     <a href="index.html#check">Check my medicines</a>
     <a href="evidence.html">Evidence</a>
+    <a href="developers.html">Developers</a>
   </nav>
   <button type="button" class="secondary theme-toggle" id="themeToggle">Dark mode</button>
 </header>
@@ -69,6 +70,14 @@
           </div>
           <ul id="chips" class="chips" aria-live="polite" aria-label="Your medicines"></ul>
           <p id="chipStatus" class="small muted">Add at least one medicine to see a plan.</p>
+          <details class="paste-list">
+            <summary>Paste a whole list</summary>
+            <label for="pasteList">Paste from a pharmacy printout, a patient portal, or a note</label>
+            <p class="small muted" style="margin-top:0">One medicine per line, or separated by commas. Doses and directions are fine; we ignore them. This text stays in your browser.</p>
+            <textarea id="pasteList" rows="5" placeholder="furosemide 40 mg tablet, take 1 daily&#10;lisinopril 10 mg&#10;sertraline 50 mg"></textarea>
+            <div class="row"><button type="button" class="secondary" id="addPasted">Add these medicines</button></div>
+            <p id="pasteStatus" class="small muted" aria-live="polite"></p>
+          </details>
         </div>
 
         <div class="field">
@@ -135,10 +144,21 @@
   import { isZip } from './src/zip.js';
   import { getZip, setZip } from './src/storage.js';
   import { initChips } from './src/chips.js';
+  import { parseMedicineList, MAX_ITEMS } from './src/paste-list.js';
   import { renderHomePreview } from './src/home-preview.js';
 
   initTheme();
-  initChips();
+  const chips = initChips();
+  document.getElementById('addPasted').addEventListener('click', async () => {
+    const box = document.getElementById('pasteList');
+    const status = document.getElementById('pasteStatus');
+    const names = parseMedicineList(box.value);
+    if (!names.length) { status.textContent = 'No medicine names found. Try one name per line.'; return; }
+    status.textContent = `Checking ${names.length} name${names.length === 1 ? '' : 's'}${names.length === MAX_ITEMS ? ' (the first ' + MAX_ITEMS + ')' : ''}. Any name we are not sure about will ask you first.`;
+    box.value = '';
+    await chips.addMany(names);
+    status.textContent = `Done. Check the list above, then see your plan.`;
+  });
   renderHomePreview(document.getElementById('heroPreview'));
   const form = document.getElementById('planForm');
   const zipInput = document.getElementById('zip');

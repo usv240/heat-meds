@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Developers: use the Heat Meds check in your own app, no key needed</title>
+  <meta name="description" content="Import the same tested heat and medicine check the site uses, straight from the live site, with no API key, no account, and no server. Try it with your own list.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Heat Meds">
+  <meta property="og:title" content="Developers: use the Heat Meds check in your own app, no key needed">
+  <meta property="og:description" content="Import the same tested heat and medicine check the site uses, straight from the live site, with no API key, no account, and no server. Try it with your own list.">
+  <meta property="og:url" content="https://usv240.github.io/heat-meds/developers.html">
+  <meta property="og:image" content="https://usv240.github.io/heat-meds/assets/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A Heat Meds example: seven days of heat risk from a past Phoenix heat wave and a card for furosemide, a water pill.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Developers: use the Heat Meds check in your own app, no key needed">
+  <meta name="twitter:description" content="Import the same tested heat and medicine check the site uses, straight from the live site, with no API key, no account, and no server. Try it with your own list.">
+  <meta name="twitter:image" content="https://usv240.github.io/heat-meds/assets/social-preview.png">
+  <meta name="twitter:image:alt" content="A Heat Meds example: seven days of heat risk from a past Phoenix heat wave and a card for furosemide, a water pill.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="page-developers">
+<header class="site-header">
+  <a class="brand" href="index.html">Heat Meds</a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="index.html#check">Check my medicines</a>
+    <a href="evidence.html">Evidence</a>
+    <a href="developers.html" aria-current="page">Developers</a>
+  </nav>
+  <button type="button" class="secondary theme-toggle" id="themeToggle">Dark mode</button>
+</header>
+<main>
+  <h1>Use the check in your own app</h1>
+  <p class="lede">Pharmacies, clinics, caregiver apps, and researchers can run the same heat and medicine check this site runs. It is the exact code the 300-medicine evidence was measured on.</p>
+
+  <section class="card" aria-labelledby="whyNoKey">
+    <h2 id="whyNoKey">Why there is no API key</h2>
+    <p>Heat Meds has no server. The check runs in the browser of whoever uses it, and calls only public government services: the National Library of Medicine's RxNorm and the National Weather Service HeatRisk forecast. So there is no key to sign up for, nothing for us to bill or limit, and no medicine list is ever sent to us. A key would need a server that sees people's medicines, which is exactly what this project promises not to do.</p>
+  </section>
+
+  <h2 id="tryTitle">Try it with your own data</h2>
+  <p>Paste any list, from a pharmacy printout or a test file. Brand names, doses, and misspellings are fine. You get the same answer the plan page gives, as data.</p>
+  <form id="devForm" class="card" novalidate aria-labelledby="tryTitle">
+    <div class="field">
+      <label for="devList">Medicines, one per line or separated by commas</label>
+      <textarea id="devList" rows="5">furosemide 40 mg tablet
+lisinopril-hydrochlorothiazide
+sertraline
+atorvastatin
+furosamide</textarea>
+    </div>
+    <div class="field">
+      <label for="devZip">ZIP code <span class="muted" style="font-weight:400">(optional)</span></label>
+      <input id="devZip" type="text" inputmode="numeric" maxlength="5" placeholder="85004">
+    </div>
+    <label class="toggle-row"><input type="checkbox" id="devReplay"> Use the saved Phoenix heat wave (Aug 3 to 9, 2025)</label>
+    <p><button type="submit" id="devRun">Run the check</button></p>
+    <p id="devStatus" class="small muted" aria-live="polite"></p>
+  </form>
+  <div id="devOut" hidden>
+    <h3>Plain-text plan</h3>
+    <pre id="devText" class="code" tabindex="0"></pre>
+    <h3>Names that need a person to confirm</h3>
+    <pre id="devUnresolved" class="code" tabindex="0"></pre>
+    <details><summary>Full result as JSON</summary><pre id="devJson" class="code" tabindex="0"></pre></details>
+  </div>
+
+  <h2>Use it in your code</h2>
+  <p>Any web page can import the module from the live site. It works from any website.</p>
+  <pre class="code" tabindex="0">&lt;script type="module"&gt;
+  import { checkMedicines } from 'https://usv240.github.io/heat-meds/src/api.js';
+
+  const result = await checkMedicines(
+    ['furosemide 40 mg', 'lisinopril', 'atorvastatin'],
+    { zip: '85004' }
+  );
+  console.log(result.text);        // the plan as plain text
+  console.log(result.plan.cards);  // one card per medicine that matters in heat
+  console.log(result.unresolved);  // names a person must confirm; nothing is guessed
+&lt;/script&gt;</pre>
+
+  <h2>What you get back</h2>
+  <ul class="plain-list">
+    <li><code>plan.cards</code>: each medicine the CDC lists, with why it matters, what to watch for, a pharmacist question, and the exact CDC quote, link, and check date.</li>
+    <li><code>plan.combinations</code> and <code>plan.storage</code>: the CDC combination warning and storage notes.</li>
+    <li><code>plan.not_listed</code>: medicines the CDC does not list, with what UK and Canadian guidance say.</li>
+    <li><code>plan.week</code> and <code>heat</code>: seven days of National Weather Service HeatRisk, or why there is none.</li>
+    <li><code>unresolved</code>: names that need a person to confirm. The check never guesses.</li>
+    <li><code>disclaimer</code>: always present. Show it with the result.</li>
+  </ul>
+
+  <h2>Open data</h2>
+  <ul class="plain-list">
+    <li><a href="data/cdc-rules.json">The CDC rules file</a>, each rule with its quote, link, and check date.</li>
+    <li><a href="data/evidence.json">The full evidence run</a> on the most-prescribed US medicines.</li>
+    <li>The <a href="data/answer-keys/ukhsa.json">UK</a> and <a href="data/answer-keys/health-canada.json">Canada</a> answer-key mappings.</li>
+  </ul>
+
+  <h2>Rules for using it</h2>
+  <ul class="plain-list">
+    <li>Keep the disclaimer, and never present the result as an instruction to stop or change a medicine.</li>
+    <li>Send up to a couple of dozen names per call. RxNorm asks for no more than twenty requests per second per computer; the module sends a few at a time.</li>
+    <li>Keep the National Library of Medicine attribution shown below.</li>
+    <li>The code is MIT licensed: <a href="https://github.com/usv240/heat-meds">github.com/usv240/heat-meds</a>.</li>
+  </ul>
+
+  <footer>
+    <p class="small muted">Educational tool, not medical advice. Always talk to your pharmacist or doctor before changing how you take a medicine. In an emergency, call your local emergency number.</p>
+    <p class="small muted">This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product.</p>
+  </footer>
+</main>
+<script type="module">
+  import { initTheme } from './src/theme.js';
+  import { checkMedicines } from './src/api.js';
+  import { parseMedicineList } from './src/paste-list.js';
+  initTheme();
+  const $ = (id) => document.getElementById(id);
+  $('devForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const names = parseMedicineList($('devList').value);
+    const zip = $('devZip').value.trim();
+    if (!names.length) { $('devStatus').textContent = 'Add at least one medicine name.'; return; }
+    if (zip && !/^[0-9]{5}$/.test(zip)) { $('devStatus').textContent = 'A ZIP code is five digits, like 85004.'; return; }
+    $('devRun').disabled = true;
+    $('devStatus').textContent = `Checking ${names.length} name${names.length === 1 ? '' : 's'} against RxNorm, RxClass, and the CDC rules.`;
+    try {
+      const r = await checkMedicines(names, { zip: zip || null, replay: $('devReplay').checked });
+      $('devText').textContent = r.text;
+      $('devUnresolved').textContent = r.unresolved.length ? JSON.stringify(r.unresolved, null, 2) : 'None. Every name was recognized.';
+      $('devJson').textContent = JSON.stringify(r, null, 2);
+      $('devOut').hidden = false;
+      const checked = r.plan.cards.length + r.plan.not_listed.length;
+      $('devStatus').textContent = `Done: ${r.plan.cards.length} of ${checked} medicine ingredients checked matter in heat${r.unresolved.length ? `; ${r.unresolved.length} name${r.unresolved.length === 1 ? ' needs' : 's need'} a person to confirm` : ''}.`;
+    } catch (err) {
+      console.error(err);
+      $('devStatus').textContent = 'Something went wrong reaching the public services. Try again in a minute.';
+    } finally {
+      $('devRun').disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

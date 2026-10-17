@@ -23,6 +23,25 @@ The 300 most-prescribed US medicines, derived from the AHRQ MEPS 2024 prescripti
 
 This measures agreement with national guidance, not clinical outcomes.
 
+## Bring your own data
+
+- **Paste a whole list** on the home page, straight from a pharmacy printout, a patient portal, or a note. Doses, directions ("take 1 daily", "at bedtime"), bullets, and refill details are stripped in the browser; each name then goes through the same lookup as a typed name, so anything uncertain still asks before it is added. The text never leaves the browser.
+- **Developers** can run their own lists on the [Developers page](https://usv240.github.io/heat-meds/developers.html) and see the full result as data.
+
+## For developers: no key, no server
+
+Any web page can import the same tested check the site uses:
+
+```html
+<script type="module">
+  import { checkMedicines } from 'https://usv240.github.io/heat-meds/src/api.js';
+  const result = await checkMedicines(['furosemide 40 mg', 'lisinopril'], { zip: '85004' });
+  console.log(result.text, result.plan.cards, result.unresolved);
+</script>
+```
+
+There is deliberately no API key: Heat Meds has no server, so the check runs in the caller's browser and calls only the public RxNorm and HeatRisk services. A key would need a server that sees people's medicine lists, which this project promises not to do. The rules file, evidence run, and answer keys are published as open data in `data/`.
+
 ## Usability, checked against published standards
 
 No live user testing was possible, so the printed plan was scored with AHRQ's PEMAT-P checklist for patient materials: 100% understandability (15 of 15 items) and 100% actionability (6 of 6), after adding the summary, numbered next steps, and tick boxes the checklist called for. Card text reads at grade 7.3. An axe-core WCAG 2.2 AA scan finds 0 violations on every page, at phone and desktop width, in light and dark mode. Details and limits: `devpost/usability-review.md`.
