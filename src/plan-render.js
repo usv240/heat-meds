@@ -64,7 +64,7 @@ export function renderSummary(plan) {
 
 export function renderCards(plan) {
   // Long lists get a two-column print layout so the printout stays short at a readable size.
-  const wrap = el('section', { class: plan.cards.length > 4 ? 'cards-section many' : 'cards-section', 'aria-labelledby': 'cardsHeading' });
+  const wrap = el('section', { class: plan.cards.length > 3 ? 'cards-section many' : 'cards-section', 'aria-labelledby': 'cardsHeading' });
   wrap.append(heading('h2', 'cardsHeading', 'Medicines that matter in heat', infoButton('drug_class')));
   if (!plan.cards.length) {
     wrap.append(el('p', { class: 'note', text: 'None of the medicines you entered are on the CDC heat and medication list.' }));

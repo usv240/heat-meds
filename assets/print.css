@@ -84,4 +84,9 @@
   /* On paper the coloured week sits right above the cards and step 3 says which days matter,
      so each card's own "This week" line is left to the screen version. */
   .med-card .this-week { display: none !important; }
+  /* With saved or replayed data the summary line above the week already says it is a past heat wave,
+     so the separate label is screen-only on paper. Two-column cards set a touch smaller. */
+  .heat-label { display: none !important; }
+  .cards-section.many .med-card { font-size: 8.4pt; line-height: 1.25; }
+  .cards-section.many .med-card h3 { font-size: 9pt; }
 }
