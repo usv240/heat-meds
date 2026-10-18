@@ -24,7 +24,7 @@
 </head>
 <body class="page-home">
 <header class="site-header">
-  <a class="brand" href="index.html" aria-current="page">Heat Meds</a>
+  <a class="brand" href="index.html" aria-current="page"><img class="brand-mark" src="assets/mark.svg" alt="">Heat Meds</a>
   <nav class="site-nav" aria-label="Main">
     <a href="index.html#check">Check my medicines</a>
     <a href="evidence.html">Evidence</a>
@@ -32,12 +32,19 @@
   </nav>
   <button type="button" class="secondary theme-toggle" id="themeToggle">Dark mode</button>
 </header>
-<main>
+<div class="hero-band">
   <section class="hero" aria-labelledby="heroTitle">
     <div class="hero-copy">
-      <h1 id="heroTitle">Some everyday medicines make hot days more dangerous.</h1>
-      <p class="lede">Water pills, some blood pressure pills, some antidepressants, and others change how your body handles heat. Most people are never told. This page checks your medicines against the CDC's heat guidance and this week's heat forecast where you live, then gives you one printable plan to go over with your pharmacist.</p>
-      <p class="example-cta"><a class="button" href="plan.html?example=1">Try an example</a><span class="caption muted small">Mom, 74, in Phoenix: a water pill, a blood pressure pill, an antidepressant, insulin, and a cholesterol pill.</span></p>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Built on CDC guidance and the National Weather Service forecast</p>
+      <h1 id="heroTitle">Some everyday medicines make <span class="hl">hot days</span> more dangerous.</h1>
+      <p class="lede">Water pills, some blood pressure pills, some antidepressants, and others change how your body handles heat. Most people are never told. Check yours against the CDC's heat guidance and this week's forecast where you live, and get one printable plan for your pharmacist.</p>
+      <p class="example-cta"><span class="cta-row"><a class="button" href="plan.html?example=1">Try an example</a> <a class="button secondary" href="#check">Check my medicines</a></span><span class="caption muted small">Example: Mom, 74, in Phoenix: a water pill, a blood pressure pill, an antidepressant, insulin, and a cholesterol pill.</span></p>
+      <ul class="trust-pills" aria-label="Privacy and cost">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Free</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>No account</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Nothing stored</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Open source</li>
+      </ul>
       <p class="trust">Free. No account. We don't store anything. To check your list, medicine names are looked up in the National Library of Medicine's RxNorm and your ZIP goes to the National Weather Service.</p>
     </div>
     <aside class="hero-preview heat-container" id="heroPreview" aria-label="Example plan preview">
@@ -45,19 +52,30 @@
       <p class="muted small">Loading the example.</p>
     </aside>
   </section>
+  </div>
+<main>
+
+  <section class="stats" aria-label="Why this matters, in numbers">
+    <div class="stat"><span class="stat-big" data-stat="top10">6 of 10</span><span class="stat-text">of the most-prescribed US medicines are on the CDC heat list</span></div>
+    <div class="stat"><span class="stat-big" data-stat="tested">300</span><span class="stat-text">most-prescribed medicines tested through this exact code</span></div>
+    <div class="stat"><span class="stat-big" data-stat="noquote">0</span><span class="stat-text">warnings without an exact CDC quote</span></div>
+    <div class="stat"><span class="stat-big" data-stat="stop">0</span><span class="stat-text">plans that tell anyone to stop a medicine</span></div>
+  </section>
+  <p class="stats-foot small"><a href="evidence.html">See the evidence and every disagreement</a></p>
 
   <section class="how-it-works" aria-labelledby="howTitle">
     <h2 id="howTitle">How it works</h2>
+    <p class="section-lede">Three steps, about a minute. Nothing to install.</p>
     <ol>
-      <li><strong>Add your medicines</strong><span class="muted">Type each name from the bottle, brand or generic.</span></li>
-      <li><strong>Add your ZIP (optional)</strong><span class="muted">See this week's heat risk from the National Weather Service.</span></li>
-      <li><strong>Get a one-page plan for your pharmacist</strong><span class="muted">Print it for the fridge or the pharmacy counter.</span></li>
+      <li><span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g transform="rotate(-35 12 12)"><rect x="3" y="8.5" width="18" height="7" rx="3.5"/><path d="M12 8.5v7"/></g></svg></span><strong>Add your medicines</strong><span class="muted">Type each name from the bottle, brand or generic, or paste a whole list.</span></li>
+      <li><span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></svg></span><strong>Add your ZIP (optional)</strong><span class="muted">See this week's heat risk from the National Weather Service.</span></li>
+      <li><span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V3.5h10V9"/><rect x="3.5" y="9" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg></span><strong>Get a one-page plan for your pharmacist</strong><span class="muted">Print it for the fridge or the pharmacy counter.</span></li>
     </ol>
   </section>
 
-  <div class="narrow">
-    <section id="check" aria-labelledby="checkTitle">
+    <section id="check" class="check-section" aria-labelledby="checkTitle">
       <h2 id="checkTitle">Check my medicines</h2>
+      <p class="section-lede">Type the names on your bottles, or paste a whole list. Brand names, doses, and misspellings are fine.</p>
       <form id="planForm" class="card" novalidate>
         <div class="field">
           <label for="medicine">Your medicines</label>
@@ -94,14 +112,23 @@
       </form>
     </section>
 
-    <h2>Who this is for</h2>
-    <p>Older adults and the people who look after them. It is meant for the kitchen table with the pill bottles out, or for the pharmacy counter. It is not a substitute for your pharmacist or doctor, and it never tells anyone to stop a medicine.</p>
+  <section class="section" aria-labelledby="whoTitle">
+    <h2 id="whoTitle">Who it is for, and why it matters</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M15.5 14.6c2.6-.3 4.4 1.2 5 4.4"/></svg>Older adults and the people who look after them</h3>
+        <p>It is meant for the kitchen table with the pill bottles out, or for the pharmacy counter. It is not a substitute for your pharmacist or doctor, and it never tells anyone to stop a medicine.</p>
+      </div>
+      <div class="feature">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/><path d="M12 10v7"/></svg>The CDC asked doctors to plan for this</h3>
+        <p>In 2025 the CDC asked clinicians to go over heat risks from medicines with their patients: which classes dull thirst, reduce sweating, or lower blood pressure in heat, which combinations add up, and which medicines spoil in a hot car. Patients had no tool to do this themselves.</p>
+      </div>
+    </div>
+  </section>
 
-    <h2>Why it matters</h2>
-    <p>In 2025 the CDC asked clinicians to go over heat risks from medicines with their patients: which classes dull thirst, reduce sweating, or lower blood pressure in heat, which combinations add up, and which medicines spoil in a hot car. Patients had no tool to do this themselves. This one uses the CDC's own table, quoted line by line, joined to the National Weather Service's HeatRisk forecast for your ZIP.</p>
-
+  <section class="section" aria-labelledby="different">
     <h2 id="different">How this is different</h2>
-    <p>Each of these tools does part of the job. None of them puts your own medicines and your own week of heat on one page.</p>
+    <p class="section-lede">Each of these tools does part of the job. None of them puts your own medicines and your own week of heat on one page.</p>
     <ul class="compare">
       <li><strong>The CDC's heat and medications guidance</strong><span>A detailed table written for doctors and nurses. It is not tied to your medicines or to the forecast where you live.</span></li>
       <li><strong>The National Weather Service HeatRisk forecast and the CDC HeatRisk Dashboard</strong><span>Heat risk for your place, day by day. Nothing about the medicines you take.</span></li>
@@ -109,17 +136,29 @@
       <li class="ours"><strong>Heat Meds</strong><span>Your medicines and your week of heat together, every warning quoted from the CDC with the date it was checked, an honest list of what the CDC does not cover, and one page you can hand to your pharmacist.</span></li>
     </ul>
     <p class="small muted">When we looked in September 2026, we could not find a free public tool that joins a personal medicine list to a local heat forecast.</p>
+  </section>
 
-    <h2>What you get</h2>
-    <ul>
-      <li>Seven days of heat risk for your ZIP, each day with a color and a word.</li>
-      <li>One card per medicine that matters in heat: why, what to watch for, and one question to ask your pharmacist. Every card carries the CDC's exact words.</li>
-      <li>The CDC's combination warning when it applies, and storage notes for medicines that spoil in heat.</li>
-      <li>An honest list of the medicines you entered that the CDC guidance does not list.</li>
-      <li>A printable page for the fridge or the pharmacist.</li>
+  <section class="section" aria-labelledby="getTitle">
+    <h2 id="getTitle">What you get</h2>
+    <ul class="checks">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Seven days of heat risk for your ZIP, each day with a color and a word.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>One card per medicine that matters in heat: why, what to watch for, and one question for your pharmacist, in the CDC's exact words.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>The CDC's combination warning when it applies, and storage notes for medicines that spoil in heat.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>An honest list of the medicines you entered that the CDC guidance does not list.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>A short summary and three next steps, with a box to tick for each question.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>A printable page for the fridge or the pharmacist.</span></li>
     </ul>
-    <p>How well does it work? The <a href="evidence.html">Evidence page</a> shows the results of running the 300 most-prescribed US medicines through this site, compared with the UK's and Canada's guidance.</p>
+  </section>
 
+  <section class="cta-band" aria-labelledby="proofTitle">
+    <div>
+      <h2 id="proofTitle">How well does it work?</h2>
+      <p>The 300 most-prescribed US medicines were run through this exact code and compared with UK and Canadian guidance. Every disagreement is published.</p>
+    </div>
+    <a class="button" href="evidence.html">See the evidence</a>
+  </section>
+
+  <div class="narrow">
     <h2 id="references">References</h2>
     <ul class="references small">
       <li><a href="https://www.cdc.gov/heat-health/hcp/clinical-guidance/heat-and-medications-guidance-for-clinicians.html" target="_blank" rel="noopener">CDC, Heat and Medications: Guidance for Clinicians</a> (page dated Sept. 18, 2025). The source of every medicine card, combination warning, and storage note.</li>
@@ -137,6 +176,7 @@
       <p class="small muted">Educational tool, not medical advice. Always talk to your pharmacist or doctor before changing how you take a medicine. In an emergency, call 911.</p>
       <p class="small muted">Heat Meds is a proof of concept built for the Devpost Build With AI: Basics hackathon. Open source under the MIT license.</p>
     </footer>
+  </div>
   </div>
 </main>
 <script type="module">
@@ -160,6 +200,15 @@
     status.textContent = `Done. Check the list above, then see your plan.`;
   });
   renderHomePreview(document.getElementById('heroPreview'));
+  fetch('data/evidence.json').then((r) => r.ok ? r.json() : null).then((e) => {
+    if (!e) return;
+    const set = (k, v) => { const el = document.querySelector(`[data-stat="${k}"]`); if (el) el.textContent = v; };
+    const top = [...e.rows].sort((a, b) => a.rank - b.rank).slice(0, 10);
+    set('top10', `${top.filter((r) => r.app_flags).length} of ${top.length}`);
+    set('tested', String(e.rows.length));
+    set('noquote', String(e.must_be_zero.flags_without_cdc_quote));
+    set('stop', String(e.must_be_zero.stop_instructions));
+  }).catch(() => {});
   const form = document.getElementById('planForm');
   const zipInput = document.getElementById('zip');
   const err = document.getElementById('zipError');
